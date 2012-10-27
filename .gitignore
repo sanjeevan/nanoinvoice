@@ -1,0 +1,5 @@
+venv/*
+*.pyc
+*.tmp
+nano/static/css/nano/.sass-cache
+Gemfile.lock

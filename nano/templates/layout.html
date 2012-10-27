@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    {% block head %}
+    <meta charset="utf-8" />
+    <title>Heavyeggs 2 - {{ page_title }}</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/nano/stylesheets/screen.css" />
+    {% endblock %}
+  </head>
+  <body>
+      
+      <div id="header">
+        <div class="container">
+          <div id="logo"><img src="/static/img/logo-small.png" /></div>
+          {% include 'search.html' %}
+        </div>
+      </div>
+
+      <div id="navigation">
+        <div class="container">
+          {% include 'navigation.html' %}
+        </div>
+      </div>
+
+      <div class="container">
+        <div id="content">
+          {% block content %}
+          {% endblock %}
+        </div>
+      </div>
+
+      <div id="footer">
+        &copy; Heavyeggs.com <?php echo date("Y"); ?>. Developed by <a href="#">Pureparadox Limited</a>
+      </div>
+
+  </body>
+</html>

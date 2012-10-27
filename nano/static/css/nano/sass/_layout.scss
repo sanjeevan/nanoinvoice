@@ -1,0 +1,118 @@
+
+body, html {
+  background-color: #e8ebed;
+  font-size: 14px;
+  font-family: 'Segoe UI', Tahoma, Arial, Helvetica, Sans-Serif;
+}
+
+* {
+  @include box-sizing(border-box);
+}
+
+.container {
+  @include pie-clearfix; 
+  width: 960px;
+  margin: 0 auto;
+  position: relative;
+}
+
+#header {
+  @include pie-clearfix;
+  
+  #logo {
+    float: left;
+  }
+  
+  #search {
+    float: right; 
+    background-color: $nav-bg-colour;
+    padding: 1em 1em 0.5em 1em;
+    color: #fff;
+
+    #account {
+      padding-bottom: 1em;
+    }
+
+    input {
+      @include adjust-font-size-to(16px);
+      width: 280px;
+      padding: 0.5em;
+      border: 1px solid;
+    }
+    
+    a { 
+      color: #fff; 
+    }
+    
+  }
+}
+
+#social {
+  float: right;
+  padding: 0 0 5px 0;
+}
+
+#navigation {
+  margin: -20px 0 0 0;
+
+  #menu {
+    width: 640px;
+    float: left;
+    position: absolute;
+    bottom: 0;
+    ul li {
+      display: inline-block;
+
+      a { 
+        text-decoration: none;
+        color: #fff;
+        padding: 6px;
+        background-color: $nav-bg-colour;
+        font-weight: 400;
+        display: block;
+
+        &:hover {
+          background-color: darken($nav-bg-colour, 10%); 
+        }
+      }
+
+      a#customise {
+        background-color: darken($nav-bg-colour, 40%);
+        &:hover {
+          background-color: darken($nav-bg-colour, 10%);
+        }
+      }
+
+    }
+  }
+}
+
+#content {
+  @include pie-clearfix;
+  background-color: #fff;
+}
+
+#sidebar {
+  margin-right: 0;
+}
+
+#footer {
+  color: #acacac;
+  text-align: center;
+  font-weight: 400;
+  padding: 10px;
+  @include adjust-font-size-to(14px);
+  @include text-shadow(1px 0px 0px #eee);
+  a {
+    text-decoration: none;
+    color: #acacac;
+  }
+}
+
+.two-column {
+  @include columns(32);
+}
+
+.one-column {
+  @include columns(16);
+}

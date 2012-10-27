@@ -1,0 +1,122 @@
+
+.row {
+  @include pie-clearfix;
+}
+
+.story {
+  float: left;
+  position: relative;
+  margin: 5px;
+  overflow: hidden;
+
+  .detail {
+    background-color: $tile-title-bg;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 3em;
+    color: #fff;
+    @include adjust-font-size-to(20px);
+    padding: 5px;
+  }
+}
+
+.story.feature {
+  width: 175px; 
+}
+
+.story.wide-feature {
+  width: 255px;
+}
+
+#latest-articles {
+  margin-left: 5px;
+}
+
+#trending-list {
+  margin: 0 0 0 5px;
+  padding: 5px 0 0 0;
+}
+
+.listing {
+  .content-node.article {
+    @include pie-clearfix;
+    margin: 0 0 10px 0;
+    padding: 0 0 5px 135px;
+    border-bottom: 1px solid #eee;
+    
+    img {
+      float: left;
+      margin: 0 5px 0 0;
+      margin-left: -135px;
+    }
+    
+    .description {
+      p {
+        line-height: 1.4em;
+        font-weight: 600;
+      }
+    }
+    
+    h2 {
+      @include adjust-font-size-to(22px);
+      @include text-shadow(1px 1px 0 white);
+      line-height: 1.2em;
+      font-weight: 400;
+      margin-top: -2px;
+
+      a {
+        text-decoration: none;
+        color: $link-colour;
+      }
+    }
+  }
+
+  .content-node.web-resource {
+    @include pie-clearfix;
+    margin: 0 0 10px 0;
+    
+    .meta {
+      @include adjust-font-size-to(12px);
+      color: #666;
+      text-align: right;
+      margin-right: 5px;
+      a { color: $blue; }
+    }
+
+    .wide-image {
+      position: relative;
+      .caption {
+        @include text-shadow(1px 1px 0 lighten($blue, 12%));
+        background-color: lighten($blue, 10%);
+        position: absolute;
+        bottom: 0;
+        width: 305px;
+        max-height: 40%;
+        color: #ffffff;
+        padding: 5px;
+        overflow: hidden;
+        line-height: 1.2em;
+      }
+    }
+
+    .article {
+      position: relative;
+      .caption {
+        @include text-shadow(1px 1px 0 lighten($blue, 12%));
+        background-color: lighten($blue, 10%);
+        line-height: 1.2em;
+        position: absolute;
+        bottom: 0;
+        width: 305px;
+        padding: 5px;
+        overflow: hidden;
+        a {
+          text-decoration: none;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
