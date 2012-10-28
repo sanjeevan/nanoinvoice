@@ -1,0 +1,14 @@
+form {
+  .field {
+    margin-bottom: 1em;
+  }
+
+  input.error {
+    border: 1px solid red;
+  }
+
+  span.error {
+    @include adjust-font-size-to(12px);
+    color: red;
+  }
+}

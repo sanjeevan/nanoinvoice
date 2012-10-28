@@ -15,7 +15,7 @@ $column-width   : 4em;
 $gutter-width   : 1em;
 $grid-padding   : $gutter-width;
 
-$show-grid-backgrounds  : true;
+$show-grid-backgrounds: false;
 
 // Colours
 $nav-bg-colour: #4096EE;
@@ -24,3 +24,4 @@ $tile-title-bg: #A30305;
 $h1-colour: #EE3322;
 $link-colour: #0077ee;
 
+$base-font-size: 14px;

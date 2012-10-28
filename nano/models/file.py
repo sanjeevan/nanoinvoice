@@ -28,14 +28,6 @@ class File(db.Model):
     created_at = db.Column(db.DateTime, default=get_current_time())
     updated_at = db.Column(db.DateTime, default=get_current_time())
 
-    article_thumbnails = db.relationship('Article',
-        backref=db.backref('thumbnail', lazy='joined'), lazy='dynamic',
-        primaryjoin='Article.thumbnail_id==File.id')
-
-    article_photos = db.relationship('Article',
-        backref=db.backref('photo', lazy='joined'), lazy='dynmaic',
-        primaryjoin='Article.full_image_id==File.id')
-
     def is_image(self):
         extensions = ['jpg', 'jpeg', 'png', 'bmp', 'gif']
         if self.extension in extensions:

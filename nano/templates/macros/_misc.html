@@ -1,76 +1,23 @@
 {% macro render_errors(field) %}
   {% if field.errors %}
     {% for error in field.errors %}
-    <span>{{ error }}</span>
+      <span class="error">{{ error }}</span>
     {% endfor %}
   {% endif %}
 {% endmacro %}
 
-{% macro render_input(field, cls='') %}
-<div class='clearfix {% if field.errors %}error{% endif %}'>
+{% macro render_input(field, cls='', placeholder) %}
+<div class="field">
   {{ field.label }}
   <div class='input'>
     {% if field.errors %}
-    {{ field(class_=cls~' error') }}
+      {{ field(class_=cls~' error', placeholder=placeholder) }}
     {% else %}
-    {{ field(class_=cls) }}
+      {{ field(class_=cls, placeholder=placeholder) }}
     {% endif %}
-    <span class="help-inline">
-      {% for error in field.errors %}
-      <span>{{ error }}</span>
-      {% endfor %}
-    </span>
+    {{ render_errors(field) }}
   </div>
 </div>
-{% endmacro %}
-
-{% macro render_action(field) %}
-  <div class='actions'>
-    {{ field(class_='btn primary') }}&nbsp;&nbsp;&nbsp;&nbsp;<a href='{{ url_for("account.index") }}'>{{ _('Cancel') }}</a>
-  </div>
-{% endmacro %}
-
-{% macro render_user_table(users, class='') %}
-<table class='{{ class }}'>
-  <thead>
-    <tr>
-      <td>#</td>
-      <td>Username</td>
-      <td>Email</td>
-    </tr>
-  </thead>
-  <tbody>
-    {% for user in users %}
-    <tr>
-      <td>{{ loop.index }}</td>
-      <td><a href="{{ url_for('user.pub', name=user.name) }}">{{ user.name }}</a></td>
-      <td>{{ user.email }}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-{% endmacro %}
-
-{% macro render_pagination(pagination, endpoint) %}
-  {% if pagination.pages > 1 %}
-    <div class='pagination'>
-      <ul>
-        <li class="prev {% if not pagination.has_prev %}disabled{% endif %}"><a href="{{ url_for(endpoint, page=pagination.page-1) }}">&larr; Previous</a></li>
-        {% for page in pagination.iter_pages() %}
-          {% if page %}
-            <li class='{% if page == pagination.page %}active{% endif %}'>
-              <a href='{{ url_for(endpoint, page=page) }}'>{{ page }}</a>
-            </li>
-          {% else %}
-            <li>
-              <a href='#'>...</a>
-            </li>
-          {% endif %}
-        {% endfor %}
-        <li class="next {% if not pagination.has_next %}disabled{% endif %}"><a href="{{ url_for(endpoint, page=pagination.page+1) }}">Next &rarr;</a></li>
-      </ul>
-    </div>
-  {% endif %}
 {% endmacro %}
 
 {% macro render_flash_message() %}

@@ -3,23 +3,6 @@ h1 {
   @include adjust-font-size-to(28px);
   line-height: 1em;
   font-weight: 900;
-
-  span.subhead {
-    padding-left: 0.5em;
-    font-size: 14px;
-    font-weight: 300;
-    color: darken($h1-colour, 10%);
-  }
-  
-  padding: 5px 0 5px 0;
 }
 
-.header { 
-  border-bottom: 1px solid $h1-colour;
-  padding-top: 5px;
-  margin: 0 5px 10px 5px;
-}
 
-.margin5 {
-  margin: 5px;
-}

@@ -1,26 +1,29 @@
-{% from "macros/_misc.html" import render_input, render_action %}
+{% from "macros/_misc.html" import render_input %}
 
-{% set page_title = _('Log in to Heavyeggs') %}
+{% set page_title = _('Log in') %}
 
-{% extends "layout.html" %}
+{% extends "plain.html" %}
 
 {% block content %}
-  <div id='main-content' class='two-column margin5'>
-    <form class='form-stacked' method="POST" action="{{ url_for('account.login') }}">
-        {{ form.hidden_tag() }}
-        {{ form.next }}
-        <fieldset>
-            <legend>Not a member? <a href="{{ url_for('account.signup') }}">Sign up</a> please.</legend>
-            {{ render_input(form.login, 'xlarge') }}
-            {{ render_input(form.password, 'xlarge') }}
-            <div class='clearfix'>
-                <label></label>
-                <div class="input">
-                    {{ form.remember() }}<span class='remember_me'>{{ _('Remember me') }}</span>
-                </div>
-            </div>
-            {{ render_action(form.submit) }}
-        </fieldset>
+  <div class="login box">
+    <form  method="post" action="{{ url_for('account.login') }}">
+      {{ form.hidden_tag() }}
+      {{ form.next }}
+      {{ render_input(form.login, 'xlarge', placeholder='Email') }}
+      {{ render_input(form.password, 'xlarge', placeholder='Password') }}
+      
+      <div class="field">
+        <label class="remember">{{ form.remember }} Remember me?</label>
+      </div>
+      
+      <div class="field">
+        <button class="button primary" type="submit">Login</button> 
+      </div>
+
     </form>
+  </div>
+  
+  <div class="box">
+    <p class="noaccount">No account? <a href="{{ url_for('account.signup') }}">Sign up</a>.</p>
   </div>
 {% endblock %}
