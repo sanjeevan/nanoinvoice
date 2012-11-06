@@ -1,0 +1,12 @@
+ul.flashes {
+  display: block;
+  padding: 4px;
+  margin-top: 4px;
+  background-color: #fff;
+
+  &.error {
+  }
+
+  &.info {
+  }
+}

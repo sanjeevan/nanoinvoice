@@ -9,18 +9,51 @@
   </head>
   <body>
     <div class="container">
+      {% include '_flash.html' %}
       
+      <div class="header">
+        <img src="/static/img/logo.png">
+        
+        {% if current_user.is_authenticated() %}
+        <div class="account">
+          <ul>
+            <li><a href="">Your account</a></li>
+            <li><a href="{{ url_for('account.logout') }}">Log out</a></li>
+          </ul>
+        </div>
+        {% else%}
+        <div class="account">
+          <ul>
+            <li><a href="{{ url_for('account.login') }}">Login</a></li>
+          </ul>
+        </div>
+        {% endif %}
+      </div>
+   
       <div class="application">
-        <div class="header">
+        <div class="top">
         </div>
         <div class="content">
-          {% block content %}{% endblock %}
+          <div class="sidebar">
+            <h3>Menu</h3>
+            <ul class="menu">
+              <li><a href="{{ url_for('home.dashboard') }}"><img src="/static/img/dashboard.png" /> Dashboard</a></li>
+              <li><a href="{{ url_for('invoice.index') }}"><img src="/static/img/invoices.png" /> Invoices</a></li>
+              <li><a href="{{ url_for('payment.index') }}"><img src="/static/img/payments.png" /> Payments</a></li>
+              <li><a href="{{ url_for('client.index') }}"><img src="/static/img/customers.png" /> Clients</a></li>
+            </ul>
+          </div>
+          <div class="workspace">
+            {% block content %}{% endblock %}
+          </div>
         </div>
-        <div class="footer">
+        <div class="bottom">
         </div>
       </div>
-
-
+      
+      <div class="footer">
+      
+      </div>
     </div>
   </body>
 </html>

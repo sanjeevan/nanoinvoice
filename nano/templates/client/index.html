@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  
+  <div class="filters">
+    <div class="left">
+      <a href=#"><img src="/static/img/plus.png"> Add client</a>
+    </div>
+    <div class="right">
+    </div>
+  </div>
+
+  {% if contacts|length == 0 %}
+    
+  <p class="first-create">You have no clients setup, add one now</p>
+    
+  {% endif %}
+
+{% endblock %}

@@ -11,6 +11,7 @@ from nano.extensions import db, mail, cache, login_manager
 from nano.views import account 
 from nano.views import home
 from nano.views import file 
+from nano.views import client, payment, invoice
 
 # For import *
 __all__ = ['create_app']
@@ -18,7 +19,10 @@ __all__ = ['create_app']
 DEFAULT_BLUEPRINTS = (
     account,
     home,
-    file
+    file,
+    payment,
+    invoice,
+    client
 )
 
 def create_app(config=None, app_name=None, blueprints=None):
@@ -67,8 +71,9 @@ def configure_extensions(app):
         return request.accept_languages.best_match(accept_languages)
 
     # login.
-    login_manager.login_view = 'frontend.login'
-    login_manager.refresh_view = 'frontend.reauth'
+    login_manager.login_view = 'account.login'
+    login_manager.refresh_view = 'account.reauth'
+
     @login_manager.user_loader
     def load_user(id):
         return User.query.get(int(id))

@@ -5,4 +5,69 @@ h1 {
   font-weight: 900;
 }
 
+@mixin panel-header() {
+  height: 2em;
+  @include background-image(linear-gradient(center top, $panel-colour 5%, darken($panel-colour, 5%) 100%));
+  @include border-radius(2px 2px 0 0);
+  @include box-shadow(0 1px lighten($panel-colour, 10%) inset);
+  border-bottom: 1px solid darken($panel-colour, 15%);
+}
 
+.sidebar {
+  h3 {
+    @include text-shadow(0 1px #ffffff);
+    @include adjust-font-size-to(12px);
+    font-weight: bold;
+    color: #758594;
+    text-transform: uppercase;
+    margin: 20px 0 2px 12px;
+  }
+  ul.menu li {
+    display: block;
+    margin: 0px 0 2px 12px;
+    a {
+      display: block;
+      text-decoration: none;
+      color: #515765;
+      padding: 5px 12px;
+    }
+  }
+}
+
+.filters { 
+  @include pie-clearfix;
+  @include background-image(linear-gradient(center top, #efefef 5%, darken(#ffffff, 15%) 100%));
+  border-bottom: 1px solid #ccc;
+  
+  padding: 4px;
+  background-color: #efefef;
+  font-size: 12px;
+
+  a {
+    text-decoration: none;
+    color: #515765;
+    line-height: 16px;
+    padding: 4px;
+
+    img { 
+      vertical-align: middle;
+      margin-bottom: 3px;
+    }
+
+
+  }
+
+  .left {
+    float: left;
+  }
+  
+  .right {
+    float: right;
+  }
+}
+
+.first-create {
+  margin: 50px auto;
+  display: block;
+  text-align: center;
+}

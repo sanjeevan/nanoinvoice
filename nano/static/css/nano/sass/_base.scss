@@ -11,17 +11,19 @@
 // Basic Grid
 
 $total-columns  : 12;
-$column-width   : 4em;
-$gutter-width   : 1em;
+$column-width   : 80px;
+$gutter-width   : 0px;
 $grid-padding   : $gutter-width;
 
 $show-grid-backgrounds: false;
 
 // Colours
 $nav-bg-colour: #4096EE;
-$blue: #4096EE;
+$blue:          #4096EE;
 $tile-title-bg: #A30305;
-$h1-colour: #EE3322;
-$link-colour: #0077ee;
+$h1-colour:     #EE3322;
+$link-colour:   #0077ee;
+$bg-colour:     #fff;
+$panel-colour:  #3584D8;
 
 $base-font-size: 14px;

@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import os
 
 from flask.ext.script import Manager, prompt, prompt_pass, prompt_bool
@@ -25,6 +26,15 @@ def reset():
     db.drop_all()
     db.create_all()
     user = User(name='tester', email='tester@hz.com', password='123456')
+    db.session.add(user)
+    db.session.commit()
+
+@manager.command
+def add_test_user():
+    """Add a new test user"""
+    user = User(username='sanjeevan', email_address='sanjeevan.a@gmail.com',
+                first_name='Sanjeevan', last_name='Ambalavanar', 
+                is_active=True, is_super_admin=True, password='fireworks')
     db.session.add(user)
     db.session.commit()
 

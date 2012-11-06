@@ -17,23 +17,11 @@ from nano.forms import (SignupForm, LoginForm, RecoverPasswordForm,
                          ChangePasswordForm, ReauthForm)
 
 
-account = Blueprint('account', __name__)
+account = Blueprint('account', __name__, url_prefix='/account')
 
-
-@account.route('/accountidx')
+@account.route('/')
 def index():
-    if current_user.is_authenticated():
-        return redirect(url_for('user.index'))
-
-    login_form = signup_form = None
-    if not current_user.is_authenticated():
-        login_form= LoginForm(next=request.args.get('next'))
-        signup_form = SignupForm(nex=request.args.get('next'))
-    page = int(request.args.get('page', 1))
-    pagination = User.query.paginate(page=page, per_page=10)
-    return render_template('account/index.html', pagination=pagination, login_form=login_form,
-                           signup_form=signup_form, current_user=current_user)
-
+    return 'Account index page', 200
 
 @account.route('/login', methods=['GET', 'POST'])
 def login():
@@ -48,7 +36,7 @@ def login():
             remember = request.form.get('remember') == 'y'
             if login_user(user, remember=remember):
                 flash("Logged in!", 'success')
-            return redirect(form.next.data or url_for('user.index'))
+            return redirect(form.next.data or url_for('home.index'))
         else:
             flash(_('Sorry, invalid login'), 'error')
 
@@ -78,7 +66,7 @@ def reauth():
 def logout():
     logout_user()
     flash(_('You are now logged out'), 'success')
-    return redirect(url_for('account.index'))
+    return redirect(url_for('home.index'))
 
 
 @account.route('/signup', methods=['GET', 'POST'])
@@ -160,22 +148,4 @@ def reset_password():
 
 
 
-@account.route('/about')
-def about():
-    return '<h1>About Page</h1>'
-
-
-@account.route('/blog')
-def blog():
-    return '<h1>Blog Page</h1>'
-
-
-@account.route('/help')
-def help():
-    return '<h1>Help Page</h1>'
-
-
-@account.route('/terms')
-def terms():
-    return '<h1>Terms Page</h1>'
 

@@ -7,9 +7,9 @@ class InvoiceItem(db.Model):
     
         #column definitions
     id = db.Column(u'id', db.BigInteger, primary_key=True, nullable=False)
-    invoice_id = db.Column(u'invoice_id', db.BigInteger) 
-    type_id = db.Column(u'type_id', db.BigInteger) 
-    tax_rate_id = db.Column(u'tax_rate_id', db.BigInteger) 
+    invoice_id = db.Column(u'invoice_id', db.BigInteger, db.ForeignKey('invoice.id')) 
+    type_id = db.Column(u'type_id', db.BigInteger, db.ForeignKey('invoice_item_type.id')) 
+    tax_rate_id = db.Column(u'tax_rate_id', db.BigInteger, db.ForeignKey('tax_rate.id')) 
 
     description = db.Column(u'description', db.String)
 
@@ -21,8 +21,8 @@ class InvoiceItem(db.Model):
     sort_order = db.Column(u'sort_order', db.Integer, default=0)
 
     #relation definitions
-    invoice_item_type = relation('InvoiceItemType', primaryjoin='InvoiceItem.type_id==InvoiceItemType.id')
-    invoice = relation('Invoice', primaryjoin='InvoiceItem.invoice_id==Invoice.id')
-    tax_rate = relation('TaxRate', primaryjoin='InvoiceItem.tax_rate_id==TaxRate.id')
+    invoice_item_type = db.relation('InvoiceItemType', primaryjoin='InvoiceItem.type_id==InvoiceItemType.id')
+    invoice = db.relation('Invoice', primaryjoin='InvoiceItem.invoice_id==Invoice.id')
+    tax_rate = db.relation('TaxRate', primaryjoin='InvoiceItem.tax_rate_id==TaxRate.id')
 
 

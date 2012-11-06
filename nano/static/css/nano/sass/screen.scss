@@ -7,11 +7,12 @@
 /* Layout */
 
 
-@import "layout";
 @import "shared";
+@import "layout";
 @import "login";
 @import "buttons";
 @import "forms";
+@import "flash";
 
 .container {
   @include container;

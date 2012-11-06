@@ -15,14 +15,11 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(255))
     email_address = db.Column(db.String(VARCHAR_LEN_128), nullable=False, unique=True)
     _password = db.Column('password', db.String(VARCHAR_LEN_128), nullable=False)
-    is_active = db.Column(db.Boolean, default=True)
+    is_active_account = db.Column(db.Boolean, default=True)
     is_super_admin = db.Column(db.Boolean, default=False)
     last_login = db.Column(db.DateTime, default=0)
     created_at = db.Column(db.DateTime, default=get_current_time())
     updated_at = db.Column(db.DateTime, default=get_current_time())
-    
-    articles = db.relationship('Article',
-        backref=db.backref('user', lazy='joined'), lazy='dynamic')
 
     def _get_password(self):
         return self._password
@@ -35,7 +32,7 @@ class User(db.Model, UserMixin):
                                                            _set_password))
 
     def __repr__(self):
-        return '<User %r>' % self.name
+        return '<User %r>' % self.username
 
     def check_password(self, password):
         if self.password is None:

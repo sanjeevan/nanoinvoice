@@ -166,20 +166,7 @@ class InvoiceItem(DeclarativeBase):
 
 
 
-class PaymentTerm(DeclarativeBase):
-    __tablename__ = 'payment_term'
 
-    __table_args__ = {}
-
-    #column definitions
-    created_at = Column(u'created_at', DATETIME(), nullable=False)
-    days = Column(u'days', Integer())
-    id = Column(u'id', BIGINT(), primary_key=True, nullable=False)
-    name = Column(u'name', VARCHAR(length=50))
-    updated_at = Column(u'updated_at', DATETIME(), nullable=False)
-
-    #relation definitions
-    users = relation('User', primaryjoin='PaymentTerm.id==Invoice.payment_term_id', secondary=invoice, secondaryjoin='Invoice.user_id==User.id')
 
 
 class Profile(DeclarativeBase):
@@ -209,40 +196,7 @@ class TaxRate(DeclarativeBase):
     invoices = relation('Invoice', primaryjoin='TaxRate.id==InvoiceItem.tax_rate_id', secondary=invoice_item, secondaryjoin='InvoiceItem.invoice_id==Invoice.id')
 
 
-class User(DeclarativeBase):
-    __tablename__ = 'user'
 
-    __table_args__ = {}
-
-    #column definitions
-    algorithm = Column(u'algorithm', VARCHAR(length=128), nullable=False)
-    created_at = Column(u'created_at', DATETIME(), nullable=False)
-    email_address = Column(u'email_address', VARCHAR(length=255), nullable=False)
-    first_name = Column(u'first_name', VARCHAR(length=255))
-    id = Column(u'id', BIGINT(), primary_key=True, nullable=False)
-    is_active = Column(u'is_active', Integer())
-    is_super_admin = Column(u'is_super_admin', Integer())
-    last_login = Column(u'last_login', DATETIME())
-    last_name = Column(u'last_name', VARCHAR(length=255))
-    password = Column(u'password', VARCHAR(length=128))
-    salt = Column(u'salt', VARCHAR(length=128))
-    updated_at = Column(u'updated_at', DATETIME(), nullable=False)
-    username = Column(u'username', VARCHAR(length=128), nullable=False)
-
-    #relation definitions
-    contacts = relation('Contact', primaryjoin='User.id==Invoice.user_id', secondary=invoice, secondaryjoin='Invoice.contact_id==Contact.id')
-    files = relation('File', primaryjoin='User.id==Profile.user_id', secondary=profile, secondaryjoin='Profile.logo_id==File.id')
-    groups = relation('Group', primaryjoin='User.id==UserGroup.user_id', secondary=user_group, secondaryjoin='UserGroup.group_id==Group.id')
-    vat_schemes = relation('VatScheme', primaryjoin='User.id==VatRegistration.user_id', secondary=vat_registration, secondaryjoin='VatRegistration.scheme_id==VatScheme.id')
-
-
-class UserGroup(DeclarativeBase):
-    __table__ = user_group
-
-
-    #relation definitions
-    group = relation('Group', primaryjoin='UserGroup.group_id==Group.id')
-    user = relation('User', primaryjoin='UserGroup.user_id==User.id')
 
 
 class VatRegistration(DeclarativeBase):

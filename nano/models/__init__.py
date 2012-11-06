@@ -2,8 +2,9 @@ from nano.models.user import User
 from nano.models.file import File
 from nano.models.account_type import AccountType
 from nano.models.contact import Contact
-from nano.models.currency import Curreny
+from nano.models.currency import Currency
 from nano.models.invoice import Invoice
 from nano.models.invoice_item import InvoiceItem
 from nano.models.invoice_item_type import InvoiceItemType
 from nano.models.tax_rate import TaxRate
+from nano.models.payment_term import PaymentTerm

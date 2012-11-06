@@ -7,7 +7,7 @@ class Contact(db.Model):
 
     #column definitions
     id = db.Column(u'id', db.BigInteger, primary_key=True, nullable=False)
-    user_id = db.Column(u'user_id', db.BigInteger, ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(u'user_id', db.BigInteger, db.ForeignKey('user.id'), nullable=False)
     email_address = db.Column(u'email_address', db.String(length=255))
     first_name = db.Column(u'first_name', db.String(length=255))
     last_name = db.Column(u'last_name', db.String(length=255))
@@ -28,4 +28,4 @@ class Contact(db.Model):
                            default=get_current_time())
 
     #relation definitions
-    user = relation('User', primaryjoin='Contact.user_id==User.id')
+    user = db.relation('User', primaryjoin='Contact.user_id==User.id')
