@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% from 'macros/_misc.html' import render_input %}
+
+{% block content %}
+  
+  <div class="filters">
+    <div class="left">
+      <a href="{{ url_for('.create') }}"><img src="/static/img/plus.png"> Add client</a>
+    </div>
+    <div class="right">
+    </div>
+  </div>
+  
+  <div class="workspace-inner">
+
+    <form class="create inline" method="post" action="{{ url_for('.create') }}">
+      <div class="header">Create new customer</div>  
+      <div class="fields">
+        {{ render_input(form.basic.first_name) }} 
+        {{ render_input(form.basic.last_name) }} 
+        {{ render_input(form.basic.email_address) }} 
+
+        <div class="field">
+          <button type="submit">Continue</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+
+{% endblock %}

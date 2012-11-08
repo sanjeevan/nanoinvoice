@@ -246,15 +246,19 @@ body, html {
   background-color: #E9F2F9;
   padding-bottom: 2em;
   border-right: 1px solid #c1daee;
+  min-height: 550px;
 }
-/* line 67, ../sass/_layout.scss */
+/* line 68, ../sass/_layout.scss */
 .content .workspace {
   width: 75%;
   float: right;
   margin-right: 0;
   #margin-left: 0px;
   display: inline;
-  padding-bottom: 2em;
+}
+/* line 72, ../sass/_layout.scss */
+.content .workspace-inner {
+  padding: 1em;
 }
 
 /* line 2, ../sass/_login.scss */
@@ -354,16 +358,55 @@ body, html {
 /* line 2, ../sass/_forms.scss */
 form .field {
   margin-bottom: 1em;
+  clear: both;
 }
-/* line 6, ../sass/_forms.scss */
+/* line 7, ../sass/_forms.scss */
 form input.error {
   border: 1px solid red;
 }
-/* line 10, ../sass/_forms.scss */
+/* line 11, ../sass/_forms.scss */
 form span.error {
   font-size: 0.857em;
   line-height: 2em;
   color: red;
+}
+
+/* line 18, ../sass/_forms.scss */
+form.inline label {
+  float: left;
+  width: 150px;
+}
+
+/* line 24, ../sass/_forms.scss */
+form.create {
+  width: 80%;
+  margin: 3em auto;
+  background-color: #efefef;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 0px 5px #cccccc;
+  -moz-box-shadow: 0px 0px 5px #cccccc;
+  box-shadow: 0px 0px 5px #cccccc;
+}
+/* line 33, ../sass/_forms.scss */
+form.create .fields {
+  padding: 1em;
+}
+/* line 37, ../sass/_forms.scss */
+form.create .header {
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  -ms-border-radius: 4px 4px 0 0;
+  -o-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+  background-color: #609ee0;
+  border-bottom: 1px solid #ccc;
+  padding: 1em;
+  color: #fff;
 }
 
 /* line 1, ../sass/_flash.scss */

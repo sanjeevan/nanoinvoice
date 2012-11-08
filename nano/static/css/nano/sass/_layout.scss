@@ -62,12 +62,16 @@ body, html {
     background-color: #E9F2F9;
     padding-bottom: 2em;
     border-right: 1px solid darken(#E9F2F9, 10%);
+    min-height: 550px;
   }
 
   .workspace {
     @include span-columns(9 omega);
-    padding-bottom: 2em;
-  } 
+  }
+
+  .workspace-inner {
+    padding: 1em;
+  }
 }
 
 .footer {

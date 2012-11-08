@@ -1,6 +1,7 @@
 form {
   .field {
     margin-bottom: 1em;
+    clear: both;
   }
 
   input.error {
@@ -10,5 +11,34 @@ form {
   span.error {
     @include adjust-font-size-to(12px);
     color: red;
+  }
+}
+
+form.inline {
+  label {
+    float: left;
+    width: 150px;
+  }
+}
+
+form.create {
+  width: 80%;
+  margin: 3em auto;
+  background-color: #efefef;
+  border: 1px solid #ccc;
+
+  @include border-radius(4px);
+  @include box-shadow(0px 0px 5px #ccc);
+
+  .fields {
+    padding: 1em;
+  }
+  
+  .header {
+    @include border-radius(4px 4px 0 0);
+    background-color: lighten($panel-colour, 10%); 
+    border-bottom: 1px solid #ccc;
+    padding: 1em;
+    color: #fff;
   }
 }
