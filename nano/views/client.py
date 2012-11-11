@@ -1,9 +1,10 @@
-from flask import Flask, Blueprint, render_template, abort, redirect, url_for, request
+from flask import (Flask, Blueprint, render_template, abort, redirect, url_for,
+                   request, flash)
 from jinja2 import TemplateNotFound
 from flask.ext.login import login_required, current_user
 
 from nano.models import Contact
-from nano.forms import DetailedClientForm
+from nano.forms import SimpleClientForm
 
 client = Blueprint('client', __name__, url_prefix='/client')
 
@@ -19,10 +20,13 @@ def show():
 
 @client.route('/create', methods=['GET', 'POST'])
 def create():
-    form = DetailedClientForm(request.form)
+    form = SimpleClientForm(request.form)
     
     if request.method == 'POST' and form.validate():
-        pass
+        client = form.save()
+        flash('New client created')
+        return redirect('.index')
+    print form.errors
 
     return render_template('client/create.html', form=form)
 

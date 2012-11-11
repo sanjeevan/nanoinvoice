@@ -65,7 +65,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 /* -------------------------------------------------------------------------*/
 /* Layout */
-/* line 1, ../sass/_shared.scss */
+/* line 33, ../sass/_shared.scss */
 h1 {
   color: #ee3322;
   font-size: 2em;
@@ -74,7 +74,7 @@ h1 {
   font-weight: 900;
 }
 
-/* line 17, ../sass/_shared.scss */
+/* line 42, ../sass/_shared.scss */
 .sidebar h3 {
   text-shadow: 0 1px white;
   font-size: 0.857em;
@@ -84,12 +84,12 @@ h1 {
   text-transform: uppercase;
   margin: 20px 0 2px 12px;
 }
-/* line 25, ../sass/_shared.scss */
+/* line 50, ../sass/_shared.scss */
 .sidebar ul.menu li {
   display: block;
   margin: 0px 0 2px 12px;
 }
-/* line 28, ../sass/_shared.scss */
+/* line 53, ../sass/_shared.scss */
 .sidebar ul.menu li a {
   display: block;
   text-decoration: none;
@@ -97,7 +97,7 @@ h1 {
   padding: 5px 12px;
 }
 
-/* line 37, ../sass/_shared.scss */
+/* line 62, ../sass/_shared.scss */
 .filters {
   *zoom: 1;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(5%, #efefef), color-stop(100%, #d9d9d9));
@@ -106,10 +106,9 @@ h1 {
   background-image: -o-linear-gradient(center top, #efefef 5%, #d9d9d9 100%);
   background-image: -ms-linear-gradient(center top, #efefef 5%, #d9d9d9 100%);
   background-image: linear-gradient(center top, #efefef 5%, #d9d9d9 100%);
-  border-bottom: 1px solid #ccc;
-  padding: 4px;
+  border-bottom: 1px solid #AAAAAA;
+  padding: 8px;
   background-color: #efefef;
-  font-size: 12px;
 }
 /* line 38, ../../../../../../../home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
 .filters:after {
@@ -117,32 +116,64 @@ h1 {
   display: table;
   clear: both;
 }
-/* line 46, ../sass/_shared.scss */
+/* line 70, ../sass/_shared.scss */
 .filters a {
   text-decoration: none;
-  color: #515765;
+  color: #555555;
   line-height: 16px;
-  padding: 4px;
+  padding: 4px 10px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
 }
-/* line 52, ../sass/_shared.scss */
+/* line 77, ../sass/_shared.scss */
 .filters a img {
   vertical-align: middle;
   margin-bottom: 3px;
 }
-/* line 60, ../sass/_shared.scss */
+/* line 83, ../sass/_shared.scss */
+.filters a:hover {
+  background-color: #ccc;
+}
+/* line 87, ../sass/_shared.scss */
 .filters .left {
   float: left;
 }
-/* line 64, ../sass/_shared.scss */
+/* line 91, ../sass/_shared.scss */
 .filters .right {
   float: right;
 }
 
-/* line 69, ../sass/_shared.scss */
+/* line 96, ../sass/_shared.scss */
 .first-create {
   margin: 50px auto;
   display: block;
   text-align: center;
+}
+
+/* line 102, ../sass/_shared.scss */
+.data-list {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 10px;
+  border: 1px solid #aaaaaa;
+}
+/* line 109, ../sass/_shared.scss */
+.data-list .row {
+  background-color: #fff;
+  border-bottom: 1px solid #aaaaaa;
+  padding: 5px;
+}
+/* line 115, ../sass/_shared.scss */
+.data-list .row:hover {
+  background-color: #ececec;
+}
+/* line 119, ../sass/_shared.scss */
+.data-list .row:last-child {
+  border-bottom: none;
 }
 
 /* line 2, ../sass/_layout.scss */
@@ -342,47 +373,80 @@ body, html {
   text-decoration: none;
   text-shadow: 1px 1px 0px #528ecc;
 }
-/* line 22, ../sass/_buttons.scss */
-.button.primary:hover {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #378de5), color-stop(1, #79bbff));
-  background: -moz-linear-gradient(center top, #378de5 5%, #79bbff 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#79bbff');
-  background-color: #378de5;
-}
-/* line 28, ../sass/_buttons.scss */
+/* line 23, ../sass/_buttons.scss */
 .button.primary:active {
   position: relative;
   top: 1px;
 }
+/* line 28, ../sass/_buttons.scss */
+.button.normal {
+  -moz-user-select: none;
+  background-color: #F1F4F9;
+  background-image: -moz-linear-gradient(center top, #f7faff, #e8ebf0);
+  background-repeat: repeat-x;
+  border: 1px solid #B1BCCA;
+  border-radius: 3px 3px 3px 3px;
+  box-shadow: 0 1px 1px white inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+  color: #737C93;
+  cursor: pointer;
+  display: inline-block;
+  font-family: proxima-nova,sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 16px;
+  vertical-align: top;
+}
+/* line 46, ../sass/_buttons.scss */
+.button.normal:active {
+  outline: none;
+  background-color: #E2E5EC;
+  background-image: -moz-linear-gradient(center top, #dde0e7, #e9ecf3);
+  background-repeat: repeat-x;
+  border-color: #CCD0DA;
+  box-shadow: 0 1px 3px rgba(96, 101, 124, 0.1) inset, 0 1px 0 white;
+  color: #5C627F;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+}
 
-/* line 2, ../sass/_forms.scss */
+/* line 33, ../sass/_forms.scss */
+form label {
+  color: #828282;
+  font-weight: bold;
+}
+/* line 37, ../sass/_forms.scss */
+form input {
+  color: #555555;
+}
+/* line 41, ../sass/_forms.scss */
 form .field {
   margin-bottom: 1em;
   clear: both;
 }
-/* line 7, ../sass/_forms.scss */
+/* line 46, ../sass/_forms.scss */
 form input.error {
   border: 1px solid red;
 }
-/* line 11, ../sass/_forms.scss */
+/* line 50, ../sass/_forms.scss */
 form span.error {
   font-size: 0.857em;
   line-height: 2em;
   color: red;
 }
 
-/* line 18, ../sass/_forms.scss */
+/* line 57, ../sass/_forms.scss */
 form.inline label {
-  float: left;
+  display: inline-block;
   width: 150px;
 }
+/* line 61, ../sass/_forms.scss */
+form.inline div.input {
+  display: inline-block;
+}
 
-/* line 24, ../sass/_forms.scss */
+/* line 66, ../sass/_forms.scss */
 form.create {
   width: 80%;
   margin: 3em auto;
-  background-color: #efefef;
-  border: 1px solid #ccc;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
@@ -392,21 +456,59 @@ form.create {
   -moz-box-shadow: 0px 0px 5px #cccccc;
   box-shadow: 0px 0px 5px #cccccc;
 }
-/* line 33, ../sass/_forms.scss */
+/* line 6, ../sass/_forms.scss */
+form.create input {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  outline: none;
+  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 16, ../sass/_forms.scss */
+form.create input:focus {
+  -webkit-box-shadow: 0 0 2px blue;
+  -moz-box-shadow: 0 0 2px blue;
+  box-shadow: 0 0 2px blue;
+  border: 1px solid rgba(82, 168, 236, 0.6);
+}
+/* line 24, ../sass/_forms.scss */
+form.create input {
+  font-size: 1.3em;
+  padding: 4px;
+}
+/* line 75, ../sass/_forms.scss */
 form.create .fields {
   padding: 1em;
+  background: -moz-linear-gradient(center top, white, #f5f4f4) repeat-x scroll 0 0 #fbfbfb;
+  border: 1px solid #AAAAAA;
+  border-radius: 0 0 4px 4px;
+  margin: 0 auto 12px;
 }
-/* line 37, ../sass/_forms.scss */
+/* line 80, ../sass/_forms.scss */
+form.create input {
+  width: 366px;
+}
+/* line 84, ../sass/_forms.scss */
 form.create .header {
-  -webkit-border-radius: 4px 4px 0 0;
-  -moz-border-radius: 4px 4px 0 0;
-  -ms-border-radius: 4px 4px 0 0;
-  -o-border-radius: 4px 4px 0 0;
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background-color: #ECECED;
+  background-image: -moz-linear-gradient(center top, #f7f8f8, #dbdbdc);
+  background-repeat: repeat-x;
+  border-color: #AAAAAA #AAAAAA -moz-use-text-color;
+  border-image: none;
   border-radius: 4px 4px 0 0;
-  background-color: #609ee0;
-  border-bottom: 1px solid #ccc;
-  padding: 1em;
-  color: #fff;
+  border-style: solid solid none;
+  border-width: 1px 1px 0;
+  margin: 0 auto;
+  padding: 9px 10px;
 }
 
 /* line 1, ../sass/_flash.scss */

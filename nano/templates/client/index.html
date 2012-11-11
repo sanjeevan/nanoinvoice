@@ -12,8 +12,21 @@
 
   {% if contacts|length == 0 %}
     
-  <p class="first-create">You have no clients setup, <a href="{{ url_for('.create') }}">add one now</a></p>
+  <p class="first-create">You have no contacts setup, <a href="{{ url_for('.create') }}">add one now</a></p>
     
+  {% else %}
+
+  <div class="data-list">
+  
+    {% for contact in contacts %}
+      <div class="row">
+        <img src="/static/img/user_icon.png" />
+        {{ contact.first_name }} {{ contact.last_name }}
+      </div>
+    {% endfor %}
+
+  </table>
+
   {% endif %}
 
 {% endblock %}

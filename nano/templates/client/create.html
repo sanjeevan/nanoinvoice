@@ -14,14 +14,15 @@
   <div class="workspace-inner">
 
     <form class="create inline" method="post" action="{{ url_for('.create') }}">
-      <div class="header">Create new customer</div>  
+      <div class="header">Create new client</div>  
       <div class="fields">
-        {{ render_input(form.basic.first_name) }} 
-        {{ render_input(form.basic.last_name) }} 
-        {{ render_input(form.basic.email_address) }} 
+        {{ form.csrf_token }}
+        {{ render_input(form.first_name) }} 
+        {{ render_input(form.last_name) }} 
+        {{ render_input(form.email_address) }} 
 
         <div class="field">
-          <button type="submit">Continue</button>
+          <button class="button normal" type="submit">Continue</button>
         </div>
       </div>
     </form>
