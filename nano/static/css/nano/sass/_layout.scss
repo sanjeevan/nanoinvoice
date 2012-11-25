@@ -57,7 +57,7 @@ body, html {
   @include pie-clearfix;
   
   .sidebar {
-    @include span-columns(3);
+    @include span-columns(2);
     @include border-radius(0 0 0 4px);
     background-color: #E9F2F9;
     padding-bottom: 2em;
@@ -66,7 +66,7 @@ body, html {
   }
 
   .workspace {
-    @include span-columns(9 omega);
+    @include span-columns(10 omega);
   }
 
   .workspace-inner {

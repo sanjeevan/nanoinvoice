@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+{% from 'macros/_misc.html' import render_input %}
+{% block content %}
+  
+  {% include 'payment/_filter.html' %}
+  
+  <div class="workspace-inner">
+
+    <form class="create inline invoice" method="post" action="{{ url_for('.create') }}">
+      <div class="header">New invoice</div>  
+      <div class="fields">
+        {{ form.csrf_token }}
+        {{ render_input(form.contact_id) }} 
+        {{ render_input(form.reference, cls='reference', size=4) }} 
+        {{ render_input(form.date_issued, cls='date') }} 
+        {{ render_input(form.payment_term_id) }} 
+        {{ render_input(form.due_date, cls='date') }}
+        <div class="field">
+          <button class="button normal" type="submit">Continue</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+
+  <script type="text/javascript">
+    var dueDateField = $('.field-due_date');
+    var dueDatePicker = null;
+    var dateFormat = 'D MMM YYYY'
+
+    $(document).ready(function(){
+      var picker1 = new Pikaday({ field: document.getElementById('date_issued'), format: dateFormat });
+
+      setup();
+    });
+
+    function setup() {
+      $('#payment_term_id').on('change', function(evt){
+          var v = $(this).val();
+          if (v == -1) {
+            dueDateField.show();
+            dueDatePicker = new Pikaday({ field: document.getElementById('due_date'), format: dateFormat });
+          } else {
+            dueDatePicker = null;
+            dueDateField.hide();
+          }
+      });
+    }
+
+
+  </script>
+
+
+{% endblock %}

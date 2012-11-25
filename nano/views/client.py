@@ -25,8 +25,7 @@ def create():
     if request.method == 'POST' and form.validate():
         client = form.save()
         flash('New client created')
-        return redirect('.index')
-    print form.errors
+        return redirect(url_for('.index'))
 
     return render_template('client/create.html', form=form)
 

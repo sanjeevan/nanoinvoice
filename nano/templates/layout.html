@@ -5,6 +5,11 @@
     <meta charset="utf-8" />
     <title>{{ page_title }}</title>
     <link rel="stylesheet" type="text/css" href="/static/css/nano/stylesheets/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/static/js/select2/select2.css" />
+    <link rel="stylesheet" type="text/css" href="/static/js/Pikaday/css/pikaday.css" />
+    <script src="/static/js/jquery-1.8.3.min.js"></script>
+    <script src="/static/js/select2/select2.js"></script>
+    <script src="/static/js/Pikaday/pikaday.min.js"></script>
     {% endblock %}
   </head>
   <body>
@@ -55,5 +60,8 @@
       
       </div>
     </div>
+    <script type="text/javascript">
+       $(document).ready(function() { $("select").select2(); });
+    </script>
   </body>
 </html>

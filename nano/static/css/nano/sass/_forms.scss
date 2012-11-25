@@ -85,3 +85,21 @@ form.create {
     @include panel-header2();
   }
 }
+
+
+form.create.invoice {
+  input.reference {
+    width: auto;
+  }
+  select {
+    width: 366px;
+  }
+
+  input.date {
+    width: 200px;
+  }
+
+  div.field-due_date {
+    display: none;
+  }
+}

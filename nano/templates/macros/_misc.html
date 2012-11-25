@@ -6,14 +6,14 @@
   {% endif %}
 {% endmacro %}
 
-{% macro render_input(field, cls='', placeholder) %}
-<div class="field">
+{% macro render_input(field, cls='') %}
+<div class="field field-{{ field.name }}">
   {{ field.label }}
   <div class='input'>
     {% if field.errors %}
-      {{ field(class_=cls~' error', placeholder=placeholder) }}
+      {{ field(class_=cls~' error', **kwargs) }}
     {% else %}
-      {{ field(class_=cls, placeholder=placeholder) }}
+      {{ field(class_=cls, **kwargs) }}
     {% endif %}
     {{ render_errors(field) }}
   </div>

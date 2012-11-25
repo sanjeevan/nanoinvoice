@@ -10,7 +10,6 @@ class Invoice(db.Model):
     user_id = db.Column(u'user_id', db.BigInteger, db.ForeignKey('user.id')) 
     contact_id = db.Column(u'contact_id', db.BigInteger, db.ForeignKey('contact.id')) 
     payment_term_id = db.Column(u'payment_term_id', db.BigInteger, db.ForeignKey('payment_term.id')) 
-    source = db.Column(u'source', db.String(255))
     status = db.Column(u'status', db.String(255))
     reference = db.Column(u'reference', db.String(255))
     po_reference = db.Column(u'po_reference', db.String(255))
@@ -22,10 +21,20 @@ class Invoice(db.Model):
     tax = db.Column(u'tax', db.Numeric(8, 2))
     total = db.Column(u'total', db.Numeric(8, 2))
 
-    updated_at = db.Column(u'updated_at', db.DateTime, nullable=False)
-    created_at = db.Column(u'created_at', db.DateTime, nullable=False) 
+    updated_at = db.Column(u'updated_at', db.DateTime, nullable=False, default=get_current_time())
+    created_at = db.Column(u'created_at', db.DateTime, nullable=False, default=get_current_time())
 
     # relations
     user = db.relation('User', primaryjoin='Invoice.user_id==User.id')
     contact = db.relation('Contact', primaryjoin='Invoice.contact_id==Contact.id')
     payment_term = db.relation('PaymentTerm', primaryjoin='Invoice.payment_term_id==PaymentTerm.id')
+
+    
+    @classmethod
+    def next_invoice_number(cls, user):
+        """Next the next invoice number for the user"""
+        cur_max = cls.query.filter_by(user_id=user.id).count()
+        cur_max += 1
+
+        return str(cur_max)
+

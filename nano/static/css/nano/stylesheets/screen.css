@@ -65,7 +65,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 /* -------------------------------------------------------------------------*/
 /* Layout */
-/* line 33, ../sass/_shared.scss */
+/* line 37, ../sass/_shared.scss */
 h1 {
   color: #ee3322;
   font-size: 2em;
@@ -74,7 +74,7 @@ h1 {
   font-weight: 900;
 }
 
-/* line 42, ../sass/_shared.scss */
+/* line 46, ../sass/_shared.scss */
 .sidebar h3 {
   text-shadow: 0 1px white;
   font-size: 0.857em;
@@ -84,12 +84,12 @@ h1 {
   text-transform: uppercase;
   margin: 20px 0 2px 12px;
 }
-/* line 50, ../sass/_shared.scss */
+/* line 54, ../sass/_shared.scss */
 .sidebar ul.menu li {
   display: block;
   margin: 0px 0 2px 12px;
 }
-/* line 53, ../sass/_shared.scss */
+/* line 57, ../sass/_shared.scss */
 .sidebar ul.menu li a {
   display: block;
   text-decoration: none;
@@ -97,7 +97,7 @@ h1 {
   padding: 5px 12px;
 }
 
-/* line 62, ../sass/_shared.scss */
+/* line 66, ../sass/_shared.scss */
 .filters {
   *zoom: 1;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(5%, #efefef), color-stop(100%, #d9d9d9));
@@ -116,7 +116,7 @@ h1 {
   display: table;
   clear: both;
 }
-/* line 70, ../sass/_shared.scss */
+/* line 74, ../sass/_shared.scss */
 .filters a {
   text-decoration: none;
   color: #555555;
@@ -128,32 +128,32 @@ h1 {
   -o-border-radius: 20px;
   border-radius: 20px;
 }
-/* line 77, ../sass/_shared.scss */
+/* line 81, ../sass/_shared.scss */
 .filters a img {
   vertical-align: middle;
   margin-bottom: 3px;
 }
-/* line 83, ../sass/_shared.scss */
+/* line 87, ../sass/_shared.scss */
 .filters a:hover {
   background-color: #ccc;
 }
-/* line 87, ../sass/_shared.scss */
+/* line 91, ../sass/_shared.scss */
 .filters .left {
   float: left;
 }
-/* line 91, ../sass/_shared.scss */
+/* line 95, ../sass/_shared.scss */
 .filters .right {
   float: right;
 }
 
-/* line 96, ../sass/_shared.scss */
+/* line 100, ../sass/_shared.scss */
 .first-create {
   margin: 50px auto;
   display: block;
   text-align: center;
 }
 
-/* line 102, ../sass/_shared.scss */
+/* line 106, ../sass/_shared.scss */
 .data-list {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -161,17 +161,17 @@ h1 {
   margin: 10px;
   border: 1px solid #aaaaaa;
 }
-/* line 109, ../sass/_shared.scss */
+/* line 113, ../sass/_shared.scss */
 .data-list .row {
   background-color: #fff;
   border-bottom: 1px solid #aaaaaa;
   padding: 5px;
 }
-/* line 115, ../sass/_shared.scss */
+/* line 119, ../sass/_shared.scss */
 .data-list .row:hover {
   background-color: #ececec;
 }
-/* line 119, ../sass/_shared.scss */
+/* line 123, ../sass/_shared.scss */
 .data-list .row:last-child {
   border-bottom: none;
 }
@@ -265,7 +265,7 @@ body, html {
 }
 /* line 59, ../sass/_layout.scss */
 .content .sidebar {
-  width: 25%;
+  width: 16.667%;
   float: left;
   margin-right: 0%;
   display: inline;
@@ -281,7 +281,7 @@ body, html {
 }
 /* line 68, ../sass/_layout.scss */
 .content .workspace {
-  width: 75%;
+  width: 83.333%;
   float: right;
   margin-right: 0;
   #margin-left: 0px;
@@ -509,6 +509,25 @@ form.create .header {
   border-width: 1px 1px 0;
   margin: 0 auto;
   padding: 9px 10px;
+  font-weight: bold;
+  color: #666;
+}
+
+/* line 91, ../sass/_forms.scss */
+form.create.invoice input.reference {
+  width: auto;
+}
+/* line 94, ../sass/_forms.scss */
+form.create.invoice select {
+  width: 366px;
+}
+/* line 98, ../sass/_forms.scss */
+form.create.invoice input.date {
+  width: 200px;
+}
+/* line 102, ../sass/_forms.scss */
+form.create.invoice div.field-due_date {
+  display: none;
 }
 
 /* line 1, ../sass/_flash.scss */
