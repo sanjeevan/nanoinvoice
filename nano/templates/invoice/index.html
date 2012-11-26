@@ -8,15 +8,25 @@
   <p class="first-create">You haven't created any invoices yet. <a href="{{ url_for('.create') }}">Get started</a></p>
     
   {% else %}
-
-  <div class="data-list">
   
-    {% for invoice in invoices %}
-      <div class="row">
-      </div>
-    {% endfor %}
-
-  </table>
+  <div class="data-list-wrapper invoice-data-list"> 
+    <div class="data-list-header">
+      <div class="col name">Client</div>
+      <div class="col due">Due date</div>
+      <div class="col total">Total</div>
+      <div class="col status">Status</div>
+    </div>
+    <div class="data-list">
+      {% for invoice in invoices %}
+        <div class="row">
+          <div class="col name">{{ invoice.contact.first_name }} {{ invoice.contact.last_name }}</div>
+          <div class="col due">{{ invoice.due_date.strftime('%d %B %Y') }}</div>
+          <div class="col total">{{ invoice.total }}</div>
+          <div class="col status">{{ invoice.status }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
 
   {% endif %}
 

@@ -154,24 +154,54 @@ h1 {
 }
 
 /* line 106, ../sass/_shared.scss */
+.data-list-wrapper {
+  margin: 10px;
+}
+/* line 109, ../sass/_shared.scss */
+.data-list-wrapper .col {
+  display: table-cell;
+}
+
+/* line 115, ../sass/_shared.scss */
+.data-list-header {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background-color: #ECECED;
+  background-image: -moz-linear-gradient(center top, #f7f8f8, #dbdbdc);
+  background-repeat: repeat-x;
+  border-color: #AAAAAA #AAAAAA -moz-use-text-color;
+  border-image: none;
+  border-radius: 4px 4px 0 0;
+  border-style: solid solid none;
+  border-width: 1px 1px 0;
+  margin: 0 auto;
+  padding: 9px 10px;
+  font-weight: bold;
+  color: #666;
+  font-size: 12px;
+}
+
+/* line 120, ../sass/_shared.scss */
 .data-list {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  margin: 10px;
   border: 1px solid #aaaaaa;
 }
-/* line 113, ../sass/_shared.scss */
+/* line 125, ../sass/_shared.scss */
 .data-list .row {
   background-color: #fff;
-  border-bottom: 1px solid #aaaaaa;
-  padding: 5px;
+  border-bottom: 1px solid #ececec;
+  padding: 8px;
+  font-size: 12px;
 }
-/* line 119, ../sass/_shared.scss */
+/* line 132, ../sass/_shared.scss */
 .data-list .row:hover {
   background-color: #ececec;
 }
-/* line 123, ../sass/_shared.scss */
+/* line 136, ../sass/_shared.scss */
 .data-list .row:last-child {
   border-bottom: none;
 }
@@ -538,7 +568,12 @@ ul.flashes {
   background-color: #fff;
 }
 
-/* line 17, ../sass/screen.scss */
+/* line 3, ../sass/_invoice.scss */
+.invoice-data-list .col {
+  width: 200px;
+}
+
+/* line 18, ../sass/screen.scss */
 .container {
   *zoom: 1;
   max-width: 960px;

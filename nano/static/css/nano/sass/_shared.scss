@@ -103,17 +103,30 @@ h1 {
   text-align: center;
 }
 
+.data-list-wrapper {
+  margin: 10px;
+
+  .col { 
+    display: table-cell; 
+  }
+}
+
+
+.data-list-header {
+  @include panel-header2();
+  font-size: 12px;
+}
+
 .data-list {
-  
   @include box-sizing(border-box);
 
-  margin: 10px;
   border: 1px solid #aaaaaa;
-
+  
   .row {
     background-color: #fff;
-    border-bottom: 1px solid #aaaaaa;
-    padding: 5px;
+    border-bottom: 1px solid #ececec;
+    padding: 8px;
+    font-size: 12px;
   }
 
   .row:hover {

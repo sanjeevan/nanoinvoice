@@ -15,17 +15,21 @@
   <p class="first-create">You have no contacts setup, <a href="{{ url_for('.create') }}">add one now</a></p>
     
   {% else %}
-
-  <div class="data-list">
   
-    {% for contact in contacts %}
-      <div class="row">
-        <img src="/static/img/user_icon.png" />
-        {{ contact.first_name }} {{ contact.last_name }}
-      </div>
-    {% endfor %}
+  <div class="data-list-wrapper">
+    <div class="data-list-header">
+      <div class="col name">Client</div>
+    </div>
+    <div class="data-list"> 
+      {% for contact in contacts %}
+        <div class="row">
+          <img src="/static/img/user_icon.png" />
+          {{ contact.first_name }} {{ contact.last_name }}
+        </div>
+      {% endfor %}
 
-  </table>
+    </div>
+  </div>
 
   {% endif %}
 
