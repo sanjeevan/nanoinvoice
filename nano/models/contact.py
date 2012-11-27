@@ -28,4 +28,8 @@ class Contact(db.Model):
                            default=get_current_time())
 
     #relation definitions
-    user = db.relation('User', primaryjoin='Contact.user_id==User.id')
+    user = db.relation('User', primaryjoin='Contact.user_id==User.id', backref='contacts')
+
+
+    def full_name(self):
+        return self.first_name + ' ' + self.last_name

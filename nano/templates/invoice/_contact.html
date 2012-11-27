@@ -1,0 +1,26 @@
+<div class="fn">{{ invoice.contact.full_name() }}</div>
+<div class="org">
+  {{ invoice.contact.organisation }} 
+</div>
+<div class="adr">
+  <div class="street-address">  
+    {{ invoice.contact.address_line1 }}
+    {% if invoice.contact.address_line2 %}
+      <br> {{ invoice.contact.address_line2 }}
+    {% endif %}
+    {% if invoice.contact.address_line3 %}
+      <br> {{ invoice.contact.address_line3 }}
+    {% endif %}
+  </div>
+  {% if invoice.contact.address_town %} 
+    <div class="locality">{{ invoice.contact.address_town }}</div>
+  {% endif %}
+  {% if invoice.contact.address_post_code %}
+    <div id="client-postcode">
+      {% if invoice.contact.address_county %} 
+      <span class="region">{{ invoice.contact.address_county }}</span>
+      {% endif %}
+      <span class="postal-code">{{ invoice.contact.address_post_code }}</span>
+    </div>
+  {% endif %}
+</div>

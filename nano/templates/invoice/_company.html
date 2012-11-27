@@ -1,0 +1,21 @@
+<div class="fn org">
+  <strong>{{ profile.company_name }}</strong>
+</div>
+<div class="adr">
+  <div class="street-address">
+    {{ profile.company_address1 }}
+    {% if profile.company_address2 %}
+      <br> {{ profile.company_address2 }}
+    {% endif %}
+  </div>
+  <div class="locality">
+    {{ profile.company_town }} 
+  </div>
+  <div id="company-postcode">
+    {% if profile.company_county %}
+    <span class="region">{{ profile.company_county }}</span>
+    {% endif %}
+    <span class="postal-code">{{ profile.company_post_code }}</span>
+  </div>
+</div>
+

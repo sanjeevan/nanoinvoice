@@ -1,0 +1,33 @@
+<tr class="item <?php echo $idx % 2 == 0 ? 'even' : 'odd'; ?>" id="invoice-item-<?php echo $item->getId(); ?>">
+  <td class="item_l quantity_td">
+    <?php if ($item->shouldRenderField("quantity")) echo $item->getQuantityString(); ?>
+    <?php echo $item->getInvoiceItemType()->getName(); ?>
+  </td>
+
+  <td class="item_l description_td">
+    <?php echo $item->getDescription(); ?>
+  </td>
+
+  <td class="item_r price_td">
+    <?php if ($item->shouldRenderField("price")) echo number_format($item->getPrice(), 2); ?>
+  </td>
+  
+  <?php if ($vat_reg->isActive()): ?>
+    <td class="item_r taxrate_td">
+      <?php if ($item->shouldRenderField("tax")) echo $item->getTaxRate()->getRateString() . "%"; ?> 
+    </td>
+  <?php endif; ?>
+
+  <td class="item_r subtotal_td">
+    <?php if ($invoice->getStatus() == "draft"): ?>
+    <div class="item-controls">
+      <a data-id="<?php echo $item->getId(); ?>" href="<?php echo url_for("invoice_item/edit?id={$item->getId()}"); ?>" class="btn-small edit"  title="Edit invoice item">Edit</a>
+      <a data-id="<?php echo $item->getId(); ?>" href="<?php echo url_for("invoice_item/delete?id={$item->getId()}"); ?>" class="delete">
+        <img src="/images/delete.png" />
+      </a>
+    </div>
+    <?php endif; ?>
+    <?php if ($item->shouldRenderField("total")) echo number_format($item->getTotal(), 2); ?>
+  </td>
+</tr>
+

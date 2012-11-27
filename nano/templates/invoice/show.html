@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div id="manage" class="workspace-inner"> 
+ 
+    <div class="controls-{{ invoice.status }}" id="invoice-actions">
+      {% if invoice.status == 'sent' %}
+        <a href="">Reopen invoice</a>
+        {% endif %}
+      {% if invoice.status == 'draft' %}
+        <a href="">Mark as sent</a>
+        <a href="">Edit invoice</a>
+      {% endif %}
+    </div>
+
+    <div class="{{ invoice.status }}">
+      <div id="invoice" class="pagestyle">
+        <div id="invoice-header">
+          <img alt="Logo" class="logo screen" src="#">
+          <div class="vcard" id="company-address">
+            {% include 'invoice/_company.html' %}
+          </div>
+        </div>
+        <div id="invoice-info">
+          <h2>Invoice <strong>{{ invoice.reference }}</strong></h2>
+          <h3>{{ invoice.date_issued }}</h3>
+          <p id="payment-due">Payment due by {{ invoice.due_date }}</p>
+        </div>
+        <div class="vcard" id="client-details">
+          {% include 'invoice/_contact.html' %} 
+        </div>
+      
+        <table id="invoice-amount">
+          <thead>
+            <tr id="header_row">
+              <th class="quantity_th">Quantity</th>
+              <th class="left details_th">Details</th>
+              <th class="unitprice_th">Unit Price (£)</th>
+              <th class="subtotal_th">Net Subtotal (£)</th>
+            </tr>
+          </thead>
+          <tbody id="invoice_items">
+            {% set idx = 0 %}
+            {% for item in invoice.invoice_items %}
+              {% include 'invoice/_item.html' %}
+              {% set idx = idx + 1 %}
+            {% endfor %}
+          </tbody>
+          <tfoot>
+            {% include 'invoice/_footer.html' %}
+          </tfoot>
+        </table>
+      
+        
+
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+
+<script type="text/javascript">
+  var view = new DraftInvoiceView({
+    el: "#manage",
+    model: new Invoice(<?php echo json_encode($invoice->toArrayForJson()); ?>) 
+  }); 
+</script>
+
+{% endblock %}

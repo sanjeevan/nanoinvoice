@@ -1,0 +1,34 @@
+
+{% if vat %}
+  <tr id="net_total_tr">
+    <td colspan="2">&nbsp;</td>
+    <td colspan="2" class="item_r">Net Total</td>
+    <td class="item_r" id="net_total_amount">{{ invoice.sub_total }}</td>
+  </tr>
+
+  <tr id="vat_tr">
+    <td colspan="2">&nbsp;</td>
+    <td colspan="2" class="item_r">VAT</td>
+    <td class="item_r" id="sales_tax_amount">{{ invoice.tax }}</td>
+  </tr>
+{% endif %}
+
+<tr id="total_tr">
+  <td colspan="2" class="inv_btn">
+    {% if invoice.status == 'draft' %}
+        <a href="#" class="btn" id="add_invoice_item" title="Add Invoice Item">
+      <span><em>Add Invoice Item</em></span>
+    </a> &nbsp; 
+    <a href="#" class="btn" id="reorder_invoice_items">
+      <span><em>Reorder</em></span>
+    </a>
+    {% endif %}
+  </td>
+  {% set col_span = 1 %}
+  {% if vat: %}
+    {% set col_span = 2 %}
+  {% endif %}
+  
+  <td colspan="{{ col_span }}" class="total" id="total_currency"><span class="currency">GBP </span>Total</td>
+  <td class="total" id="total_amount">{{ invoice.total }}</td>
+</tr>

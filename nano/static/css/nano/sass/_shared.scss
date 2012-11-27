@@ -103,14 +103,17 @@ h1 {
   text-align: center;
 }
 
+
+/// -- Data lists --- 
+
 .data-list-wrapper {
   margin: 10px;
 
   .col { 
     display: table-cell; 
+    text-align: left;
   }
 }
-
 
 .data-list-header {
   @include panel-header2();
@@ -127,6 +130,7 @@ h1 {
     border-bottom: 1px solid #ececec;
     padding: 8px;
     font-size: 12px;
+    cursor: pointer;
   }
 
   .row:hover {

@@ -8,3 +8,4 @@ from nano.models.invoice_item import InvoiceItem
 from nano.models.invoice_item_type import InvoiceItemType
 from nano.models.tax_rate import TaxRate
 from nano.models.payment_term import PaymentTerm
+from nano.models.profile import Profile

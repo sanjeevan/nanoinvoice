@@ -19,10 +19,9 @@ class File(db.Model):
     mimetype = db.Column(db.String(255))
     location = db.Column(db.String(255))
     
-    meta_width = db.Column(db.Integer(11))
-    meta_height = db.Column(db.Integer(11))
+    width = db.Column(db.Integer(11))
+    height = db.Column(db.Integer(11))
     hash = db.Column(db.String(32))
-    source = db.Column(db.String(20))
     
     # times
     created_at = db.Column(db.DateTime, default=get_current_time())

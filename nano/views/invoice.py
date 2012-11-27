@@ -14,6 +14,12 @@ def index():
     invoices = Invoice.query.filter_by(user_id=current_user.id).all()
     return render_template('invoice/index.html', invoices=invoices)
 
+@invoice.route('/<int:id>', methods=['GET'])
+def show(id):
+    inv = Invoice.query.get(id)
+    profile = inv.user.profile
+    return render_template('invoice/show.html', invoice=inv, profile=profile)
+
 @invoice.route('/create', methods=['GET', 'POST'])
 @login_required
 def create():
