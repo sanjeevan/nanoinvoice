@@ -16,10 +16,10 @@
 <tr id="total_tr">
   <td colspan="2" class="inv_btn">
     {% if invoice.status == 'draft' %}
-        <a href="#" class="btn" id="add_invoice_item" title="Add Invoice Item">
+        <a href="#" class="button normal" id="add_invoice_item" title="Add Invoice Item">
       <span><em>Add Invoice Item</em></span>
     </a> &nbsp; 
-    <a href="#" class="btn" id="reorder_invoice_items">
+    <a href="#" class="button normal" id="reorder_invoice_items">
       <span><em>Reorder</em></span>
     </a>
     {% endif %}
@@ -29,6 +29,6 @@
     {% set col_span = 2 %}
   {% endif %}
   
-  <td colspan="{{ col_span }}" class="total" id="total_currency"><span class="currency">GBP </span>Total</td>
+  <td colspan="{{ col_span }}" class="total" id="total_currency"><span class="currency">{{ invoice.currency_code }} </span>Total</td>
   <td class="total" id="total_amount">{{ invoice.total }}</td>
 </tr>

@@ -35,4 +35,16 @@ class Invoice(db.Model):
         cur_max += 1
 
         return str(cur_max)
+    
+    def update_totals(self):
+        """Update total and tax"""
+        sub_total = 0
+        tax = 0
+        for item in self.invoice_items:
+            sub_total += item.total
+            tax += item.tax
 
+        self.tax = tax
+        self.sub_total = sub_total
+        self.total = self.tax + self.sub_total
+        return True

@@ -1,6 +1,54 @@
 
+// -- List of invoices
 .invoice-data-list {
   .col {
     width: 160px;
   }
 }
+
+
+// -- Main invoice editing page
+.pagestyle {
+  border-top: 1px solid #CCC;
+  border-left: solid 1px #CCC;
+  border-bottom: solid 2px #888;
+  border-right: solid 2px #888;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  position: relative;
+  width: 660px; 
+}
+
+.draft .pagestyle {
+  padding-right: 1.75cm !important; 
+}
+
+.pagestyle:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0; 
+}
+
+html[xmlns] .pagestyle {
+  display: block; 
+}
+
+.pagestyle img {
+  border: none; 
+}
+
+#invoice {
+  display: block;
+  margin: 2em auto;
+
+  .item-controls {
+    position: absolute;
+    right: 10px;
+    width: 58px; 
+  }
+}
+

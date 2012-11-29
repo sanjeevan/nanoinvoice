@@ -41,6 +41,7 @@
     font-weight: 600;
     padding: 8px 16px;
     vertical-align: top;
+    text-decoration: none;
   }
 
   &.normal:active {
@@ -55,4 +56,26 @@
   }
 }
 
+a.btn-small {
+  @include adjust-font-size-to(10px); 
+  @include border-radius(3px);
+  @include background-image(linear-gradient(#eee, #fff));
 
+  padding: 2px 5px;
+  position: relative;
+  line-height: 1em;
+
+  border-color: #D8D8D8 #C6C6C6 #C6C6C6;
+  border-style: solid;
+  border-width: 1px;
+  display: inline-block;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none !important;
+  
+  color: #666;
+ 
+  &:hover {
+    cursor:pointer;
+  }
+}

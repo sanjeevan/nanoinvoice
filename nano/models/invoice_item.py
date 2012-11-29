@@ -1,3 +1,5 @@
+import math
+
 from datetime import datetime
 from nano.extensions import db
 from nano.utils import get_current_time
@@ -24,4 +26,31 @@ class InvoiceItem(db.Model):
     invoice             = db.relation('Invoice', primaryjoin='InvoiceItem.invoice_id==Invoice.id', backref='invoice_items')
     tax_rate            = db.relation('TaxRate', primaryjoin='InvoiceItem.tax_rate_id==TaxRate.id')
 
+    def should_render_field(self, name):
+        no_render = {'Comment': ['quantity', 'price', 'tax', 'total'],
+                     'VAT': ['quantity'] }
 
+        type_name = self.invoice_item_type.name
+        if not type_name in no_render:
+            return True
+        
+        if name in no_render[type_name]:
+            return False
+
+        return True
+
+
+    def quantity_str(self):
+        if self.invoice_item_type.name == 'Hours':
+            mins = self.quantity * 60
+            hours = 0
+            while mins >= 60:
+                mins -= 60
+                hours += 1
+            if mins == 0:
+                return hours
+            else:
+                mins = round(mins)
+                mins = str(mins).zfill(2)
+                return '%s:%s' % (hours, mins)
+        return int(self.quantity) if math.fmod(self.quantity, 1) == 0 else self.quantity

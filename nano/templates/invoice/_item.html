@@ -1,33 +1,31 @@
-<tr class="item <?php echo $idx % 2 == 0 ? 'even' : 'odd'; ?>" id="invoice-item-<?php echo $item->getId(); ?>">
+<tr class="item {{ row_class.next() }} " id="invoice-item-{{ item.id }}">
   <td class="item_l quantity_td">
-    <?php if ($item->shouldRenderField("quantity")) echo $item->getQuantityString(); ?>
-    <?php echo $item->getInvoiceItemType()->getName(); ?>
+    {{ item.quantity_str() }}
+    {{ item.invoice_item_type.name }}
   </td>
 
   <td class="item_l description_td">
-    <?php echo $item->getDescription(); ?>
+    {{ item.description }} 
   </td>
 
   <td class="item_r price_td">
-    <?php if ($item->shouldRenderField("price")) echo number_format($item->getPrice(), 2); ?>
+    {% if item.should_render_field('price') %}
+      {{ item.price }}
+    {% endif %}
   </td>
-  
-  <?php if ($vat_reg->isActive()): ?>
-    <td class="item_r taxrate_td">
-      <?php if ($item->shouldRenderField("tax")) echo $item->getTaxRate()->getRateString() . "%"; ?> 
-    </td>
-  <?php endif; ?>
 
   <td class="item_r subtotal_td">
-    <?php if ($invoice->getStatus() == "draft"): ?>
+    {% if invoice.status == 'draft' %}
     <div class="item-controls">
-      <a data-id="<?php echo $item->getId(); ?>" href="<?php echo url_for("invoice_item/edit?id={$item->getId()}"); ?>" class="btn-small edit"  title="Edit invoice item">Edit</a>
-      <a data-id="<?php echo $item->getId(); ?>" href="<?php echo url_for("invoice_item/delete?id={$item->getId()}"); ?>" class="delete">
-        <img src="/images/delete.png" />
+      <a data-id="{{ item.id }}" href="{{ url_for('invoice_item.edit', id=item.id) }}" class="btn-small edit"  title="Edit invoice item">Edit</a>
+      <a data-id="{{ item.id }}" href="{{ url_for('invoice_item.delete', id=item.id) }}" class="delete">
+        <img src="/static/img/delete.png" />
       </a>
     </div>
-    <?php endif; ?>
-    <?php if ($item->shouldRenderField("total")) echo number_format($item->getTotal(), 2); ?>
+    {% endif %}
+    {% if item.should_render_field('total') %}
+      {{ item.total }} 
+    {% endif %}
   </td>
 </tr>
 

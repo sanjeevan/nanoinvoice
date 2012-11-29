@@ -41,6 +41,7 @@
           </thead>
           <tbody id="invoice_items">
             {% set idx = 0 %}
+            {% set row_class = cycler('odd', 'event') %}
             {% for item in invoice.invoice_items %}
               {% include 'invoice/_item.html' %}
               {% set idx = idx + 1 %}

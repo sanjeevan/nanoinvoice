@@ -24,7 +24,7 @@
       {% for contact in contacts %}
         <div class="row">
           <img src="/static/img/user_icon.png" />
-          {{ contact.first_name }} {{ contact.last_name }}
+          {{ contact.first_name }} {{ contact.last_name }} - {{ contact.organisation|default('No organisation', True) }}
         </div>
       {% endfor %}
 
