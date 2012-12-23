@@ -1,7 +1,12 @@
 venv/*
+
 *.pyc
 *.tmp
 *.swp
 *.log
+
 nano/static/css/nano/.sass-cache
+nano/static/js/gen/*
+
+
 Gemfile.lock

@@ -7,9 +7,18 @@
     <link rel="stylesheet" type="text/css" href="/static/css/nano/stylesheets/screen.css" />
     <link rel="stylesheet" type="text/css" href="/static/js/vendor/select2/select2.css" />
     <link rel="stylesheet" type="text/css" href="/static/js/vendor/Pikaday/css/pikaday.css" />
-    <script src="/static/js/lib/jquery-1.8.3.min.js"></script>
-    <script src="/static/js/vendor/select2/select2.js"></script>
-    <script src="/static/js/vendor/Pikaday/pikaday.min.js"></script>
+    {% assets 'js_lib' %}
+      <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    {% assets 'js_app' %}
+      <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    {% assets 'js_vendors' %}
+      <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    {% assets 'js_templates' %}
+      <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
     {% endblock %}
   </head>
   <body>

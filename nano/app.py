@@ -2,6 +2,7 @@ import os
 
 from flask import Flask, request, render_template
 from flaskext.babel import Babel
+from flask.ext.assets import Environment, Bundle
 
 from nano import utils
 from nano.models import User
@@ -42,6 +43,7 @@ def create_app(config=None, app_name=None, blueprints=None):
     configure_logging(app)
     configure_template_filters(app)
     configure_error_handlers(app)
+    configure_assets(app)
 
     return app
 
@@ -154,3 +156,36 @@ def configure_error_handlers(app):
     @app.errorhandler(500)
     def server_error_page(error):
         return render_template("errors/server_error.html"), 500
+
+def configure_assets(app):
+    assets = Environment(app)
+
+    js_lib = Bundle('js/lib/underscore.js', 'js/lib/backbone.js', 
+                    'js/lib/backbone-relational.js', 'js/lib/jquery-1.8.3.js',
+                    'js/lib/sprintf-0.7-beta1.js',
+                    filters='jsmin', output='gen/libs.js')
+    
+    js_app = Bundle('js/app/models/all.js', 
+                    'js/app/views/DraftInvoiceView.js',
+                    'js/app/views/EditInvoiceItemView.js',
+                    'js/app/views/InvoiceFormView.js',
+                    'js/app/views/NewInvoiceItemView.js',
+                    filters='jsmin', output='gen/app.js')
+
+    js_vendors = Bundle('js/vendor/select2/select2.js',
+                        'js/vendor/Pikaday/pikaday.js', filters='jsmin', 
+                        output='gen/vendors.js')
+    
+    js_templates = Bundle('js/app/templates/*.html', 
+                          output='gen/templates.js',
+                          filters='jst')
+
+    assets.register('js_lib', js_lib)
+    assets.register('js_app', js_app)
+    assets.register('js_vendors', js_vendors)
+    assets.register('js_templates', js_templates)
+
+
+
+
+

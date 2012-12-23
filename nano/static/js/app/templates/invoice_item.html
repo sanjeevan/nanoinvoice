@@ -1,0 +1,41 @@
+<tr class="item " id="invoice-item-<%= InvoiceItem.get("id") %>">
+  <td class="item_l quantity_td">
+    <% if (InvoiceItem.shouldRenderField("quantity")) { %>
+      <%= InvoiceItem.getQuantityString() %> 
+    <% } %>
+    <%= InvoiceItem.get("InvoiceItemType").name  %>
+  </td>
+
+  <td class="item_l description_td">
+    <%= InvoiceItem.get("description") %>
+  </td>
+
+  <td class="item_r price_td"> 
+    <% if (InvoiceItem.shouldRenderField("price")) { %>
+      <%= numberFormat(InvoiceItem.get("price"), 2) %>
+    <% } %>
+  </td>
+  
+  <% if (User.vatRegistration.get("status") == "registered") { %>
+  <td class="item_r taxrate_td">
+    <% if (InvoiceItem.shouldRenderField("tax")) { %>
+      <%= numberFormat(InvoiceItem.get("TaxRate").rate, 0) %>%
+    <% } %>
+  </td>
+  <% } %>
+
+  <td class="item_r subtotal_td">
+    <% if (Invoice.get("status") == "draft") { %>
+    <div class="item-controls">
+      <a data-id="<%= InvoiceItem.get("id") %>" href="#" class="btn-small edit" title="Edit invoice item">Edit</a>
+      <a data-id="<%= InvoiceItem.get("id") %>" href="/invoice_item/delete" class="delete">
+        <img src="/images/delete.png" />
+      </a>
+    </div>
+    <% } %>
+    <% if (InvoiceItem.shouldRenderField("total")) { %>
+      <%= numberFormat(InvoiceItem.get("total"), 2) %>
+    <% } %>
+  </td>
+</tr>
+

@@ -1,0 +1,62 @@
+<div id="new-invoice-item" class="app-popup">
+  <div class="header">
+    Add Invoice Item
+  </div>
+
+  <div class="content">
+    <form accept-charset="utf-8" method="post" action="/frontend_dev.php/invoice_item/create" class="inline big">
+      <input type="hidden" name="invoice_item[invoice_id]" value="<%= Invoice.get("id") %>" />
+      <ul>
+        <li>
+          <label>Qty</label>
+          
+          <input size="2" id="quantity" type="text" name="invoice_item[quantity]" value="1">
+
+          <select id="invoice_item_type" name="invoice_item[type_id]">
+            <% App.invoiceItemTypes.each(function(t) { %>
+              <% if (t.get("name") == App.defaults.itemType) { %> 
+                <option selected="selected" value="<%= t.get("id") %>"><%= t.get("name") %></option>
+              <% } else { %>
+                <option value="<%= t.get("id") %>"><%= t.get("name") %></option>
+              <% } %>
+            <% }) %>
+          </select>
+
+          <div id="hours-help" class="help" style="display: none">
+            (e.g. One and a half hours can be entered as either 1:30 or 1.5)
+          </div>
+        </li>
+        
+        <li>
+          <label>Details</label>
+          <textarea id="details" class="wide" name="invoice_item[description]"></textarea>
+        </li>
+
+        <li id="price-row">
+          <label>Unit Price (£)</label>
+          <input id="price" type="text" name="invoice_item[price]" />
+        <li>
+        
+        <% if (User.vatRegistration.get("status") == "registered"){ %>
+        <li id="tax-row">
+          <label>VAT</label>
+          <select name="invoice_item[tax_rate_id]">
+            <% App.taxRates.each(function(t){ %>
+              <% if (t.get("id") == App.defaults.taxRateId) { %> 
+                <option selected="selected" value="<%= t.get("id") %>"><%= t.get("name") %> (<%= t.get("rate") %>%)</option>
+              <% } else { %>
+                <option value="<%= t.get("id") %>"><%= t.get("name") %> (<%= t.get("rate") %>%)</option>
+              <% } %>
+            <% }) %> 
+          </select>
+        </li>
+        <% } %>
+
+        <li class="actions">
+          <button id="save" class="btn primary">Create</button> &nbsp; 
+          <a href="#" class="cancel">Cancel</a>
+        </li>
+      </ul>
+    </form>
+  </div>
+</div>
