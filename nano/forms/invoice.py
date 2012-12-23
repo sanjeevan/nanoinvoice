@@ -62,4 +62,5 @@ class InvoiceForm(Form):
         
         db.session.add(invoice)
         db.session.commit()
+        return invoice
 

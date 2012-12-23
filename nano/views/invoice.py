@@ -27,9 +27,9 @@ def create():
     
     if request.method == 'POST':
         if form.validate():
-            form.save()
+            invoice = form.save()
+            return redirect(url_for('.show', id=invoice.id))
         else:
-            print form.errors
             flash('There were errors')
 
     return render_template('invoice/create.html', form=form)
