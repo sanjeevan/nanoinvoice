@@ -16,7 +16,8 @@
 @import "flash";
 @import "invoice";
 
-@import "default_invoice_theme";
+@import "invoice_themes/default";
+@import "vendor/vendor";
 
 .container {
   @include container;

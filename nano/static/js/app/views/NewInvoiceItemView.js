@@ -6,7 +6,7 @@ var NewInvoiceItemView = Backbone.View.extend({
   },
 
   initialize: function() { 
-    this.template = AppTemplates["new_invoice_item.html"];
+    this.template = JST["new_invoice_item"];
     this.parentView = this.options.parentView;
   },
 
@@ -61,7 +61,7 @@ var NewInvoiceItemView = Backbone.View.extend({
   },
 
   render: function() {
-    this.setElement( _.template( this.template, {Invoice: this.model } ));
+    this.setElement( this.template({Invoice: this.model } ));
     $.facebox(this.$el); 
 
     return this;

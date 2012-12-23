@@ -9,6 +9,7 @@ from nano.models import User
 from nano.config import DefaultConfig, APP_NAME
 from nano.extensions import db, mail, cache, login_manager
 
+from nano.views import js
 from nano.views import account 
 from nano.views import home
 from nano.views import file 
@@ -24,7 +25,8 @@ DEFAULT_BLUEPRINTS = (
     payment,
     invoice,
     client,
-    invoice_item
+    invoice_item,
+    js
 )
 
 def create_app(config=None, app_name=None, blueprints=None):
@@ -160,12 +162,13 @@ def configure_error_handlers(app):
 def configure_assets(app):
     assets = Environment(app)
 
-    js_lib = Bundle('js/lib/underscore.js', 'js/lib/backbone.js', 
-                    'js/lib/backbone-relational.js', 'js/lib/jquery-1.8.3.js',
+    js_lib = Bundle('js/lib/underscore.js', 'js/lib/jquery-1.8.3.js',
+                    'js/lib/backbone.js', 'js/lib/backbone-relational.js',
                     'js/lib/sprintf-0.7-beta1.js',
                     filters='jsmin', output='gen/libs.js')
     
-    js_app = Bundle('js/app/models/all.js', 
+    js_app = Bundle('js/app/app.js',
+                    'js/app/models/all.js', 
                     'js/app/views/DraftInvoiceView.js',
                     'js/app/views/EditInvoiceItemView.js',
                     'js/app/views/InvoiceFormView.js',
@@ -173,7 +176,9 @@ def configure_assets(app):
                     filters='jsmin', output='gen/app.js')
 
     js_vendors = Bundle('js/vendor/select2/select2.js',
-                        'js/vendor/Pikaday/pikaday.js', filters='jsmin', 
+                        'js/vendor/Pikaday/pikaday.js', 
+                        'js/vendor/facebox/facebox.js',
+                        filters='jsmin', 
                         output='gen/vendors.js')
     
     js_templates = Bundle('js/app/templates/*.html', 

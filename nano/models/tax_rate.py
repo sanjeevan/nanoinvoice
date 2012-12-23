@@ -6,7 +6,7 @@ class TaxRate(db.Model):
     __tablename__ = 'tax_rate'
 
     id = db.Column(u'id', db.BigInteger, primary_key=True, nullable=False)
-    invoice_id = db.Column(u'invoice_id', db.BigInteger, db.ForeignKey('invoice.id'))
+    user_id = db.Column(u'user_id', db.BigInteger, db.ForeignKey('user.id'))
 
     type = db.Column(u'type', db.String(255))
     name = db.Column(u'name', db.String(255))
@@ -15,4 +15,4 @@ class TaxRate(db.Model):
     updated_at = db.Column(u'updated_at', db.DateTime(), nullable=False, default=get_current_time())
     created_at = db.Column(u'created_at', db.DateTime(), nullable=False, default=get_current_time())
 
-    invoice = db.relation('Invoice', lazy='select', backref='tax_rates')  
+    user = db.relation('User', lazy='select', backref='tax_rates')  

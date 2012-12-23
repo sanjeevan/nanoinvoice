@@ -1,0 +1,18 @@
+App.defaults = {
+  itemType: "Services",
+  taxRateId: 1
+};
+
+App.invoiceItemTypes = new InvoiceItemTypeCollection([
+  {% for item_type in item_types %}
+  {"name": "{{ item_type.name }}", "id": {{ item_type.id }} },   
+  {% endfor %}
+]);
+
+App.taxRates = new TaxRateCollection([
+  {% for tax_rate in tax_rates %}
+  {"id": {{ tax_rate.id }}, "name": "{{ tax_rate.name }}", "rate": {{ tax_rate.rate }} },   
+  {% endfor %}
+]);
+
+
