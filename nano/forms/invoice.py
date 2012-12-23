@@ -53,7 +53,7 @@ class InvoiceForm(Form):
         payment_term = PaymentTerm.query.filter_by(days=self.payment_term_id).first()
         invoice.payment_term_id = payment_term.id
 
-        if self.payment_term_id.data == -1:
+        if int(self.payment_term_id.data) == -1:
             invoice.due_date = datetime.strptime(self.due_date.data, self.DATE_FORMAT)
         else:
             now = datetime.now()
