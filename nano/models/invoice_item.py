@@ -2,7 +2,7 @@ import math
 
 from datetime import datetime
 from nano.extensions import db
-from nano.utils import get_current_time
+from nano.utils import get_current_time, model_to_dict
 
 class InvoiceItem(db.Model):
     __tablename__ = 'invoice_item'
@@ -23,7 +23,9 @@ class InvoiceItem(db.Model):
 
     #relation definitions
     invoice_item_type   = db.relation('InvoiceItemType', primaryjoin='InvoiceItem.type_id==InvoiceItemType.id')
-    invoice             = db.relation('Invoice', primaryjoin='InvoiceItem.invoice_id==Invoice.id', backref='invoice_items')
+    invoice             = db.relation('Invoice', 
+                                      primaryjoin='InvoiceItem.invoice_id==Invoice.id', 
+                                      backref=db.backref('invoice_items', lazy='dyanmic'))
     tax_rate            = db.relation('TaxRate', primaryjoin='InvoiceItem.tax_rate_id==TaxRate.id')
 
     def should_render_field(self, name):
@@ -39,7 +41,6 @@ class InvoiceItem(db.Model):
 
         return True
 
-
     def quantity_str(self):
         if self.invoice_item_type.name == 'Hours':
             mins = self.quantity * 60
@@ -54,3 +55,9 @@ class InvoiceItem(db.Model):
                 mins = str(mins).zfill(2)
                 return '%s:%s' % (hours, mins)
         return int(self.quantity) if math.fmod(self.quantity, 1) == 0 else self.quantity
+
+    def serialize(self):
+        d = model_to_dict(self)
+        d['InvoiceItemType'] = self.invoice_item_type.serialize()
+        return d
+

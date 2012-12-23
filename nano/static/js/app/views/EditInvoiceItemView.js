@@ -6,7 +6,7 @@ var EditInvoiceItemView = Backbone.View.extend({
   },
 
   initialize: function() { 
-    this.template = AppTemplates["edit_invoice_item.html"];
+    this.template = JST["edit_invoice_item"];
     this.parentView = this.options.parentView;
   },
 
@@ -52,7 +52,7 @@ var EditInvoiceItemView = Backbone.View.extend({
   },
 
   render: function() {
-    this.setElement( _.template( this.template, { InvoiceItem: this.model } ));
+    this.setElement( this.template({ InvoiceItem: this.model } ));
     $.facebox(this.$el);
     // Call this after popup has been rendered to page, otherwise it doesn't
     // work the first time the popup appears, but works on subsequent opens.

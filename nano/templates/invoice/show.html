@@ -62,7 +62,7 @@
 <script type="text/javascript">
   var view = new DraftInvoiceView({
     el: "#manage",
-    model: new Invoice() 
+    model: new Invoice({{ invoice.__json__()|safe }}) 
   }); 
 </script>
 

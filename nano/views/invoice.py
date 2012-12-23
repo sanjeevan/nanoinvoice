@@ -5,6 +5,7 @@ from flask.ext.login import login_required, current_user
 
 from nano.models import Invoice
 from nano.forms import InvoiceForm
+from nano.utils import json_dumps
 
 invoice = Blueprint('invoice', __name__, url_prefix='/invoice')
 
@@ -18,6 +19,7 @@ def index():
 def show(id):
     inv = Invoice.query.get(id)
     profile = inv.user.profile
+    print json_dumps(inv.serialize())
     return render_template('invoice/show.html', invoice=inv, profile=profile)
 
 @invoice.route('/create', methods=['GET', 'POST'])

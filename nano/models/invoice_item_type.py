@@ -1,6 +1,6 @@
 from datetime import datetime
 from nano.extensions import db
-from nano.utils import get_current_time
+from nano.utils import get_current_time, model_to_dict
 
 class InvoiceItemType(db.Model):
     __tablename__ = 'invoice_item_type'
@@ -12,3 +12,5 @@ class InvoiceItemType(db.Model):
     updated_at = db.Column(u'updated_at', db.DateTime, nullable=False)
     created_at = db.Column(u'created_at', db.DateTime, nullable=False)
 
+    def serialize(self):
+        return model_to_dict(self)

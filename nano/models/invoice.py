@@ -1,6 +1,6 @@
 from datetime import datetime
 from nano.extensions import db
-from nano.utils import get_current_time
+from nano.utils import get_current_time, model_to_dict, json_dumps
 
 class Invoice(db.Model):
     __tablename__ = 'invoice'
@@ -48,3 +48,13 @@ class Invoice(db.Model):
         self.sub_total = sub_total
         self.total = self.tax + self.sub_total
         return True
+    
+    def serialize(self):
+        d = model_to_dict(self)
+        d['InvoiceItems'] = [item.serialize() for item in self.invoice_items] 
+        return d
+
+    def __json__(self):
+        return json_dumps(self.serialize())
+
+

@@ -7,7 +7,7 @@ venv/*
 
 nano/static/css/nano/.sass-cache
 nano/static/.webassets-cache
-nano/static/js/gen/*
+nano/static/gen/*
 
 
 Gemfile.lock

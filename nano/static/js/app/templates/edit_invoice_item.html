@@ -34,7 +34,6 @@
           <input id="price" type="text" name="invoice_item[price]" value="<%= InvoiceItem.get("price") %>" />
         <li>
         
-        <% if (User.vatRegistration.get("status") == "registered"){ %>
         <li id="tax-row">
           <label>VAT</label>
           <select name="invoice_item[tax_rate_id]">
@@ -47,7 +46,6 @@
             <% }) %> 
           </select>
         </li>
-        <% } %>
 
         <li class="actions">
           <button id="save" class="btn primary">Update</button> &nbsp; 

@@ -165,7 +165,10 @@ def configure_assets(app):
     js_lib = Bundle('js/lib/underscore.js', 'js/lib/jquery-1.8.3.js',
                     'js/lib/backbone.js', 'js/lib/backbone-relational.js',
                     'js/lib/sprintf-0.7-beta1.js',
-                    filters='jsmin', output='gen/libs.js')
+                    'js/vendor/select2/select2.js',
+                    'js/vendor/Pikaday/pikaday.js', 
+                    'js/vendor/facebox/facebox.js',
+                    filters='yui_js', output='gen/libs.js')
     
     js_app = Bundle('js/app/app.js',
                     'js/app/models/all.js', 
@@ -173,13 +176,7 @@ def configure_assets(app):
                     'js/app/views/EditInvoiceItemView.js',
                     'js/app/views/InvoiceFormView.js',
                     'js/app/views/NewInvoiceItemView.js',
-                    filters='jsmin', output='gen/app.js')
-
-    js_vendors = Bundle('js/vendor/select2/select2.js',
-                        'js/vendor/Pikaday/pikaday.js', 
-                        'js/vendor/facebox/facebox.js',
-                        filters='jsmin', 
-                        output='gen/vendors.js')
+                    filters='yui_js', output='gen/app.js')
     
     js_templates = Bundle('js/app/templates/*.html', 
                           output='gen/templates.js',
@@ -187,7 +184,6 @@ def configure_assets(app):
 
     assets.register('js_lib', js_lib)
     assets.register('js_app', js_app)
-    assets.register('js_vendors', js_vendors)
     assets.register('js_templates', js_templates)
 
 

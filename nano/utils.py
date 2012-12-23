@@ -3,11 +3,29 @@
 """
 
 from datetime import datetime
-
+import json
+import decimal
 
 VARCHAR_LEN_128 = 128
 
+def json_dumps(obj):
+    class DateTimeJSONEncoder(json.JSONEncoder):
+        def default(self, obj):
+            if isinstance(obj, datetime):
+                return obj.isoformat()
+            if isinstance(obj, decimal.Decimal):
+                return float(obj)
+            else:
+                return super(DateTimeJSONEncoder, self).default(obj)
+    return json.dumps(obj, cls=DateTimeJSONEncoder)
 
+def model_to_dict(model):
+    d = {}
+    for c in model.__table__.columns:
+        val = getattr(model, c.name)
+        d[c.name] = val
+    return d
+    
 def get_current_time():
     return datetime.utcnow()
 
