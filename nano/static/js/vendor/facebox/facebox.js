@@ -7,63 +7,7 @@
  * Licensed under the MIT:
  *   http://www.opensource.org/licenses/mit-license.php
  *
- * Copyright Forever Chris Wanstrath, Kyle Neath
- *
- * Usage:
- *
- *  jQuery(document).ready(function() {
- *    jQuery('a[rel*=facebox]').facebox()
- *  })
- *
- *  <a href="#terms" rel="facebox">Terms</a>
- *    Loads the #terms div in the box
- *
- *  <a href="terms.html" rel="facebox">Terms</a>
- *    Loads the terms.html page in the box
- *
- *  <a href="terms.png" rel="facebox">Terms</a>
- *    Loads the terms.png image in the box
- *
- *
- *  You can also use it programmatically:
- *
- *    jQuery.facebox('some html')
- *    jQuery.facebox('some html', 'my-groovy-style')
- *
- *  The above will open a facebox with "some html" as the content.
- *
- *    jQuery.facebox(function($) {
- *      $.get('blah.html', function(data) { $.facebox(data) })
- *    })
- *
- *  The above will show a loading screen before the passed function is called,
- *  allowing for a better ajaxy experience.
- *
- *  The facebox function can also display an ajax page, an image, or the contents of a div:
- *
- *    jQuery.facebox({ ajax: 'remote.html' })
- *    jQuery.facebox({ ajax: 'remote.html' }, 'my-groovy-style')
- *    jQuery.facebox({ image: 'stairs.jpg' })
- *    jQuery.facebox({ image: 'stairs.jpg' }, 'my-groovy-style')
- *    jQuery.facebox({ div: '#box' })
- *    jQuery.facebox({ div: '#box' }, 'my-groovy-style')
- *
- *  Want to close the facebox?  Trigger the 'close.facebox' document event:
- *
- *    jQuery(document).trigger('close.facebox')
- *
- *  Facebox also has a bunch of other hooks:
- *
- *    loading.facebox
- *    beforeReveal.facebox
- *    reveal.facebox (aliased as 'afterReveal.facebox')
- *    init.facebox
- *    afterClose.facebox
- *
- *  Simply bind a function to any of these hooks:
- *
- *   $(document).bind('reveal.facebox', function() { ...stuff to do after the facebox and contents are revealed... })
- *
+ * Copyright Forever Chris Wanstrath, Kyle Neath 
  */
 (function($) {
   $.facebox = function(data, klass) {
@@ -84,13 +28,13 @@
     settings: {
       opacity      : 0.2,
       overlay      : true,
-      loadingImage : '/facebox/loading.gif',
-      closeImage   : '/facebox/closelabel.png',
+      loadingImage : '/static/js/vendor/facebox/loading.gif',
+      closeImage   : '/static/js/vendor/facebox/closelabel.png',
       imageTypes   : [ 'png', 'jpg', 'jpeg', 'gif' ],
       faceboxHtml  : '\
     <div id="facebox" style="display:none;"> \
       <div class="popup"> \
-        <div class="content"> \
+        <div class="content-wrapper"> \
         </div> \
         <a href="#" class="close"></a> \
       </div> \
@@ -102,13 +46,16 @@
       if ($('#facebox .loading').length == 1) return true
       showOverlay()
 
-      $('#facebox .content').empty().
+      $('#facebox .content-wrapper').empty().
         append('<div class="loading"><img src="'+$.facebox.settings.loadingImage+'"/></div>')
 
       $('#facebox').show().css({
-        top:	getPageScroll()[1] + (getPageHeight() / 10),
+        //top:	getPageScroll()[1] + (getPageHeight() / 10),
+        top: ($(window).height() / 2) - ($('#facebox').height()/2),
         left:	$(window).width() / 2 - ($('#facebox .popup').outerWidth() / 2)
-      })
+      });
+
+      console.log($('#facebox > .popup').height());
 
       $(document).bind('keydown.facebox', function(e) {
         if (e.keyCode == 27) $.facebox.close()
@@ -119,10 +66,14 @@
 
     reveal: function(data, klass) {
       $(document).trigger('beforeReveal.facebox')
-      if (klass) $('#facebox .content').addClass(klass)
-      $('#facebox .content').empty().append(data)
+      if (klass) $('#facebox .content-wrapper').addClass(klass)
+      $('#facebox .content-wrapper').empty().append(data)
       $('#facebox .popup').children().fadeIn('normal')
-      $('#facebox').css('left', $(window).width() / 2 - ($('#facebox .popup').outerWidth() / 2))
+
+      $('#facebox').show().css({
+        top: ($(window).height() / 2) - ($('#facebox').height()/2),
+        left:	$(window).width() / 2 - ($('#facebox .popup').outerWidth() / 2)
+      });
       $(document).trigger('reveal.facebox').trigger('afterReveal.facebox')
     },
 
@@ -303,7 +254,7 @@
     }
     $(document).unbind('keydown.facebox')
     $('#facebox').fadeOut(function() {
-      $('#facebox .content').removeClass().addClass('content')
+      $('#facebox .content-wrapper').removeClass().addClass('content-wrapper')
       $('#facebox .loading').remove()
       $(document).trigger('afterClose.facebox')
     })

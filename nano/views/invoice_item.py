@@ -4,7 +4,7 @@ from jinja2 import TemplateNotFound
 from flask.ext.login import login_required, current_user
 
 from nano.models import Invoice
-from nano.forms import InvoiceForm
+from nano.forms import InvoiceForm, InvoiceItemForm
 
 invoice_item = Blueprint('invoice_item', __name__, url_prefix='/invoice_item')
 
@@ -14,6 +14,16 @@ def index():
     invoices = Invoice.query.filter_by(user_id=current_user.id).all()
     return render_template('invoice/index.html', invoices=invoices)
 
+@invoice_item.route('/create', methods=['POST'])
+def create():
+    form = InvoiceItemForm(request.form)
+    print request.form
+
+    if form.validate():
+        print form
+    else:
+        print form.errors
+    return 'ok'
 
 @invoice_item.route('/edit', methods=['GET'])
 def edit(id):

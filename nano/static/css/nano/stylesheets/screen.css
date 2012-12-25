@@ -1,4 +1,4 @@
-/* line 17, /home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../../../home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,81 +20,81 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, /home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../../home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, /home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../../home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, /home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../../home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, /home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../../home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, /home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../../home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, /home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../../../home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, /home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../../../home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, /home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../../../home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
 
 /* -------------------------------------------------------------------------*/
 /* Layout */
-/* line 2, /srv/nanoinvoice.com/nano/static/css/nano/sass/_shared.scss */
+/* line 2, ../sass/_shared.scss */
 a img {
   vertical-align: middle;
 }
 
-/* line 6, /srv/nanoinvoice.com/nano/static/css/nano/sass/_shared.scss */
+/* line 6, ../sass/_shared.scss */
 h1 {
   color: #ee3322;
-  font-size: 2em;
+  font-size: 2.333em;
   line-height: 1.714em;
   line-height: 1em;
   font-weight: 900;
 }
 
-/* line 14, /srv/nanoinvoice.com/nano/static/css/nano/sass/_shared.scss */
+/* line 14, ../sass/_shared.scss */
 .sidebar h3 {
   text-shadow: 0 1px white;
-  font-size: 0.857em;
+  font-size: 1em;
   line-height: 2em;
   font-weight: bold;
   color: #758594;
   text-transform: uppercase;
   margin: 20px 0 2px 12px;
 }
-/* line 22, /srv/nanoinvoice.com/nano/static/css/nano/sass/_shared.scss */
+/* line 22, ../sass/_shared.scss */
 .sidebar ul.menu li {
   display: block;
   margin: 0px 0 2px 12px;
 }
-/* line 25, /srv/nanoinvoice.com/nano/static/css/nano/sass/_shared.scss */
+/* line 25, ../sass/_shared.scss */
 .sidebar ul.menu li a {
   display: block;
   text-decoration: none;
@@ -102,7 +102,7 @@ h1 {
   padding: 5px 12px;
 }
 
-/* line 34, /srv/nanoinvoice.com/nano/static/css/nano/sass/_shared.scss */
+/* line 34, ../sass/_shared.scss */
 .filters {
   *zoom: 1;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(5%, #efefef), color-stop(100%, #d9d9d9));
@@ -115,13 +115,13 @@ h1 {
   padding: 8px;
   background-color: #efefef;
 }
-/* line 38, /home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+/* line 38, ../../../../../../../home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
 .filters:after {
   content: "";
   display: table;
   clear: both;
 }
-/* line 42, /srv/nanoinvoice.com/nano/static/css/nano/sass/_shared.scss */
+/* line 42, ../sass/_shared.scss */
 .filters a {
   text-decoration: none;
   color: #555555;
@@ -133,42 +133,42 @@ h1 {
   -o-border-radius: 20px;
   border-radius: 20px;
 }
-/* line 49, /srv/nanoinvoice.com/nano/static/css/nano/sass/_shared.scss */
+/* line 49, ../sass/_shared.scss */
 .filters a img {
   vertical-align: middle;
   margin-bottom: 3px;
 }
-/* line 55, /srv/nanoinvoice.com/nano/static/css/nano/sass/_shared.scss */
+/* line 55, ../sass/_shared.scss */
 .filters a:hover {
   background-color: #ccc;
 }
-/* line 59, /srv/nanoinvoice.com/nano/static/css/nano/sass/_shared.scss */
+/* line 59, ../sass/_shared.scss */
 .filters .left {
   float: left;
 }
-/* line 63, /srv/nanoinvoice.com/nano/static/css/nano/sass/_shared.scss */
+/* line 63, ../sass/_shared.scss */
 .filters .right {
   float: right;
 }
 
-/* line 68, /srv/nanoinvoice.com/nano/static/css/nano/sass/_shared.scss */
+/* line 68, ../sass/_shared.scss */
 .first-create {
   margin: 50px auto;
   display: block;
   text-align: center;
 }
 
-/* line 77, /srv/nanoinvoice.com/nano/static/css/nano/sass/_shared.scss */
+/* line 77, ../sass/_shared.scss */
 .data-list-wrapper {
   margin: 10px;
 }
-/* line 80, /srv/nanoinvoice.com/nano/static/css/nano/sass/_shared.scss */
+/* line 80, ../sass/_shared.scss */
 .data-list-wrapper .col {
   display: table-cell;
   text-align: left;
 }
 
-/* line 86, /srv/nanoinvoice.com/nano/static/css/nano/sass/_shared.scss */
+/* line 86, ../sass/_shared.scss */
 .data-list-header {
   -moz-border-bottom-colors: none;
   -moz-border-left-colors: none;
@@ -189,14 +189,14 @@ h1 {
   font-size: 12px;
 }
 
-/* line 91, /srv/nanoinvoice.com/nano/static/css/nano/sass/_shared.scss */
+/* line 91, ../sass/_shared.scss */
 .data-list {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   border: 1px solid #aaaaaa;
 }
-/* line 96, /srv/nanoinvoice.com/nano/static/css/nano/sass/_shared.scss */
+/* line 96, ../sass/_shared.scss */
 .data-list .row {
   background-color: #fff;
   border-bottom: 1px solid #ececec;
@@ -204,59 +204,59 @@ h1 {
   font-size: 12px;
   cursor: pointer;
 }
-/* line 104, /srv/nanoinvoice.com/nano/static/css/nano/sass/_shared.scss */
+/* line 104, ../sass/_shared.scss */
 .data-list .row:hover {
   background-color: #ececec;
 }
-/* line 108, /srv/nanoinvoice.com/nano/static/css/nano/sass/_shared.scss */
+/* line 108, ../sass/_shared.scss */
 .data-list .row:last-child {
   border-bottom: none;
 }
 
-/* line 2, /srv/nanoinvoice.com/nano/static/css/nano/sass/_layout.scss */
+/* line 2, ../sass/_layout.scss */
 body, html {
   background-color: white;
-  font-size: 14px;
+  font-size: 12px;
   font-family: "HelveticaNeue", Helvetica, Arial, sans-serif;
   color: #333;
   background-image: url("/static/img/bg.png");
 }
 
-/* line 10, /srv/nanoinvoice.com/nano/static/css/nano/sass/_layout.scss */
+/* line 10, ../sass/_layout.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 15, /srv/nanoinvoice.com/nano/static/css/nano/sass/_layout.scss */
+/* line 15, ../sass/_layout.scss */
 .plain .header {
   margin-top: 2em;
   text-align: center;
 }
 
-/* line 21, /srv/nanoinvoice.com/nano/static/css/nano/sass/_layout.scss */
+/* line 21, ../sass/_layout.scss */
 .header {
   background-color: auto;
   padding: 5px 0 10px 0;
 }
-/* line 25, /srv/nanoinvoice.com/nano/static/css/nano/sass/_layout.scss */
+/* line 25, ../sass/_layout.scss */
 .header .account {
   float: right;
   padding-top: 20px;
 }
-/* line 28, /srv/nanoinvoice.com/nano/static/css/nano/sass/_layout.scss */
+/* line 28, ../sass/_layout.scss */
 .header .account ul li {
   display: inline-block;
   margin-left: 4px;
 }
-/* line 33, /srv/nanoinvoice.com/nano/static/css/nano/sass/_layout.scss */
+/* line 33, ../sass/_layout.scss */
 .header .account a {
   text-decoration: none;
   color: #666;
 }
 
-/* line 40, /srv/nanoinvoice.com/nano/static/css/nano/sass/_layout.scss */
+/* line 40, ../sass/_layout.scss */
 .application {
   background-color: #fff;
   -webkit-box-shadow: 0px 0px 4px #888888;
@@ -269,7 +269,7 @@ body, html {
   border-radius: 4px;
   border: 1px solid #888;
 }
-/* line 47, /srv/nanoinvoice.com/nano/static/css/nano/sass/_layout.scss */
+/* line 47, ../sass/_layout.scss */
 .application .top {
   height: 2em;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(5%, #3584d8), color-stop(100%, #2777cc));
@@ -289,18 +289,18 @@ body, html {
   border-bottom: 1px solid #1f5ea1;
 }
 
-/* line 55, /srv/nanoinvoice.com/nano/static/css/nano/sass/_layout.scss */
+/* line 55, ../sass/_layout.scss */
 .content {
   clear: both;
   *zoom: 1;
 }
-/* line 38, /home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+/* line 38, ../../../../../../../home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
 .content:after {
   content: "";
   display: table;
   clear: both;
 }
-/* line 59, /srv/nanoinvoice.com/nano/static/css/nano/sass/_layout.scss */
+/* line 59, ../sass/_layout.scss */
 .content .sidebar {
   width: 16.667%;
   float: left;
@@ -316,7 +316,7 @@ body, html {
   border-right: 1px solid #c1daee;
   min-height: 550px;
 }
-/* line 68, /srv/nanoinvoice.com/nano/static/css/nano/sass/_layout.scss */
+/* line 68, ../sass/_layout.scss */
 .content .workspace {
   width: 83.333%;
   float: right;
@@ -324,18 +324,18 @@ body, html {
   #margin-left: 0px;
   display: inline;
 }
-/* line 72, /srv/nanoinvoice.com/nano/static/css/nano/sass/_layout.scss */
+/* line 72, ../sass/_layout.scss */
 .content .workspace-inner {
   padding: 1em;
 }
 
-/* line 2, /srv/nanoinvoice.com/nano/static/css/nano/sass/_login.scss */
+/* line 2, ../sass/_login.scss */
 .box {
   width: 330px;
   margin: 0 auto;
 }
 
-/* line 7, /srv/nanoinvoice.com/nano/static/css/nano/sass/_login.scss */
+/* line 7, ../sass/_login.scss */
 .login {
   background-color: #fff;
   margin-top: 2em;
@@ -348,45 +348,45 @@ body, html {
   -o-border-radius: 5px;
   border-radius: 5px;
 }
-/* line 14, /srv/nanoinvoice.com/nano/static/css/nano/sass/_login.scss */
+/* line 14, ../sass/_login.scss */
 .login form {
   padding: 14px;
 }
-/* line 17, /srv/nanoinvoice.com/nano/static/css/nano/sass/_login.scss */
+/* line 17, ../sass/_login.scss */
 .login form label {
   display: none;
 }
-/* line 21, /srv/nanoinvoice.com/nano/static/css/nano/sass/_login.scss */
+/* line 21, ../sass/_login.scss */
 .login form label.remember {
   display: block;
 }
-/* line 23, /srv/nanoinvoice.com/nano/static/css/nano/sass/_login.scss */
+/* line 23, ../sass/_login.scss */
 .login form label.remember input {
   display: inline;
   width: auto;
 }
-/* line 29, /srv/nanoinvoice.com/nano/static/css/nano/sass/_login.scss */
+/* line 29, ../sass/_login.scss */
 .login form input {
   font-size: 18px;
   padding: 10px 12px;
   width: 100%;
 }
-/* line 35, /srv/nanoinvoice.com/nano/static/css/nano/sass/_login.scss */
+/* line 35, ../sass/_login.scss */
 .login form .field {
   margin-bottom: 1em;
 }
-/* line 39, /srv/nanoinvoice.com/nano/static/css/nano/sass/_login.scss */
+/* line 39, ../sass/_login.scss */
 .login form .button {
   width: 100%;
 }
 
-/* line 45, /srv/nanoinvoice.com/nano/static/css/nano/sass/_login.scss */
+/* line 45, ../sass/_login.scss */
 .noaccount {
   margin-top: 1em;
   text-align: center;
 }
 
-/* line 3, /srv/nanoinvoice.com/nano/static/css/nano/sass/_buttons.scss */
+/* line 3, ../sass/_buttons.scss */
 .button.primary {
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
@@ -410,12 +410,12 @@ body, html {
   text-decoration: none;
   text-shadow: 1px 1px 0px #528ecc;
 }
-/* line 23, /srv/nanoinvoice.com/nano/static/css/nano/sass/_buttons.scss */
+/* line 23, ../sass/_buttons.scss */
 .button.primary:active {
   position: relative;
   top: 1px;
 }
-/* line 28, /srv/nanoinvoice.com/nano/static/css/nano/sass/_buttons.scss */
+/* line 28, ../sass/_buttons.scss */
 .button.normal {
   -moz-user-select: none;
   background-color: #F1F4F9;
@@ -434,7 +434,7 @@ body, html {
   vertical-align: top;
   text-decoration: none;
 }
-/* line 47, /srv/nanoinvoice.com/nano/static/css/nano/sass/_buttons.scss */
+/* line 47, ../sass/_buttons.scss */
 .button.normal:active {
   outline: none;
   background-color: #E2E5EC;
@@ -446,9 +446,9 @@ body, html {
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 
-/* line 59, /srv/nanoinvoice.com/nano/static/css/nano/sass/_buttons.scss */
+/* line 59, ../sass/_buttons.scss */
 a.btn-small {
-  font-size: 0.714em;
+  font-size: 0.833em;
   line-height: 2.4em;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -473,47 +473,52 @@ a.btn-small {
   text-decoration: none !important;
   color: #666;
 }
-/* line 78, /srv/nanoinvoice.com/nano/static/css/nano/sass/_buttons.scss */
+/* line 78, ../sass/_buttons.scss */
 a.btn-small:hover {
   cursor: pointer;
 }
 
-/* line 33, /srv/nanoinvoice.com/nano/static/css/nano/sass/_forms.scss */
+/* line 38, ../sass/_forms.scss */
 form label {
   color: #828282;
   font-weight: bold;
 }
-/* line 37, /srv/nanoinvoice.com/nano/static/css/nano/sass/_forms.scss */
-form input {
+/* line 42, ../sass/_forms.scss */
+form input, form textarea, form select {
   color: #555555;
+  font-family: inherit;
 }
-/* line 41, /srv/nanoinvoice.com/nano/static/css/nano/sass/_forms.scss */
+/* line 46, ../sass/_forms.scss */
+form select {
+  background-color: #ececec;
+}
+/* line 49, ../sass/_forms.scss */
 form .field {
   margin-bottom: 1em;
   clear: both;
 }
-/* line 46, /srv/nanoinvoice.com/nano/static/css/nano/sass/_forms.scss */
+/* line 54, ../sass/_forms.scss */
 form input.error {
   border: 1px solid red;
 }
-/* line 50, /srv/nanoinvoice.com/nano/static/css/nano/sass/_forms.scss */
+/* line 58, ../sass/_forms.scss */
 form span.error {
-  font-size: 0.857em;
+  font-size: 1em;
   line-height: 2em;
   color: red;
 }
 
-/* line 57, /srv/nanoinvoice.com/nano/static/css/nano/sass/_forms.scss */
+/* line 65, ../sass/_forms.scss */
 form.inline label {
   display: inline-block;
   width: 150px;
 }
-/* line 61, /srv/nanoinvoice.com/nano/static/css/nano/sass/_forms.scss */
+/* line 69, ../sass/_forms.scss */
 form.inline div.input {
   display: inline-block;
 }
 
-/* line 66, /srv/nanoinvoice.com/nano/static/css/nano/sass/_forms.scss */
+/* line 74, ../sass/_forms.scss */
 form.create {
   width: 80%;
   margin: 3em auto;
@@ -526,8 +531,8 @@ form.create {
   -moz-box-shadow: 0px 0px 5px #cccccc;
   box-shadow: 0px 0px 5px #cccccc;
 }
-/* line 6, /srv/nanoinvoice.com/nano/static/css/nano/sass/_forms.scss */
-form.create input {
+/* line 6, ../sass/_forms.scss */
+form.create input, form.create textarea, form.create select {
   border: 1px solid rgba(0, 0, 0, 0.2);
   outline: none;
   transition: all 0.25s ease-in-out;
@@ -539,19 +544,24 @@ form.create input {
   -o-border-radius: 3px;
   border-radius: 3px;
 }
-/* line 16, /srv/nanoinvoice.com/nano/static/css/nano/sass/_forms.scss */
-form.create input:focus {
+/* line 16, ../sass/_forms.scss */
+form.create input:focus, form.create textarea:focus, form.create select:focus {
   -webkit-box-shadow: 0 0 2px blue;
   -moz-box-shadow: 0 0 2px blue;
   box-shadow: 0 0 2px blue;
   border: 1px solid rgba(82, 168, 236, 0.6);
 }
-/* line 24, /srv/nanoinvoice.com/nano/static/css/nano/sass/_forms.scss */
-form.create input {
-  font-size: 1.3em;
+/* line 24, ../sass/_forms.scss */
+form.create input, form.create textarea {
+  font-size: 1em;
   padding: 4px;
 }
-/* line 75, /srv/nanoinvoice.com/nano/static/css/nano/sass/_forms.scss */
+/* line 29, ../sass/_forms.scss */
+form.create select {
+  font-size: 1em;
+  padding: 4px;
+}
+/* line 83, ../sass/_forms.scss */
 form.create .fields {
   padding: 1em;
   background: -moz-linear-gradient(center top, white, #f5f4f4) repeat-x scroll 0 0 #fbfbfb;
@@ -559,11 +569,11 @@ form.create .fields {
   border-radius: 0 0 4px 4px;
   margin: 0 auto 12px;
 }
-/* line 80, /srv/nanoinvoice.com/nano/static/css/nano/sass/_forms.scss */
+/* line 88, ../sass/_forms.scss */
 form.create input {
   width: 366px;
 }
-/* line 84, /srv/nanoinvoice.com/nano/static/css/nano/sass/_forms.scss */
+/* line 92, ../sass/_forms.scss */
 form.create .header {
   -moz-border-bottom-colors: none;
   -moz-border-left-colors: none;
@@ -583,24 +593,24 @@ form.create .header {
   color: #666;
 }
 
-/* line 91, /srv/nanoinvoice.com/nano/static/css/nano/sass/_forms.scss */
+/* line 98, ../sass/_forms.scss */
 form.create.invoice input.reference {
   width: auto;
 }
-/* line 94, /srv/nanoinvoice.com/nano/static/css/nano/sass/_forms.scss */
+/* line 101, ../sass/_forms.scss */
 form.create.invoice select {
   width: 366px;
 }
-/* line 98, /srv/nanoinvoice.com/nano/static/css/nano/sass/_forms.scss */
+/* line 105, ../sass/_forms.scss */
 form.create.invoice input.date {
   width: 200px;
 }
-/* line 102, /srv/nanoinvoice.com/nano/static/css/nano/sass/_forms.scss */
+/* line 109, ../sass/_forms.scss */
 form.create.invoice div.field-due_date {
   display: none;
 }
 
-/* line 1, /srv/nanoinvoice.com/nano/static/css/nano/sass/_flash.scss */
+/* line 1, ../sass/_flash.scss */
 ul.flashes {
   display: block;
   padding: 4px;
@@ -608,12 +618,12 @@ ul.flashes {
   background-color: #fff;
 }
 
-/* line 4, /srv/nanoinvoice.com/nano/static/css/nano/sass/_invoice.scss */
+/* line 4, ../sass/_invoice.scss */
 .invoice-data-list .col {
   width: 160px;
 }
 
-/* line 11, /srv/nanoinvoice.com/nano/static/css/nano/sass/_invoice.scss */
+/* line 11, ../sass/_invoice.scss */
 .pagestyle {
   border-top: 1px solid #CCC;
   border-left: solid 1px #CCC;
@@ -626,12 +636,12 @@ ul.flashes {
   width: 660px;
 }
 
-/* line 23, /srv/nanoinvoice.com/nano/static/css/nano/sass/_invoice.scss */
+/* line 23, ../sass/_invoice.scss */
 .draft .pagestyle {
   padding-right: 1.75cm !important;
 }
 
-/* line 27, /srv/nanoinvoice.com/nano/static/css/nano/sass/_invoice.scss */
+/* line 27, ../sass/_invoice.scss */
 .pagestyle:after {
   content: ".";
   display: block;
@@ -641,29 +651,126 @@ ul.flashes {
   height: 0;
 }
 
-/* line 36, /srv/nanoinvoice.com/nano/static/css/nano/sass/_invoice.scss */
+/* line 36, ../sass/_invoice.scss */
 html[xmlns] .pagestyle {
   display: block;
 }
 
-/* line 40, /srv/nanoinvoice.com/nano/static/css/nano/sass/_invoice.scss */
+/* line 40, ../sass/_invoice.scss */
 .pagestyle img {
   border: none;
 }
 
-/* line 44, /srv/nanoinvoice.com/nano/static/css/nano/sass/_invoice.scss */
+/* line 44, ../sass/_invoice.scss */
 #invoice {
   display: block;
   margin: 2em auto;
 }
-/* line 48, /srv/nanoinvoice.com/nano/static/css/nano/sass/_invoice.scss */
+/* line 48, ../sass/_invoice.scss */
 #invoice .item-controls {
   position: absolute;
   right: 10px;
   width: 58px;
 }
 
-/* line 1, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 6, ../sass/_forms.scss */
+#new-invoice-item form input, #new-invoice-item form textarea, #new-invoice-item form select, #edit-invoice-item form input, #edit-invoice-item form textarea, #edit-invoice-item form select {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  outline: none;
+  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 16, ../sass/_forms.scss */
+#new-invoice-item form input:focus, #new-invoice-item form textarea:focus, #new-invoice-item form select:focus, #edit-invoice-item form input:focus, #edit-invoice-item form textarea:focus, #edit-invoice-item form select:focus {
+  -webkit-box-shadow: 0 0 2px blue;
+  -moz-box-shadow: 0 0 2px blue;
+  box-shadow: 0 0 2px blue;
+  border: 1px solid rgba(82, 168, 236, 0.6);
+}
+/* line 24, ../sass/_forms.scss */
+#new-invoice-item form input, #new-invoice-item form textarea, #edit-invoice-item form input, #edit-invoice-item form textarea {
+  font-size: 1em;
+  padding: 4px;
+}
+/* line 29, ../sass/_forms.scss */
+#new-invoice-item form select, #edit-invoice-item form select {
+  font-size: 1em;
+  padding: 4px;
+}
+/* line 6, ../sass/_popup.scss */
+#new-invoice-item form .field *, #edit-invoice-item form .field * {
+  vertical-align: middle;
+}
+/* line 7, ../sass/_popup.scss */
+#new-invoice-item form label, #edit-invoice-item form label {
+  width: 100px;
+}
+/* line 11, ../sass/_popup.scss */
+#new-invoice-item form .help, #edit-invoice-item form .help {
+  margin-left: 100px;
+  font-size: 11px;
+}
+/* line 16, ../sass/_popup.scss */
+#new-invoice-item form #details, #edit-invoice-item form #details {
+  line-height: 1em;
+  width: 370px;
+}
+/* line 21, ../sass/_popup.scss */
+#new-invoice-item form #price, #edit-invoice-item form #price {
+  width: 6em;
+}
+/* line 25, ../sass/_popup.scss */
+#new-invoice-item form #vat, #edit-invoice-item form #vat {
+  width: 6em;
+}
+/* line 29, ../sass/_popup.scss */
+#new-invoice-item form .actions *, #edit-invoice-item form .actions * {
+  vertical-align: middle;
+}
+
+/* line 36, ../sass/_popup.scss */
+#facebox .content-wrapper {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.7);
+}
+/* line 43, ../sass/_popup.scss */
+#facebox .header {
+  background: url("/static/img/header.png");
+  padding: 18px 18px 14px 18px;
+  border-bottom: 1px solid #CCC;
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  -ms-border-radius: 5px 5px 0 0;
+  -o-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+}
+/* line 49, ../sass/_popup.scss */
+#facebox .header h2 {
+  color: #444444;
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 3px;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+}
+/* line 59, ../sass/_popup.scss */
+#facebox .content {
+  padding: 1em;
+  background-color: #fff;
+}
+
+/* line 1, ../sass/invoice_themes/_default.scss */
 #invoice h1 {
   margin: 0;
   color: #555;
@@ -671,102 +778,102 @@ html[xmlns] .pagestyle {
   text-transform: uppercase;
 }
 
-/* line 2, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 2, ../sass/invoice_themes/_default.scss */
 #invoice h2, #Main #invoice h3 {
   color: #000;
   text-transform: none;
 }
 
-/* line 3, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 3, ../sass/invoice_themes/_default.scss */
 #invoice h2 {
   margin: 10px 0;
   font-size: 14pt;
 }
 
-/* line 4, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 4, ../sass/invoice_themes/_default.scss */
 #invoice-amount td, th {
   font-size: 10pt;
 }
 
-/* line 5, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 5, ../sass/invoice_themes/_default.scss */
 #invoice-header #company-address {
   text-align: right;
   font-size: 11pt;
   line-height: 14pt;
 }
 
-/* line 6, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 6, ../sass/invoice_themes/_default.scss */
 #invoice #client-details, #invoice-info p {
   font-size: 10pt;
   line-height: 14pt;
 }
 
-/* line 7, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 7, ../sass/invoice_themes/_default.scss */
 #invoice #invoice-other, #invoice #payment-details {
   font-size: 10pt;
   line-height: 14pt;
 }
 
-/* line 8, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 8, ../sass/invoice_themes/_default.scss */
 #invoice-info h2, #invoice-info h3 {
   margin: 0;
   font-weight: normal;
 }
 
-/* line 9, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 9, ../sass/invoice_themes/_default.scss */
 #invoice #invoice-info h2 {
   text-transform: uppercase;
   font-size: 18pt;
 }
 
-/* line 10, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 10, ../sass/invoice_themes/_default.scss */
 #invoice #invoice-info h3 {
   font-size: 12pt;
 }
 
-/* line 11, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 11, ../sass/invoice_themes/_default.scss */
 #invoice #invoice-info p {
   text-align: right;
   margin-top: 0;
 }
 
-/* line 12, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 12, ../sass/invoice_themes/_default.scss */
 #invoice-info #payment-total {
   display: none;
 }
 
-/* line 13, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 13, ../sass/invoice_themes/_default.scss */
 #comments {
   font-weight: bold;
   margin-top: 0;
   font-size: 10pt;
 }
 
-/* line 14, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 14, ../sass/invoice_themes/_default.scss */
 #invoice #invoice-info h2, #invoice #company-address div.email, #invoice #invoice-other h2, #invoice #payment-details h2 {
   color: #a10000;
 }
 
-/* line 15, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 15, ../sass/invoice_themes/_default.scss */
 #invoice #invoice-other h2, #invoice #payment-details h2 {
   font-weight: normal;
   text-transform: uppercase;
 }
 
 /*=========================== LAYOUT =========================*/
-/* line 19, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 19, ../sass/invoice_themes/_default.scss */
 #invoice {
   padding: 0 1cm 1cm 1cm;
   background: #fff top left repeat-y;
   border: 1px solid #ccc;
 }
 
-/* line 20, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 20, ../sass/invoice_themes/_default.scss */
 #invoice-header .logo {
   float: left;
 }
 
-/* line 21, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 21, ../sass/invoice_themes/_default.scss */
 #invoice-header {
   margin-top: 1.5cm;
   border-bottom: 1px solid #a10000;
@@ -774,17 +881,17 @@ html[xmlns] .pagestyle {
   overflow: hidden;
 }
 
-/* line 22, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 22, ../sass/invoice_themes/_default.scss */
 * html #invoice-header {
   height: 1%;
 }
 
-/* line 23, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 23, ../sass/invoice_themes/_default.scss */
 #invoice-blank-header {
   margin-top: 1.6cm;
 }
 
-/* line 24, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 24, ../sass/invoice_themes/_default.scss */
 #invoice-info {
   margin: 0.7cm 0 20px 0;
   width: 55%;
@@ -792,17 +899,17 @@ html[xmlns] .pagestyle {
   text-align: right;
 }
 
-/* line 25, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 25, ../sass/invoice_themes/_default.scss */
 #invoice-info #payment-terms {
   display: none;
 }
 
-/* line 26, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 26, ../sass/invoice_themes/_default.scss */
 #invoice-info #payment-due {
   font-style: italic;
 }
 
-/* line 27, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 27, ../sass/invoice_themes/_default.scss */
 #company-address {
   margin: 0;
   padding: 0;
@@ -810,7 +917,7 @@ html[xmlns] .pagestyle {
   float: right;
 }
 
-/* line 28, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 28, ../sass/invoice_themes/_default.scss */
 #client-details {
   margin: 0.7cm 0 20px 0cm;
   float: left;
@@ -818,7 +925,7 @@ html[xmlns] .pagestyle {
 }
 
 /* Positioned to appear in a standard envelope window when printed */
-/* line 29, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 29, ../sass/invoice_themes/_default.scss */
 #invoice-other {
   text-align: right;
   clear: both;
@@ -827,33 +934,33 @@ html[xmlns] .pagestyle {
   margin-top: 0;
 }
 
-/* line 30, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 30, ../sass/invoice_themes/_default.scss */
 #invoice #payment-details {
   float: left;
   width: 45%;
   margin-top: 0;
 }
 
-/* line 31, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 31, ../sass/invoice_themes/_default.scss */
 #payment-details .sort-code, #payment-details .account-number, #payment-details .payment-reference {
   clear: left;
 }
 
-/* line 32, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 32, ../sass/invoice_themes/_default.scss */
 #payment-details strong {
   font-weight: normal;
   float: left;
   width: 12em;
 }
 
-/* line 33, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 33, ../sass/invoice_themes/_default.scss */
 #invoice-other strong {
   font-weight: normal;
   float: left;
   width: 16em;
 }
 
-/* line 34, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 34, ../sass/invoice_themes/_default.scss */
 #invoice-other #comments {
   clear: both;
   margin-top: 0em;
@@ -861,19 +968,19 @@ html[xmlns] .pagestyle {
   color: #a10000;
 }
 
-/* line 35, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 35, ../sass/invoice_themes/_default.scss */
 #invoice-other #contract-number {
   margin-bottom: 3em;
 }
 
-/* line 37, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 37, ../sass/invoice_themes/_default.scss */
 #comments {
   clear: both;
   padding-top: 0.3cm;
 }
 
 /*=========================== TABLES =========================*/
-/* line 41, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 41, ../sass/invoice_themes/_default.scss */
 #invoice table#invoice-amount {
   border-collapse: collapse;
   width: 100%;
@@ -881,7 +988,7 @@ html[xmlns] .pagestyle {
   margin: 1cm 0 0.4cm 0;
 }
 
-/* line 42, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 42, ../sass/invoice_themes/_default.scss */
 #invoice-amount th {
   text-align: left;
   white-space: nowrap;
@@ -890,37 +997,37 @@ html[xmlns] .pagestyle {
   background: #F2F2F2;
 }
 
-/* line 43, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 43, ../sass/invoice_themes/_default.scss */
 #invoice-amount td {
   margin: 0;
   padding: 4px 5px 4px 5px;
   vertical-align: top;
 }
 
-/* line 44, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 44, ../sass/invoice_themes/_default.scss */
 #invoice-amount tr.item td {
   background: #fff;
 }
 
-/* line 45, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 45, ../sass/invoice_themes/_default.scss */
 #invoice-amount td.item_r {
   text-align: right;
 }
 
-/* line 46, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 46, ../sass/invoice_themes/_default.scss */
 #invoice-amount td.item_l {
   text-align: left;
   white-space: normal;
 }
 
-/* line 47, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 47, ../sass/invoice_themes/_default.scss */
 #invoice-amount td.total {
   text-align: right;
   font-weight: bold;
   /*color: #a10000;*/
 }
 
-/* line 48, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 48, ../sass/invoice_themes/_default.scss */
 #invoice-amount td.action {
   background: #FFF;
   width: 7%;
@@ -929,56 +1036,56 @@ html[xmlns] .pagestyle {
   text-align: center;
 }
 
-/* line 49, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 49, ../sass/invoice_themes/_default.scss */
 #invoice-amount tr#total_tr {
   background: #F2F2F2;
 }
 
-/* line 50, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 50, ../sass/invoice_themes/_default.scss */
 #invoice-amount td {
   border-top: 1px solid #F2F2F2;
 }
 
-/* line 51, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 51, ../sass/invoice_themes/_default.scss */
 #invoice-amount tr#discount_tr, #invoice-amount tr#net_total_tr, #invoice-amount tr#vat_tr {
   color: #777;
 }
 
-/* line 53, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 53, ../sass/invoice_themes/_default.scss */
 #invoice-amount .details_th {
   width: 46%;
 }
 
-/* line 54, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 54, ../sass/invoice_themes/_default.scss */
 #invoice-amount .details_notax_th {
   width: 54%;
 }
 
-/* line 55, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 55, ../sass/invoice_themes/_default.scss */
 #invoice-amount .quantity_th {
   width: 13%;
 }
 
-/* line 56, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 56, ../sass/invoice_themes/_default.scss */
 #invoice-amount .subtotal_th {
   width: 18%;
   text-align: right;
 }
 
-/* line 57, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 57, ../sass/invoice_themes/_default.scss */
 #invoice-amount .unitprice_th {
   width: 15%;
   text-align: right;
 }
 
-/* line 58, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 58, ../sass/invoice_themes/_default.scss */
 #invoice-amount .salestax_th {
   width: 8%;
   text-align: center;
 }
 
 /* Invoice UK VAT Summary Table */
-/* line 61, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 61, ../sass/invoice_themes/_default.scss */
 #invoice #invoice-uk-vat-summary {
   width: 100%;
   border-collapse: collapse;
@@ -988,25 +1095,25 @@ html[xmlns] .pagestyle {
   background: #fff;
 }
 
-/* line 62, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 62, ../sass/invoice_themes/_default.scss */
 #invoice tr#invoice-uk-vat-header th {
   padding: 7px 0;
   border-top: 1px solid #ccc;
 }
 
-/* line 63, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 63, ../sass/invoice_themes/_default.scss */
 #invoice-uk-vat-summary td, #invoice #invoice-uk-vat-summary th {
   text-align: left;
   font-size: 9pt;
   padding: 2px 0;
 }
 
-/* line 64, /srv/nanoinvoice.com/nano/static/css/nano/sass/invoice_themes/_default.scss */
+/* line 64, ../sass/invoice_themes/_default.scss */
 #vat-total td, #vat-total th {
   border-top: 1px solid #ccc;
 }
 
-/* line 1, /srv/nanoinvoice.com/nano/static/css/nano/sass/vendor/_facebox.scss */
+/* line 1, ../sass/vendor/_facebox.scss */
 #facebox {
   position: absolute;
   top: 0;
@@ -1015,72 +1122,49 @@ html[xmlns] .pagestyle {
   text-align: left;
 }
 
-/* line 10, /srv/nanoinvoice.com/nano/static/css/nano/sass/vendor/_facebox.scss */
+/* line 9, ../sass/vendor/_facebox.scss */
 #facebox .popup {
-  -webkit-box-shadow: 0 0 18px rgba(0, 0, 0, 0.4);
-  -moz-box-shadow: 0 0 18px rgba(0, 0, 0, 0.4);
-  box-shadow: 0 0 18px rgba(0, 0, 0, 0.4);
   position: relative;
-  border: 3px solid rgba(0, 0, 0, 0);
 }
 
-/* line 16, /srv/nanoinvoice.com/nano/static/css/nano/sass/vendor/_facebox.scss */
-#facebox .content {
+/* line 13, ../sass/vendor/_facebox.scss */
+#facebox .content-wrapper {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   width: 100%;
   display: table;
-  padding: 10px;
-  background: #fff;
 }
 
-/* line 24, /srv/nanoinvoice.com/nano/static/css/nano/sass/vendor/_facebox.scss */
-#facebox .content > p:first-child {
-  margin-top: 0;
-}
-
-/* line 27, /srv/nanoinvoice.com/nano/static/css/nano/sass/vendor/_facebox.scss */
-#facebox .content > p:last-child {
-  margin-bottom: 0;
-}
-
-/* line 31, /srv/nanoinvoice.com/nano/static/css/nano/sass/vendor/_facebox.scss */
+/* line 19, ../sass/vendor/_facebox.scss */
 #facebox .close {
   position: absolute;
   top: 5px;
   right: 5px;
   padding: 2px;
-  background: #fff;
 }
 
-/* line 38, /srv/nanoinvoice.com/nano/static/css/nano/sass/vendor/_facebox.scss */
+/* line 25, ../sass/vendor/_facebox.scss */
 #facebox .close img {
   opacity: 0.3;
 }
 
-/* line 41, /srv/nanoinvoice.com/nano/static/css/nano/sass/vendor/_facebox.scss */
+/* line 28, ../sass/vendor/_facebox.scss */
 #facebox .close:hover img {
   opacity: 1.0;
 }
 
-/* line 45, /srv/nanoinvoice.com/nano/static/css/nano/sass/vendor/_facebox.scss */
+/* line 32, ../sass/vendor/_facebox.scss */
 #facebox .loading {
   text-align: center;
 }
 
-/* line 49, /srv/nanoinvoice.com/nano/static/css/nano/sass/vendor/_facebox.scss */
+/* line 36, ../sass/vendor/_facebox.scss */
 #facebox .image {
   text-align: center;
 }
 
-/* line 53, /srv/nanoinvoice.com/nano/static/css/nano/sass/vendor/_facebox.scss */
-#facebox img {
-  border: 0;
-  margin: 0;
-}
-
-/* line 58, /srv/nanoinvoice.com/nano/static/css/nano/sass/vendor/_facebox.scss */
+/* line 40, ../sass/vendor/_facebox.scss */
 #facebox_overlay {
   position: fixed;
   top: 0px;
@@ -1089,18 +1173,18 @@ html[xmlns] .pagestyle {
   width: 100%;
 }
 
-/* line 66, /srv/nanoinvoice.com/nano/static/css/nano/sass/vendor/_facebox.scss */
+/* line 48, ../sass/vendor/_facebox.scss */
 .facebox_hide {
   z-index: -100;
 }
 
-/* line 70, /srv/nanoinvoice.com/nano/static/css/nano/sass/vendor/_facebox.scss */
+/* line 52, ../sass/vendor/_facebox.scss */
 .facebox_overlayBG {
   background-color: #000;
   z-index: 99;
 }
 
-/* line 22, ../sass/screen.scss */
+/* line 23, ../sass/screen.scss */
 .container {
   *zoom: 1;
   max-width: 960px;
@@ -1118,7 +1202,7 @@ html[xmlns] .pagestyle {
   -moz-background-clip: content-box;
   background-clip: content-box;
 }
-/* line 38, /home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+/* line 38, ../../../../../../../home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
 .container:after {
   content: "";
   display: table;

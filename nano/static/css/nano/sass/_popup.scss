@@ -1,0 +1,63 @@
+#new-invoice-item, #edit-invoice-item {
+  form {
+    @include glow-inputs();
+    @include large-inputs();
+    
+    .field * { vertical-align: middle; }
+    label {
+      width: 100px;
+    }
+
+    .help {
+      margin-left: 100px;
+      font-size: 11px;
+    }
+
+    #details {
+      line-height: 1em;
+      width: 370px;
+    }
+
+    #price {
+      width: 6em;
+    }
+
+    #vat {
+      width: 6em;
+    }
+
+    .actions * {
+      vertical-align: middle;
+    }
+  }
+}
+
+#facebox {
+  .content-wrapper {
+    @include border-radius(5px);
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.7); 
+    -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.7); 
+    -moz-box-shadow: 0 0px 4px rgba(0,0,0,0.7);
+  }
+
+  .header {
+    background: url('/static/img/header.png'); 
+    padding: 18px 18px 14px 18px; 
+    border-bottom: 1px solid #CCC; 
+    @include border-radius(5px 5px 0 0);
+
+    h2 {
+      color: #444444;
+      font-size: 2em;
+      font-weight: 700;
+      margin-bottom: 3px;
+      text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+    }
+
+  }
+  
+  .content {
+    padding: 1em;
+    background-color: #fff;
+  }
+}

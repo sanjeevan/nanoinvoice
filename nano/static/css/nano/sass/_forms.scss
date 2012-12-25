@@ -3,7 +3,7 @@
 $highlight-focus: #ff0000;
 
 @mixin glow-inputs() {
-  input {
+  input, textarea, select {
     border:1px solid rgba(0,0,0, 0.2);
     outline:none;
 
@@ -21,8 +21,13 @@ $highlight-focus: #ff0000;
 }
 
 @mixin large-inputs() {
-  input {
-    font-size: 1.3em;
+  input, textarea {
+    font-size: 1em;
+    padding: 4px;
+  }
+
+  select {
+    font-size: 1em;
     padding: 4px;
   }
 }
@@ -34,10 +39,13 @@ form {
     color: #828282;
     font-weight: bold;
   }
-  input {
+  input, textarea, select {
     color: #555555;
+    font-family: inherit;
   }
-
+  select {
+    background-color: #ececec;
+  }
   .field {
     margin-bottom: 1em;
     clear: both;
@@ -85,7 +93,6 @@ form.create {
     @include panel-header2();
   }
 }
-
 
 form.create.invoice {
   input.reference {

@@ -1,10 +1,11 @@
 <div id="edit-invoice-item" class="app-popup">
+  <div class="header">Edit</div>
   <div class="content">
     <form accept-charset="utf-8" method="post" action="/frontend_dev.php/invoice_item/update" class="inline big">
       <input type="hidden" name="id" value="<%= InvoiceItem.get("id") %>" />
       <input type="hidden" name="invoice_item[invoice_id]" value="<%= InvoiceItem.get("invoice_id") %>" />
-      <ul>
-        <li>
+      <div class="fields">
+        <div class="field">
           <label>Qty</label>
           
           <input size="2" id="quantity" type="text" name="invoice_item[quantity]" value="<%= InvoiceItem.getQuantityString() %>">
@@ -22,19 +23,19 @@
           <div id="hours-help" class="help" style="display: none">
             (e.g. One and a half hours can be entered as either 1:30 or 1.5)
           </div>
-        </li>
+        </div>
         
-        <li>
+        <div class="field">
           <label>Details</label>
           <textarea id="details" class="wide" name="invoice_item[description]"><%= InvoiceItem.get("description") %></textarea>
-        </li>
+        </div>
 
-        <li id="price-row">
+        <div class="field" id="price-row">
           <label>Unit Price (£)</label>
           <input id="price" type="text" name="invoice_item[price]" value="<%= InvoiceItem.get("price") %>" />
-        <li>
+        </div>
         
-        <li id="tax-row">
+        <div class="field" id="tax-row">
           <label>VAT</label>
           <select name="invoice_item[tax_rate_id]">
             <% App.taxRates.each(function(t){ %>
@@ -45,13 +46,13 @@
               <% } %>
             <% }) %> 
           </select>
-        </li>
+        </div>
 
-        <li class="actions">
-          <button id="save" class="btn primary">Update</button> &nbsp; 
+        <div class="field actions">
+          <button id="save" class="button normal">Update</button> &nbsp; 
           <a href="#" class="cancel">Cancel</a>
-        </li>
-      </ul>
+        </div>
+      </div>
     </form>
   </div>
 </div>

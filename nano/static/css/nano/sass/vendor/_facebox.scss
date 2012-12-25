@@ -6,26 +6,14 @@
   text-align: left;
 }
 
-
 #facebox .popup{
-  @include box-shadow(0 0 18px rgba(0, 0, 0, 0.4));
   position:relative;
-  border:3px solid rgba(0,0,0,0);
 }
 
-#facebox .content {
+#facebox .content-wrapper {
   @include box-sizing(border-box);
   width: 100%;
   display:table;
-  padding: 10px;
-  background: #fff;
-}
-
-#facebox .content > p:first-child{
-  margin-top:0;
-}
-#facebox .content > p:last-child{
-  margin-bottom:0;
 }
 
 #facebox .close{
@@ -33,7 +21,6 @@
   top:5px;
   right:5px;
   padding:2px;
-  background:#fff;
 }
 #facebox .close img{
   opacity:0.3;
@@ -48,11 +35,6 @@
 
 #facebox .image {
   text-align: center;
-}
-
-#facebox img {
-  border: 0;
-  margin: 0;
 }
 
 #facebox_overlay {
@@ -71,3 +53,4 @@
   background-color: #000;
   z-index: 99;
 }
+
