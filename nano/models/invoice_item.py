@@ -62,15 +62,17 @@ class InvoiceItem(db.Model):
             if self.id:
                 rate = self.tax_rate.rate
             else:
-                from nano.models import TaxRate
+                from nano.models import Invoice
                 rate = TaxRate.query.get(self.tax_rate_id).rate
             self.tax = self.quantity * float(self.price) * float(rate)/100
-            print self.tax
         self.total = self.quantity * float(self.price)
+
         return self.tax, self.total
 
     def serialize(self):
         d = model_to_dict(self)
         d['InvoiceItemType'] = self.invoice_item_type.serialize()
+        if self.tax_rate:
+            d['TaxRate'] = self.tax_rate.serialize()
         return d
 

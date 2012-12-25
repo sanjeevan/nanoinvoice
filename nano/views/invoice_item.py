@@ -22,6 +22,7 @@ def create():
 
     if form.validate():
         invoice_item = form.save()
+        invoice_item.invoice.update_totals(commit=True)
         ret = {'Invoice': invoice_item.invoice.serialize(), 'InvoiceItem':
                 invoice_item.serialize() }
         return Response(json_dumps(ret), content_type='application/json')
@@ -36,6 +37,7 @@ def update(id):
 
     if form.validate():
         invoice_item = form.save()
+        invoice_item.invoice.update_totals(commit=True)
         ret = {'Invoice': invoice_item.invoice.serialize(), 'InvoiceItem':
                 invoice_item.serialize() }
         return Response(json_dumps(ret), content_type='application/json')

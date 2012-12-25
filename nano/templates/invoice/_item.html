@@ -13,7 +13,11 @@
       {{ item.price }}
     {% endif %}
   </td>
-
+  
+  <td class="item_r taxrate_td">
+    {{ item.tax }}
+  </td>
+  
   <td class="item_r subtotal_td">
     {% if invoice.status == 'draft' %}
     <div class="item-controls">

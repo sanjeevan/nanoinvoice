@@ -42,17 +42,21 @@ class Invoice(db.Model):
         total = InvoiceItem.query.filter_by(invoice_id=self.id).count()
         return total+1
     
-    def update_totals(self):
+    def update_totals(self, commit=False):
         """Update total and tax"""
-        sub_total = 0
-        tax = 0
+        sub_total = 0.0
+        tax = 0.0
         for item in self.invoice_items:
-            sub_total += item.total
-            tax += item.tax
+            sub_total += float(item.total if item.total else 0)
+            tax += float(item.tax if item.tax else 0)
 
         self.tax = tax
         self.sub_total = sub_total
-        self.total = self.tax + self.sub_total
+        self.total = float(self.tax) + float(self.sub_total)
+
+        if commit:
+            db.session.add(self)
+            db.session.commit()
         return True
     
     def serialize(self):

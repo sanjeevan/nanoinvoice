@@ -12,8 +12,11 @@ var DraftInvoiceView = Backbone.View.extend({
   initialize: function() { 
     this.addItemView = new NewInvoiceItemView({ model: this.model, parentView: this });
     
-    this.model.bind("change", this.render, this);
-    this.model.bind("change", this.updateTotals, this);
+    this.model.on("change", this.render, this);
+    this.model.on("change", this.updateTotals, this);
+
+    //this.model.on("update:InvoiceItems", this.render);
+    //this.model.on("update:InvoiceItems", this.render);
   },
 
   onEditItemClick: function(evt) {
@@ -64,6 +67,7 @@ var DraftInvoiceView = Backbone.View.extend({
   render: function() {
     var view = this;
     var itemsHtml = "";
+    console.log('rendering');
     
     this.model.get("InvoiceItems").each(function(item) {
       itemsHtml += JST["invoice_item"]({ InvoiceItem: item, Invoice: view.model }); 

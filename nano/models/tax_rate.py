@@ -1,6 +1,6 @@
 from datetime import datetime
 from nano.extensions import db
-from nano.utils import get_current_time
+from nano.utils import get_current_time, model_to_dict
 
 class TaxRate(db.Model):
     __tablename__ = 'tax_rate'
@@ -16,3 +16,7 @@ class TaxRate(db.Model):
     created_at = db.Column(u'created_at', db.DateTime(), nullable=False, default=get_current_time())
 
     user = db.relation('User', lazy='select', backref='tax_rates')  
+
+    def serialize(self):
+        return model_to_dict(self)
+

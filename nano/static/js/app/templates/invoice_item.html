@@ -1,11 +1,10 @@
-<tr class="item " id="invoice-item-<%= InvoiceItem.get("id") %>">
+<tr class="item " id="invoice-item-<%= InvoiceItem.get('id') %>">
   <td class="item_l quantity_td">
     <% if (InvoiceItem.shouldRenderField("quantity")) { %>
       <%= InvoiceItem.getQuantityString() %> 
     <% } %>
     <%= InvoiceItem.get("InvoiceItemType").name  %>
   </td>
-
   <td class="item_l description_td">
     <%= InvoiceItem.get("description") %>
   </td>
@@ -16,13 +15,11 @@
     <% } %>
   </td>
   
-  <% if (User.vatRegistration.get("status") == "registered") { %>
   <td class="item_r taxrate_td">
-    <% if (InvoiceItem.shouldRenderField("tax")) { %>
-      <%= numberFormat(InvoiceItem.get("TaxRate").rate, 0) %>%
+    <% if (InvoiceItem.shouldRenderField('tax')) { %>
+      <%= numberFormat(InvoiceItem.get('tax'), 2) %>
     <% } %>
   </td>
-  <% } %>
 
   <td class="item_r subtotal_td">
     <% if (Invoice.get("status") == "draft") { %>
