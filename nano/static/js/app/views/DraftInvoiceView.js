@@ -66,7 +66,7 @@ var DraftInvoiceView = Backbone.View.extend({
     var itemsHtml = "";
     
     this.model.get("InvoiceItems").each(function(item) {
-      itemsHtml += _.template(AppTemplates["invoice_item.html"], { InvoiceItem: item, Invoice: view.model }); 
+      itemsHtml += JST["invoice_item"]({ InvoiceItem: item, Invoice: view.model }); 
     });
     
     this.$el.find("#invoice_items").html(itemsHtml);

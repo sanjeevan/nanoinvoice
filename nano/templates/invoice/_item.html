@@ -17,7 +17,7 @@
   <td class="item_r subtotal_td">
     {% if invoice.status == 'draft' %}
     <div class="item-controls">
-      <a data-id="{{ item.id }}" href="{{ url_for('invoice_item.edit', id=item.id) }}" class="btn-small edit"  title="Edit invoice item">Edit</a>
+      <a data-id="{{ item.id }}" href="{{ url_for('invoice_item.update', id=item.id) }}" class="btn-small edit"  title="Edit invoice item">Edit</a>
       <a data-id="{{ item.id }}" href="{{ url_for('invoice_item.delete', id=item.id) }}" class="delete">
         <img src="/static/img/delete.png" />
       </a>

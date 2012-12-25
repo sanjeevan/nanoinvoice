@@ -1,16 +1,14 @@
-<div id="edit-invoice-item" class="app-popup">
-  <div class="header">Edit</div>
+<div id="edit-invoice-item">
+  <div class="header"><h2>Edit</h2></div>
   <div class="content">
-    <form accept-charset="utf-8" method="post" action="/frontend_dev.php/invoice_item/update" class="inline big">
-      <input type="hidden" name="id" value="<%= InvoiceItem.get("id") %>" />
-      <input type="hidden" name="invoice_item[invoice_id]" value="<%= InvoiceItem.get("invoice_id") %>" />
+    <form accept-charset="utf-8" method="post" action="/invoice_item/update/<%= InvoiceItem.get('id') %>" class="inline big">
       <div class="fields">
         <div class="field">
           <label>Qty</label>
           
-          <input size="2" id="quantity" type="text" name="invoice_item[quantity]" value="<%= InvoiceItem.getQuantityString() %>">
+          <input size="2" id="quantity" type="text" name="quantity" value="<%= InvoiceItem.getQuantityString() %>">
 
-          <select id="invoice_item_type" name="invoice_item[type_id]">
+          <select id="invoice_item_type" name="type_id">
             <% App.invoiceItemTypes.each(function(t) { %>
               <% if (t.get("id") == InvoiceItem.get("type_id")) { %>
                 <option selected="selected" value="<%= t.get("id") %>"><%= t.get("name") %></option>
@@ -27,26 +25,30 @@
         
         <div class="field">
           <label>Details</label>
-          <textarea id="details" class="wide" name="invoice_item[description]"><%= InvoiceItem.get("description") %></textarea>
+          <textarea id="details" class="wide" name="description"><%= InvoiceItem.get("description") %></textarea>
         </div>
 
         <div class="field" id="price-row">
           <label>Unit Price (£)</label>
-          <input id="price" type="text" name="invoice_item[price]" value="<%= InvoiceItem.get("price") %>" />
+          <input id="price" type="text" name="price" value="<%= InvoiceItem.get("price") %>" />
         </div>
         
-        <div class="field" id="tax-row">
-          <label>VAT</label>
-          <select name="invoice_item[tax_rate_id]">
-            <% App.taxRates.each(function(t){ %>
-              <% if (InvoiceItem.get("tax_rate_id") == t.get("id")) { %>
-              <option selected="selected" value="<%= t.get("id") %>"><%= t.get("name") %> (<%= t.get("rate") %>%)</option>
-              <% } else { %>
-              <option value="<%= t.get("id") %>"><%= t.get("name") %> (<%= t.get("rate") %>%)</option>
-              <% } %>
-            <% }) %> 
-          </select>
-        </div>
+        <% if (App.taxRates.length > 0) { %>
+          <div class="field" id="tax-row">
+            <label>Tax</label>
+            <select name="tax_rate_id">
+              <% App.taxRates.each(function(t){ %>
+                <% if (InvoiceItem.get("tax_rate_id") == t.get("id")) { %>
+                <option selected="selected" value="<%= t.get("id") %>"><%= t.get("name") %> (<%= t.get("rate") %>%)</option>
+                <% } else { %>
+                <option value="<%= t.get("id") %>"><%= t.get("name") %> (<%= t.get("rate") %>%)</option>
+                <% } %>
+              <% }) %> 
+            </select>
+          </div>
+        <% } else { %>
+          <input type="hidden" name="tax_rate_id" value="-1"/>
+        <% } %>
 
         <div class="field actions">
           <button id="save" class="button normal">Update</button> &nbsp; 

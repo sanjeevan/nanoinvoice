@@ -259,15 +259,12 @@ body, html {
 /* line 40, ../sass/_layout.scss */
 .application {
   background-color: #fff;
-  -webkit-box-shadow: 0px 0px 4px #888888;
-  -moz-box-shadow: 0px 0px 4px #888888;
-  box-shadow: 0px 0px 4px #888888;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
   border-radius: 4px;
-  border: 1px solid #888;
+  border: 1px solid #ccc;
 }
 /* line 47, ../sass/_layout.scss */
 .application .top {
@@ -707,34 +704,45 @@ html[xmlns] .pagestyle {
 #new-invoice-item form .field *, #edit-invoice-item form .field * {
   vertical-align: middle;
 }
-/* line 7, ../sass/_popup.scss */
+/* line 10, ../sass/_popup.scss */
 #new-invoice-item form label, #edit-invoice-item form label {
   width: 100px;
 }
-/* line 11, ../sass/_popup.scss */
+/* line 14, ../sass/_popup.scss */
 #new-invoice-item form .help, #edit-invoice-item form .help {
   margin-left: 100px;
   font-size: 11px;
 }
-/* line 16, ../sass/_popup.scss */
+/* line 19, ../sass/_popup.scss */
+#new-invoice-item form .cancel, #edit-invoice-item form .cancel {
+  text-decoration: none;
+  color: #999;
+  text-shadow: 1px 1px 0 #fff;
+  padding-left: 1em;
+}
+/* line 26, ../sass/_popup.scss */
+#new-invoice-item form .cancel:hover, #edit-invoice-item form .cancel:hover {
+  color: #333;
+}
+/* line 30, ../sass/_popup.scss */
 #new-invoice-item form #details, #edit-invoice-item form #details {
   line-height: 1em;
   width: 370px;
 }
-/* line 21, ../sass/_popup.scss */
+/* line 35, ../sass/_popup.scss */
 #new-invoice-item form #price, #edit-invoice-item form #price {
   width: 6em;
 }
-/* line 25, ../sass/_popup.scss */
+/* line 39, ../sass/_popup.scss */
 #new-invoice-item form #vat, #edit-invoice-item form #vat {
   width: 6em;
 }
-/* line 29, ../sass/_popup.scss */
+/* line 43, ../sass/_popup.scss */
 #new-invoice-item form .actions *, #edit-invoice-item form .actions * {
   vertical-align: middle;
 }
 
-/* line 36, ../sass/_popup.scss */
+/* line 50, ../sass/_popup.scss */
 #facebox .content-wrapper {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -745,7 +753,7 @@ html[xmlns] .pagestyle {
   -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
   -moz-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.7);
 }
-/* line 43, ../sass/_popup.scss */
+/* line 57, ../sass/_popup.scss */
 #facebox .header {
   background: url("/static/img/header.png");
   padding: 18px 18px 14px 18px;
@@ -756,7 +764,7 @@ html[xmlns] .pagestyle {
   -o-border-radius: 5px 5px 0 0;
   border-radius: 5px 5px 0 0;
 }
-/* line 49, ../sass/_popup.scss */
+/* line 63, ../sass/_popup.scss */
 #facebox .header h2 {
   color: #444444;
   font-size: 2em;
@@ -764,7 +772,7 @@ html[xmlns] .pagestyle {
   margin-bottom: 3px;
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
 }
-/* line 59, ../sass/_popup.scss */
+/* line 73, ../sass/_popup.scss */
 #facebox .content {
   padding: 1em;
   background-color: #fff;
@@ -1180,8 +1188,12 @@ html[xmlns] .pagestyle {
 
 /* line 52, ../sass/vendor/_facebox.scss */
 .facebox_overlayBG {
-  background-color: #000;
   z-index: 99;
+  background: radial-gradient(ellipse closest-corner at 50% 50%, rgba(0, 0, 0, 0.3) 1%, rgba(0, 0, 0, 0.624) 100%) repeat scroll 0 0 transparent;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
 }
 
 /* line 23, ../sass/screen.scss */

@@ -55,6 +55,19 @@ class InvoiceItem(db.Model):
                 mins = str(mins).zfill(2)
                 return '%s:%s' % (hours, mins)
         return int(self.quantity) if math.fmod(self.quantity, 1) == 0 else self.quantity
+    
+    def update_totals(self):
+        if self.tax_rate_id > 0:
+            rate = 0
+            if self.id:
+                rate = self.tax_rate.rate
+            else:
+                from nano.models import TaxRate
+                rate = TaxRate.query.get(self.tax_rate_id).rate
+            self.tax = self.quantity * float(self.price) * float(rate)/100
+            print self.tax
+        self.total = self.quantity * float(self.price)
+        return self.tax, self.total
 
     def serialize(self):
         d = model_to_dict(self)

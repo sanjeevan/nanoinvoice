@@ -50,7 +50,12 @@
 }
 
 .facebox_overlayBG {
-  background-color: #000;
+  //background-color: #000;
   z-index: 99;
+  background: radial-gradient(ellipse closest-corner at 50% 50% , rgba(0, 0, 0, 0.3) 1%, rgba(0, 0, 0, 0.624) 100%) repeat scroll 0 0 transparent;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
 }
 

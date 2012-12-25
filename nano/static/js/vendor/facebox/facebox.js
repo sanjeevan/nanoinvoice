@@ -26,7 +26,7 @@
 
   $.extend($.facebox, {
     settings: {
-      opacity      : 0.2,
+      opacity      : 1.0,
       overlay      : true,
       loadingImage : '/static/js/vendor/facebox/loading.gif',
       closeImage   : '/static/js/vendor/facebox/closelabel.png',

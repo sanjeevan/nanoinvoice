@@ -35,6 +35,12 @@ class Invoice(db.Model):
         cur_max += 1
 
         return str(cur_max)
+
+    def next_item_sort_order(self):
+        """Generate the next number for the invoice item's sort order"""
+        from nano.models import InvoiceItem
+        total = InvoiceItem.query.filter_by(invoice_id=self.id).count()
+        return total+1
     
     def update_totals(self):
         """Update total and tax"""

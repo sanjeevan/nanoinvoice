@@ -3,7 +3,10 @@
     @include glow-inputs();
     @include large-inputs();
     
-    .field * { vertical-align: middle; }
+    .field * { 
+      vertical-align: middle; 
+    }
+    
     label {
       width: 100px;
     }
@@ -11,6 +14,17 @@
     .help {
       margin-left: 100px;
       font-size: 11px;
+    }
+
+    .cancel {
+      text-decoration: none;
+      color: #999;
+      text-shadow: 1px 1px 0 #fff;
+      padding-left: 1em;
+    }
+
+    .cancel:hover {
+      color: #333;
     }
 
     #details {

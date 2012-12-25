@@ -40,9 +40,9 @@ body, html {
 .application {
   background-color: #fff;
   
-  @include box-shadow(0px 0px 4px #888);
+  //@include box-shadow(0px 0px 4px #888);
   @include border-radius(4px);
-  border: 1px solid #888;
+  border: 1px solid #ccc;
   
   .top {
     @include panel-header;

@@ -1,10 +1,12 @@
 from flask import (Flask, Blueprint, render_template, abort, redirect, url_for,
-                   flash, request)
+                   flash, request, Response)
 from jinja2 import TemplateNotFound
 from flask.ext.login import login_required, current_user
 
-from nano.models import Invoice
+from nano.models import Invoice, InvoiceItem
 from nano.forms import InvoiceForm, InvoiceItemForm
+from nano.utils import json_dumps 
+from nano.extensions import db
 
 invoice_item = Blueprint('invoice_item', __name__, url_prefix='/invoice_item')
 
@@ -17,18 +19,35 @@ def index():
 @invoice_item.route('/create', methods=['POST'])
 def create():
     form = InvoiceItemForm(request.form)
-    print request.form
 
     if form.validate():
-        print form
+        invoice_item = form.save()
+        ret = {'Invoice': invoice_item.invoice.serialize(), 'InvoiceItem':
+                invoice_item.serialize() }
+        return Response(json_dumps(ret), content_type='application/json')
     else:
-        print form.errors
-    return 'ok'
+        return 'There was an error', 400 
+    
 
-@invoice_item.route('/edit', methods=['GET'])
-def edit(id):
-    pass
+@invoice_item.route('/update/<int:id>', methods=['POST'])
+def update(id):
+    invoice_item = InvoiceItem.query.get(id)
+    form = InvoiceItemForm(request.form, obj=invoice_item)
 
-@invoice_item.route('/delete', methods=['GET'])
-def delete(id):
-    pass
+    if form.validate():
+        invoice_item = form.save()
+        ret = {'Invoice': invoice_item.invoice.serialize(), 'InvoiceItem':
+                invoice_item.serialize() }
+        return Response(json_dumps(ret), content_type='application/json')
+    else:
+        return 'There was an error', 400 
+
+@invoice_item.route('/delete', methods=['DELETE'])
+def delete():
+    invoice_item = InvoiceItem.query.get(request.args.get('id'))
+    if not invoice_item:
+        return 'Not found', 404
+    else:
+        db.session.delete(invoice_item)
+        db.session.commit()
+        return 'Deleted', 200
