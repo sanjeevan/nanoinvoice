@@ -19,7 +19,6 @@ def index():
 def show(id):
     inv = Invoice.query.get(id)
     profile = inv.user.profile
-    print json_dumps(inv.serialize())
     return render_template('invoice/show.html', invoice=inv, profile=profile)
 
 @invoice.route('/create', methods=['GET', 'POST'])
