@@ -8,6 +8,7 @@ js = Blueprint('app_js', __name__, url_prefix='/app_js')
 
 @js.route('/constants.js', methods=['GET'])
 def constants():
+    tax_rates = []
     if current_user.is_authenticated():
         tax_rates = TaxRate.query.filter_by(user_id=current_user.id).all()
     else:

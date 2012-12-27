@@ -65,6 +65,9 @@ class InvoiceItem(db.Model):
                 from nano.models import Invoice
                 rate = TaxRate.query.get(self.tax_rate_id).rate
             self.tax = self.quantity * float(self.price) * float(rate)/100
+        else:
+            self.tax = 0
+
         self.total = self.quantity * float(self.price)
 
         return self.tax, self.total
