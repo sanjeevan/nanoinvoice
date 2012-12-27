@@ -54,6 +54,7 @@
               <li><a href="{{ url_for('payment.index') }}"><img src="/static/img/payments.png" /> Payments</a></li>
               <li><a href="{{ url_for('client.index') }}"><img src="/static/img/customers.png" /> Clients</a></li>
             </ul>
+            <div id="padding"></div>
           </div>
           <div class="workspace">
             {% block content %}{% endblock %}
@@ -68,7 +69,10 @@
       </div>
     </div>
     <script type="text/javascript">
-       $(document).ready(function() { $("select").select2(); });
+      $(document).ready(function() { 
+          $("select").select2();
+          layoutFix();
+      });
     </script>
   </body>
 </html>

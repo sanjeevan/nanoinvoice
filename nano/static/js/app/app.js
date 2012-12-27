@@ -34,6 +34,17 @@ function numberFormat (number, decimals, dec_point, thousands_sep) {
     return s.join(dec);
 }
 
+function layoutFix() {
+  var sh = $('.sidebar').outerHeight();
+  var ch = $('.workspace').outerHeight();
+  var diff = sh - ch;
+
+  if(diff > 0) {
+    $('.workspace').height(sh);
+  } else {
+    $('.sidebar').height(ch);
+  }
+}
 
 var App   = {};
 var User  = {};

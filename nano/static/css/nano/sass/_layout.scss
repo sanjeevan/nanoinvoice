@@ -55,18 +55,19 @@ body, html {
 .content {
   clear: both;
   @include pie-clearfix;
+  overflow: hidden;
   
   .sidebar {
     @include span-columns(2);
     @include border-radius(0 0 0 4px);
     background-color: #E9F2F9;
-    padding-bottom: 2em;
     border-right: 1px solid darken(#E9F2F9, 10%);
-    min-height: 550px;
+    #padding { height: 2em; }
   }
 
   .workspace {
     @include span-columns(10 omega);
+    background-color: #ececec;
   }
 
   .workspace-inner {

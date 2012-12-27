@@ -97,6 +97,10 @@ def configure_template_filters(app):
     def pretty_date(value):
         return utils.pretty_date(value)
 
+    @app.template_filter()
+    def format_currency(value):
+        return "{:,.2f}".format(value)
+
 
 def configure_logging(app):
     """Configure file(info) and email(error) logging."""

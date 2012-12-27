@@ -25,6 +25,8 @@ class InvoiceItemForm(Form):
         self.tax_rate_id.choices = self.get_tax_rate_options()
         if obj:
             self.model = obj
+        else:
+            self.model = None
 
     def get_type_options(self):
         """Get item types"""

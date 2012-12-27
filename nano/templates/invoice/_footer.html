@@ -3,13 +3,13 @@
   <tr id="net_total_tr">
     <td colspan="2">&nbsp;</td>
     <td colspan="2" class="item_r">Net Total</td>
-    <td class="item_r" id="net_total_amount">{{ invoice.sub_total }}</td>
+    <td class="item_r" id="net_total_amount">{{ invoice.sub_total|format_currency }}</td>
   </tr>
 
   <tr id="vat_tr">
     <td colspan="2">&nbsp;</td>
     <td colspan="2" class="item_r">VAT</td>
-    <td class="item_r" id="sales_tax_amount">{{ invoice.tax }}</td>
+    <td class="item_r" id="sales_tax_amount">{{ invoice.tax|format_currency }}</td>
   </tr>
 {% endif %}
 
@@ -30,5 +30,5 @@
   {% endif %}
   
   <td colspan="{{ col_span }}" class="total" id="total_currency"><span class="currency">{{ invoice.currency_code }} </span>Total</td>
-  <td class="total" id="total_amount">{{ invoice.total }}</td>
+  <td class="total" id="total_amount">{{ invoice.total|format_currency }}</td>
 </tr>

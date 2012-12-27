@@ -44,12 +44,16 @@ def update(id):
     else:
         return 'There was an error', 400 
 
-@invoice_item.route('/delete', methods=['DELETE'])
-def delete():
-    invoice_item = InvoiceItem.query.get(request.args.get('id'))
+@invoice_item.route('/delete/<int:id>', methods=['DELETE'])
+def delete(id):
+    invoice_item = InvoiceItem.query.get(id)
     if not invoice_item:
         return 'Not found', 404
     else:
+        invoice = invoice_item.invoice
         db.session.delete(invoice_item)
         db.session.commit()
-        return 'Deleted', 200
+        db.session.refresh(invoice)
+        invoice.update_totals(commit=True)
+        ret = {'Invoice': invoice.serialize()}
+        return Response(json_dumps(ret), content_type='application/json')

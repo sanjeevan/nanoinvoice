@@ -50,7 +50,7 @@ class InvoiceForm(Form):
         invoice.currency_code = 'GBP'
         invoice.date_issued = datetime.strptime(self.date_issued.data, self.DATE_FORMAT)
         
-        payment_term = PaymentTerm.query.filter_by(days=self.payment_term_id).first()
+        payment_term = PaymentTerm.query.filter_by(days=self.payment_term_id.data).first()
         invoice.payment_term_id = payment_term.id
 
         if int(self.payment_term_id.data) == -1:
@@ -60,6 +60,8 @@ class InvoiceForm(Form):
             days = int(self.payment_term_id.data)
             invoice.due_date = now + timedelta(days=days) 
         
+        invoice.update_totals()
+
         db.session.add(invoice)
         db.session.commit()
         return invoice

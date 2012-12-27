@@ -1,7 +1,7 @@
 <tr class="item {{ row_class.next() }} " id="invoice-item-{{ item.id }}">
   <td class="item_l quantity_td">
     {{ item.quantity_str() }}
-    {{ item.invoice_item_type.name }}
+    {{ item.invoice_item_type.name_pluralized(item.quantity) }}
   </td>
 
   <td class="item_l description_td">
@@ -10,12 +10,12 @@
 
   <td class="item_r price_td">
     {% if item.should_render_field('price') %}
-      {{ item.price }}
+      {{ item.price|format_currency }}
     {% endif %}
   </td>
   
   <td class="item_r taxrate_td">
-    {{ item.tax }}
+    {{ item.tax|default(0, True)|format_currency }}
   </td>
   
   <td class="item_r subtotal_td">
@@ -28,7 +28,7 @@
     </div>
     {% endif %}
     {% if item.should_render_field('total') %}
-      {{ item.total }} 
+      {{ item.total|format_currency }} 
     {% endif %}
   </td>
 </tr>
