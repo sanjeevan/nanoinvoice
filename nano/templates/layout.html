@@ -29,7 +29,7 @@
         {% if current_user.is_authenticated() %}
         <div class="account">
           <ul>
-            <li><a href="">Your account</a></li>
+            <li><a href="{{ url_for('account.index') }}">Your account</a></li>
             <li><a href="{{ url_for('account.logout') }}">Log out</a></li>
           </ul>
         </div>

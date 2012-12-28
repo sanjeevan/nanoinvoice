@@ -21,7 +21,7 @@ account = Blueprint('account', __name__, url_prefix='/account')
 
 @account.route('/')
 def index():
-    return 'Account index page', 200
+    return render_template('account/index.html')
 
 @account.route('/login', methods=['GET', 'POST'])
 def login():
