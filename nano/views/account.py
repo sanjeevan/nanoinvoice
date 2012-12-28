@@ -14,14 +14,27 @@ from flask.ext.login import (login_required, login_user, current_user,
 from nano.models import User
 from nano.extensions import db, cache, mail, login_manager
 from nano.forms import (SignupForm, LoginForm, RecoverPasswordForm,
-                         ChangePasswordForm, ReauthForm)
+                         ChangePasswordForm, ReauthForm, UserForm)
 
 
 account = Blueprint('account', __name__, url_prefix='/account')
 
-@account.route('/')
+@account.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('account/index.html')
+    """Account information + update"""
+    form = UserForm(obj=current_user)
+    return render_template('account/index.html', form=form)
+
+@account.route('/business', methods=['GET', 'POST'])
+def business():
+    """Company information + update"""
+    return render_template('account/business.html')
+
+
+@account.route('/settings', methods=['GET', 'POST'])
+def settings():
+    """Application settings"""
+    return render_template('account/settings.html')
 
 @account.route('/login', methods=['GET', 'POST'])
 def login():
@@ -128,8 +141,7 @@ def reset_password():
         user = User.query.filter_by(email=form.email.data).first()
 
         if user:
-            flash(_('Please see your email for instructions on '
-                  'how to access your account'), 'success')
+            flash(_('Please see your email for instructions on how to access your account'), 'success')
 
             user.activation_key = str(uuid4())
             db.session.add(user)

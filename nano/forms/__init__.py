@@ -4,3 +4,4 @@ from nano.forms.frontend import (SignupForm, LoginForm, RecoverPasswordForm,
 from nano.forms.client import SimpleClientForm, DetailedClientForm
 from nano.forms.invoice import InvoiceForm
 from nano.forms.invoice_item import InvoiceItemForm
+from nano.forms.user import UserForm

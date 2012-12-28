@@ -1,3 +1,5 @@
+import urllib, hashlib
+
 from werkzeug import (generate_password_hash, check_password_hash,
                       cached_property)
 from flask.ext.login import UserMixin
@@ -61,3 +63,12 @@ class User(db.Model, UserMixin):
             ))
         q = reduce(db.and_, criteria)
         return cls.query.filter(q)
+
+
+    def gravatar_url(self, size=40):
+        g_url = 'http://www.gravatar.com/avatar/' + hashlib.md5(unicode(self.email_address).lower()).hexdigest()
+        g_url+= '?' + urllib.urlencode({'s': str(size)})
+        return g_url
+
+
+
