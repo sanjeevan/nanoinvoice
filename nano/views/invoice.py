@@ -6,6 +6,7 @@ from flask.ext.login import login_required, current_user
 from nano.models import Invoice
 from nano.forms import InvoiceForm
 from nano.utils import json_dumps
+from nano.extensions import db
 
 invoice = Blueprint('invoice', __name__, url_prefix='/invoice')
 
@@ -16,6 +17,7 @@ def index():
     return render_template('invoice/index.html', invoices=invoices)
 
 @invoice.route('/<int:id>', methods=['GET'])
+@login_required
 def show(id):
     inv = Invoice.query.get(id)
     profile = inv.user.profile
@@ -25,12 +27,48 @@ def show(id):
 @login_required
 def create():
     form = InvoiceForm(request.form)
-    
     if request.method == 'POST':
         if form.validate():
             invoice = form.save()
             return redirect(url_for('.show', id=invoice.id))
         else:
             flash('There were errors')
-
     return render_template('invoice/create.html', form=form)
+
+
+@invoice.route('/reopen/<int:id>', methods=['GET', 'POST'])
+@login_required
+def reopen(id):
+    invoice = Invoice.query.get(id)
+    if not invoice:
+        return 'Invoice not found', 404
+    invoice.status = 'draft'
+    db.session.add(invoice)
+    db.session.commit()
+    return redirect(url_for('.show', id=invoice.id))
+
+@invoice.route('/save/<int:id>', methods=['GET', 'POST'])
+@login_required
+def save(id):
+    invoice = Invoice.query.get(id)
+    if not invoice:
+        return 'Invoice not found', 404
+    invoice.status = 'saved'
+    db.session.add(invoice)
+    db.session.commit()
+    return redirect(url_for('.show', id=invoice.id))
+
+
+@invoice.route('/print')
+def print_invoice():
+    pass
+
+@invoice.route('/email')
+def email():
+    pass
+
+@invoice.route('/export')
+def export():
+    pass
+
+

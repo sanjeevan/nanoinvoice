@@ -14,9 +14,6 @@ var DraftInvoiceView = Backbone.View.extend({
     
     this.model.on("change", this.render, this);
     this.model.on("change", this.updateTotals, this);
-
-    //this.model.on("update:InvoiceItems", this.render);
-    //this.model.on("update:InvoiceItems", this.render);
   },
 
   onEditItemClick: function(evt) {

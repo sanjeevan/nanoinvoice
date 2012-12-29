@@ -45,7 +45,7 @@ class InvoiceForm(Form):
         invoice = Invoice()
         invoice.user_id = current_user.id
         invoice.contact_id = self.contact_id.data
-        invoice.status = 'new'
+        invoice.status = 'draft'
         invoice.reference = self.reference.data
         invoice.currency_code = 'GBP'
         invoice.date_issued = datetime.strptime(self.date_issued.data, self.DATE_FORMAT)
