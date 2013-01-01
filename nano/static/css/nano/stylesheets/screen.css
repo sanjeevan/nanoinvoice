@@ -500,7 +500,7 @@ form .field {
 }
 /* line 54, ../sass/_forms.scss */
 form input.error {
-  border: 1px solid red;
+  border: 1px solid #ff0000;
 }
 /* line 58, ../sass/_forms.scss */
 form span.error {
@@ -514,12 +514,16 @@ form.inline label {
   display: inline-block;
   width: 150px;
 }
-/* line 69, ../sass/_forms.scss */
+/* line 70, ../sass/_forms.scss */
 form.inline div.input {
   display: inline-block;
 }
-
 /* line 74, ../sass/_forms.scss */
+form.inline span.error {
+  display: block;
+}
+
+/* line 79, ../sass/_forms.scss */
 form.create {
   width: 80%;
   margin: 3em auto;
@@ -562,7 +566,7 @@ form.create select {
   font-size: 1em;
   padding: 4px;
 }
-/* line 83, ../sass/_forms.scss */
+/* line 88, ../sass/_forms.scss */
 form.create .fields {
   padding: 1em;
   background: -moz-linear-gradient(center top, white, #f5f4f4) repeat-x scroll 0 0 #fbfbfb;
@@ -570,11 +574,11 @@ form.create .fields {
   border-radius: 0 0 4px 4px;
   margin: 0 auto 12px;
 }
-/* line 88, ../sass/_forms.scss */
+/* line 93, ../sass/_forms.scss */
 form.create input {
   width: 366px;
 }
-/* line 92, ../sass/_forms.scss */
+/* line 97, ../sass/_forms.scss */
 form.create .header {
   -moz-border-bottom-colors: none;
   -moz-border-left-colors: none;
@@ -594,21 +598,30 @@ form.create .header {
   color: #666;
 }
 
-/* line 98, ../sass/_forms.scss */
+/* line 103, ../sass/_forms.scss */
 form.create.invoice input.reference {
   width: auto;
 }
-/* line 101, ../sass/_forms.scss */
+/* line 106, ../sass/_forms.scss */
 form.create.invoice select {
   width: 366px;
 }
-/* line 105, ../sass/_forms.scss */
+/* line 110, ../sass/_forms.scss */
 form.create.invoice input.date {
   width: 200px;
 }
-/* line 109, ../sass/_forms.scss */
+/* line 114, ../sass/_forms.scss */
 form.create.invoice div.field-due_date {
   display: none;
+}
+
+/* line 121, ../sass/_forms.scss */
+form.create.company select#country, form.create.company div#s2id_country {
+  width: 250px;
+}
+/* line 125, ../sass/_forms.scss */
+form.create.company input#post_code {
+  width: 100px;
 }
 
 /* line 1, ../sass/_flash.scss */

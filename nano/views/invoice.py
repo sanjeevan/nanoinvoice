@@ -20,8 +20,8 @@ def index():
 @login_required
 def show(id):
     inv = Invoice.query.get(id)
-    profile = inv.user.profile
-    return render_template('invoice/show.html', invoice=inv, profile=profile)
+    company = inv.user.company
+    return render_template('invoice/show.html', invoice=inv, company=company)
 
 @invoice.route('/create', methods=['GET', 'POST'])
 @login_required

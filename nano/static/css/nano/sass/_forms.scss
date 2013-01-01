@@ -52,7 +52,7 @@ form {
   }
 
   input.error {
-    border: 1px solid red;
+    border: 1px solid #ff0000;
   }
 
   span.error {
@@ -66,8 +66,13 @@ form.inline {
     display: inline-block;
     width: 150px;
   }
+  
   div.input {
     display: inline-block;
+  }
+
+  span.error {
+    display: block;
   }
 }
 
@@ -109,4 +114,16 @@ form.create.invoice {
   div.field-due_date {
     display: none;
   }
+}
+
+
+form.create.company {
+  select#country, div#s2id_country {
+    width: 250px;
+  }
+
+  input#post_code {
+    width: 100px;
+  }
+
 }

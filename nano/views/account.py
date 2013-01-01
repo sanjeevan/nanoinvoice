@@ -11,10 +11,10 @@ from flask.ext.login import (login_required, login_user, current_user,
                             logout_user, confirm_login, fresh_login_required,
                             login_fresh)
 
-from nano.models import User
+from nano.models import User, Company
 from nano.extensions import db, cache, mail, login_manager
 from nano.forms import (SignupForm, LoginForm, RecoverPasswordForm,
-                         ChangePasswordForm, ReauthForm, UserForm)
+                         ChangePasswordForm, ReauthForm, UserForm, BusinessForm)
 
 
 account = Blueprint('account', __name__, url_prefix='/account')
@@ -28,7 +28,14 @@ def index():
 @account.route('/business', methods=['GET', 'POST'])
 def business():
     """Company information + update"""
-    return render_template('account/business.html')
+    company = Company.query.filter_by(user_id=current_user.id).first()
+    form = BusinessForm(request.form, obj=company)
+
+    if request.method == 'POST' and form.validate():
+        company = form.save()
+        flash('Business details updated')
+
+    return render_template('account/business.html', form=form)
 
 
 @account.route('/settings', methods=['GET', 'POST'])

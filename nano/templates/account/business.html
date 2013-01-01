@@ -5,6 +5,23 @@
   {% include 'account/_filter.html' %}
 
   <div class="workspace-inner">
+    <form class="create inline company" method="post" action="{{ url_for('.business') }}">
+      <div class="header">Your business information</div>  
+      <div class="fields">
+
+        {{ render_input(form.name) }} 
+        {{ render_input(form.address1) }} 
+        {{ render_input(form.address2) }}
+        {{ render_input(form.town) }}
+        {{ render_input(form.city) }}
+        {{ render_input(form.county) }}
+        {{ render_input(form.country) }}
+        {{ render_input(form.post_code) }}
+        <div class="field">
+          <button class="button normal" type="submit">Save</button>
+        </div>
+      </div>
+    </form>
 
   </div>
 
