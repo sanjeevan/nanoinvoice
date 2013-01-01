@@ -2,8 +2,8 @@ from datetime import datetime
 from nano.extensions import db
 from nano.utils import get_current_time
 
-class AccountType(db.Model):
-    __tablename__ = 'account_type'
+class CompanyType(db.Model):
+    __tablename__ = 'company_type'
 
     #column definitions
     id = db.Column(u'id', db.BigInteger, primary_key=True, nullable=False)
