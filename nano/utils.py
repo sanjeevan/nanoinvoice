@@ -8,6 +8,10 @@ import decimal
 
 VARCHAR_LEN_128 = 128
 
+class Struct:
+    def __init__(self, **entries): 
+        self.__dict__.update(entries)
+
 def json_dumps(obj):
     class DateTimeJSONEncoder(json.JSONEncoder):
         def default(self, obj):

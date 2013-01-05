@@ -1,12 +1,14 @@
-from flask import (Flask, Blueprint, render_template, abort, redirect, url_for,
-                   flash, request)
-from jinja2 import TemplateNotFound
+from flask import (Flask, Blueprint, render_template, redirect, url_for,
+                   flash, request, current_app, send_file)
 from flask.ext.login import login_required, current_user
+from urlparse import urljoin
+from datetime import datetime
 
 from nano.models import Invoice
 from nano.forms import InvoiceForm
 from nano.utils import json_dumps
 from nano.extensions import db
+from nano.wkhtml import wkhtml_to_pdf
 
 invoice = Blueprint('invoice', __name__, url_prefix='/invoice')
 
@@ -58,7 +60,6 @@ def save(id):
     db.session.commit()
     return redirect(url_for('.show', id=invoice.id))
 
-
 @invoice.route('/print')
 def print_invoice():
     pass
@@ -67,8 +68,30 @@ def print_invoice():
 def email():
     pass
 
-@invoice.route('/export')
-def export():
-    pass
+@invoice.route('/export/<int:id>', methods=['GET'])
+@login_required
+def export(id):
+    invoice = Invoice.query.get(id)
+    if not invoice:
+        return 'invoice not found', 404
+    
+    # generate PDF
+    # TODO: do this a background job to scale properly
+    path = url_for('.pdf', id=invoice.id)
+    url = urljoin(current_app.config['HOSTNAME'], path)
+    pdf_path = wkhtml_to_pdf(url)
+    if not pdf_path:
+        return 'Error generating PDF', 400
+    
+    # send PDF to browser
+    filename = 'invoice-%s-%s.pdf' % (datetime.now().date().isoformat(),
+                                      invoice.reference)  
+    return send_file(pdf_path, mimetype='application/pdf', as_attachment=True,
+                     attachment_filename=filename)
 
-
+@invoice.route('/pdf/<int:id>', methods=['GET'])
+def pdf(id):
+    invoice = Invoice.query.get(id)
+    if not invoice:
+        return 'invoice not found', 404
+    return render_template('invoice/pdf.html', invoice=invoice, company=invoice.user.company)

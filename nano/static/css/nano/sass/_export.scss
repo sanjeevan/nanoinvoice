@@ -1,0 +1,24 @@
+
+body, html {
+  background-color: #fff;
+  font-size: $base-font-size;
+  font-family: "HelveticaNeue", Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+* {
+  @include box-sizing(border-box);
+}
+
+a img {
+  vertical-align: middle;
+}
+
+h1 {
+  color: $h1-colour;
+  @include adjust-font-size-to(28px);
+  line-height: 1em;
+  font-weight: 900;
+}
+
+

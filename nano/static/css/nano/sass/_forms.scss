@@ -125,5 +125,14 @@ form.create.company {
   input#post_code {
     width: 100px;
   }
+}
 
+form.create.client {
+  select#country, div#s2id_country {
+    width: 250px;
+  }
+
+  input#post_code {
+    width: 100px;
+  }
 }

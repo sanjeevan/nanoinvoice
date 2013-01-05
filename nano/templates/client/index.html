@@ -22,7 +22,7 @@
     </div>
     <div class="data-list"> 
       {% for contact in contacts %}
-        <div class="row">
+      <div class="row client" data-client-id="{{ contact.id }}">
           <img src="/static/img/user_icon.png" />
           {{ contact.first_name }} {{ contact.last_name }} - {{ contact.organisation|default('No organisation', True) }}
         </div>
@@ -32,5 +32,13 @@
   </div>
 
   {% endif %}
+  
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.row.client').click(function() {
+        window.location = '/client/' + $(this).data('client-id');  
+      });
+    });
+  </script>
 
 {% endblock %}

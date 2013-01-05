@@ -1,27 +1,10 @@
-{% extends 'layout.html' %}
-{% block content %}
-<div class="filters">
-  <div class="left">
-    {% if invoice.status == 'saved' %}
-      <a href="{{ url_for('.reopen', id=invoice.id) }}"><img src="/static/img/padlock_closed_icon&16.png"></a>
-      <a href="{{ url_for('.print_invoice', id=invoice.id) }}"><img src="/static/img/print_icon&16.png"> Print</a>
-      <a href="{{ url_for('.email', id=invoice.id) }}"><img src="/static/img/mail_icon&16.png"> Email</a>
-      <a href="{{ url_for('.export', id=invoice.id) }}"><img src="/static/img/doc_export_icon&16.png"> Export</a>
-    {% endif %}
-    {% if invoice.status == 'draft' %}
-      <a href="{{ url_for('.save', id=invoice.id) }}"><img src="/static/img/padlock_open_icon&16.png"></a></a>
-      <a href=""><img src="/static/img/wrench_plus_2_icon&16.png"> Edit invoice</a>
-    {% endif %}
-    <a href=""><img src="/static/img/trash_icon&16.png"> Delete</a>
-  </div>
-  <div class="right">
-  </div>
-</div>
-
-<div id="manage" class="workspace-inner"> 
-
-    <div class="{{ invoice.status }}">
-      <div id="invoice" class="pagestyle">
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/static/css/nano/stylesheets/pdf.css" />
+  </head>
+  <body>
+    <div>
+      <div>
         <div id="invoice-header">
           <img alt="Logo" class="logo screen" src="#">
           <div class="vcard" id="company-address">
@@ -59,19 +42,9 @@
             {% include 'invoice/_footer.html' %}
           </tfoot>
         </table>
-      
-        
-
         <div class="clearfix"></div>
       </div>
     </div>
   </div>
-
-<script type="text/javascript">
-  var view = new DraftInvoiceView({
-    el: "#manage",
-    model: new Invoice({{ invoice.__json__()|safe }}) 
-  }); 
-</script>
-
-{% endblock %}
+  </body>
+</html>

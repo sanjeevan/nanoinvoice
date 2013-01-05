@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+{% from 'macros/_misc.html' import render_input %}
+
+{% block content %}
+  
+  <div class="filters">
+    <div class="left">
+      <a href="{{ url_for('.create') }}"><img src="/static/img/plus.png"> Add client</a>
+    </div>
+    <div class="right">
+    </div>
+  </div>
+  
+  <div class="inner-workspace">
+
+    <form class="create inline client" method="post" action="{{ url_for('.show', id=contact.id) }}">
+      <div class="header">Client</div>
+      <div class="fields">
+
+        {{ render_input(form.first_name) }} 
+        {{ render_input(form.last_name) }} 
+        {{ render_input(form.email_address) }} 
+
+        {{ render_input(form.organisation) }}
+
+        {{ render_input(form.address_line1) }}
+        {{ render_input(form.address_line2) }}
+        {{ render_input(form.town) }}
+        {{ render_input(form.city) }}
+        {{ render_input(form.county) }}
+        {{ render_input(form.country) }}
+        {{ render_input(form.post_code) }}
+        
+        <div class="field">
+          <button class="button normal" type="submit">Submit</button>
+        </div>
+
+      </div>
+    </form>
+
+  </div>
+
+{% endblock %}

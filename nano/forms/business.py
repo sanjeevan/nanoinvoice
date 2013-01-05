@@ -18,7 +18,7 @@ class BusinessForm(Form):
     town                = TextField(u'Town', validators=[required()])
     city                = TextField(u'City', validators=[required()])
     county              = TextField(u'County/Province', validators=[required()])
-    country             = SelectField(u'Country', coerce=unicode, choices=[(1, 'Test')], validators=[required()]) 
+    country             = SelectField(u'Country', coerce=unicode, validators=[required()]) 
     post_code           = TextField(u'ZIP/Postal code', validators=[required()])
     registration_no     = TextField(u'Company registration no.')
 
@@ -37,7 +37,7 @@ class BusinessForm(Form):
         choices = []
         countries = Country.query.order_by('name asc').all()
         for country in countries:
-            choices.append((country.iso3, country.printable_name))
+            choices.append((country.iso, country.printable_name))
         return choices
 
     def get_company_type_options(self):

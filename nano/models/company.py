@@ -16,7 +16,7 @@ class Company(db.Model):
     town        = db.Column(u'town', db.Unicode(length=100))
     city        = db.Column(u'city', db.Unicode(length=100))
     county      = db.Column(u'county', db.Unicode(length=255))
-    country     = db.Column(u'country', db.Unicode(length=3))
+    country     = db.Column(u'country', db.Unicode(length=2))
     post_code   = db.Column(u'post_code', db.Unicode(length=20))
     registration_number = db.Column(u'registration_number', db.Unicode(length=20))
     
