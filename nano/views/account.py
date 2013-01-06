@@ -23,7 +23,13 @@ account = Blueprint('account', __name__, url_prefix='/account')
 @login_required
 def index():
     """Account information + update"""
-    form = UserForm(obj=current_user)
+    user = User.query.get(current_user.id)
+    form = UserForm(request.form, obj=user)
+    
+    if request.method == 'POST' and form.validate():
+        form.save()
+        flash('User information updated')
+
     return render_template('account/index.html', form=form)
 
 @account.route('/business', methods=['GET', 'POST'])

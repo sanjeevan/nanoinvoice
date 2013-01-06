@@ -14,9 +14,7 @@
           </div>
         </div>
         <div id="invoice-info">
-          <h2>Invoice <strong>{{ invoice.reference }}</strong></h2>
-          <h3>{{ invoice.date_issued }}</h3>
-          <p id="payment-due">Payment due by {{ invoice.due_date }}</p>
+          {% include 'invoice/_info.html' %}
         </div>
         <div class="vcard" id="client-details">
           {% include 'invoice/_contact.html' %} 

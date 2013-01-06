@@ -8,19 +8,19 @@
     {% if invoice.contact.address_line2 %}
       <br> {{ invoice.contact.address_line2 }}
     {% endif %}
-    {% if invoice.contact.address_line3 %}
-      <br> {{ invoice.contact.address_line3 }}
+    {% if invoice.contact.town %}
+      <br> {{ invoice.contact.town }}
     {% endif %}
   </div>
-  {% if invoice.contact.address_town %} 
-    <div class="locality">{{ invoice.contact.address_town }}</div>
+  {% if invoice.contact.city %} 
+    <div class="locality">{{ invoice.contact.city }}</div>
   {% endif %}
-  {% if invoice.contact.address_post_code %}
+  {% if invoice.contact.post_code %}
     <div id="client-postcode">
-      {% if invoice.contact.address_county %} 
-      <span class="region">{{ invoice.contact.address_county }}</span>
+      {% if invoice.contact.county %} 
+      <span class="region">{{ invoice.contact.county }}</span>
       {% endif %}
-      <span class="postal-code">{{ invoice.contact.address_post_code }}</span>
+      <span class="postal-code">{{ invoice.contact.post_code }}</span>
     </div>
   {% endif %}
 </div>
