@@ -125,6 +125,17 @@ form.create.company {
   input#post_code {
     width: 100px;
   }
+
+  div.photo {
+    display: inline-block;
+    width: 366px;
+    border: 1px solid #ccc;
+    padding: 1em;
+  }
+
+  input#photo-upload {
+    width: 150px;
+  }
 }
 
 form.create.client {

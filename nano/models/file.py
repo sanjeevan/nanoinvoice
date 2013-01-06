@@ -1,12 +1,13 @@
 import os
+import uuid
+import hashlib
 
 from datetime import datetime
 from flask import current_app, url_for
-from werkzeug import (generate_password_hash, check_password_hash,
-                      cached_property)
+from werkzeug import secure_filename
 
 from nano.extensions import db
-from nano.utils import get_current_time, VARCHAR_LEN_128
+from nano.utils import get_current_time
 
 class File(db.Model):
     __tablename__ = 'file'
@@ -21,7 +22,7 @@ class File(db.Model):
     
     width = db.Column(db.Integer(11))
     height = db.Column(db.Integer(11))
-    hash = db.Column(db.String(32))
+    hash = db.Column(db.String(40))
     
     # times
     created_at = db.Column(db.DateTime, default=get_current_time())
@@ -33,22 +34,36 @@ class File(db.Model):
             return True
         return False
 
-    def get_formatted_filesize(self):
-        pass
+    def get_web_url(self, w=80, h=80, method='normal'):
+        return self.location.replace(current_app.config['UPLOAD_DIR'] + '/', '')
+   
+    @classmethod   
+    def save_uploaded_file(cls, fs, filename=None):
+        # make a new folder for the image
+        now = datetime.now()
+        _uuid = uuid.uuid4().hex
+        path = '%s/%s/%s/%s/%s/%s' % (now.year, now.month, now.day, _uuid[:3],
+                                      _uuid[3:6], _uuid[6:])
+        base_path = os.path.join(current_app.config['UPLOAD_DIR'], path) 
+        os.makedirs(base_path)
 
-    def get_thumbnail_filename(self, w=80, h=80, method='normal'):
-        base_path = os.path.join(current_app.config['UPLOAD_DIR'], 'thumbnails')
-        dt = self.created_at
-        f1 = '%s/%s/%s' % (dt.year, dt.month, dt.day)
-        f2 = '%s/%s/%s' % (self.hash[:3], self.hash[3:6], self.hash[6:9])
-        f3 = '%s' % self.hash[9:]
-        filename = '%s/%s/%s/%s-%s-px-%s-thumb.png' % (f1, f2, f3, w, h, method)
-        return os.path.join(base_path, filename)
+        name = secure_filename(fs.filename) if filename is None else filename
+        save_path = os.path.join(base_path, name)
+        fs.save(save_path)
+        
+        # get hash of file contents
+        f1 = open(save_path, 'rb')
+        sha1sum = hashlib.sha1(f1.read()).hexdigest()
+        f1.close()
 
-    def get_thumbnail_url(self, w=80, h=80, method='normal'):
-        filename = self.get_thumbnail_filename(w, h, method)
-        if os.path.isfile(filename) or True:
-            return filename.replace(current_app.config['UPLOAD_DIR'], '/uploads')
-        else:
-            return url_for('file.thumbnail', id=self.id, w=w, h=h, method=method)
+        obj = File()
+        obj.filename    = fs.filename
+        obj.filesize    = os.path.getsize(save_path)
+        obj.mimetype    = fs.mimetype
+        obj.extension   = fs.filename.rsplit('.', 1)[1]
+        obj.location    = save_path
+        obj.hash        = sha1sum
+        return obj
+
+
 

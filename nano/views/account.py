@@ -20,12 +20,14 @@ from nano.forms import (SignupForm, LoginForm, RecoverPasswordForm,
 account = Blueprint('account', __name__, url_prefix='/account')
 
 @account.route('/', methods=['GET', 'POST'])
+@login_required
 def index():
     """Account information + update"""
     form = UserForm(obj=current_user)
     return render_template('account/index.html', form=form)
 
 @account.route('/business', methods=['GET', 'POST'])
+@login_required
 def business():
     """Company information + update"""
     company = Company.query.filter_by(user_id=current_user.id).first()
@@ -35,10 +37,11 @@ def business():
         company = form.save()
         flash('Business details updated')
 
-    return render_template('account/business.html', form=form)
+    return render_template('account/business.html', form=form, company=company)
 
 
 @account.route('/settings', methods=['GET', 'POST'])
+@login_required
 def settings():
     """Application settings"""
     return render_template('account/settings.html')

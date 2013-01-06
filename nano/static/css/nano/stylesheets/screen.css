@@ -623,12 +623,23 @@ form.create.company select#country, form.create.company div#s2id_country {
 form.create.company input#post_code {
   width: 100px;
 }
+/* line 129, ../sass/_forms.scss */
+form.create.company div.photo {
+  display: inline-block;
+  width: 366px;
+  border: 1px solid #ccc;
+  padding: 1em;
+}
+/* line 136, ../sass/_forms.scss */
+form.create.company input#photo-upload {
+  width: 150px;
+}
 
-/* line 131, ../sass/_forms.scss */
+/* line 142, ../sass/_forms.scss */
 form.create.client select#country, form.create.client div#s2id_country {
   width: 250px;
 }
-/* line 135, ../sass/_forms.scss */
+/* line 146, ../sass/_forms.scss */
 form.create.client input#post_code {
   width: 100px;
 }

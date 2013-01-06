@@ -23,7 +23,9 @@
     <div class="{{ invoice.status }}">
       <div id="invoice" class="pagestyle">
         <div id="invoice-header">
-          <img alt="Logo" class="logo screen" src="#">
+          {% if company.logo %}
+          <img alt="Logo" class="logo screen" src="{{ url_for('file.download', location=company.logo.get_web_url()) }}">
+          {% endif %}
           <div class="vcard" id="company-address">
             {% include 'invoice/_company.html' %}
           </div>

@@ -172,6 +172,7 @@ def configure_assets(app):
                     'js/vendor/select2/select2.js',
                     'js/vendor/Pikaday/pikaday.js', 
                     'js/vendor/facebox/facebox.js',
+                    'js/lib/upclick.js',
                     filters='yui_js', output='gen/libs.js')
     
     js_app = Bundle('js/app/app.js',

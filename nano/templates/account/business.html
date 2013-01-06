@@ -9,6 +9,17 @@
       <div class="header">Your business information</div>  
       <div class="fields">
 
+        <div class="field">
+          <label>&nbsp;</label>
+
+          <div class="photo">
+            {% if company.logo %}
+              <img src="{{ url_for('file.download', location=company.logo.get_web_url()) }}">
+            {% endif %}
+            <input type="button" id="photo-upload" value="Upload company logo" />
+          </div>
+        </div>
+
         {{ render_input(form.name) }} 
         {{ render_input(form.address1) }} 
         {{ render_input(form.address2) }}
@@ -24,5 +35,18 @@
     </form>
 
   </div>
+
+
+  <script type="text/javascript">
+    var uploader = document.getElementById('photo-upload');
+    upclick({
+      element: uploader,
+      action: '{{ url_for('file.photo_upload') }}', 
+      onstart: function(filename){
+      },
+      oncomplete: function(resp){
+      }
+    });
+  </script>
 
 {% endblock %}
