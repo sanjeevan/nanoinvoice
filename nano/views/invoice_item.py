@@ -42,6 +42,7 @@ def update(id):
                 invoice_item.serialize() }
         return Response(json_dumps(ret), content_type='application/json')
     else:
+        print form.errors
         return 'There was an error', 400 
 
 @invoice_item.route('/delete/<int:id>', methods=['DELETE'])

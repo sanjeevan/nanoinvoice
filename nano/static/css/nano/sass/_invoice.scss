@@ -1,11 +1,16 @@
 
+// -- Logo 
+
+#invoice-header .logo.screen {
+  height: 75px;
+}
+
 // -- List of invoices
 .invoice-data-list {
   .col {
     width: 160px;
   }
 }
-
 
 // -- Main invoice editing page
 .pagestyle {

@@ -10,3 +10,4 @@ from nano.models.tax_rate import TaxRate
 from nano.models.payment_term import PaymentTerm
 from nano.models.company import Company
 from nano.models.country import Country
+from nano.models.logo import Logo

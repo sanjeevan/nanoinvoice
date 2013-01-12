@@ -7,7 +7,7 @@ class Company(db.Model):
 
     id                  = db.Column(u'id', db.BigInteger, primary_key=True, nullable=False)
     user_id             = db.Column(u'user_id', db.BigInteger, db.ForeignKey('user.id'), nullable=False)
-    logo_id             = db.Column(u'logo_id', db.BigInteger, db.ForeignKey('file.id'), nullable=False)
+    logo_id             = db.Column(u'logo_id', db.BigInteger, db.ForeignKey('logo.id'), nullable=False)
     company_type_id     = db.Column(u'company_type_id', db.BigInteger, db.ForeignKey('company_type.id'), nullable=False)
     
     name        = db.Column(u'name', db.Unicode(length=255))
@@ -27,7 +27,7 @@ class Company(db.Model):
     user = db.relation('User', primaryjoin='Company.user_id==User.id', backref=db.backref('company', uselist=False))
     
     # logo
-    logo = db.relation('File', primaryjoin='Company.logo_id==File.id')
+    logo = db.relation('Logo', primaryjoin='Company.logo_id==Logo.id')
     
     # account type
     company_type = db.relation('CompanyType', backref=db.backref('companies', lazy='dynamic'))

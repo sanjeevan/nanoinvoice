@@ -1,4 +1,4 @@
-from flask.ext.wtf import (Form, HiddenField, FloatField, TextField,
+from flask.ext.wtf import (Form, HiddenField, DecimalField, TextField,
                           IntegerField, SubmitField, FormField, SelectField,
                           ValidationError, required, equal_to, email,
                           length)
@@ -15,8 +15,8 @@ class InvoiceItemForm(Form):
     type_id         = SelectField(u'Type', coerce=int, validators=[required()])
     tax_rate_id     = SelectField(u'Tax rate', coerce=int)
     description     = TextField(u'Description', validators=[required()])
-    quantity        = IntegerField(u'Quantity', validators=[required()])
-    price           = FloatField(u'Price', validators=[required()])
+    quantity        = DecimalField(u'Quantity', validators=[required()])
+    price           = DecimalField(u'Price', validators=[required()])
 
     def __init__(self, formdata=None, obj=None, prefix='', **kwargs):
         super(InvoiceItemForm, self).__init__(formdata, obj, prefix, kwargs)
@@ -59,8 +59,8 @@ class InvoiceItemForm(Form):
         if (self.tax_rate_id.data != -1):
             item.tax_rate_id = self.tax_rate_id.data
         item.description = self.description.data
-        item.quantity = self.quantity.data
-        item.price = self.price.data
+        item.quantity = float(self.quantity.data)
+        item.price = float(self.price.data)
         item.sort_order = invoice.next_item_sort_order()
         item.update_totals()
 

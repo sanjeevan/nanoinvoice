@@ -7,7 +7,7 @@
       <div>
         <div id="invoice-header">
           {% if company.logo %}
-            <img alt="Logo" class="logo screen" src="{{ url_for('file.download', location=company.logo.get_web_url()) }}">
+            <img alt="Logo" class="logo print" src="{{ url_for('file.download', location=company.logo.original.get_web_url()) }}">
           {% endif %}
           <div class="vcard" id="company-address">
             {% include 'invoice/_company.html' %}

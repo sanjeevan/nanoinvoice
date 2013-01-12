@@ -14,7 +14,7 @@
 
           <div class="photo">
             {% if company.logo %}
-              <img src="{{ url_for('file.download', location=company.logo.get_web_url()) }}">
+              <img src="{{ url_for('file.download', location=company.logo.thumbnail.get_web_url()) }}">
             {% endif %}
             <input type="button" id="photo-upload" value="Upload company logo" />
           </div>
@@ -45,6 +45,8 @@
       onstart: function(filename){
       },
       oncomplete: function(resp){
+        $('.photo img').remove();
+        $(resp).prependTo('.photo');
       }
     });
   </script>

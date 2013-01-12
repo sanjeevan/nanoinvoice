@@ -42,7 +42,7 @@ class InvoiceItem(db.Model):
         return True
 
     def quantity_str(self):
-        if self.invoice_item_type.name == 'Hours':
+        if self.invoice_item_type.name == 'Hour':
             mins = self.quantity * 60
             hours = 0
             while mins >= 60:
@@ -51,7 +51,7 @@ class InvoiceItem(db.Model):
             if mins == 0:
                 return hours
             else:
-                mins = round(mins)
+                mins = int(round(mins))
                 mins = str(mins).zfill(2)
                 return '%s:%s' % (hours, mins)
         return int(self.quantity) if math.fmod(self.quantity, 1) == 0 else self.quantity
