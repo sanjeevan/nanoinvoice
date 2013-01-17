@@ -1,0 +1,19 @@
+<div class="filters">
+  <div class="left">
+    {% if invoice.status == 'saved' %}
+      <a href="{{ url_for('.reopen', id=invoice.id) }}"><img src="/static/img/padlock_closed_icon&16.png"> Open</a>
+    {% endif %}
+    {% if invoice.status == 'draft' %}
+      <a href="{{ url_for('.save', id=invoice.id) }}"><img src="/static/img/padlock_open_icon&16.png"> Close</a></a>
+    <a href="{{ url_for('.edit', id=invoice.id) }}"><img src="/static/img/wrench_plus_2_icon&16.png"> Edit invoice</a>
+    {% endif %}
+    <a href=""><img src="/static/img/trash_icon&16.png"> Delete</a>
+  </div>
+  {% if invoice.status == 'saved' %}
+  <div class="right">
+    <a href="{{ url_for('.print_invoice', id=invoice.id) }}"><img src="/static/img/print_icon&16.png"> Print</a>
+    <a href="{{ url_for('.email', id=invoice.id) }}"><img src="/static/img/mail_icon&16.png"> Email</a>
+    <a href="{{ url_for('.export', id=invoice.id) }}"><img src="/static/img/doc_export_icon&16.png"> Export</a>
+  </div>
+  {% endif %}
+</div>

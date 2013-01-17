@@ -65,7 +65,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 /* -------------------------------------------------------------------------*/
 /* Layout */
-/* line 2, ../sass/_export.scss */
+/* line 1, ../sass/_export.scss */
 body, html {
   background-color: #fff;
   font-size: 12px;
@@ -73,30 +73,25 @@ body, html {
   color: #333;
 }
 
-/* line 9, ../sass/_export.scss */
+/* line 8, ../sass/_export.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 13, ../sass/_export.scss */
+/* line 12, ../sass/_export.scss */
 a img {
   vertical-align: middle;
 }
 
-/* line 17, ../sass/_export.scss */
+/* line 16, ../sass/_export.scss */
 h1 {
   color: #ee3322;
   font-size: 2.333em;
   line-height: 1.714em;
   line-height: 1em;
   font-weight: 900;
-}
-
-/* line 24, ../sass/_export.scss */
-#invoice-header .logo.print {
-  height: 75px;
 }
 
 /* line 4, ../sass/_invoice.scss */
@@ -500,4 +495,38 @@ html[xmlns] .pagestyle {
 /* line 64, ../sass/invoice_themes/_default.scss */
 #vat-total td, #vat-total th {
   border-top: 1px solid #ccc;
+}
+
+@page {
+  margin: 0;
+}
+
+/* line 5, ../sass/_invoice_print.scss */
+#invoice {
+  background-image: none;
+  background-color: transparent;
+  padding-bottom: 0;
+  border: 0;
+}
+
+/* line 12, ../sass/_invoice_print.scss */
+#Main {
+  text-align: left;
+  background-color: transparent;
+  border-top: none;
+}
+
+/* line 18, ../sass/_invoice_print.scss */
+table#invoice-amount td, table#invoice-amount th, div {
+  border-width: 0.05mm !important;
+}
+
+/* line 22, ../sass/_invoice_print.scss */
+#meta {
+  display: none;
+}
+
+/* line 26, ../sass/_invoice_print.scss */
+#invoice-header .logo.print {
+  height: 75px;
 }

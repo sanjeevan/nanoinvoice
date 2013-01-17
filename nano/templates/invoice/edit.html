@@ -2,12 +2,12 @@
 {% from 'macros/_misc.html' import render_input %}
 {% block content %}
   
-  {% include 'invoice/_filter.html' %}
-  
+  {% include 'invoice/_controls.html' %}
+
   <div class="workspace-inner">
 
-    <form class="create inline invoice" method="post" action="{{ url_for('.create') }}">
-      <div class="header">New invoice</div>  
+    <form class="create inline invoice" method="post" action="{{ url_for('.edit', id=invoice.id) }}">
+      <div class="header">Edit invoice</div>  
       <div class="fields">
         {{ form.csrf_token }}
         {{ render_input(form.contact_id) }} 
@@ -36,6 +36,11 @@
     });
 
     function setup() {
+      if ($('#payment_term_id').val() == 6) {
+        dueDateField.show();
+        dueDatePicker = new Pikaday({ field: document.getElementById('due_date'), format: dateFormat });
+      }
+
       $('#payment_term_id').on('change', function(evt){
           var v = $(this).val();
           if (v == 6) {

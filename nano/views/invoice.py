@@ -34,8 +34,23 @@ def create():
             invoice = form.save()
             return redirect(url_for('.show', id=invoice.id))
         else:
+            print form.errors
             flash('There were errors')
     return render_template('invoice/create.html', form=form)
+
+
+@invoice.route('/edit/<int:id>', methods=['GET', 'POST'])
+@login_required
+def edit(id):
+    invoice = Invoice.query.get(id)
+    form = InvoiceForm(request.form, obj=invoice)
+    if request.method == 'POST':
+        if form.validate():
+            invoice = form.save()
+            return redirect(url_for('.show', id=invoice.id))
+        else:
+            flash('There were errors')
+    return render_template('invoice/edit.html', form=form, invoice=invoice)
 
 
 @invoice.route('/reopen/<int:id>', methods=['GET', 'POST'])

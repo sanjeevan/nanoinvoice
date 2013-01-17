@@ -4,7 +4,7 @@
   </head>
   <body>
     <div>
-      <div>
+      <div id="invoice">
         <div id="invoice-header">
           {% if company.logo %}
             <img alt="Logo" class="logo print" src="{{ url_for('file.download', location=company.logo.original.get_web_url()) }}">
@@ -45,6 +45,5 @@
         <div class="clearfix"></div>
       </div>
     </div>
-  </div>
   </body>
 </html>

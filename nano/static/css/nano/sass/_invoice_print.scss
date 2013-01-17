@@ -1,0 +1,28 @@
+@page{
+  margin:0;
+}
+
+#invoice {
+  background-image: none; 
+  background-color: transparent; 
+  padding-bottom:0;
+  border: 0;
+}
+
+#Main {
+  text-align: left;
+  background-color: transparent; 
+  border-top: none;
+}
+
+table#invoice-amount td, table#invoice-amount th, div{ 
+  border-width:0.05mm !important
+}
+
+#meta { 
+  display:none; 
+}
+
+#invoice-header .logo.print {
+  height: 75px;
+}
