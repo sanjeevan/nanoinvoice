@@ -18,6 +18,7 @@ var EditInvoiceItemView = Backbone.View.extend({
       type: "POST",
       success: function(resp) {
         view.parentView.model.set(resp.Invoice);
+        view.parentView.model.trigger('change');
         $.facebox.close();
       }
     });

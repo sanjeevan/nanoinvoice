@@ -19,7 +19,6 @@ var DraftInvoiceView = Backbone.View.extend({
   onEditItemClick: function(evt) {
     evt.preventDefault();
     var id = $(evt.currentTarget).data("id");
-    console.log(id);
     
     var view = new EditInvoiceItemView({ 
       parentView: this,
@@ -47,6 +46,7 @@ var DraftInvoiceView = Backbone.View.extend({
       data: { "id": id },
       success: function(json) {
         view.model.set(json.Invoice);
+        view.model.trigger('change');
       }
     });
   },
