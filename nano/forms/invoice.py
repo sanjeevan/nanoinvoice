@@ -26,13 +26,15 @@ class InvoiceForm(Form):
         
         if obj:
             self.invoice = obj
+            self.date_issued.data = obj.date_issued.strftime(self.DATE_FORMAT)
+            self.due_date.data = obj.due_date.strftime(self.DATE_FORMAT)
         else:
             self.invoice = None
+            self.date_issued.data = datetime.now().strftime(self.DATE_FORMAT)
 
         self.contact_id.choices = self.get_contact_options()
         self.payment_term_id.choices = self.get_payment_term_options()
         self.reference.data = Invoice.next_invoice_number(current_user)
-        self.date_issued.data = datetime.now().strftime(self.DATE_FORMAT)
         self.currency_code.choices = self.get_currency_options()
     
     def get_currency_options(self):
