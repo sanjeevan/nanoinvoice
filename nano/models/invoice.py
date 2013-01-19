@@ -4,6 +4,8 @@ from nano.utils import get_current_time, model_to_dict, json_dumps
 
 class Invoice(db.Model):
     __tablename__ = 'invoice'
+    
+    DATE_FORMAT = '%a %b %d %Y'
 
     id                  = db.Column(u'id', db.BigInteger, primary_key=True, nullable=False)
     user_id             = db.Column(u'user_id', db.BigInteger, db.ForeignKey('user.id')) 
@@ -36,6 +38,15 @@ class Invoice(db.Model):
 
         return str(cur_max)
 
+
+    @property
+    def due_date_nice(self):
+        return self.due_date.strftime(self.DATE_FORMAT)
+    
+    @property
+    def date_issued_nice(self):
+        return self.date_issued.strftime(self.DATE_FORMAT)
+
     def next_item_sort_order(self):
         """Generate the next number for the invoice item's sort order"""
         from nano.models import InvoiceItem
@@ -63,6 +74,16 @@ class Invoice(db.Model):
         d = model_to_dict(self)
         d['InvoiceItems'] = [item.serialize() for item in self.invoice_items] 
         return d
+        
+    def get_status(self):
+        if self.status == 'draft':
+            return 'draft'
+        if self.status == 'saved':
+            if self.due_date <= datetime.now():
+                return 'overdue'
+            else:
+                return 'sent'
+
 
     def __json__(self):
         return json_dumps(self.serialize())

@@ -24,7 +24,7 @@
           <div class="col ref">{{ invoice.reference }}</div>
           <div class="col name">{{ invoice.contact.first_name }} {{ invoice.contact.last_name }}</div>
           <div class="col total">{{ invoice.total }}</div>
-          <div class="col status">{{ invoice.status }}</div>
+          <div class="col status">{{ invoice.get_status() }}</div>
         </div>
       {% endfor %}
     </div>

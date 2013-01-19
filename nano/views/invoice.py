@@ -47,6 +47,7 @@ def edit(id):
     if request.method == 'POST':
         if form.validate():
             invoice = form.save()
+            print 'form saved'
             return redirect(url_for('.show', id=invoice.id))
         else:
             flash('There were errors')

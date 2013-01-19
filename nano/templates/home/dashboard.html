@@ -1,7 +1,30 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-  
-    hello world 
+  <!--
+  <div class="filters">
+    <div class="left">
+      <h1>Dashboard</h1>
+    </div>
+    <div class="right">
+    </div>
+  </div>
+  -->
+
+  <div class='workspace-inner'>
+    <h1>Dashboard</h1>
+    
+    <div class="dashboard">
+      <p>This is where the dashboard will go</p>
+
+      <div class='invoice-states'>
+        <div>Sent: {{ sent|length }}</div>
+        <div>Draft: {{ send|length }}</div>
+        <div>Overdue: {{ overdue|length }}</div>
+      </div>
+
+
+    </div>
+  </div>
 
 {% endblock %}

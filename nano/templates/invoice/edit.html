@@ -12,9 +12,9 @@
         {{ form.csrf_token }}
         {{ render_input(form.contact_id) }} 
         {{ render_input(form.reference, cls='reference', size=4) }} 
-        {{ render_input(form.date_issued, cls='date') }} 
+        {{ render_input(form.date_issued_nice, cls='date') }} 
         {{ render_input(form.payment_term_id) }} 
-        {{ render_input(form.due_date, cls='date') }}
+        {{ render_input(form.due_date_nice, cls='date') }}
         {{ render_input(form.currency_code) }}
         <div class="field">
           <button class="button normal" type="submit">Continue</button>
@@ -25,12 +25,12 @@
   </div>
 
   <script type="text/javascript">
-    var dueDateField = $('.field-due_date');
+    var dueDateField = $('.field-due_date_nice');
     var dueDatePicker = null;
     var dateFormat = 'D MMM YYYY';
 
     $(document).ready(function(){
-      var picker1 = new Pikaday({ field: document.getElementById('date_issued'), format: dateFormat });
+      var picker1 = new Pikaday({ field: document.getElementById('date_issued_nice'), format: dateFormat });
 
       setup();
     });
@@ -38,14 +38,17 @@
     function setup() {
       if ($('#payment_term_id').val() == 6) {
         dueDateField.show();
-        dueDatePicker = new Pikaday({ field: document.getElementById('due_date'), format: dateFormat });
+        dueDatePicker = new Pikaday({ field: document.getElementById('due_date_nice'), format: dateFormat });
+      } else {
+        dueDateField.hide();
+        dueDatePicker = null;
       }
 
       $('#payment_term_id').on('change', function(evt){
           var v = $(this).val();
           if (v == 6) {
             dueDateField.show();
-            dueDatePicker = new Pikaday({ field: document.getElementById('due_date'), format: dateFormat });
+            dueDatePicker = new Pikaday({ field: document.getElementById('due_date_nice'), format: dateFormat });
           } else {
             dueDatePicker = null;
             dueDateField.hide();

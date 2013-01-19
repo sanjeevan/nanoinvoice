@@ -1,6 +1,10 @@
+
+from datetime import datetime
 from flask import Flask, Blueprint, render_template, abort, redirect, url_for
 from jinja2 import TemplateNotFound
 from flask.ext.login import login_required, current_user
+
+from nano.models import *
 
 home = Blueprint('home', __name__)
 
@@ -18,4 +22,11 @@ def login():
 @home.route('/dashboard')
 @login_required
 def dashboard():
-    return render_template('home/dashboard.html', user=current_user)
+    
+    sent_invoices       = Invoice.query.filter_by(status='saved').all()
+    draft_invoices      = Invoice.query.filter_by(status='draft').all()
+    overdue_invoices    = Invoice.query.filter(Invoice.due_date<=datetime.now()).all()
+
+    return render_template('home/dashboard.html', user=current_user,
+                                                  sent=sent_invoices,
+                                                  overdue=overdue_invoices)
