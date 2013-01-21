@@ -172,6 +172,7 @@ def configure_assets(app):
                     'js/vendor/select2/select2.js',
                     'js/vendor/Pikaday/pikaday.js', 
                     'js/vendor/facebox/facebox.js',
+                    'js/vendor/highcharts/highcharts.src.js',
                     'js/lib/upclick.js',
                     filters='yui_js', output='gen/libs.js')
     
@@ -183,8 +184,7 @@ def configure_assets(app):
                     'js/app/views/NewInvoiceItemView.js',
                     filters='yui_js', output='gen/app.js')
     
-    js_templates = Bundle('js/app/templates/*.html', 
-                          output='gen/templates.js',
+    js_templates = Bundle('js/app/templates/*.html', output='gen/templates.js',
                           filters='jst')
 
     assets.register('js_lib', js_lib)

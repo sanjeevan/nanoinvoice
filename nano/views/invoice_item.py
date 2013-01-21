@@ -27,6 +27,7 @@ def create():
                 invoice_item.serialize() }
         return Response(json_dumps(ret), content_type='application/json')
     else:
+        print form.errors
         return 'There was an error', 400 
     
 

@@ -15,8 +15,8 @@ class InvoiceItemForm(Form):
     type_id         = SelectField(u'Type', coerce=int, validators=[required()])
     tax_rate_id     = SelectField(u'Tax rate', coerce=int)
     description     = TextField(u'Description', validators=[required()])
-    quantity        = DecimalField(u'Quantity', validators=[required()])
-    price           = DecimalField(u'Price', validators=[required()])
+    quantity        = DecimalField(u'Quantity')
+    price           = DecimalField(u'Price', default=0)
 
     def __init__(self, formdata=None, obj=None, prefix='', **kwargs):
         super(InvoiceItemForm, self).__init__(formdata, obj, prefix, kwargs)
@@ -27,6 +27,26 @@ class InvoiceItemForm(Form):
             self.model = obj
         else:
             self.model = None
+            self.price.default = 0
+            self.price.process(formdata)
+    
+    def validate_quantity(form, field):
+        """Comments don't require a price, everything else does"""
+        item_type = InvoiceItemType.query.get(form.type_id.data)
+        if item_type.name == 'Comment':
+            field.data = 0
+        else:
+            if field.data == None:
+                raise ValidationError('Quantity must be supplied')
+    
+    def validate_price(form, field):
+        """Comments don't require a price, everything else does"""
+        item_type = InvoiceItemType.query.get(form.type_id.data)
+        if item_type.name == 'Comment':
+            field.data = 0
+        else:
+            if field.data == None:
+                raise ValidationError('Price must be supplied')
 
     def get_type_options(self):
         """Get item types"""

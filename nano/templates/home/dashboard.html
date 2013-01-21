@@ -1,30 +1,73 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-  <!--
-  <div class="filters">
-    <div class="left">
-      <h1>Dashboard</h1>
-    </div>
-    <div class="right">
-    </div>
-  </div>
-  -->
 
   <div class='workspace-inner'>
     <h1>Dashboard</h1>
     
     <div class="dashboard">
-      <p>This is where the dashboard will go</p>
-
-      <div class='invoice-states'>
-        <div>Sent: {{ sent|length }}</div>
-        <div>Draft: {{ send|length }}</div>
-        <div>Overdue: {{ overdue|length }}</div>
+      <div id='graph' style='min-width: 400px; height: 240px; margin: 0 auto'>
       </div>
-
+      
+      <ul class='invoice-states'>
+        <li>Due: {{ sent|length }}</li>
+        <li>Draft: {{ send|length }}</li>
+        <li>Overdue: {{ overdue|length }}</li>
+        <li>Paid: 0</li>
+      </ul>
 
     </div>
   </div>
+
+  <script type="text/javascript">
+    function renderChart(categories, series) {
+      chart = new Highcharts.Chart({
+        chart: {
+          renderTo: 'graph',
+          type: 'column'
+        },
+        title: {
+          text: ''
+        },
+        xAxis: {
+          categories: categories
+        },
+        yAxis: {
+          min: 0,
+          title: {
+            text: ''
+          }
+        },
+        plotOptions: {
+          column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+          }
+        },
+        legend: {
+          layout: 'vertical',
+          backgroundColor: '#FFFFFF',
+          align: 'left',
+          verticalAlign: 'top',
+          x: 650,
+          y: 2,
+          floating: true,
+          shadow: false 
+        },
+        series: series
+      });
+    }
+
+    $(document).ready(function(){
+        $.ajax('{{ url_for('home.graph') }}', {
+          success: function(r) {
+            console.log(r);
+            renderChart(r.categories, r.series);
+          }
+        });
+    });
+  </script>
+
+
 
 {% endblock %}

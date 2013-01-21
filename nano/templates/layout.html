@@ -3,7 +3,7 @@
   <head>
     {% block head %}
     <meta charset="utf-8" />
-    <title>{{ page_title }}</title>
+    <title>{{ page_title|default('Nanoinvoice') }}</title>
     <link rel="stylesheet" type="text/css" href="/static/css/nano/stylesheets/screen.css" />
     <link rel="stylesheet" type="text/css" href="/static/js/vendor/select2/select2.css" />
     <link rel="stylesheet" type="text/css" href="/static/js/vendor/Pikaday/css/pikaday.css" />

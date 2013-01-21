@@ -23,8 +23,8 @@
           <div class="col due">{{ invoice.due_date.strftime('%d %B %Y') }}</div>
           <div class="col ref">{{ invoice.reference }}</div>
           <div class="col name">{{ invoice.contact.first_name }} {{ invoice.contact.last_name }}</div>
-          <div class="col total">{{ invoice.total }}</div>
-          <div class="col status">{{ invoice.get_status() }}</div>
+          <div class="col total"><span class='currency-code'>{{ invoice.currency_code }}</span> {{ invoice.total|format_currency }}</div>
+          <div class="col status"><span class='label label-{{ invoice.get_status() }}'>{{ invoice.get_status() }}</span></div>
         </div>
       {% endfor %}
     </div>

@@ -29,6 +29,8 @@ class InvoiceItem(db.Model):
     tax_rate            = db.relation('TaxRate', primaryjoin='InvoiceItem.tax_rate_id==TaxRate.id')
 
     def should_render_field(self, name):
+        """Returns True if the field should be rendered in the item list on the
+        invoice"""
         no_render = {'Comment': ['quantity', 'price', 'tax', 'total'],
                      'VAT': ['quantity'] }
 
@@ -42,6 +44,8 @@ class InvoiceItem(db.Model):
         return True
 
     def quantity_str(self):
+        """Returns a more sanely formatted quantity string, taking into account
+        the type of the item that we're rendering"""
         if self.invoice_item_type.name == 'Hour':
             mins = self.quantity * 60
             hours = 0
@@ -57,6 +61,7 @@ class InvoiceItem(db.Model):
         return int(self.quantity) if math.fmod(self.quantity, 1) == 0 else self.quantity
     
     def update_totals(self):
+        """Recalculate the tax and the totals for this invoice"""
         if self.tax_rate_id > 0:
             rate = 0
             if self.id:
@@ -73,6 +78,7 @@ class InvoiceItem(db.Model):
         return self.tax, self.total
 
     def serialize(self):
+        """Serialize the invoice structure so that it can be used for JSON"""
         d = model_to_dict(self)
         d['InvoiceItemType'] = self.invoice_item_type.serialize()
         if self.tax_rate:

@@ -1,0 +1,12 @@
+
+.dashboard {
+  padding: 5px;
+  margin-top: 1em;
+
+
+  .invoice-states {
+    li {
+      @include adjust-font-size-to(18px);
+    }
+  }
+}
