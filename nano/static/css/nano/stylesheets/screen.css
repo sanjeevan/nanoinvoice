@@ -870,10 +870,44 @@ html[xmlns] .pagestyle {
   padding: 5px;
   margin-top: 1em;
 }
-/* line 8, ../sass/_dashboard.scss */
-.dashboard .invoice-states li {
+/* line 6, ../sass/_dashboard.scss */
+.dashboard .card {
+  background-color: #fff;
+  padding: 1em;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  margin-top: 1em;
+}
+/* line 13, ../sass/_dashboard.scss */
+.dashboard ul#stats {
+  width: 25%;
+  float: left;
+  margin-right: 0%;
+  display: inline;
+}
+/* line 15, ../sass/_dashboard.scss */
+.dashboard ul#stats li {
   font-size: 1.5em;
   line-height: 1.333em;
+}
+/* line 17, ../sass/_dashboard.scss */
+.dashboard ul#stats li span {
+  position: relative;
+  display: inline-block;
+  float: right;
+}
+/* line 25, ../sass/_dashboard.scss */
+.dashboard .end {
+  *zoom: 1;
+}
+/* line 38, ../../../../../../../home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+.dashboard .end:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 /* line 1, ../sass/invoice_themes/_default.scss */

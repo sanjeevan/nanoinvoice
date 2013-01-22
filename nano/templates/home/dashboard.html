@@ -6,16 +6,18 @@
     <h1>Dashboard</h1>
     
     <div class="dashboard">
-      <div id='graph' style='min-width: 400px; height: 240px; margin: 0 auto'>
+      <div class='card' id='graph' style='min-width: 400px; height: 240px; margin: 0 auto'>
       </div>
       
-      <ul class='invoice-states'>
-        <li>Due: {{ sent|length }}</li>
-        <li>Draft: {{ send|length }}</li>
-        <li>Overdue: {{ overdue|length }}</li>
-        <li>Paid: 0</li>
+      <ul id='stats' class='card'>
+        <li>Due:  <span>{{ sent|length }}</span></li>
+        <li>Draft: <span>{{ send|length }}</span></li>
+        <li>Overdue: <span>{{ overdue|length }}</span></li>
+        <li>Paid: <span>0</span></li>
       </ul>
+      
 
+      <div class='end'></div>
     </div>
   </div>
 
