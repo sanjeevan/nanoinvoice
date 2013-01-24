@@ -151,3 +151,13 @@ form.create.client {
     width: 100px;
   }
 }
+
+form.create.custom-field {
+  .vspacer {
+    height: 16px;
+  }
+
+  input[type='text'] {
+    width: 200px;
+  }
+}

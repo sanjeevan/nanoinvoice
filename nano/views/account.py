@@ -11,11 +11,11 @@ from flask.ext.login import (login_required, login_user, current_user,
                             logout_user, confirm_login, fresh_login_required,
                             login_fresh)
 
-from nano.models import User, Company
+from nano.models import User, Company, CustomField
 from nano.extensions import db, cache, mail, login_manager
 from nano.forms import (SignupForm, LoginForm, RecoverPasswordForm,
-                         ChangePasswordForm, ReauthForm, UserForm, BusinessForm)
-
+                        ChangePasswordForm, ReauthForm, UserForm, BusinessForm,
+                        CustomFieldForm)
 
 account = Blueprint('account', __name__, url_prefix='/account')
 
@@ -50,7 +50,18 @@ def business():
 @login_required
 def settings():
     """Application settings"""
-    return render_template('account/settings.html')
+    custom_fields = CustomField.query.filter_by(user_id=current_user.id).all() 
+    form = CustomFieldForm(request.form)
+
+    if request.method == 'POST' and form.validate():
+        custom_field = form.save()
+        flash('New custom field added')
+        return redirect(request.referrer)
+    else:
+        print form.errors
+
+    return render_template('account/settings.html', form=form,
+                                                    fields=custom_fields)
 
 @account.route('/login', methods=['GET', 'POST'])
 def login():

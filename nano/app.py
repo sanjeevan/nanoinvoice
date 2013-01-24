@@ -13,7 +13,7 @@ from nano.views import js
 from nano.views import account 
 from nano.views import home
 from nano.views import file 
-from nano.views import client, payment, invoice, invoice_item
+from nano.views import client, payment, invoice, invoice_item, settings
 
 # For import *
 __all__ = ['create_app']
@@ -26,7 +26,8 @@ DEFAULT_BLUEPRINTS = (
     invoice,
     client,
     invoice_item,
-    js
+    js,
+    settings
 )
 
 def create_app(config=None, app_name=None, blueprints=None):

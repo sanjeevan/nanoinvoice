@@ -1,0 +1,9 @@
+
+<div class='subnav'>
+  <ul>
+    <li class='{{ 'active' if request.endpoint == 'settings.index' }}'><a href="{{ url_for('.index') }}">General</a></li>
+    <li class='{{ 'active' if request.endpoint == 'settings.custom_fields' }}'><a href="{{ url_for('.custom_fields') }}">Custom fields</a></li>
+    <li class='{{ 'active' if request.endpoint == 'settings.payment' }}'><a href="#">Payment integration</a></li>
+    <li class='{{ 'active' if request.endpoint == 'settings.tax_rate' }}'><a href="#">Tax rates</a></li>
+  </ul>
+</div>

@@ -65,6 +65,28 @@ h1 {
   }
 }
 
+.subnav {
+  background-color: #efefef; 
+
+  ul li {
+    display: inline-block;
+    padding: 8px;
+    a {
+      text-decoration: none; 
+      color: #777777;
+      text-shadow: 0 1px 0 #fff;
+    }
+  }
+  
+  ul {
+    border-bottom: 1px solid #ccc;
+  }
+
+  ul li.active {
+    font-weight: bold;
+  }
+}
+
 .first-create {
   margin: 50px auto;
   display: block;
