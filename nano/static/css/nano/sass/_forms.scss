@@ -32,6 +32,19 @@ $highlight-focus: #ff0000;
   }
 }
 
+::-webkit-input-placeholder {
+    color:    #999;
+}
+:-moz-placeholder {
+    color:    #999;
+}
+::-moz-placeholder {
+    color:    #999;
+}
+:-ms-input-placeholder {
+    color:    #999;
+}
+
 /// -- Form styles
 
 form {
@@ -46,6 +59,7 @@ form {
   select {
     background-color: #ececec;
   }
+
   .field {
     margin-bottom: 1em;
     clear: both;
@@ -69,6 +83,10 @@ form.inline {
   
   div.input {
     display: inline-block;
+  }
+
+  div.vtop {
+    vertical-align: top;
   }
 
   span.error {
@@ -159,5 +177,15 @@ form.create.custom-field {
 
   input[type='text'] {
     width: 200px;
+  }
+
+  a.delete {
+    display: inline-block;
+    float: right;
+    text-decoration: none;
+    @include adjust-font-size-to(11px);
+    color: #999;
+
+    &:hover { text-decoration: underline; }
   }
 }

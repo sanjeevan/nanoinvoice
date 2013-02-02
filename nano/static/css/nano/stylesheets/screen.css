@@ -535,51 +535,75 @@ a.btn-small:hover {
   cursor: pointer;
 }
 
+/* line 35, ../sass/_forms.scss */
+::-webkit-input-placeholder {
+  color: #999;
+}
+
 /* line 38, ../sass/_forms.scss */
+:-moz-placeholder {
+  color: #999;
+}
+
+/* line 41, ../sass/_forms.scss */
+::-moz-placeholder {
+  color: #999;
+}
+
+/* line 44, ../sass/_forms.scss */
+:-ms-input-placeholder {
+  color: #999;
+}
+
+/* line 51, ../sass/_forms.scss */
 form label {
   color: #828282;
   font-weight: bold;
 }
-/* line 42, ../sass/_forms.scss */
+/* line 55, ../sass/_forms.scss */
 form input, form textarea, form select {
   color: #555555;
   font-family: inherit;
 }
-/* line 46, ../sass/_forms.scss */
+/* line 59, ../sass/_forms.scss */
 form select {
   background-color: #ececec;
 }
-/* line 49, ../sass/_forms.scss */
+/* line 63, ../sass/_forms.scss */
 form .field {
   margin-bottom: 1em;
   clear: both;
 }
-/* line 54, ../sass/_forms.scss */
+/* line 68, ../sass/_forms.scss */
 form input.error {
   border: 1px solid #ff0000;
 }
-/* line 58, ../sass/_forms.scss */
+/* line 72, ../sass/_forms.scss */
 form span.error {
   font-size: 1em;
   line-height: 2em;
   color: red;
 }
 
-/* line 65, ../sass/_forms.scss */
+/* line 79, ../sass/_forms.scss */
 form.inline label {
   display: inline-block;
   width: 150px;
 }
-/* line 70, ../sass/_forms.scss */
+/* line 84, ../sass/_forms.scss */
 form.inline div.input {
   display: inline-block;
 }
-/* line 74, ../sass/_forms.scss */
+/* line 88, ../sass/_forms.scss */
+form.inline div.vtop {
+  vertical-align: top;
+}
+/* line 92, ../sass/_forms.scss */
 form.inline span.error {
   display: block;
 }
 
-/* line 79, ../sass/_forms.scss */
+/* line 97, ../sass/_forms.scss */
 form.create {
   width: 80%;
   margin: 3em auto;
@@ -622,7 +646,7 @@ form.create select {
   font-size: 1em;
   padding: 4px;
 }
-/* line 88, ../sass/_forms.scss */
+/* line 106, ../sass/_forms.scss */
 form.create .fields {
   padding: 1em;
   background: -moz-linear-gradient(center top, white, #f5f4f4) repeat-x scroll 0 0 #fbfbfb;
@@ -630,11 +654,11 @@ form.create .fields {
   border-radius: 0 0 4px 4px;
   margin: 0 auto 12px;
 }
-/* line 93, ../sass/_forms.scss */
+/* line 111, ../sass/_forms.scss */
 form.create input {
   width: 366px;
 }
-/* line 97, ../sass/_forms.scss */
+/* line 115, ../sass/_forms.scss */
 form.create .header {
   -moz-border-bottom-colors: none;
   -moz-border-left-colors: none;
@@ -654,63 +678,76 @@ form.create .header {
   color: #666;
 }
 
-/* line 103, ../sass/_forms.scss */
+/* line 121, ../sass/_forms.scss */
 form.create.invoice input.reference {
   width: auto;
 }
-/* line 106, ../sass/_forms.scss */
+/* line 124, ../sass/_forms.scss */
 form.create.invoice select {
   width: 366px;
 }
-/* line 110, ../sass/_forms.scss */
+/* line 128, ../sass/_forms.scss */
 form.create.invoice input.date {
   width: 200px;
 }
-/* line 114, ../sass/_forms.scss */
+/* line 132, ../sass/_forms.scss */
 form.create.invoice div.field-due_date {
   display: none;
 }
-/* line 118, ../sass/_forms.scss */
+/* line 136, ../sass/_forms.scss */
 form.create.invoice .select2-container {
   width: 200px;
 }
 
-/* line 125, ../sass/_forms.scss */
+/* line 143, ../sass/_forms.scss */
 form.create.company select#country, form.create.company div#s2id_country {
   width: 250px;
 }
-/* line 129, ../sass/_forms.scss */
+/* line 147, ../sass/_forms.scss */
 form.create.company input#post_code {
   width: 100px;
 }
-/* line 133, ../sass/_forms.scss */
+/* line 151, ../sass/_forms.scss */
 form.create.company div.photo {
   display: inline-block;
   width: 366px;
   border: 1px solid #ccc;
   padding: 1em;
 }
-/* line 140, ../sass/_forms.scss */
+/* line 158, ../sass/_forms.scss */
 form.create.company input#photo-upload {
   width: 150px;
 }
 
-/* line 146, ../sass/_forms.scss */
+/* line 164, ../sass/_forms.scss */
 form.create.client select#country, form.create.client div#s2id_country {
   width: 250px;
 }
-/* line 150, ../sass/_forms.scss */
+/* line 168, ../sass/_forms.scss */
 form.create.client input#post_code {
   width: 100px;
 }
 
-/* line 156, ../sass/_forms.scss */
+/* line 174, ../sass/_forms.scss */
 form.create.custom-field .vspacer {
   height: 16px;
 }
-/* line 160, ../sass/_forms.scss */
+/* line 178, ../sass/_forms.scss */
 form.create.custom-field input[type='text'] {
   width: 200px;
+}
+/* line 182, ../sass/_forms.scss */
+form.create.custom-field a.delete {
+  display: inline-block;
+  float: right;
+  text-decoration: none;
+  font-size: 0.917em;
+  line-height: 2.182em;
+  color: #999;
+}
+/* line 189, ../sass/_forms.scss */
+form.create.custom-field a.delete:hover {
+  text-decoration: underline;
 }
 
 /* line 1, ../sass/_flash.scss */
@@ -912,27 +949,31 @@ html[xmlns] .pagestyle {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 2px #cccccc;
+  -moz-box-shadow: 0px 0px 2px #cccccc;
+  box-shadow: 0px 0px 2px #cccccc;
+  border: 1px solid #aaa;
   margin-top: 1em;
 }
-/* line 13, ../sass/_dashboard.scss */
+/* line 15, ../sass/_dashboard.scss */
 .dashboard ul#stats {
   width: 25%;
   float: left;
   margin-right: 0%;
   display: inline;
 }
-/* line 15, ../sass/_dashboard.scss */
+/* line 17, ../sass/_dashboard.scss */
 .dashboard ul#stats li {
   font-size: 1.5em;
   line-height: 1.333em;
 }
-/* line 17, ../sass/_dashboard.scss */
+/* line 19, ../sass/_dashboard.scss */
 .dashboard ul#stats li span {
   position: relative;
   display: inline-block;
   float: right;
 }
-/* line 25, ../sass/_dashboard.scss */
+/* line 27, ../sass/_dashboard.scss */
 .dashboard .end {
   *zoom: 1;
 }

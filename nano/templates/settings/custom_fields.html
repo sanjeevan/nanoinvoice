@@ -1,4 +1,4 @@
-{% from "macros/_misc.html" import render_input %}
+{% from "macros/_misc.html" import render_input, render_errors %}
 {% extends 'layout.html' %}
 
 {% block content %}
@@ -11,31 +11,37 @@
     <form class="create inline custom-field" method="post" action="{{ url_for('.custom_fields') }}">
       <div class="header">Custom fields</div>  
       <div class="fields">
-        
-        {% if fields|length > 0 %}
-          {% for custom_field in fields %}
+
+
+        {% for form_field in form.current_fields.entries %}
           <div class="field">
             <label></label>
             <div class="input">
-              <input name="custom_field[{{custom_field.id}}]" type="text" value="{{ custom_field.name }}">
-              <input name="custom_field[{{custom_field.id}}]" type="text" value="{{ custom_field.value }}">
+              {{ form_field.uid }}
+              {{ form_field.field_name }}
+              {{ form_field.field_value }}
             </div>
+            <a class='delete' href="{{ url_for('settings.delete_custom_field', id=form_field.uid.data) }}"> Delete</a>
           </div>
-          {% endfor %}
-        {% endif %}
+        {% endfor %}
         
         <div class="field vspacer">
 
         </div>
         
         <div class="field"> 
-          <label>Custom Field</label>
+          <label>New custom field</label>
           <div class="input">
-            {{ form.field_name(placeholder='Field name, e.g. VAT') }}
-            {{ form.field_value(placeholder='Value') }}
+            <div class='input vtop'>
+              {{ form.new_field.field_name(placeholder='Field name, e.g. VAT') }}
+              {{ render_errors(form.new_field.field_name) }}
+            </div>
+            <div class='input vtop'>
+              {{ form.new_field.field_value(placeholder='Value') }}
+              {{ render_errors(form.new_field.field_value) }} 
+            </div>
           </div>
         </div>
-
        <div class="field">
           <button class="button normal" type="submit">Save</button>
         </div>

@@ -9,7 +9,7 @@ from flask.ext.login import current_user, login_required
 
 from nano.models import User, Company, CustomField
 from nano.extensions import db
-from nano.forms import CustomFieldForm
+from nano.forms import CustomFieldForm, CustomFieldsManagementForm 
 
 settings = Blueprint('settings', __name__, url_prefix='/settings')
 
@@ -17,12 +17,16 @@ settings = Blueprint('settings', __name__, url_prefix='/settings')
 def index():
     return render_template('settings/index.html')
 
+# -- Custom fields
+
 @settings.route('/custom_fields', methods=['GET', 'POST'])
 @login_required
 def custom_fields():
     """Application settings"""
     custom_fields = CustomField.query.filter_by(user_id=current_user.id).all() 
-    form = CustomFieldForm(request.form)
+
+    data = CustomFieldsManagementForm.transform(custom_fields)
+    form = CustomFieldsManagementForm(request.form, obj=data)
 
     if request.method == 'POST' and form.validate():
         custom_field = form.save()
@@ -32,4 +36,22 @@ def custom_fields():
         print form.errors
 
     return render_template('settings/custom_fields.html', form=form,
-                                                          fields=custom_fields)
+                                                          custom_fields=custom_fields)
+
+@settings.route('/custom_fields/delete/<int:id>', methods=['GET'])
+def delete_custom_field(id):
+    custom_field = CustomField.query.get(id)
+    if custom_field:
+        db.session.delete(custom_field)
+        db.session.commit()
+        flash('Custom field deleted')
+    return redirect(request.referrer)
+
+
+# -- Tax rates
+
+@settings.route('/tax_rates', methods=['GET'])
+def tax_rates():
+    pass
+
+
