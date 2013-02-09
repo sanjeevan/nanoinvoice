@@ -189,3 +189,23 @@ form.create.custom-field {
     &:hover { text-decoration: underline; }
   }
 }
+
+form.create.tax-rates {
+  .vspacer {
+    height: 16px;
+  }
+
+  input[type='text'] {
+    width: 200px;
+  }
+
+  a.delete {
+    display: inline-block;
+    float: right;
+    text-decoration: none;
+    @include adjust-font-size-to(11px);
+    color: #999;
+
+    &:hover { text-decoration: underline; }
+  }
+}

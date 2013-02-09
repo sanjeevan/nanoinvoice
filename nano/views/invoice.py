@@ -4,7 +4,7 @@ from flask.ext.login import login_required, current_user
 from urlparse import urljoin
 from datetime import datetime
 
-from nano.models import Invoice
+from nano.models import Invoice, CustomField
 from nano.forms import InvoiceForm
 from nano.utils import json_dumps
 from nano.extensions import db
@@ -23,7 +23,10 @@ def index():
 def show(id):
     inv = Invoice.query.get(id)
     company = inv.user.company
-    return render_template('invoice/show.html', invoice=inv, company=company)
+    custom_fields = CustomField.query.filter_by(user_id=current_user.id).all()
+
+    return render_template('invoice/show.html', invoice=inv, company=company, 
+                                                custom_fields=custom_fields)
 
 @invoice.route('/create', methods=['GET', 'POST'])
 @login_required
@@ -109,5 +112,11 @@ def export(id):
 def pdf(id):
     invoice = Invoice.query.get(id)
     if not invoice:
+        return 'Invoice not found', 404
+
+    custom_fields = CustomField.query.filter_by(user_id=invoice.user_id).all()
+    if not invoice:
         return 'invoice not found', 404
-    return render_template('invoice/pdf.html', invoice=invoice, company=invoice.user.company)
+    return render_template('invoice/pdf.html', invoice=invoice, 
+                                               company=invoice.user.company,
+                                               custom_fields=custom_fields)

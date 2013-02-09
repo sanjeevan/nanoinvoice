@@ -255,16 +255,22 @@ h1 {
 }
 
 /* line 150, ../sass/_shared.scss */
+.label-count {
+  background-color: #ccc;
+  color: #fff;
+}
+
+/* line 155, ../sass/_shared.scss */
 .label-success, .label-paid {
   background-color: #468847;
 }
 
-/* line 154, ../sass/_shared.scss */
+/* line 159, ../sass/_shared.scss */
 .label-important, .label-overdue {
   background-color: #B94A48;
 }
 
-/* line 158, ../sass/_shared.scss */
+/* line 163, ../sass/_shared.scss */
 .label-info, .label-sent {
   background-color: #3A87AD;
 }
@@ -750,6 +756,28 @@ form.create.custom-field a.delete:hover {
   text-decoration: underline;
 }
 
+/* line 194, ../sass/_forms.scss */
+form.create.tax-rates .vspacer {
+  height: 16px;
+}
+/* line 198, ../sass/_forms.scss */
+form.create.tax-rates input[type='text'] {
+  width: 200px;
+}
+/* line 202, ../sass/_forms.scss */
+form.create.tax-rates a.delete {
+  display: inline-block;
+  float: right;
+  text-decoration: none;
+  font-size: 0.917em;
+  line-height: 2.182em;
+  color: #999;
+}
+/* line 209, ../sass/_forms.scss */
+form.create.tax-rates a.delete:hover {
+  text-decoration: underline;
+}
+
 /* line 1, ../sass/_flash.scss */
 ul.flashes {
   display: block;
@@ -964,16 +992,17 @@ html[xmlns] .pagestyle {
 }
 /* line 17, ../sass/_dashboard.scss */
 .dashboard ul#stats li {
-  font-size: 1.5em;
-  line-height: 1.333em;
+  font-size: 14px;
+  display: block;
+  height: 1.5em;
 }
-/* line 19, ../sass/_dashboard.scss */
+/* line 21, ../sass/_dashboard.scss */
 .dashboard ul#stats li span {
   position: relative;
   display: inline-block;
   float: right;
 }
-/* line 27, ../sass/_dashboard.scss */
+/* line 29, ../sass/_dashboard.scss */
 .dashboard .end {
   *zoom: 1;
 }

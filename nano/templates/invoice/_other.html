@@ -1,0 +1,8 @@
+{% if custom_fields|length > 0 %}
+<div id="invoice-other">
+  <h2>Other Information</h2>
+  {% for field in custom_fields %}
+    <div><strong>{{ field.name }}</strong> {{ field.value }}</div>
+  {% endfor %}
+</div>
+{% endif %}

@@ -2,7 +2,7 @@
 .dashboard {
   padding: 5px;
   margin-top: 1em;
-
+  
   .card {
     background-color: #fff;
     padding: 1em;
@@ -15,7 +15,9 @@
   ul#stats {
     @include span-columns(3, 12);
     li {
-      @include adjust-font-size-to(18px);
+      font-size: 14px;
+      display: block;
+      height: 1.5em;
       span {
         position: relative;
         display: inline-block;

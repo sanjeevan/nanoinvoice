@@ -1,0 +1,52 @@
+{% from "macros/_misc.html" import render_input, render_errors %}
+{% extends 'layout.html' %}
+
+{% block content %}
+
+  {% include 'account/_filter.html' %}
+  {% include 'settings/_subnav.html' %}
+  
+  <div class="workspace-inner">
+    
+    <form class="create inline tax-rates" method="post" action="{{ url_for('.tax_rates') }}">
+      <div class="header">Taxes</div>  
+      <div class="fields">
+
+        {% for form_field in form.current_taxes.entries %}
+          <div class="field">
+            <label></label>
+            <div class="input">
+              {{ form_field.uid }}
+              {{ form_field.rate_name }}
+              {{ form_field.rate }}
+            </div>
+            <a class='delete' href="{{ url_for('settings.delete_tax_rate', id=form_field.uid.data) }}"> Delete</a>
+          </div>
+        {% endfor %}
+        
+        <div class="field vspacer"></div>
+        
+        <div class="field"> 
+          <label>New tax</label>
+          <div class="input">
+            <div class='input vtop'>
+              {{ form.new_tax_rate.rate_name(placeholder='TAX name') }}
+              {{ render_errors(form.new_tax_rate.rate_name) }}
+            </div>
+            <div class='input vtop'>
+              {{ form.new_tax_rate.rate(placeholder='Rate percentage') }}
+              {{ render_errors(form.new_tax_rate.rate) }} 
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <button class="button normal" type="submit">Save</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+
+{% endblock %}
+
