@@ -1,4 +1,4 @@
-/* line 17, ../../../../../../../home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, /home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -20,45 +20,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../../../home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, /home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../../../home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, /home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../../../home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, /home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../../../home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, /home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../../../home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, /home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../../home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, /home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../../../home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, /home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../../../home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, /home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
@@ -191,7 +191,7 @@ html[xmlns] .pagestyle {
 /* line 5, ../sass/invoice_themes/_default.scss */
 #invoice-header #company-address {
   text-align: right;
-  font-size: 11pt;
+  font-size: 10pt;
   line-height: 14pt;
 }
 
@@ -475,35 +475,6 @@ html[xmlns] .pagestyle {
 #invoice-amount .salestax_th {
   width: 8%;
   text-align: center;
-}
-
-/* Invoice UK VAT Summary Table */
-/* line 61, ../sass/invoice_themes/_default.scss */
-#invoice #invoice-uk-vat-summary {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 25px 0 0 0;
-  clear: both;
-  border: 0;
-  background: #fff;
-}
-
-/* line 62, ../sass/invoice_themes/_default.scss */
-#invoice tr#invoice-uk-vat-header th {
-  padding: 7px 0;
-  border-top: 1px solid #ccc;
-}
-
-/* line 63, ../sass/invoice_themes/_default.scss */
-#invoice-uk-vat-summary td, #invoice #invoice-uk-vat-summary th {
-  text-align: left;
-  font-size: 9pt;
-  padding: 2px 0;
-}
-
-/* line 64, ../sass/invoice_themes/_default.scss */
-#vat-total td, #vat-total th {
-  border-top: 1px solid #ccc;
 }
 
 @page {

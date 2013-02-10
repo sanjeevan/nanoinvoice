@@ -389,7 +389,7 @@ body, html {
 }
 /* line 73, ../sass/_layout.scss */
 .content .workspace-inner {
-  padding: 1em;
+  padding: 10px;
 }
 
 /* line 2, ../sass/_login.scss */
@@ -965,10 +965,30 @@ html[xmlns] .pagestyle {
 
 /* line 2, ../sass/_dashboard.scss */
 .dashboard {
-  padding: 5px;
   margin-top: 1em;
 }
-/* line 6, ../sass/_dashboard.scss */
+/* line 5, ../sass/_dashboard.scss */
+.dashboard #graph {
+  margin: 0.5em;
+}
+/* line 9, ../sass/_dashboard.scss */
+.dashboard .row {
+  *zoom: 1;
+  max-width: 960px;
+  _width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-top: 10px;
+}
+/* line 38, ../../../../../../../home/sanjeevan/.rvm/gems/ruby-1.9.3-p194/gems/compass-0.13.alpha.0/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+.dashboard .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* line 14, ../sass/_dashboard.scss */
 .dashboard .card {
   background-color: #fff;
   padding: 1em;
@@ -981,28 +1001,29 @@ html[xmlns] .pagestyle {
   -moz-box-shadow: 0px 0px 2px #cccccc;
   box-shadow: 0px 0px 2px #cccccc;
   border: 1px solid #aaa;
-  margin-top: 1em;
+  margin-right: 5px;
+  margin-left: 5px;
 }
-/* line 15, ../sass/_dashboard.scss */
-.dashboard ul#stats {
-  width: 25%;
+/* line 24, ../sass/_dashboard.scss */
+.dashboard .span3 {
+  width: 33.333%;
   float: left;
   margin-right: 0%;
   display: inline;
 }
-/* line 17, ../sass/_dashboard.scss */
+/* line 29, ../sass/_dashboard.scss */
 .dashboard ul#stats li {
   font-size: 14px;
   display: block;
   height: 1.5em;
 }
-/* line 21, ../sass/_dashboard.scss */
+/* line 33, ../sass/_dashboard.scss */
 .dashboard ul#stats li span {
   position: relative;
   display: inline-block;
   float: right;
 }
-/* line 29, ../sass/_dashboard.scss */
+/* line 41, ../sass/_dashboard.scss */
 .dashboard .end {
   *zoom: 1;
 }
@@ -1041,7 +1062,7 @@ html[xmlns] .pagestyle {
 /* line 5, ../sass/invoice_themes/_default.scss */
 #invoice-header #company-address {
   text-align: right;
-  font-size: 11pt;
+  font-size: 10pt;
   line-height: 14pt;
 }
 
@@ -1325,35 +1346,6 @@ html[xmlns] .pagestyle {
 #invoice-amount .salestax_th {
   width: 8%;
   text-align: center;
-}
-
-/* Invoice UK VAT Summary Table */
-/* line 61, ../sass/invoice_themes/_default.scss */
-#invoice #invoice-uk-vat-summary {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 25px 0 0 0;
-  clear: both;
-  border: 0;
-  background: #fff;
-}
-
-/* line 62, ../sass/invoice_themes/_default.scss */
-#invoice tr#invoice-uk-vat-header th {
-  padding: 7px 0;
-  border-top: 1px solid #ccc;
-}
-
-/* line 63, ../sass/invoice_themes/_default.scss */
-#invoice-uk-vat-summary td, #invoice #invoice-uk-vat-summary th {
-  text-align: left;
-  font-size: 9pt;
-  padding: 2px 0;
-}
-
-/* line 64, ../sass/invoice_themes/_default.scss */
-#vat-total td, #vat-total th {
-  border-top: 1px solid #ccc;
 }
 
 /* line 1, ../sass/vendor/_facebox.scss */

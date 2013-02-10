@@ -6,18 +6,32 @@
     <h1>Dashboard</h1>
     
     <div class="dashboard">
-      <div class='card' id='graph' style='min-width: 400px; height: 240px; margin: 0 auto'>
+      <div class='card' id='graph' style='min-width: 400px; height: 240px; margin: 0 0'>
       </div>
       
-      <ul id='stats' class='card'>
-        <li>Due:  <span class='label label-count'>{{ sent|length }}</span></li>
-        <li>Draft: <span class='label label-count'>{{ send|length }}</span></li>
-        <li>Overdue: <span class='label label-count'>{{ overdue|length }}</span></li>
-        <li>Paid: <span class='label label-count'>0</span></li>
-      </ul>
-      
+      <div class='row'>
+        <div class='span3'>
+          <ul id='stats' class='card'>
+            <li>Due:  <span class='label label-count'>{{ sent|length }}</span></li>
+            <li>Draft: <span class='label label-count'>{{ send|length }}</span></li>
+            <li>Overdue: <span class='label label-count'>{{ overdue|length }}</span></li>
+            <li>Paid: <span class='label label-count'>0</span></li>
+          </ul>
+        </div>
+        
+        <div class='span3'>
+          <div class='card'>
+            <h4>Recent payments</h4>
+          </div>
+        </div>
+        
+        <div class='span3'>
+          <div class='card'>
+            <h4>Total <small><a href="#">Past month</a> <a href='#'>3 months</a> <a href='#'>6 months</a></small> </h4>
+          </div>
+        </div>
+      </div>
 
-      <div class='end'></div>
     </div>
   </div>
 
