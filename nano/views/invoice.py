@@ -57,6 +57,16 @@ def edit(id):
     return render_template('invoice/edit.html', form=form, invoice=invoice)
 
 
+@invoice.route('/delete/<int:id>', methods=['GET'])
+@login_required
+def delete(id):
+    invoice = Invoice.query.get(id)
+    if invoice:
+        db.session.delete(invoice)
+        db.session.commit()
+        flash('Invoice deleted')
+    return redirect(url_for('.index'))
+
 @invoice.route('/reopen/<int:id>', methods=['GET', 'POST'])
 @login_required
 def reopen(id):

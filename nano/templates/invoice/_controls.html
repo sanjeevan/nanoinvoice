@@ -7,7 +7,7 @@
       <a href="{{ url_for('.save', id=invoice.id) }}"><img src="/static/img/padlock_open_icon&16.png"> Close</a></a>
     <a href="{{ url_for('.edit', id=invoice.id) }}"><img src="/static/img/wrench_plus_2_icon&16.png"> Edit invoice</a>
     {% endif %}
-    <a href=""><img src="/static/img/trash_icon&16.png"> Delete</a>
+    <a href="{{ url_for('.delete', id=invoice.id) }}"><img src="/static/img/trash_icon&16.png"> Delete</a>
   </div>
   {% if invoice.status == 'saved' %}
   <div class="right">
