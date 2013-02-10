@@ -1,0 +1,34 @@
+
+<% if (Invoice.get("tax") > 0) { %>
+  <tr id="net_total_tr">
+    <td colspan="2">&nbsp;</td>
+    <td colspan="2" class="item_r">Net Total</td>
+    <td class="item_r" id="net_total_amount">{{ invoice.sub_total|format_currency }}</td>
+  </tr>
+
+  <tr id="vat_tr">
+    <td colspan="2">&nbsp;</td>
+    <td colspan="2" class="item_r">TAX</td>
+    <td class="item_r" id="sales_tax_amount">{{ invoice.tax|format_currency }}</td>
+  </tr>
+<% } %>
+
+<tr id="total_tr">
+  <td colspan="2" class="inv_btn">
+    <% if (Invoice.get("status") == "draft") { %>
+        <a href="#" class="button normal" id="add_invoice_item" title="Add Invoice Item">
+      <span><em>Add Invoice Item</em></span>
+    </a> &nbsp; 
+    <a href="#" class="button normal" id="reorder_invoice_items">
+      <span><em>Reorder</em></span>
+    </a>
+    <% } %>
+  </td>
+
+  <% var col_span = 1 %>
+  <% if (Invoice.get("tax") > 0) { %>
+    <% col_span = 2 %>
+  <% } %>
+  <td colspan="<%= col_span %>" class="total" id="total_currency"><span class="currency"><%= Invoice.get("currency_code") %> </span>Total</td>
+  <td class="total" id="total_amount"><%= numberFormat(Invoice.get("total"), 2) %></td>
+</tr>

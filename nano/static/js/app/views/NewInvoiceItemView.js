@@ -25,7 +25,9 @@ var NewInvoiceItemView = Backbone.View.extend({
         });
         // If item price is 0, attributes won't be changed, so manually
         // trigger event
-        view.parentView.model.trigger("change");
+        if (resp.InvoiceItem.total == 0) {
+          view.parentView.model.trigger("change");
+        }
         $.facebox.close();
       }
     });

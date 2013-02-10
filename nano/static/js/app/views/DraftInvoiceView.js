@@ -62,8 +62,10 @@ var DraftInvoiceView = Backbone.View.extend({
   },
 
   render: function() {
-    var view = this;
+    var view      = this;
     var itemsHtml = "";
+    var footer    = JST["invoice_footer"]({ Invoice: view.model });
+
     console.log('rendering');
     
     this.model.get("InvoiceItems").each(function(item) {
@@ -71,5 +73,6 @@ var DraftInvoiceView = Backbone.View.extend({
     });
     
     this.$el.find("#invoice_items").html(itemsHtml);
+    this.$el.find("tfoot").html(footer);
   }
 });
