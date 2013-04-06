@@ -6,6 +6,7 @@ from flask.ext.login import login_required, current_user
 from nano.models import Contact
 from nano.forms import SimpleClientForm, DetailedClientForm
 from nano.utils import Struct
+from nano.extensions import db
 
 client = Blueprint('client', __name__, url_prefix='/client')
 
@@ -47,5 +48,10 @@ def create():
 
 @client.route('/<int:id>/delete', methods=['GET'])
 @login_required
-def delete():
-    pass
+def delete(id):
+    contact = Contact.query.get(id)
+    if contact:
+        db.session.delete(contact)
+        db.session.commit()
+        flash('Client deleted')
+    return redirect(url_for('.index'))

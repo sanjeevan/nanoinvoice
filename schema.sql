@@ -255,7 +255,7 @@ CREATE TABLE `invoice` (
   KEY `user_id_idx` (`user_id`),
   KEY `contact_id_idx` (`contact_id`),
   KEY `payment_term_id_idx` (`payment_term_id`),
-  CONSTRAINT `invoice_contact_id_contact_id` FOREIGN KEY (`contact_id`) REFERENCES `contact` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `invoice_contact_id_contact_id` FOREIGN KEY (`contact_id`) REFERENCES `contact` (`id`) ON DELETE CASCADE,
   CONSTRAINT `invoice_payment_term_id_payment_term_id` FOREIGN KEY (`payment_term_id`) REFERENCES `payment_term` (`id`) ON DELETE SET NULL,
   CONSTRAINT `invoice_user_id_sf_guard_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;

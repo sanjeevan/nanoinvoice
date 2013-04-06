@@ -10,6 +10,10 @@ h1 {
   font-weight: 900;
 }
 
+.move-right {
+  float: right;
+}
+
 .sidebar {
   h3 {
     @include text-shadow(0 1px #ffffff);
@@ -121,6 +125,7 @@ h1 {
     padding: 8px;
     font-size: 12px;
     cursor: pointer;
+    margin-left: 0px;
   }
 
   .row:hover {

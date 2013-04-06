@@ -7,6 +7,8 @@
 /* Layout */
 
 
+@import "vendor/vendor";
+
 @import "mixins";
 @import "shared";
 @import "layout";
@@ -19,7 +21,6 @@
 @import "dashboard";
 
 @import "invoice_themes/default";
-@import "vendor/vendor";
 
 .container {
   @include container;

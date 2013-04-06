@@ -26,9 +26,8 @@
   }
 
   &.normal {
-    -moz-user-select: none;
     background-color: #F1F4F9;
-    background-image: -moz-linear-gradient(center top , #F7FAFF, #E8EBF0);
+    @include background-image(linear-gradient(center top, #F7FAFF, #E8EBF0));
     background-repeat: repeat-x;
     border: 1px solid #B1BCCA;
     border-radius: 3px 3px 3px 3px;
@@ -47,13 +46,31 @@
   &.normal:active {
     outline: none;
     background-color: #E2E5EC;
-    background-image: -moz-linear-gradient(center top , #DDE0E7, #E9ECF3);
+    @include background-image(linear-gradient(center top, #DDE0E7, #E9ECF3));
     background-repeat: repeat-x;
     border-color: #CCD0DA;
     box-shadow: 0 1px 3px rgba(96, 101, 124, 0.1) inset, 0 1px 0 #FFFFFF;
     color: #5C627F;
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
   }
+
+
+  &.danger {
+    @include background-image(linear-gradient(center top, #ee5f5b, #bd362f));
+    background-repeat: repeat-x;
+    border-radius: 3px 3px 3px 3px;
+    border: 1px solid #ee5f5b;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: proxima-nova,sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 8px 16px;
+    vertical-align: top;
+    text-decoration: none;
+  }
+
 }
 
 a.btn-small {

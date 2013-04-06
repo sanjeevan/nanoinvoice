@@ -12,9 +12,9 @@
   -moz-border-right-colors: none;
   -moz-border-top-colors: none;
   background-color: #ECECED;
-  background-image: -moz-linear-gradient(center top , #F7F8F8, #DBDBDC);
+  @include background-image(linear-gradient(center top, #F7F8F8, #DBDBDC 100%));
   background-repeat: repeat-x;
-  border-color: #AAAAAA #AAAAAA -moz-use-text-color;
+  border-color: #AAAAAA;
   border-image: none;
   border-radius: 4px 4px 0 0;
   border-style: solid solid none;
@@ -28,7 +28,7 @@
 }
 
 @mixin panel-body() {
-  background: -moz-linear-gradient(center top , #FFFFFF, #F5F4F4) repeat-x scroll 0 0 #FBFBFB;
+  @include background-image(linear-gradient(center top, #ffffff, #F5F4F4 100%));
   border: 1px solid #AAAAAA;
   border-radius: 0 0 4px 4px;
   margin: 0 auto 12px;

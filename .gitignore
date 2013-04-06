@@ -1,6 +1,7 @@
 venv/*
 bin/*
 files/uploads/*
+.sass-cache
 
 *.pyc
 *.tmp
