@@ -167,30 +167,36 @@ def configure_error_handlers(app):
 def configure_assets(app):
     assets = Environment(app)
 
-    js_lib = Bundle('js/lib/underscore.js', 'js/lib/jquery-1.8.3.js',
-                    'js/lib/backbone.js', 'js/lib/backbone-relational.js',
-                    'js/lib/sprintf-0.7-beta1.js',
-                    'js/vendor/select2/select2.js',
-                    'js/vendor/Pikaday/pikaday.js', 
-                    'js/vendor/facebox/facebox.js',
-                    'js/vendor/highcharts/highcharts.src.js',
-                    'js/lib/upclick.js',
-                    filters='yui_js', output='gen/libs.js')
+    js_lib = Bundle('src/js/lib/underscore.js', 
+                    'src/js/lib/jquery-1.8.3.js',
+                    'src/js/lib/backbone.js', 
+                    'src/js/lib/backbone-relational.js',
+                    'src/js/lib/sprintf-0.7-beta1.js',
+                    'src/js/vendor/select2/select2.js',
+                    'src/js/vendor/Pikaday/pikaday.js', 
+                    'src/js/vendor/facebox/facebox.js',
+                    'src/js/vendor/highcharts/highcharts.src.js',
+                    'src/js/lib/upclick.js',
+                    filters='yui_js', output='dist/js/libs.js')
     
-    js_app = Bundle('js/app/app.js',
-                    'js/app/models/all.js', 
-                    'js/app/views/DraftInvoiceView.js',
-                    'js/app/views/EditInvoiceItemView.js',
-                    'js/app/views/InvoiceFormView.js',
-                    'js/app/views/NewInvoiceItemView.js',
-                    filters='yui_js', output='gen/app.js')
+    js_app = Bundle('src/js/app/app.js',
+                    'src/js/app/models/all.js', 
+                    'src/js/app/views/DraftInvoiceView.js',
+                    'src/js/app/views/EditInvoiceItemView.js',
+                    'src/js/app/views/InvoiceFormView.js',
+                    'src/js/app/views/NewInvoiceItemView.js',
+                    filters='yui_js', output='dist/js/app.js')
     
-    js_templates = Bundle('js/app/templates/*.html', output='gen/templates.js',
+    js_templates = Bundle('src/js/app/templates/*.html', output='dist/js/templates.js',
                           filters='jst')
+
+    css_global = Bundle('src/sass/screen.scss',
+                        filters='scss', output='dist/css/screen.css')
 
     assets.register('js_lib', js_lib)
     assets.register('js_app', js_app)
     assets.register('js_templates', js_templates)
+    assets.register('css_global', css_global)
 
 
 

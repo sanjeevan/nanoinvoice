@@ -4,9 +4,11 @@
     {% block head %}
     <meta charset="utf-8" />
     <title>{{ page_title|default('Nanoinvoice') }}</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/nano/stylesheets/screen.css" />
-    <link rel="stylesheet" type="text/css" href="/static/js/vendor/select2/select2.css" />
-    <link rel="stylesheet" type="text/css" href="/static/js/vendor/Pikaday/css/pikaday.css" />
+    
+    {% assets 'css_global' %}
+      <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
+    {% endassets %}
+
     {% assets 'js_lib' %}
       <script type="text/javascript" src="{{ ASSET_URL }}"></script>
     {% endassets %}
