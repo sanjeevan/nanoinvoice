@@ -23,21 +23,25 @@ h1 {
     text-transform: uppercase;
     margin: 20px 0 2px 12px;
   }
-  ul.menu li {
-    display: block;
-    margin: 0px 0 2px 12px;
-    a {
+  ul.menu {
+    padding-left: 0px;
+    li {
       display: block;
-      text-decoration: none;
-      color: #515765;
-      padding: 5px 12px;
+      margin: 0px 0 2px 12px;
+      a {
+        display: block;
+        text-decoration: none;
+        color: #515765;
+        padding: 5px 12px;
+      }
     }
   }
 }
 
-.filters { 
-  @include pie-clearfix;
-  @include background-image(linear-gradient(center top, #efefef 5%, darken(#ffffff, 15%) 100%));
+.filters {
+  @include background-image(linear-gradient(#efefef 0%, darken(#ffffff, 15%) 100%, transparent 50%));
+  @include clearfix;
+
   border-bottom: 1px solid #AAAAAA;
   
   padding: 8px;

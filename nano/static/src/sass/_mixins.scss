@@ -1,18 +1,20 @@
 @mixin panel-header() {
   height: 2em;
-  @include background-image(linear-gradient(center top, $panel-colour 5%, darken($panel-colour, 5%) 100%));
+  //@include background-image(linear-gradient(center top, $panel-colour 5%, darken($panel-colour, 5%) 100%));
+  @include background-image(linear-gradient(hsla(0, 100%, 100%, 0.25) 0%, 
+                            hsla(0, 100%, 100%, 0.08) 5%, 
+                            transparent 50%), 
+                            linear-gradient(#4e7ba3, darken(#4e7ba4, 10%)));
   @include border-radius(2px 2px 0 0);
   @include box-shadow(0 1px lighten($panel-colour, 10%) inset);
   border-bottom: 1px solid darken($panel-colour, 15%);
 }
 
 @mixin panel-header2() {
-  -moz-border-bottom-colors: none;
-  -moz-border-left-colors: none;
-  -moz-border-right-colors: none;
-  -moz-border-top-colors: none;
+
   background-color: #ECECED;
-  @include background-image(linear-gradient(center top, #F7F8F8, #DBDBDC 100%));
+
+  @include background-image(linear-gradient(#F7F8F8 0%,  #DBDBDC 100%)); 
   background-repeat: repeat-x;
   border-color: #AAAAAA;
   border-image: none;
@@ -28,7 +30,7 @@
 }
 
 @mixin panel-body() {
-  @include background-image(linear-gradient(center top, #ffffff, #F5F4F4 100%));
+  @include background-image(linear-gradient(#ffffff 0%, #F5F4F4 100%));
   border: 1px solid #AAAAAA;
   border-radius: 0 0 4px 4px;
   margin: 0 auto 12px;

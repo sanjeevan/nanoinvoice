@@ -179,11 +179,17 @@ form.create.custom-field {
     width: 200px;
   }
 
+  label {
+    vertical-align: bottom;
+    line-height: 29px;
+  }
+
   a.delete {
     display: inline-block;
     float: right;
     text-decoration: none;
-    @include adjust-font-size-to(11px);
+    font-size: 11px;
+    line-height: 29px;
     color: #999;
 
     &:hover { text-decoration: underline; }
@@ -199,11 +205,17 @@ form.create.tax-rates {
     width: 200px;
   }
 
+  label {
+    vertical-align: bottom;
+    line-height: 29px;
+  }
+  
   a.delete {
     display: inline-block;
     float: right;
     text-decoration: none;
-    @include adjust-font-size-to(11px);
+    font-size: 11px;
+    line-height: 29px;
     color: #999;
 
     &:hover { text-decoration: underline; }

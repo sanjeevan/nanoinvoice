@@ -1,76 +1,17 @@
 
 .button {
   &.primary {
-    @include border-radius(6px);
-    @include box-shadow(inset 0px 1px 0px 0px #bbdaf7);
-    
-    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #378de5) );
-    background:-moz-linear-gradient( center top, #79bbff 5%, #378de5 100% );
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5');
-    background-color:#79bbff;
-
-    border:1px solid #84bbf3;
-    display:inline-block;
-    color:#ffffff;
-    font-family:Arial;
-    font-size:14px;
-    font-weight:bold;
-    padding:6px 24px;
-    text-decoration:none;
-    text-shadow:1px 1px 0px #528ecc;
-  }
-
-  &.primary:active {
-    position:relative;
-    top:1px;
+    @include button;
   }
 
   &.normal {
-    background-color: #F1F4F9;
-    @include background-image(linear-gradient(center top, #F7FAFF, #E8EBF0));
-    background-repeat: repeat-x;
-    border: 1px solid #B1BCCA;
-    border-radius: 3px 3px 3px 3px;
-    box-shadow: 0 1px 1px #FFFFFF inset, 0 1px 2px rgba(0, 0, 0, 0.05);
-    color: #737C93;
-    cursor: pointer;
-    display: inline-block;
-    font-family: proxima-nova,sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 8px 16px;
-    vertical-align: top;
-    text-decoration: none;
+    //@include button(#F1F4F9);
+    @include button;
   }
-
-  &.normal:active {
-    outline: none;
-    background-color: #E2E5EC;
-    @include background-image(linear-gradient(center top, #DDE0E7, #E9ECF3));
-    background-repeat: repeat-x;
-    border-color: #CCD0DA;
-    box-shadow: 0 1px 3px rgba(96, 101, 124, 0.1) inset, 0 1px 0 #FFFFFF;
-    color: #5C627F;
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
-  }
-
 
   &.danger {
-    @include background-image(linear-gradient(center top, #ee5f5b, #bd362f));
-    background-repeat: repeat-x;
-    border-radius: 3px 3px 3px 3px;
-    border: 1px solid #ee5f5b;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    font-family: proxima-nova,sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 8px 16px;
-    vertical-align: top;
-    text-decoration: none;
+    @include button(#ff0000);
   }
-
 }
 
 a.btn-small {

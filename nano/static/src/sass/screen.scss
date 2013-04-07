@@ -4,6 +4,7 @@
 @import "variables";
 @import "bourbon/bourbon";
 
+
 /* Layout */
 @import "vendor/vendor";
 
@@ -19,8 +20,3 @@
 @import "dashboard";
 
 @import "invoice_themes/default";
-
-.container {
-  @include container;
-  @include susy-grid-background;
-}
