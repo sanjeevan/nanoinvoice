@@ -1241,7 +1241,9 @@ form.create.custom-field input[type='text'] {
   width: 200px; }
 form.create.custom-field label {
   vertical-align: bottom;
-  line-height: 29px; }
+  line-height: 29px;
+  text-align: right;
+  margin-right: 1em; }
 form.create.custom-field a.delete {
   display: inline-block;
   float: right;
@@ -1258,7 +1260,9 @@ form.create.tax-rates input[type='text'] {
   width: 200px; }
 form.create.tax-rates label {
   vertical-align: bottom;
-  line-height: 29px; }
+  line-height: 29px;
+  text-align: right;
+  margin-right: 1em; }
 form.create.tax-rates a.delete {
   display: inline-block;
   float: right;
@@ -1387,7 +1391,13 @@ html[xmlns] .pagestyle {
   .dashboard #graph {
     margin: 0.5em; }
   .dashboard .row {
-    margin-top: 10px; }
+    margin-top: 10px;
+    *zoom: 1; }
+    .dashboard .row:before, .dashboard .row:after {
+      content: " ";
+      display: table; }
+    .dashboard .row:after {
+      clear: both; }
   .dashboard .card {
     background-color: #fff;
     padding: 1em;

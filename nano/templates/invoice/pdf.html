@@ -1,6 +1,8 @@
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="/static/css/nano/stylesheets/pdf.css" />
+    {% assets 'css_pdf' %}
+      <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
+    {% endassets %}
   </head>
   <body>
     <div>

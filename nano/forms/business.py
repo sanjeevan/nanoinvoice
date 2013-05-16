@@ -2,15 +2,13 @@ from flask.ext.wtf import (Form, HiddenField, BooleanField, TextField,
                           SubmitField, SelectField, FormField,
                           ValidationError, required, equal_to, email,
                           length)
-from flaskext.babel import gettext, lazy_gettext as _
-from flask.ext.login import current_user 
 
 from nano.extensions import db
 from nano.models import CompanyType, Country
 
 class BusinessForm(Form):
     """This actually maps more closely to the profile table"""
-    
+
     company_type_id     = SelectField(u'Company type', coerce=int, validators=[required()])
     name                = TextField(u'Company name', validators=[required()])
     address1            = TextField(u'Address', validators=[required()])
@@ -24,7 +22,7 @@ class BusinessForm(Form):
 
     def __init__(self, formdata=None, obj=None, prefix='', **kwargs):
         super(BusinessForm, self).__init__(formdata, obj, prefix, kwargs)
-        
+
         if obj:
             self.company = obj
         else:
@@ -46,7 +44,7 @@ class BusinessForm(Form):
         for t in types:
             choices.append((t.id, t.name))
         return choices
-    
+
     def save(self):
         if self.company:
             company = self.company

@@ -193,10 +193,14 @@ def configure_assets(app):
     css_global = Bundle('src/sass/screen.scss',
                         filters='scss', output='dist/css/screen.css')
 
+    css_pdf = Bundle('src/sass/pdf.scss',
+                     filters='scss', output='dist/css/pdf.css')
+
     assets.register('js_lib', js_lib)
     assets.register('js_app', js_app)
     assets.register('js_templates', js_templates)
     assets.register('css_global', css_global)
+    assets.register('css_pdf', css_pdf)
 
 
 

@@ -8,6 +8,7 @@
 
   .row {
     margin-top: 10px;
+    @include clearfix;
   }
 
   .card {

@@ -1,12 +1,11 @@
 body, html {
   background-color: #fff;
-  font-size: $base-font-size;
+  font-size: 14px;
   font-family: "HelveticaNeue", Helvetica, Arial, sans-serif;
   color: #333;
 }
 
 * {
-  @include box-sizing(border-box);
 }
 
 a img {
@@ -15,7 +14,7 @@ a img {
 
 h1 {
   color: $h1-colour;
-  @include adjust-font-size-to(28px);
+  font-size: 28px;
   line-height: 1em;
   font-weight: 900;
 }

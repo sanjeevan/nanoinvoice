@@ -182,6 +182,8 @@ form.create.custom-field {
   label {
     vertical-align: bottom;
     line-height: 29px;
+    text-align: right;
+    margin-right: 1em;
   }
 
   a.delete {
@@ -208,8 +210,10 @@ form.create.tax-rates {
   label {
     vertical-align: bottom;
     line-height: 29px;
+    text-align: right;
+    margin-right: 1em;
   }
-  
+
   a.delete {
     display: inline-block;
     float: right;

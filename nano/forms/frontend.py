@@ -14,7 +14,6 @@ class LoginForm(Form):
     password = PasswordField(_('Password'), [required(), length(min=6, max=16)])
     submit = SubmitField(_('Login'))
 
-
 class SignupForm(Form):
     next = HiddenField()
     name = TextField(_('Username'), [required()])
