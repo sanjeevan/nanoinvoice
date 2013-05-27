@@ -8,3 +8,5 @@ from nano.forms.user import UserForm
 from nano.forms.business import BusinessForm
 from nano.forms.custom_field import CustomFieldsManagementForm, CustomFieldForm
 from nano.forms.tax import TaxRateForm, NewTaxRateForm, TaxRateContainerForm
+from nano.forms.payment import PaymentForm
+

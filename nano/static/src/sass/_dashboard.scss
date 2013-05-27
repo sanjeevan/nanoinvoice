@@ -19,27 +19,5 @@
     border: 1px solid #aaa;
   }
 
-  .span3 {
-    width: flex-grid(4, 12);
-    float: left;
-    margin-left: 2px;
-  }
-
-  ul#stats {
-    li {
-      font-size: 14px;
-      display: block;
-      height: 1.5em;
-      span {
-        position: relative;
-        display: inline-block;
-        float: right;
-      }
-    }
-  }
-
-  .end {
-    @include pie-clearfix;
-  }
 }
 

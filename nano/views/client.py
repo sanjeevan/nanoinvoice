@@ -28,7 +28,10 @@ def show(id):
         form.save()
         flash('Client details updated')
 
-    return render_template('client/show.html', contact=contact, form=form)
+
+    invoices = contact.invoices
+
+    return render_template('client/show.html', contact=contact, form=form, invoices=invoices)
 
 @client.route('/update/<int:id>', methods=['POST'])
 def update(id):

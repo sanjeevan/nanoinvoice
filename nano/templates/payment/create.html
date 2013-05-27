@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% from 'macros/_misc.html' import render_input %}
+{% block content %}
+  
+  {% include 'invoice/_controls.html' %}
+  
+  <div class="workspace-inner">
+
+    <form class="form form-horizontal create inline invoice" method="post" action="{{ url_for('payment.create', invoice_id=invoice.id) }}">
+      <div class="header">Add payment</div>
+      <div class="fields">
+        {{ form.csrf_token }}
+
+
+        {{ render_input(form.amount) }}
+        {{ render_input(form.method) }}
+        {{ render_input(form.date) }}
+
+        <div class="field">
+          <button class="button normal" type="submit">Add payment</button>
+           or 
+          <a href="javascript:history.back(-1);">Cancel</a>
+        </div>
+      </div>
+    </form>
+
+  </div>
+
+  <script type="text/javascript">
+    var dateFormat = 'D MMM YYYY'
+    $(document).ready(function(){
+      var picker1 = new Pikaday({ field: document.getElementById('date'), format: dateFormat });
+    });
+  </script>
+
+
+
+{% endblock %}

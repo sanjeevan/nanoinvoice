@@ -1,4 +1,5 @@
 import json
+import math
 
 from datetime import datetime, timedelta
 from collections import OrderedDict
@@ -26,15 +27,37 @@ def login():
 @login_required
 def dashboard():
     """Main dashboard view""" 
-    sent_invoices       = Invoice.query.filter_by(status='saved').all()
-    draft_invoices      = Invoice.query.filter_by(status='draft').all()
-    overdue_invoices    = Invoice.query.filter(Invoice.due_date<=datetime.now()).all()
+
+    sent_invoices = Invoice.query.filter_by(status='saved') \
+                           .filter(Invoice.user_id==current_user.id) \
+                           .order_by(asc(Invoice.due_date)) \
+                           .all()
+
+    overdue_invoices = Invoice.query.filter_by(status='saved') \
+                           .filter(Invoice.payment_status==u'unpaid') \
+                           .filter(Invoice.user_id==current_user.id) \
+                           .filter(Invoice.due_date<=datetime.now()) \
+                           .order_by(asc(Invoice.due_date)) \
+                           .all()
+
+
+    paid_invoices = Invoice.query.filter_by(status='saved') \
+                           .filter(Invoice.payment_status==u'paid') \
+                           .filter(Invoice.user_id==current_user.id) \
+                           .order_by(asc(Invoice.due_date)) \
+                           .all()
+
+    draft_invoices      = Invoice.query.filter(Invoice.status=='draft') \
+                                       .filter(Invoice.user_id==current_user.id) \
+                                       .all()
     payments            = []
 
     return render_template('home/dashboard.html', user=current_user,
                                                   sent=sent_invoices,
                                                   overdue=overdue_invoices,
-                                                  payments=[])
+                                                  draft_invoices=draft_invoices,
+                                                  paid_invoices=paid_invoices,
+                                                  payments=payments)
 
 @home.route('/graph')
 @login_required
@@ -60,30 +83,42 @@ def graph():
         idx = idx + timedelta(days=30)
     
     sent_invoices = Invoice.query.filter_by(status='saved') \
+                           .filter(Invoice.user_id==current_user.id) \
                            .filter(Invoice.date_issued>=start) \
                            .filter(Invoice.date_issued<=end) \
                            .order_by(asc(Invoice.due_date)) \
                            .all()
 
     overdue_invoices = Invoice.query.filter_by(status='saved') \
+                           .filter(Invoice.payment_status==u'unpaid') \
+                           .filter(Invoice.user_id==current_user.id) \
                            .filter(Invoice.date_issued>=start) \
                            .filter(Invoice.date_issued<=end) \
                            .filter(Invoice.due_date<=datetime.now()) \
                            .order_by(asc(Invoice.due_date)) \
                            .all()
 
+    invoice_ids = [invoice.id for invoice in Invoice.query.filter_by(user_id=current_user.id).all()]
+    payments = Payment.query.filter(Payment.invoice_id.in_(invoice_ids)) \
+                            .order_by(asc(Payment.date)) \
+                            .all()
+
     for invoice in sent_invoices:
         key = invoice.date_issued.strftime(key_format)
         series['sent'][key] += float(invoice.total)
-    
-    for invoice in overdue_invoices:
-        key = invoice.due_date.strftime(key_format)
-        series['overdue'][key] += float(invoice.total)
 
+    for invoice in overdue_invoices:
+        key = invoice.date_issued.strftime(key_format)
+        paid_off = math.fsum([payment.amount for payment in invoice.payments])
+        series['overdue'][key] += (float(invoice.total) - paid_off)
+
+    for payment in payments:
+        key = payment.date.strftime(key_format)
+        series['paid'][key] += float(payment.amount)
 
     output = [
         {
-            'name': 'Sent',
+            'name': 'Billed',
             'data': [v for k, v in series['sent'].iteritems()]
         },
         {
@@ -92,7 +127,7 @@ def graph():
         },
         {
             'name': 'Paid',
-            'data': []
+            'data': [v for k, v in series['paid'].iteritems()]
         }
     ]
 

@@ -1,1 +1,34 @@
 {% extends 'layout.html' %}
+{% block content %}
+
+  <div class="data-list-wrapper payments-data-list"> 
+    <div class="data-list-header">
+      <div class="col ref">Payment date</div>
+      <div class="col ref">Invoice</div>
+      <div class="col due-date">Due date</div>
+      <div class="col client">Client</div>
+      <div class="col name">Method</div>
+      <div class="col amount">Amount</div>
+      <div class="col"></div>
+    </div>
+    <div class="data-list">
+      {% for payment in payments %}
+        <div class="row" data-id="{{ payment.id }}">
+          <div class="col date">{{ payment.date.strftime('%d %b %Y') }}</div>
+          <div class="col ref"><a href="{{ url_for('invoice.show', id=payment.invoice_id) }}">{{ payment.invoice.reference }}</a></div>
+          <div class="col due-date">{{ payment.invoice.due_date.strftime('%d %b %Y') }}</div>
+          <div class="col client">{{ payment.invoice.contact.full_name() }}</div>
+          <div class="col method">{{ payment.method }}</div>
+          <div class="col amount">{{ payment.amount|format_currency }} {{ payment.currency_code }}</div>
+          <div class="col">
+            <div class="btn-group">
+              <a class="btn btn-mini" href="{{ url_for('payment.edit', id=payment.id) }}">Edit</a>
+              <a class="btn btn-danger btn-mini" href="{{ url_for('payment.delete', id=payment.id) }}">Delete</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+{% endblock %}

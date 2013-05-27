@@ -35,7 +35,7 @@
 
   <script type="text/javascript">
     $(document).ready(function() {
-      $('div.row').on('click', function(evt) {
+      $('div.data-list > div.row').on('click', function(evt) {
         console.log('hello');
         var el = $(this);
         window.location = '/invoice/' + el.data('id');

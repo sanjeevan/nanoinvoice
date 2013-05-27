@@ -5,7 +5,7 @@ from urlparse import urljoin
 from datetime import datetime
 
 from nano.models import Invoice, CustomField
-from nano.forms import InvoiceForm
+from nano.forms import InvoiceForm, PaymentForm
 from nano.utils import json_dumps
 from nano.extensions import db
 from nano.wkhtml import wkhtml_to_pdf
@@ -130,3 +130,7 @@ def pdf(id):
     return render_template('invoice/pdf.html', invoice=invoice, 
                                                company=invoice.user.company,
                                                custom_fields=custom_fields)
+
+
+
+

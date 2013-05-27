@@ -3,39 +3,8 @@ a img {
   vertical-align: middle;
 }
 
-h1 {
-  color: $h1-colour;
-  @include adjust-font-size-to(28px);
-  line-height: 1em;
-  font-weight: 900;
-}
-
 .move-right {
   float: right;
-}
-
-.sidebar {
-  h3 {
-    @include text-shadow(0 1px #ffffff);
-    @include adjust-font-size-to(12px);
-    font-weight: bold;
-    color: #758594;
-    text-transform: uppercase;
-    margin: 20px 0 2px 12px;
-  }
-  ul.menu {
-    padding-left: 0px;
-    li {
-      display: block;
-      margin: 0px 0 2px 12px;
-      a {
-        display: block;
-        text-decoration: none;
-        color: #515765;
-        padding: 5px 12px;
-      }
-    }
-  }
 }
 
 .filters {
@@ -70,28 +39,6 @@ h1 {
   
   .right {
     float: right;
-  }
-}
-
-.subnav {
-  background-color: #efefef; 
-
-  ul li {
-    display: inline-block;
-    padding: 8px;
-    a {
-      text-decoration: none; 
-      color: #777777;
-      text-shadow: 0 1px 0 #fff;
-    }
-  }
-  
-  ul {
-    border-bottom: 1px solid #ccc;
-  }
-
-  ul li.active {
-    font-weight: bold;
   }
 }
 
@@ -169,6 +116,6 @@ h1 {
   background-color: #B94A48;
 }
 
-.label-info, .label-sent {
+.label-info, .label-saved{
   background-color: #3A87AD;
 }
