@@ -1,0 +1,54 @@
+{% extends 'portal.html' %}
+
+{% block content %}
+
+    <div class="{{ invoice.status }}">
+      <div id="invoice" class="pagestyle">
+        <div id="invoice-header">
+          {% if company.logo %}
+          <img alt="Logo" class="logo screen" src="{{ url_for('file.download', location=company.logo.thumbnail.get_web_url()) }}">
+          {% endif %}
+          <div class="vcard" id="company-address">
+            {% include 'invoice/_company.html' %}
+          </div>
+        </div>
+        <div id="invoice-info">
+          {% include 'invoice/_info.html' %}
+        </div>
+        <div class="vcard" id="client-details">
+          {% include 'invoice/_contact.html' %} 
+        </div>
+      
+        <table id="invoice-amount">
+          <thead>
+            <tr id="header_row">
+              <th class="quantity_th">Quantity</th>
+              <th class="left details_th">Details</th>
+              <th class="unitprice_th">Unit Price (£)</th>
+              <th class="salestax_th">Tax</th>
+              <th class="subtotal_th">Net Subtotal (£)</th>
+            </tr>
+          </thead>
+          <tbody id="invoice_items">
+            {% set idx = 0 %}
+            {% set row_class = cycler('odd', 'event') %}
+            {% for item in invoice.invoice_items %}
+              {% include 'invoice/_item.html' %}
+              {% set idx = idx + 1 %}
+            {% endfor %}
+          </tbody>
+          <tfoot>
+            {% include 'invoice/_footer.html' %}
+          </tfoot>
+        </table>
+
+        {% include 'invoice/_other.html' %}
+
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
+

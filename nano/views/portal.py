@@ -6,7 +6,7 @@
 """
 
 from flask import Blueprint, render_template, redirect, url_for
-from flask.ext.login import login_required, current_user
+#from flask.ext.login import login_required, current_user
 
 from nano.models import *
 
@@ -25,7 +25,16 @@ def invoice(username, paylink):
     if not user:
         return 'Invalid account', 404
 
-    return render_template('portal/invoice.html')
+    invoice_link = InvoiceLink.query.filter_by(user_id=user.id) \
+                                    .filter_by(link=paylink) \
+                                    .first()
+
+    if not invoice_link:
+        return 'Invalid invoice', 404
+    
+    company = invoice_link.invoice.user.company
+
+    return render_template('portal/invoice.html', invoice=invoice_link.invoice, company=company)
 
 def login():
     pass

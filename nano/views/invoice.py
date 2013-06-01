@@ -95,7 +95,7 @@ def save(id):
 def print_invoice():
     pass
 
-@invoice.route('/email/<int:id>')
+@invoice.route('/email/<int:id>', methods=['GET', 'POST'])
 def email(id):
     invoice = Invoice.query.get(id)
     if not invoice:
@@ -109,7 +109,7 @@ def email(id):
         invoice_link.generate_link_code()
         db.session.add(invoice_link)
         db.session.commit()
-    
+
     def render_message(text):
         text = text.replace('{{link}}', invoice_link.get_url())
         text = text.replace('{{company_name}}', current_user.company.name)
@@ -126,9 +126,8 @@ def email(id):
 
     if request.method == 'post':
         if form.validate():
-            form.save()
-        else:
-            pass
+            form.send_email()
+            flash('Email sent')
 
     return render_template('invoice/email.html', invoice=invoice, invoice_link=invoice_link, form=form)
 
@@ -142,7 +141,9 @@ def export(id):
     # generate PDF
     # TODO: do this a background job to scale properly
     path = url_for('.pdf', id=invoice.id)
-    url = urljoin(current_app.config['HOSTNAME'], path)
+    host = '%s://%s' % (request.scheme, current_app.config['SERVER_NAME'])
+    url = urljoin(host, path)
+    print url
     pdf_path = wkhtml_to_pdf(url)
     if not pdf_path:
         return 'Error generating PDF', 400

@@ -32,6 +32,7 @@ class Invoice(db.Model):
     user                = db.relation('User', primaryjoin='Invoice.user_id==User.id', backref='invoices')
     contact             = db.relation('Contact', primaryjoin='Invoice.contact_id==Contact.id', backref='invoices')
     payment_term        = db.relation('PaymentTerm', primaryjoin='Invoice.payment_term_id==PaymentTerm.id')
+    invoice_link        = db.relation('InvoiceLink', backref=db.backref('invoice', uselist=False, lazy='joined'))
     
     @classmethod
     def next_invoice_number(cls, user):

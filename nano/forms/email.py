@@ -15,8 +15,6 @@ class EmailForm(Form):
     def __init__(self, formdata=None, obj=None, prefix='', **kwargs):
         super(EmailForm, self).__init__(formdata, obj, prefix, kwargs)
 
-
-    def save(self):
+    def send(self):
         pass
-
 

@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    {% block head %}
+    <meta charset="utf-8" />
+    <title>Nanoinvoice - {{ page_title }}</title>
+
+    {% assets 'css_global' %}
+      <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
+    {% endassets %}
+
+    {% endblock %}
+  </head>
+  <body>
+    <div class="container plain">
+      
+      {% include '_flash.html' %}
+
+        <div class="header">
+          <img class="logo" src="//{{ config.SERVER_NAME }}/static/img/logo.png">
+        </div>
+
+        <div class="content">
+          {% block content %}{% endblock %}
+        </div>
+      
+        <div class="footer">
+        </div>
+
+
+    </div>
+  </body>
+</html>
