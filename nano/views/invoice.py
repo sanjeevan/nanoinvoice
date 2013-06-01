@@ -1,14 +1,16 @@
-from flask import (Flask, Blueprint, render_template, redirect, url_for,
+"""Invoice view"""
+
+from flask import (Blueprint, render_template, redirect, url_for,
                    flash, request, current_app, send_file)
 from flask.ext.login import login_required, current_user
 from urlparse import urljoin
 from datetime import datetime
 
-from nano.models import Invoice, CustomField
-from nano.forms import InvoiceForm, PaymentForm
-from nano.utils import json_dumps
+from nano.models import Invoice, CustomField, InvoiceLink
+from nano.forms import InvoiceForm, EmailForm
 from nano.extensions import db
 from nano.wkhtml import wkhtml_to_pdf
+from nano.utils import Struct
 
 invoice = Blueprint('invoice', __name__, url_prefix='/invoice')
 
@@ -93,9 +95,42 @@ def save(id):
 def print_invoice():
     pass
 
-@invoice.route('/email')
-def email():
-    pass
+@invoice.route('/email/<int:id>')
+def email(id):
+    invoice = Invoice.query.get(id)
+    if not invoice:
+        return 'Invoice not found', 404
+
+    invoice_link = InvoiceLink.query.filter_by(invoice_id=invoice.id).first()
+    if not invoice_link:
+        invoice_link = InvoiceLink()
+        invoice_link.invoice_id = invoice.id
+        invoice_link.user_id = invoice.user_id
+        invoice_link.generate_link_code()
+        db.session.add(invoice_link)
+        db.session.commit()
+    
+    def render_message(text):
+        text = text.replace('{{link}}', invoice_link.get_url())
+        text = text.replace('{{company_name}}', current_user.company.name)
+        return text
+
+    defaults = {
+        'to': invoice.contact.email_address,
+        'bcc': current_user.email_address,
+        'subject': 'Invoice from %s' % current_user.company.name,
+        'message': render_message(current_user.setting.get_val('email_template'))
+    }
+
+    form = EmailForm(request.form, Struct(**defaults))
+
+    if request.method == 'post':
+        if form.validate():
+            form.save()
+        else:
+            pass
+
+    return render_template('invoice/email.html', invoice=invoice, invoice_link=invoice_link, form=form)
 
 @invoice.route('/export/<int:id>', methods=['GET'])
 @login_required

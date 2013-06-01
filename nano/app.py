@@ -14,6 +14,7 @@ from nano.views import account
 from nano.views import home
 from nano.views import file 
 from nano.views import client, payment, invoice, invoice_item, settings
+from nano.views import portal
 
 # For import *
 __all__ = ['create_app']
@@ -27,7 +28,8 @@ DEFAULT_BLUEPRINTS = (
     client,
     invoice_item,
     js,
-    settings
+    settings,
+    portal
 )
 
 def create_app(config=None, app_name=None, blueprints=None):
@@ -144,7 +146,6 @@ def configure_hook(app):
     @app.before_request
     def before_request():
         pass
-
 
 def configure_error_handlers(app):
 

@@ -6,6 +6,7 @@ from flask.ext.login import UserMixin
 
 from nano.extensions import db
 from nano.utils import get_current_time, VARCHAR_LEN_128
+from nano.models.setting import SettingManager
 
 class User(db.Model, UserMixin):
 
@@ -22,6 +23,13 @@ class User(db.Model, UserMixin):
     last_login = db.Column(db.DateTime, default=0)
     created_at = db.Column(db.DateTime, default=get_current_time())
     updated_at = db.Column(db.DateTime, default=get_current_time())
+
+    # relations
+    invoice_links = db.relation('InvoiceLink', backref=db.backref('user', uselist=False))
+
+    @property
+    def setting(self):
+        return SettingManager(self)
 
     def _get_password(self):
         return self._password

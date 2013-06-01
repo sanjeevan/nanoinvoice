@@ -1,17 +1,14 @@
 {% extends 'layout.html' %}
 
 {% block content %}
+  
+  <h1>Dashboard</h1>
 
-  <div class='workspace-inner'>
-    <h1>Dashboard</h1>
+  <div class="dashboard">
+    <div class='card' id='graph' style='min-width: 400px; height: 240px; margin: 0 0'>
+    </div>
     
-    <div class="dashboard">
-      <div class='card' id='graph' style='min-width: 400px; height: 240px; margin: 0 0'>
-      </div>
-      
-      <div class='row'>
-
-      </div>
+    <div class='row'>
 
     </div>
   </div>
@@ -46,7 +43,7 @@
           backgroundColor: '#FFFFFF',
           align: 'left',
           verticalAlign: 'top',
-          x: 530,
+          x: 510,
           y: 10,
           floating: true,
           shadow: false 

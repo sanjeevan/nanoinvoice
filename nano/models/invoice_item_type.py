@@ -6,7 +6,7 @@ class InvoiceItemType(db.Model):
     __tablename__ = 'invoice_item_type'
 
     #column definitions
-    id          = db.Column(u'id', db.BigInteger, primary_key=True, nullable=False)
+    id          = db.Column(u'id', db.Integer, primary_key=True, nullable=False)
     name        = db.Column(u'name', db.String(length=20))
     name_plural = db.Column(u'name_plural', db.String(length=20))
     sort_order  = db.Column(u'sort_order', db.Integer)
@@ -21,3 +21,4 @@ class InvoiceItemType(db.Model):
 
     def serialize(self):
         return model_to_dict(self)
+

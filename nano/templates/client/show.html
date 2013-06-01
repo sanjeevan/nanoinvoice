@@ -32,9 +32,8 @@
         {{ render_input(form.post_code) }}
         
         <div class="field">
-          <button class="button normal" type="submit">Update</button>
-
-          <a class="button danger move-right" type="button" href="{{ url_for('.delete', id=contact.id) }}">Delete</a>
+          <button class="btn btn-primary" type="submit">Update</button>
+          <a class="btn btn-danger pull-right" type="button" href="{{ url_for('.delete', id=contact.id) }}">Delete</a>
         </div>
 
       </div>

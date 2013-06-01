@@ -5791,11 +5791,13 @@ disabled look for already selected choices in the results dropdown
 
   .select2-search input {
     background-position: 100% -21px !important; } }
+/* Basic elements */
 a img {
   vertical-align: middle; }
 
-.move-right {
-  float: right; }
+.content > h1 {
+  padding-left: 10px;
+  font-size: 2em; }
 
 .filters {
   background-image: -webkit-linear-gradient(#efefef 0%, #d9d9d9 100%, transparent 50%);
@@ -5827,6 +5829,9 @@ a img {
     float: left; }
   .filters .right {
     float: right; }
+
+.move-right {
+  float: right; }
 
 .first-create {
   margin: 50px auto;
@@ -5925,11 +5930,13 @@ body, html {
       text-decoration: none;
       color: #666; }
 
-.content .workspace-inner {
-  padding: 10px; }
+.content {
+  min-height: 400px; }
+  .content .workspace-inner {
+    padding: 10px; }
 
 .application {
-  background-color: #fff; }
+  background-color: #ccc; }
   .application .top {
     height: 2em;
     background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 5%, transparent 50%), -webkit-linear-gradient(#4e7ba3, #3e6181);
@@ -5942,27 +5949,7 @@ body, html {
     border-bottom: 1px solid #1f5ea1; }
 
 .workspace {
-  background-color: #ccc; }
-
-.subnav {
-  background-color: #efefef; }
-  .subnav ul li {
-    display: inline-block;
-    padding: 8px; }
-    .subnav ul li a {
-      text-decoration: none;
-      color: #777777;
-      text-shadow: 0 1px 0 #fff; }
-  .subnav ul {
-    margin: 0;
-    border-bottom: 1px solid #ccc; }
-  .subnav ul li.active {
-    font-weight: bold; }
-
-.first-create {
-  margin: 50px auto;
-  display: block;
-  text-align: center; }
+  background-color: #fff; }
 
 .box {
   width: 330px;
@@ -5984,8 +5971,11 @@ body, html {
         width: auto; }
     .login form input {
       font-size: 18px;
-      padding: 10px 12px;
-      width: 100%; }
+      width: 100%;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      height: auto; }
     .login form .field {
       margin-bottom: 1em; }
     .login form .button {
@@ -6279,6 +6269,14 @@ form.create.tax-rates a.delete {
   form.create.tax-rates a.delete:hover {
     text-decoration: underline; }
 
+form.create.email textarea {
+  width: 366px;
+  height: 100px; }
+
+form.create.setting textarea {
+  width: 366px;
+  height: 100px; }
+
 ul.flashes {
   display: block;
   padding: 4px;
@@ -6393,7 +6391,8 @@ html[xmlns] .pagestyle {
   background-color: #fff; }
 
 .dashboard {
-  margin-top: 1em; }
+  padding-left: 10px;
+  padding-right: 10px; }
   .dashboard #graph {
     margin: 0.5em; }
   .dashboard .row {
@@ -6422,6 +6421,33 @@ html[xmlns] .pagestyle {
 .payments-data-list .currency-code {
   font-weight: bold;
   color: #999; }
+
+.subnav {
+  background-color: #efefef; }
+  .subnav ul li {
+    display: inline-block;
+    padding: 8px; }
+    .subnav ul li a {
+      text-decoration: none;
+      color: #777777;
+      text-shadow: 0 1px 0 #fff; }
+  .subnav ul {
+    margin: 0;
+    border-bottom: 1px solid #ccc; }
+  .subnav ul li.active {
+    font-weight: bold; }
+
+.icon-menu li {
+  text-align: center;
+  display: block;
+  margin-left: -16px; }
+  .icon-menu li a:hover {
+    background-color: none; }
+  .icon-menu li a {
+    width: 64px;
+    height: 64px;
+    text-shadow: 0px 1px 0px white;
+    color: #777; }
 
 #invoice h1 {
   margin: 0;

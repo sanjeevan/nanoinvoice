@@ -9,10 +9,10 @@ class Invoice(db.Model):
     
     DATE_FORMAT = '%a %b %d %Y'
 
-    id                  = db.Column(u'id', db.BigInteger, primary_key=True, nullable=False)
-    user_id             = db.Column(u'user_id', db.BigInteger, db.ForeignKey('user.id')) 
-    contact_id          = db.Column(u'contact_id', db.BigInteger, db.ForeignKey('contact.id')) 
-    payment_term_id     = db.Column(u'payment_term_id', db.BigInteger, db.ForeignKey('payment_term.id')) 
+    id                  = db.Column(u'id', db.Integer, primary_key=True, nullable=False)
+    user_id             = db.Column(u'user_id', db.Integer, db.ForeignKey('user.id')) 
+    contact_id          = db.Column(u'contact_id', db.Integer, db.ForeignKey('contact.id')) 
+    payment_term_id     = db.Column(u'payment_term_id', db.Integer, db.ForeignKey('payment_term.id')) 
     status              = db.Column(u'status', db.String(255))
     reference           = db.Column(u'reference', db.String(255))
     po_reference        = db.Column(u'po_reference', db.String(255))

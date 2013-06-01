@@ -16,8 +16,7 @@ project_root_path = os.path.join(os.path.dirname(app.root_path))
 @manager.command
 def run():
     """Run local server."""
-
-    app.run()
+    app.run(debug=True)
 
 @manager.command
 def reset():

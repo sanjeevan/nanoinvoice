@@ -34,13 +34,16 @@ body, html {
 }
 
 .content {
+  
   .workspace-inner {
     padding: 10px;
   }
+
+  min-height: 400px;
 }
 
 .application {
-  background-color: #fff;
+  background-color: #ccc;
   
   .top {
     @include panel-header;
@@ -50,39 +53,14 @@ body, html {
   }
 }
 
+.sidebar {
+
+}
+
 .workspace {
-  background-color: #ccc;
+  background-color: #fff;
 }
 
 .footer {
-}
-
-.subnav {
-  background-color: #efefef; 
-
-  ul li {
-    display: inline-block;
-    padding: 8px;
-    a {
-      text-decoration: none; 
-      color: #777777;
-      text-shadow: 0 1px 0 #fff;
-    }
-  }
-  
-  ul {
-    margin: 0;
-    border-bottom: 1px solid #ccc;
-  }
-
-  ul li.active {
-    font-weight: bold;
-  }
-}
-
-.first-create {
-  margin: 50px auto;
-  display: block;
-  text-align: center;
 }
 

@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% from 'macros/_misc.html' import render_input %}
+{% block content %}
+  
+  {% include 'invoice/_controls.html' %}
+
+  <div class="workspace-inner">
+    <form class="inline email create" method="post" action="{{ url_for('invoice.email', id=invoice.id) }}">
+        <div class="header">
+          Send invoice email
+        </div>
+        <div class="fields">
+          {{ render_input(form.to) }}
+          {{ render_input(form.bcc) }}
+          {{ render_input(form.subject) }}
+          {{ render_input(form.message) }}
+
+          <div class="field">
+            <button class="btn btn-primary">Send</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+{% endblock %}

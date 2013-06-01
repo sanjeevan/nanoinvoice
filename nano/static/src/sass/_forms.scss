@@ -225,3 +225,18 @@ form.create.tax-rates {
     &:hover { text-decoration: underline; }
   }
 }
+
+form.create.email {
+  textarea {
+    width: 366px;
+    height: 100px;
+  }
+}
+
+
+form.create.setting {
+  textarea {
+    width: 366px;
+    height: 100px;
+  }
+}

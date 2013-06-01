@@ -13,3 +13,5 @@ from nano.models.country import Country
 from nano.models.logo import Logo
 from nano.models.custom_field import CustomField
 from nano.models.payment import Payment
+from nano.models.invoice_link import InvoiceLink
+from nano.models.setting import Setting

@@ -28,8 +28,9 @@
 
     input {
       font-size: 18px;
-      padding: 10px 12px;
       width: 100%;
+      @include box-sizing(border-box);
+      height: auto;
     }
 
     .field {

@@ -7,3 +7,4 @@ from nano.views.client import client
 from nano.views.invoice_item import invoice_item
 from nano.views.js import js
 from nano.views.settings import settings
+from nano.views.portal import portal

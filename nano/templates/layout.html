@@ -44,16 +44,16 @@
       </div>
    
       <div class="row application">
-        <div class="span2">
-          <ul class="nav nav-list">
+        <div class="span1">
+          <ul class="nav nav-list icon-menu">
             <li class="nav-header">Menu</li>
-            <li><a href="{{ url_for('home.dashboard') }}"><img src="/static/img/dashboard.png" /> Dashboard</a></li>
-            <li><a href="{{ url_for('invoice.index') }}"><img src="/static/img/invoices.png" /> Invoices</a></li>
-            <li><a href="{{ url_for('payment.index') }}"><img src="/static/img/payments.png" /> Payments</a></li>
-            <li><a href="{{ url_for('client.index') }}"><img src="/static/img/customers.png" /> Clients</a></li>
+            <li><a href="{{ url_for('home.dashboard') }}"><img src="/static/img/nav/dashboard.png" />Dashboard</a></li>
+            <li><a href="{{ url_for('invoice.index') }}"><img src="/static/img/nav/invoice.png" /> Invoices</a></li>
+            <li><a href="{{ url_for('payment.index') }}"><img src="/static/img/nav/payment.png" /> Payments</a></li>
+            <li><a href="{{ url_for('client.index') }}"><img src="/static/img/nav/customer.png" /> Clients</a></li>
           </ul>
         </div>
-        <div class="span10 workspace">
+        <div class="span11 workspace">
           <div class="content">
             {% block content %}{% endblock %}
           </div>

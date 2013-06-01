@@ -10,13 +10,26 @@ from flask.ext.login import current_user, login_required
 from nano.models import User, Company, CustomField, TaxRate
 from nano.extensions import db
 from nano.forms import (CustomFieldsManagementForm, TaxRateForm,
-                        TaxRateContainerForm)
+                        TaxRateContainerForm, SettingForm)
+from nano.utils import Struct
 
 settings = Blueprint('settings', __name__, url_prefix='/settings')
 
 @settings.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('settings/index.html')
+    defaults = {
+        'email_template': current_user.setting.get_val('email_template', '')
+    }
+
+    form = SettingForm(request.form, obj=Struct(**defaults))
+    if request.method == 'POST':
+        if form.validate():
+            form.save(current_user)
+            flash('Settings updated')
+        else:
+            flash('There were errors')
+    
+    return render_template('settings/index.html', form=form)
 
 # -- Custom fields
 
