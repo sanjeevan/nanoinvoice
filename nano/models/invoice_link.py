@@ -4,7 +4,7 @@ from flask import current_app
 from datetime import datetime
 
 from nano.extensions import db
-from nano.utils import encode_id 
+from nano.utils import random_id 
 
 class InvoiceLink(db.Model):
     __tablename__ = 'invoice_link'
@@ -16,8 +16,15 @@ class InvoiceLink(db.Model):
     link        = db.Column(db.Unicode(25), default=u'', nullable=False)
 
     def generate_link_code(self):
-        code = str(self.user_id) + str(self.invoice_id)
-        self.link = encode_id(int(code))
+        code = random_id(8)
+        while True:
+            obj = InvoiceLink.query.filter_by(link=code).first()
+            if not obj:
+                break
+            else:
+                code = random_id(8)
+
+        self.link = code
         return self.link
 
     def get_url(self):

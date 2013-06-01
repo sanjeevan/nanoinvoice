@@ -1,3 +1,8 @@
 <h2>Invoice <strong>{{ invoice.reference }}</strong></h2>
 <h3>{{ invoice.date_issued.strftime('%d %B %Y') }}</h3>
-<p id="payment-due">Payment due by {{ invoice.due_date.strftime('%d %B %Y') }}</p>
+
+{% if invoice.payment_status != 'paid' %}
+  <p id="payment-due">Payment due by {{ invoice.due_date.strftime('%d %B %Y') }}</p>
+{% else %}
+  <p id="payment-paid">This invoice has been paid</p>
+{% endif %}

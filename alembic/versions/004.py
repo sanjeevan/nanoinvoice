@@ -16,6 +16,7 @@ def upgrade():
         sa.Column('user_id', sa.Integer(11), nullable=False),
         sa.Column('invoice_id', sa.Integer(11), nullable=False),
         sa.Column('link', sa.Unicode(25), nullable=False),
+        sa.Column('created_at', sa.DateTime, nullable=False),
         sa.PrimaryKeyConstraint('id'),
         sa.ForeignKeyConstraint(['user_id'], ['user.id'], ondelete='CASCADE' ),
         sa.ForeignKeyConstraint(['invoice_id'], ['invoice.id'], ondelete='CASCADE' ),

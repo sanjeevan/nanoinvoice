@@ -1,9 +1,12 @@
 {% with messages = get_flashed_messages() %}
   {% if messages %}
-    <ul class="flashes">
     {% for message in messages %}
-      <li>{{ message }}</li>
+     <div class="flash row">
+      <div class="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+        </div>
+     </div>
     {% endfor %}
-    </ul>
   {% endif %}
 {% endwith %}

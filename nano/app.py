@@ -177,6 +177,7 @@ def configure_assets(app):
                     'src/js/vendor/Pikaday/pikaday.js', 
                     'src/js/vendor/facebox/facebox.js',
                     'src/js/vendor/highcharts/highcharts.src.js',
+                    'src/js/vendor/bootstrap/bootstrap-alert.js',
                     'src/js/lib/upclick.js',
                     filters='yui_js', output='dist/js/libs.js')
     

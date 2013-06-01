@@ -5838,6 +5838,9 @@ a img {
   display: block;
   text-align: center; }
 
+.flash {
+  margin-top: 1em; }
+
 .data-list-wrapper {
   margin: 10px; }
   .data-list-wrapper .col {
@@ -6449,13 +6452,15 @@ html[xmlns] .pagestyle {
     text-shadow: 0px 1px 0px white;
     color: #777; }
 
+/* default invoice style */
 #invoice h1 {
   margin: 0;
   color: #555;
   font-size: 24px;
   text-transform: uppercase; }
 
-#invoice h2, #Main #invoice h3 {
+#invoice h2,
+#Main #invoice h3 {
   color: #000;
   text-transform: none; }
 
@@ -6463,7 +6468,8 @@ html[xmlns] .pagestyle {
   margin: 10px 0;
   font-size: 14pt; }
 
-#invoice-amount td, th {
+#invoice-amount td,
+th {
   font-size: 10pt; }
 
 #invoice-header #company-address {
@@ -6471,15 +6477,18 @@ html[xmlns] .pagestyle {
   font-size: 10pt;
   line-height: 14pt; }
 
-#invoice #client-details, #invoice-info p {
+#invoice #client-details,
+#invoice-info p {
   font-size: 10pt;
   line-height: 14pt; }
 
-#invoice #invoice-other, #invoice #payment-details {
+#invoice #invoice-other,
+#invoice #payment-details {
   font-size: 10pt;
   line-height: 14pt; }
 
-#invoice-info h2, #invoice-info h3 {
+#invoice-info h2,
+#invoice-info h3 {
   margin: 0;
   font-weight: normal; }
 
@@ -6502,10 +6511,14 @@ html[xmlns] .pagestyle {
   margin-top: 0;
   font-size: 10pt; }
 
-#invoice #invoice-info h2, #invoice #company-address div.email, #invoice #invoice-other h2, #invoice #payment-details h2 {
+#invoice #invoice-info h2,
+#invoice #company-address div.email,
+#invoice #invoice-other h2,
+#invoice #payment-details h2 {
   color: #a10000; }
 
-#invoice #invoice-other h2, #invoice #payment-details h2 {
+#invoice #invoice-other h2,
+#invoice #payment-details h2 {
   font-weight: normal;
   text-transform: uppercase; }
 
@@ -6542,6 +6555,10 @@ html[xmlns] .pagestyle {
 #invoice-info #payment-due {
   font-style: italic; }
 
+#invoice-info #payment-paid {
+  color: green;
+  font-weight: bold; }
+
 #company-address {
   margin: 0;
   padding: 0;
@@ -6566,7 +6583,9 @@ html[xmlns] .pagestyle {
   width: 45%;
   margin-top: 0; }
 
-#payment-details .sort-code, #payment-details .account-number, #payment-details .payment-reference {
+#payment-details .sort-code,
+#payment-details .account-number,
+#payment-details .payment-reference {
   clear: left; }
 
 #payment-details strong {
@@ -6612,7 +6631,7 @@ html[xmlns] .pagestyle {
   vertical-align: top; }
 
 #invoice-amount tr.item td {
-  background: #fff; }
+  background: white; }
 
 #invoice-amount td.item_r {
   text-align: right; }
@@ -6623,6 +6642,7 @@ html[xmlns] .pagestyle {
 
 #invoice-amount td.total {
   text-align: right;
+  nowhitespace: afterproperty;
   font-weight: bold;
   /*color: #a10000;*/ }
 
@@ -6634,13 +6654,15 @@ html[xmlns] .pagestyle {
   text-align: center; }
 
 #invoice-amount tr#total_tr {
-  background: #F2F2F2; }
+  background: #f2f2f2; }
 
 #invoice-amount td {
-  border-top: 1px solid #F2F2F2; }
+  border-top: 1px solid #f2f2f2; }
 
-#invoice-amount tr#discount_tr, #invoice-amount tr#net_total_tr, #invoice-amount tr#vat_tr {
-  color: #777; }
+#invoice-amount tr#discount_tr,
+#invoice-amount tr#net_total_tr,
+#invoice-amount tr#vat_tr {
+  color: #777777; }
 
 #invoice-amount .details_th {
   width: 46%; }

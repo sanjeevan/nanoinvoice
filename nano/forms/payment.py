@@ -33,3 +33,8 @@ class PaymentForm(Form):
         self.payment.invoice.update_payment_status()
 
         return self.payment
+
+class PaymentIntegrationForm(Form):
+    """Payments integration"""
+
+    pass

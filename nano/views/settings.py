@@ -95,3 +95,9 @@ def delete_tax_rate(id):
         db.session.commit()
         flash('Tax rate deleted')
     return redirect(request.referrer)
+
+
+@settings.route('/payment_integration', methods=['GET'])
+@login_required
+def payment_integration():
+    return render_template('settings/payment_integration.html')
