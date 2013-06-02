@@ -65,6 +65,17 @@ form {
     clear: both;
   }
 
+  .group-header {
+    margin-bottom: 0.5em;
+  }
+
+  .group {
+    background-color: #efefef;
+    padding: 1em;
+    border: 1px solid #aaa;
+    margin-bottom: 1em;
+  }
+
   input.error {
     border: 1px solid #ff0000;
   }
@@ -108,7 +119,7 @@ form.create {
     @include panel-body();
   }
 
-  input {
+  input[type="text"], input[type="password"] {
     width: 366px;
   }
 

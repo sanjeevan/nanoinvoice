@@ -6139,6 +6139,13 @@ form select {
 form .field {
   margin-bottom: 1em;
   clear: both; }
+form .group-header {
+  margin-bottom: 0.5em; }
+form .group {
+  background-color: #efefef;
+  padding: 1em;
+  border: 1px solid #aaa;
+  margin-bottom: 1em; }
 form input.error {
   border: 1px solid #ff0000; }
 form span.error {
@@ -6186,7 +6193,7 @@ form.create {
     border: 1px solid #AAAAAA;
     border-radius: 0 0 4px 4px;
     margin: 0 auto 12px; }
-  form.create input {
+  form.create input[type="text"], form.create input[type="password"] {
     width: 366px; }
   form.create .header {
     background-color: #ECECED;

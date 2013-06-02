@@ -1,3 +1,5 @@
+"""All application models"""
+
 from nano.models.user import User
 from nano.models.file import File
 from nano.models.company_type import CompanyType
@@ -15,3 +17,6 @@ from nano.models.custom_field import CustomField
 from nano.models.payment import Payment
 from nano.models.invoice_link import InvoiceLink
 from nano.models.setting import Setting
+from nano.models.gocardless import GoCardlessAccount, GoCardlessPayment
+from nano.models.stripe import StripeAccount, StripePayment
+

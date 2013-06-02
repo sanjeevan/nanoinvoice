@@ -27,6 +27,9 @@ def upgrade():
         sa.Column('user_id', sa.Integer(11), nullable=False),
         sa.Column('secret_key', sa.Unicode(255), nullable=True),
         sa.Column('public_key', sa.Unicode(255), nullable=True),
+        sa.Column('enabled', sa.Boolean, nullable=False, server_default='0'),
+        sa.Column('created_at', sa.DateTime, nullable=False),
+        sa.Column('updated_at', sa.DateTime, nullable=False),
         sa.PrimaryKeyConstraint('id'),
         sa.ForeignKeyConstraint(['user_id'], ['user.id'], ondelete='CASCADE' ),
     )
@@ -38,6 +41,7 @@ def upgrade():
         sa.Column('app_secret', sa.Unicode(255), nullable=True),
         sa.Column('merchant_access_token', sa.Unicode(255), nullable=True),
         sa.Column('merchant_id', sa.Unicode(255), nullable=True),
+        sa.Column('enabled', sa.Boolean, nullable=False, server_default='0'),
         sa.Column('created_at', sa.DateTime, nullable=False),
         sa.Column('updated_at', sa.DateTime, nullable=False),
         sa.PrimaryKeyConstraint('id'),

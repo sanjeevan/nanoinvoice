@@ -1,16 +1,15 @@
 # -*- coding: utf-8 -*-
 
-from uuid import uuid4
-from datetime import datetime
-
-from flask import (Blueprint, render_template, current_app, request,
-                   flash, url_for, redirect, session, g, abort)
+from flask import (Blueprint, render_template, request,
+                   flash, url_for, redirect)
 from flask.ext.login import current_user, login_required
 
-from nano.models import User, Company, CustomField, TaxRate
+from nano.models import (CustomField, TaxRate,
+                         GoCardlessAccount, StripeAccount)
 from nano.extensions import db
-from nano.forms import (CustomFieldsManagementForm, TaxRateForm,
-                        TaxRateContainerForm, SettingForm)
+from nano.forms import (CustomFieldsManagementForm,
+                        TaxRateContainerForm, SettingForm,
+                        PaymentIntegrationForm)
 from nano.utils import Struct
 
 settings = Blueprint('settings', __name__, url_prefix='/settings')
@@ -43,7 +42,7 @@ def custom_fields():
     form = CustomFieldsManagementForm(request.form, obj=data)
 
     if request.method == 'POST' and form.validate():
-        custom_field = form.save()
+        form.save()
         flash('New custom field added')
         return redirect(request.referrer)
     else:
@@ -97,7 +96,23 @@ def delete_tax_rate(id):
     return redirect(request.referrer)
 
 
-@settings.route('/payment_integration', methods=['GET'])
+@settings.route('/payment_integration', methods=['GET', 'POST'])
 @login_required
 def payment_integration():
-    return render_template('settings/payment_integration.html')
+    
+    gocardless_account = GoCardlessAccount.get_or_create_for_user(current_user.id)
+    stripe_account = StripeAccount.get_or_create_for_user(current_user.id)
+
+    data = Struct(**{
+        'gocardless': gocardless_account,
+        'stripe': stripe_account
+    })
+
+    form = PaymentIntegrationForm(request.form, obj=data)
+
+    if request.method == 'POST':
+        if form.validate():
+            form.save()
+            flash('Payment options updated')
+
+    return render_template('settings/payment_integration.html', form=form)

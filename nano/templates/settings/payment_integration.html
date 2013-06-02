@@ -9,13 +9,31 @@
     
       <form class="setting inline create" method="post" action="">
         <div class="header">Payment integration</div>
+
         <div class="fields">
+          <div class="group-header"><img width="150px" src="/static/img/payment/gocardless.png"></div>
+          <div class="group">
+            {{ render_input(form.gocardless.app_identifier) }}
+            {{ render_input(form.gocardless.app_secret) }}
+            {{ render_input(form.gocardless.merchant_id) }}
+            {{ render_input(form.gocardless.merchant_access_token) }}
+            {{ render_input(form.gocardless.enabled) }}
+          </div>
+
+          <div class="group-header"><img width="150px" src="/static/img/payment/stripe.png"></div>
+          <div class="group">
+            {{ render_input(form.stripe.secret_key) }}
+            {{ render_input(form.stripe.public_key) }}
+            {{ render_input(form.stripe.enabled) }}
+          </div>
 
           <div class="field">
             <button class="btn btn-primary" type="submit">Update</button>
           </div>
 
         </div>
+        
+
       </form>
 
   </div>
