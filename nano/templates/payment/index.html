@@ -20,7 +20,7 @@
           <div class="col ref"><a href="{{ url_for('invoice.show', id=payment.invoice_id) }}">{{ payment.invoice.reference }}</a></div>
           <div class="col due-date">{{ payment.invoice.due_date.strftime('%d %b %Y') }}</div>
           <div class="col client">{{ payment.invoice.contact.full_name() }}</div>
-          <div class="col method">{{ payment.method }}</div>
+          <div class="col method">{{ payment.description }}</div>
           <div class="col amount">{{ payment.amount|format_currency }} {{ payment.currency_code }}</div>
           <div class="col">
             <div class="btn-group">

@@ -1,14 +1,20 @@
+.payment-header {
+  background-color: #333;  
+  color: #fff;
+  padding: 4px;
+}
 
 .payment-options {
-  background-color: #ececec;
+  background-color: #fff;
+  @include border-radius(0 0 10px 10px);
+  margin-bottom: -1em; 
+  padding: 4px; 
 
   .method {
     text-align: center;
     display: inline-block;
-    background-color: #fff;
-    padding: 2em;
-
-    img { display: block; }
-    margin-right: 2em;
+    background-color: #ececec;
+    padding: 1em;
+    vertical-align: middle;
   }
 }

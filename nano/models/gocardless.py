@@ -3,6 +3,8 @@
 from datetime import datetime
 from nano.extensions import db
 
+from nano.models.payment import Payment
+
 class GoCardlessAccount(db.Model):
     __tablename__ = 'gocardless_account'
 
@@ -30,13 +32,30 @@ class GoCardlessAccount(db.Model):
 class GoCardlessPayment(db.Model):
     __tablename__ = 'gocardless_payment'
 
-    id          = db.Column(db.Integer(11), primary_key=True, nullable=False)
-    invoice_id  = db.Column(db.Integer(11), db.ForeignKey('invoice.id'), nullable=False)
-    user_id     = db.Column(db.Integer(11), db.ForeignKey('user.id'), nullable=False)
-    payment_id  = db.Column(db.Integer(11), db.ForeignKey('payment.id'), nullable=True)
-    amount      = db.Column(db.Numeric(8, 2), default=0)
-    reference   = db.Column(db.Unicode(100), nullable=False)
-    state       = db.Column(db.Unicode(20), default=u'initialized')
+    id            = db.Column(db.Integer(11), primary_key=True, nullable=False)
+    invoice_id    = db.Column(db.Integer(11), db.ForeignKey('invoice.id'), nullable=False)
+    user_id       = db.Column(db.Integer(11), db.ForeignKey('user.id'), nullable=False)
+    payment_id    = db.Column(db.Integer(11), db.ForeignKey('payment.id'), nullable=True)
+    amount        = db.Column(db.Numeric(8, 2), default=0)
+    reference     = db.Column(db.Unicode(100), nullable=False)
+    state         = db.Column(db.Unicode(20), default=u'initialized')
+    resource_id   = db.Column(db.Unicode(100), nullable=True)
+    resource_uri  = db.Column(db.Unicode(255), nullable=True)
+    error_message = db.Column(db.Unicode(255), nullable=True)
 
     created_at  = db.Column(db.DateTime(), nullable=False, default=datetime.now)
 
+    def create_payment_object(self):
+        """Create related payment object"""
+        payment = Payment()
+        payment.invoice_id = self.invoice_id
+        payment.date = datetime.now()
+        payment.currency_code = self.invoice.currency_code
+        payment.amount = self.amount
+        payment.method = 'gocardless'
+        payment.description = 'Direct debit payment'
+
+        db.session.add(payment)
+        db.session.commit()
+
+        return payment

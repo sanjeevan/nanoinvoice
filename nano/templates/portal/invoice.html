@@ -1,18 +1,19 @@
 {% extends 'portal.html' %}
 {% block content %}
   
+  <h1>{{ invoice.user.company.name }}</h1>
+  
+  <div class="payment-header">Payment options</div>
   <div class="payment-options">
     {% if stripe.enabled %}
       <div class="method stripe">
-        <span>Pay with credit/debit card</span>
-
+        <a id="stripe-button" class="btn">Pay with debit/credit card</a> 
       </div>
     {% endif %}
 
     {% if gocardless.enabled %}
       <div class="method gocardless">
-        <span>Pay via direct debit</span>
-        <a href="{{ url_for('portal.gocardless_pay', paylink=invoice_link.link, username=user.username) }}"><img width="200px" src="//{{ config.SERVER_NAME }}/static/img/payment/gc-banner-button@2x.png"></a>
+        <a class="btn" href="{{ url_for('portal.gocardless_pay', paylink=invoice_link.link, username=user.username) }}">Pay via direct debit</a>
       </div>
     {% endif %}
   </div>
@@ -48,6 +49,7 @@
           {% set idx = 0 %}
           {% set row_class = cycler('odd', 'event') %}
           {% for item in invoice.invoice_items %}
+            {% set disable_item_controls = True %}
             {% include 'invoice/_item.html' %}
             {% set idx = idx + 1 %}
           {% endfor %}
@@ -62,6 +64,32 @@
       <div class="clearfix"></div>
     </div>
   </div>
+  
+  <form id="stripe" method="post" action="{{ url_for('portal.stripe_pay', username=user.username, paylink=invoice_link.link) }}">
+  </form>
+
+  <script src="https://checkout.stripe.com/v2/checkout.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+
+  <script>
+    $('#stripe-button').click(function(){
+      var token = function(res){
+        var $input = $('<input type=hidden name="stripe_token" />').val(res.id);
+        $('form#stripe').append($input).submit();
+      };
+
+      StripeCheckout.open({
+        key:         '{{ stripe.public_key }}',
+        amount:      {{ invoice.total * 100 }},
+        currency:    '{{ invoice.currency_code|lower }}',
+        description: 'Invoice {{ invoice.reference }}',
+        panelLabel:  'Checkout',
+        token:       token
+      });
+
+      return false;
+    });
+  </script>
 
 
 {% endblock %}

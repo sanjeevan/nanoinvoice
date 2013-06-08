@@ -5,13 +5,17 @@
         [username].nanoinvoice.com
 """
 import uuid
+import stripe
 import gocardless
 import gocardless.client
 
 from gocardless.client import Client
-from flask import Blueprint, render_template, redirect, url_for, current_app, request
+from flask import (Blueprint, render_template, redirect, url_for, current_app, 
+                   request, flash)
 
-from nano.models import User, GoCardlessAccount, InvoiceLink, GoCardlessPayment, Payment
+from nano.models import (User, InvoiceLink, Payment,
+                         GoCardlessPayment, GoCardlessAccount,
+                         StripeAccount, StripePayment)
 from nano.extensions import db
 
 portal = Blueprint('portal', __name__, url_prefix='/portal')
@@ -37,8 +41,8 @@ def invoice(username, paylink):
         return 'Invalid invoice', 404
 
     company             = invoice_link.user.company
-    stripe_account      = invoice_link.user.stripe_account
-    gocardless_account  = invoice_link.user.gocardless_account
+    stripe_account      = StripeAccount.get_or_create_for_user(user.id)
+    gocardless_account  = GoCardlessAccount.get_or_create_for_user(user.id)
 
     return render_template('portal/invoice.html', invoice=invoice_link.invoice,
                                                   invoice_link=invoice_link,
@@ -83,6 +87,7 @@ def gocardless_pay(username, paylink):
 
     redirect_url = url_for('portal.gocardless_success', reference=gocardless_payment.reference, 
                                                         username=user.username,
+                                                        paylink=paylink,
                                                         _external=True)
     cancel_url = url_for('portal.invoice', username=user.username,
                                            paylink=paylink,
@@ -98,11 +103,13 @@ def gocardless_pay(username, paylink):
 
 @portal.route('/gocardless/pay/success', methods=['GET'], subdomain='<username>')
 def gocardless_success(username):
+    paylink = request.args.get('paylink')
+    reference = request.args.get('reference')
     user = User.query.filter_by(username=username).first()
     if not user:
         return 'Invalid account', 404
 
-    gocardless_payment = GoCardlessPayment.query.filter_by(reference=request.args.get('reference')).first()
+    gocardless_payment = GoCardlessPayment.query.filter_by(reference=reference).first()
     if not gocardless_payment:
         return 'Not a valid payment', 404
 
@@ -125,23 +132,81 @@ def gocardless_success(username):
 
     try:
         client.confirm_resource(params)
+
+        payment = gocardless_payment.create_payment_object()
+        payment.invoice.update_payment_status()
+
+        gocardless_payment.state = u'confirmed'
+        gocardless_payment.payment_id = payment.id
+        gocardless_payment.resource_id = request.args.get('resource_id')
+        gocardless_payment.resource_uri = request.args.get('resource_uri')
+
+        db.session.add(gocardless_payment)
+        db.session.commit()
+
     except Exception as e:
+        gocardless_payment.state = u'error'
+        gocardless_payment.error_message = e.message
+        db.session.add(gocardless_payment)
+        db.session.commit()
         return render_template('portal/gocardless_error.html', user=user, exception=e)
 
-    payment = Payment()
-    payment.invoice_id = gocardless_payment.invoice_id
-    payment.amount = gocardless_payment.amount
-    payment.currency_code = gocardless_payment.invoice.currency_code
-    payment.method = 'Direct Debit via Gocardless'
-    db.session.add(payment)
-    db.session.commit() 
+    flash('Payment was successful')
+    return redirect(url_for('portal.invoice', paylink=paylink, username=username))
 
-    gocardless_payment.state = u'confirmed'
-    gocardless_payment.payment_id = payment.id
+@portal.route('/stripe/pay/<string:paylink>', methods=['POST'], subdomain='<username>')
+def stripe_pay(username, paylink):
+    """The stripe.js file will post credit card data"""
+    user = User.query.filter_by(username=username).first()
+    if not user:
+        return 'Invalid account', 404
 
-    db.session.add(gocardless_payment)
+    invoice_link = InvoiceLink.query.filter_by(user_id=user.id) \
+                                    .filter_by(link=paylink) \
+                                    .first()
+    if not invoice_link:
+        return 'Invalid invoice', 404
+    
+    if not request.form['stripe_token']:
+        return 'Stripe token not present', 400
+
+    stripe_account = StripeAccount.get_or_create_for_user(user.id)
+    stripe.api_key = stripe_account.secret_key
+
+    stripe_payment = StripePayment()
+    stripe_payment.invoice_id = invoice_link.invoice_id
+    stripe_payment.amount = invoice_link.invoice.total
+    stripe_payment.user_id = user.id
+    stripe_payment.token = request.form['stripe_token']
+
+    db.session.add(stripe_payment)
     db.session.commit()
 
-    payment.invoice.update_payment_status()
+    # Create the charge on Stripe's servers - this will charge the user's card
+    try:
+        pence = int(stripe_payment.amount * 100)
+        charge = stripe.Charge.create(
+            amount=pence, # amount in cents, again
+            currency=invoice_link.invoice.currency_code.lower(),
+            card=request.form['stripe_token'],
+            description='Invoice reference: %s' % invoice_link.invoice.reference
+        )
 
-    return render_template('portal/gocardless_success.html', gocardless_payment=gocardless_payment)
+        payment = stripe_payment.create_payment_object()
+        payment.invoice.update_payment_status()
+        
+        stripe_payment.state = u'confirmed'
+        stripe_payment.charge_id = charge.id
+        stripe_payment.charge = str(charge)
+        stripe_payment.payment_id = payment.id
+
+        db.session.commit()
+    except Exception, e:
+        # The card has been declined
+        stripe_payment.state = 'error'
+        stripe_payment.error_message = e.message
+        db.session.commit()
+        return 'There was an error', 400
+        
+    flash('Payment was successful')
+    return redirect(url_for('portal.invoice', paylink=paylink, username=username)) 

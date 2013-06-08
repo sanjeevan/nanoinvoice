@@ -34,6 +34,7 @@ class Invoice(db.Model):
     payment_term        = db.relation('PaymentTerm', primaryjoin='Invoice.payment_term_id==PaymentTerm.id')
     invoice_link        = db.relation('InvoiceLink', backref=db.backref('invoice', uselist=False, lazy='joined'))
     gocardless_payments = db.relation('GoCardlessPayment', backref=db.backref('invoice', uselist=False, lazy='joined'))
+    stripe_payments     = db.relation('StripePayment', backref=db.backref('invoice', uselist=False, lazy='joined'))
     
     @classmethod
     def next_invoice_number(cls, user):
