@@ -1,51 +1,65 @@
 {% extends 'portal.html' %}
-
 {% block content %}
+  
+  <div class="payment-options">
+    {% if stripe.enabled %}
+      <div class="method stripe">
+        <span>Pay with credit/debit card</span>
 
-    <div class="{{ invoice.status }}">
-      <div id="invoice" class="pagestyle">
-        <div id="invoice-header">
-          {% if company.logo %}
-          <img alt="Logo" class="logo screen" src="{{ url_for('file.download', location=company.logo.thumbnail.get_web_url()) }}">
-          {% endif %}
-          <div class="vcard" id="company-address">
-            {% include 'invoice/_company.html' %}
-          </div>
-        </div>
-        <div id="invoice-info">
-          {% include 'invoice/_info.html' %}
-        </div>
-        <div class="vcard" id="client-details">
-          {% include 'invoice/_contact.html' %} 
-        </div>
-      
-        <table id="invoice-amount">
-          <thead>
-            <tr id="header_row">
-              <th class="quantity_th">Quantity</th>
-              <th class="left details_th">Details</th>
-              <th class="unitprice_th">Unit Price (£)</th>
-              <th class="salestax_th">Tax</th>
-              <th class="subtotal_th">Net Subtotal (£)</th>
-            </tr>
-          </thead>
-          <tbody id="invoice_items">
-            {% set idx = 0 %}
-            {% set row_class = cycler('odd', 'event') %}
-            {% for item in invoice.invoice_items %}
-              {% include 'invoice/_item.html' %}
-              {% set idx = idx + 1 %}
-            {% endfor %}
-          </tbody>
-          <tfoot>
-            {% include 'invoice/_footer.html' %}
-          </tfoot>
-        </table>
-
-        {% include 'invoice/_other.html' %}
-
-        <div class="clearfix"></div>
       </div>
+    {% endif %}
+
+    {% if gocardless.enabled %}
+      <div class="method gocardless">
+        <span>Pay via direct debit</span>
+        <a href="{{ url_for('portal.gocardless_pay', paylink=invoice_link.link, username=user.username) }}"><img width="200px" src="//{{ config.SERVER_NAME }}/static/img/payment/gc-banner-button@2x.png"></a>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="{{ invoice.status }}">
+    <div id="invoice" >
+      <div id="invoice-header">
+        {% if company.logo %}
+        <img alt="Logo" class="logo screen" src="{{ url_for('file.download', location=company.logo.thumbnail.get_web_url()) }}">
+        {% endif %}
+        <div class="vcard" id="company-address">
+          {% include 'invoice/_company.html' %}
+        </div>
+      </div>
+      <div id="invoice-info">
+        {% include 'invoice/_info.html' %}
+      </div>
+      <div class="vcard" id="client-details">
+        {% include 'invoice/_contact.html' %} 
+      </div>
+
+      <table id="invoice-amount">
+        <thead>
+          <tr id="header_row">
+            <th class="quantity_th">Quantity</th>
+            <th class="left details_th">Details</th>
+            <th class="unitprice_th">Unit Price (£)</th>
+            <th class="salestax_th">Tax</th>
+            <th class="subtotal_th">Net Subtotal (£)</th>
+          </tr>
+        </thead>
+        <tbody id="invoice_items">
+          {% set idx = 0 %}
+          {% set row_class = cycler('odd', 'event') %}
+          {% for item in invoice.invoice_items %}
+            {% include 'invoice/_item.html' %}
+            {% set idx = idx + 1 %}
+          {% endfor %}
+        </tbody>
+        <tfoot>
+          {% include 'invoice/_footer.html' %}
+        </tfoot>
+      </table>
+
+      {% include 'invoice/_other.html' %}
+
+      <div class="clearfix"></div>
     </div>
   </div>
 

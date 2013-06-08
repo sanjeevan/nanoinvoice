@@ -1,5 +1,6 @@
-from flask import Flask, Blueprint, render_template, abort, redirect, url_for
-from jinja2 import TemplateNotFound
+"""Dynamically generated javascript"""
+
+from flask import Blueprint, render_template
 from flask.ext.login import login_required, current_user
 
 from nano.models import InvoiceItemType, TaxRate 

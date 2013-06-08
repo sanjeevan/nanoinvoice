@@ -26,6 +26,8 @@ class User(db.Model, UserMixin):
 
     # relations
     invoice_links = db.relation('InvoiceLink', backref=db.backref('user', uselist=False))
+    stripe_account = db.relation('StripeAccount', backref=db.backref('user', uselist=False), uselist=False)
+    gocardless_account = db.relation('GoCardlessAccount', backref=db.backref('user', uselist=False), uselist=False)
 
     @property
     def setting(self):

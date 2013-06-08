@@ -1,3 +1,5 @@
+"""Client view"""
+
 from flask import (Flask, Blueprint, render_template, abort, redirect, url_for,
                    request, flash)
 from jinja2 import TemplateNotFound

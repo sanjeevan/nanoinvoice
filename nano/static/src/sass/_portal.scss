@@ -1,0 +1,14 @@
+
+.payment-options {
+  background-color: #ececec;
+
+  .method {
+    text-align: center;
+    display: inline-block;
+    background-color: #fff;
+    padding: 2em;
+
+    img { display: block; }
+    margin-right: 2em;
+  }
+}

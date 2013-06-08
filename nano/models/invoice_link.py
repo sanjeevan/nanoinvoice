@@ -14,6 +14,8 @@ class InvoiceLink(db.Model):
     user_id     = db.Column(db.Integer(11), db.ForeignKey('user.id'), nullable=False)
     invoice_id  = db.Column(db.Integer(11), db.ForeignKey('invoice.id'), nullable=False)
     link        = db.Column(db.Unicode(25), default=u'', nullable=False)
+    link_hash   = db.Column(db.Unicode(50), nullable=False)
+    created_at  = db.Column(db.DateTime, default=datetime.now)
 
     def generate_link_code(self):
         code = random_id(8)

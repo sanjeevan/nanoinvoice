@@ -1,12 +1,13 @@
+"""Home view"""
+
 import json
 import math
 
 from datetime import datetime, timedelta
 from collections import OrderedDict
-from flask import Blueprint, render_template, abort, redirect, url_for, jsonify
-from jinja2 import TemplateNotFound
+from flask import Blueprint, render_template, redirect, url_for
 from flask.ext.login import login_required, current_user
-from sqlalchemy import asc, desc
+from sqlalchemy import asc
 
 from nano.models import *
 
@@ -137,3 +138,4 @@ def graph():
     }
      
     return json.dumps(data), 200, {'content-type':'application/json'}
+

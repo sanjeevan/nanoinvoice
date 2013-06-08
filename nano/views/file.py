@@ -1,3 +1,5 @@
+"""File view"""
+
 import tempfile
 import os
 

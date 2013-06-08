@@ -1,5 +1,7 @@
 """Invoice view"""
 
+import hashlib
+
 from flask import (Blueprint, render_template, redirect, url_for,
                    flash, request, current_app, send_file)
 from flask.ext.login import login_required, current_user
@@ -103,10 +105,14 @@ def email(id):
 
     invoice_link = InvoiceLink.query.filter_by(invoice_id=invoice.id).first()
     if not invoice_link:
+        sha1 = hashlib.sha1()
         invoice_link = InvoiceLink()
         invoice_link.invoice_id = invoice.id
         invoice_link.user_id = invoice.user_id
         invoice_link.generate_link_code()
+
+        sha1.update(invoice_link.link)
+        invoice_link.link_hash = sha1.hexdigest()
         db.session.add(invoice_link)
         db.session.commit()
 

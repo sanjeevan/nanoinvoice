@@ -30,9 +30,13 @@ class GoCardlessAccount(db.Model):
 class GoCardlessPayment(db.Model):
     __tablename__ = 'gocardless_payment'
 
-    id = db.Column(db.Integer(11), primary_key=True, nullable=False)
-    user_id = db.Column(db.Integer(11), db.ForeignKey('user.id'))
-    payment_id = db.Column(db.Integer(11), db.ForeignKey('payment.id'))
+    id          = db.Column(db.Integer(11), primary_key=True, nullable=False)
+    invoice_id  = db.Column(db.Integer(11), db.ForeignKey('invoice.id'), nullable=False)
+    user_id     = db.Column(db.Integer(11), db.ForeignKey('user.id'), nullable=False)
+    payment_id  = db.Column(db.Integer(11), db.ForeignKey('payment.id'), nullable=True)
+    amount      = db.Column(db.Numeric(8, 2), default=0)
+    reference   = db.Column(db.Unicode(100), nullable=False)
+    state       = db.Column(db.Unicode(20), default=u'initialized')
 
-    created_at = db.Column(db.DateTime(), nullable=False, default=datetime.now)
+    created_at  = db.Column(db.DateTime(), nullable=False, default=datetime.now)
 

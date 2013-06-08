@@ -1,4 +1,6 @@
-from flask import Flask, Blueprint, render_template, request, redirect, url_for, flash
+"""Payment view"""
+
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask.ext.login import login_required, current_user
 
 from nano.forms import PaymentForm

@@ -16,11 +16,14 @@ def upgrade():
         sa.Column('user_id', sa.Integer(11), nullable=False),
         sa.Column('invoice_id', sa.Integer(11), nullable=False),
         sa.Column('link', sa.Unicode(25), nullable=False),
+        sa.Column('link_hash', sa.Unicode(50), nullable=False),
         sa.Column('created_at', sa.DateTime, nullable=False),
         sa.PrimaryKeyConstraint('id'),
         sa.ForeignKeyConstraint(['user_id'], ['user.id'], ondelete='CASCADE' ),
         sa.ForeignKeyConstraint(['invoice_id'], ['invoice.id'], ondelete='CASCADE' ),
     )
+
+    op.create_index('idx_link_hash', 'invoice_link', ['link_hash'])
 
     op.create_table('stripe_account', 
         sa.Column('id', sa.Integer(11), nullable=False),
@@ -51,11 +54,16 @@ def upgrade():
     op.create_table('gocardless_payment', 
         sa.Column('id', sa.Integer(11), nullable=False),
         sa.Column('user_id', sa.Integer(11), nullable=False),
-        sa.Column('payment_id', sa.Integer(11), nullable=False),
+        sa.Column('payment_id', sa.Integer(11), nullable=True),
+        sa.Column('invoice_id', sa.Integer(11), nullable=True),
+        sa.Column('amount', sa.Numeric(8, 2), default='0.0'),
+        sa.Column('reference', sa.Unicode(100), nullable=False),
+        sa.Column('state', sa.Unicode(20), nullable=False, server_default=u'initialized'),
         sa.Column('created_at', sa.DateTime, nullable=False),
         sa.PrimaryKeyConstraint('id'),
         sa.ForeignKeyConstraint(['user_id'], ['user.id'], ondelete='CASCADE' ),
         sa.ForeignKeyConstraint(['payment_id'], ['payment.id'], ondelete='CASCADE' ),
+        sa.ForeignKeyConstraint(['invoice_id'], ['invoice.id'], ondelete='CASCADE' ),
     )
 
     op.create_table('stripe_payment',
