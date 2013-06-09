@@ -5792,6 +5792,9 @@ disabled look for already selected choices in the results dropdown
   .select2-search input {
     background-position: 100% -21px !important; } }
 /* Basic elements */
+h1 {
+  color: #000; }
+
 a img {
   vertical-align: middle; }
 
@@ -5841,12 +5844,6 @@ a img {
 .flash {
   margin-top: 1em; }
 
-.data-list-wrapper {
-  margin: 10px; }
-  .data-list-wrapper .col {
-    display: table-cell;
-    text-align: left; }
-
 .data-list-header {
   background-color: #ECECED;
   background-image: -webkit-linear-gradient(#f7f8f8 0%, #dbdbdc 100%);
@@ -5871,17 +5868,8 @@ a img {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   border: 1px solid #aaaaaa; }
-  .data-list .row {
-    background-color: #fff;
-    border-bottom: 1px solid #ececec;
-    padding: 8px;
-    font-size: 12px;
-    cursor: pointer;
-    margin-left: 0px; }
-  .data-list .row:hover {
-    background-color: #ececec; }
-  .data-list .row:last-child {
-    border-bottom: none; }
+  .data-list tr td {
+    font-size: 12px; }
 
 .label {
   border-radius: 3px 3px 3px 3px; }
@@ -5910,11 +5898,18 @@ a img {
   background-color: #3A87AD; }
 
 body, html {
-  background-color: white;
   font-size: 14px;
   font-family: "HelveticaNeue", Helvetica, Arial, sans-serif;
   color: #333;
-  background-image: url("/static/img/bg.png"); }
+  background-color: #356AA0;
+  background-image: -webkit-radial-gradient(center, ellipse cover, #356aa0 0%, #4683c2 44%, #6d9dce 100%);
+  background-image: -moz-radial-gradient(center, ellipse cover, #356aa0 0%, #4683c2 44%, #6d9dce 100%);
+  background-image: -ms-radial-gradient(center, ellipse cover, #356aa0 0%, #4683c2 44%, #6d9dce 100%);
+  background-image: -o-radial-gradient(center, ellipse cover, #356aa0 0%, #4683c2 44%, #6d9dce 100%);
+  background-image: radial-gradient(center, ellipse cover, #356aa0 0%, #4683c2 44%, #6d9dce 100%); }
+
+body, html * {
+  -webkit-font-smoothing: antialiased; }
 
 .plain .header {
   margin-top: 2em;
@@ -5931,7 +5926,7 @@ body, html {
       margin-left: 4px; }
     .header .account a {
       text-decoration: none;
-      color: #666; }
+      color: #fff; }
 
 .content {
   min-height: 400px; }
@@ -5939,7 +5934,8 @@ body, html {
     padding: 10px; }
 
 .application {
-  background-color: #ccc; }
+  background-color: #ececec;
+  border-radius: 10px; }
   .application .top {
     height: 2em;
     background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 5%, transparent 50%), -webkit-linear-gradient(#4e7ba3, #3e6181);

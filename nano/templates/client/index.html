@@ -18,26 +18,31 @@
     
   {% else %}
   
-  <div class="data-list-wrapper">
-    <div class="data-list-header">
-      <div class="col name">Client</div>
-    </div>
-    <div class="data-list"> 
-      {% for contact in contacts %}
-      <div class="row client" data-client-id="{{ contact.id }}">
-          <img src="/static/img/user_icon.png" />
-          {{ contact.first_name }} {{ contact.last_name }} - {{ contact.organisation|default('No organisation', True) }}
-        </div>
-      {% endfor %}
-
-    </div>
+  <div class="workspace-inner">
+    <table class="table table-striped table-hover data-list">
+      <thead class="data-list-header">
+        <tr>
+          <th>Client</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for contact in contacts %}
+          <tr data-client-id="{{ contact.id }}">
+            <td>
+               <img src="/static/img/user_icon.png" />
+              {{ contact.first_name }} {{ contact.last_name }} - {{ contact.organisation|default('No organisation', True) }} 
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   </div>
 
   {% endif %}
   
   <script type="text/javascript">
     $(document).ready(function() {
-      $('.row.client').click(function() {
+      $('.data-list > tbody > tr').click(function() {
         window.location = '/client/' + $(this).data('client-id');  
       });
     });

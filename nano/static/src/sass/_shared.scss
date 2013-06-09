@@ -1,5 +1,9 @@
 /* Basic elements */
 
+h1 {
+  color: #000;
+}
+
 a img {
   vertical-align: middle;
 }
@@ -61,15 +65,6 @@ a img {
 
 /// -- Data lists --- 
 
-.data-list-wrapper {
-  margin: 10px;
-
-  .col { 
-    display: table-cell; 
-    text-align: left;
-  }
-}
-
 .data-list-header {
   @include panel-header2();
   font-size: 12px;
@@ -77,24 +72,10 @@ a img {
 
 .data-list {
   @include box-sizing(border-box);
-
   border: 1px solid #aaaaaa;
-  
-  .row {
-    background-color: #fff;
-    border-bottom: 1px solid #ececec;
-    padding: 8px;
+
+  tr td {
     font-size: 12px;
-    cursor: pointer;
-    margin-left: 0px;
-  }
-
-  .row:hover {
-    background-color: #ececec;
-  }
-
-  .row:last-child {
-    border-bottom: none;
   }
 }
 

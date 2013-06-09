@@ -26,6 +26,9 @@ def index():
 @login_required
 def show(id):
     inv = Invoice.query.get(id)
+    if not inv:
+        return 'Invoice not found', 404
+    
     company = inv.user.company
     custom_fields = CustomField.query.filter_by(user_id=current_user.id).all()
 

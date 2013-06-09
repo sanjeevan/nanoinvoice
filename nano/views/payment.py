@@ -28,7 +28,8 @@ def create(invoice_id):
     payment = Payment()
     payment.invoice_id = invoice.id
     payment.currency_code = invoice.currency_code
-    
+    payment.method = 'manual'
+
     form = PaymentForm(request.form, obj=payment)
     if request.method == 'POST' and form.validate():
         payment = form.save()
@@ -37,12 +38,22 @@ def create(invoice_id):
 
     return render_template('payment/create.html', invoice=invoice, form=form)
 
-
-@payment.route('/delete/<int:id>', methods=['GET'])
+@payment.route('/edit/<int:id>', methods=['GET'])
 def edit(id):
-    pass
+    payment = Payment.query.get(id)
+    if not payment:
+        return 'Payment not found', 404
 
-@payment.route('/edit/<int:id>', methods=['GET', 'POST'])
+    form = PaymentForm(request.form, obj=payment)
+    if request.method == 'POST':
+        if form.validate():
+            form.save()
+        else:
+            flash('There were errors')
+
+    return render_template('payment/edit.html', payment=payment, form=form, invoice=payment.invoice)
+
+@payment.route('/delete/<int:id>', methods=['GET', 'POST'])
 def delete(id):
     """Delete a payment"""
     payment = Payment.query.get(id)
@@ -57,3 +68,4 @@ def delete(id):
 
     flash('Payment deleted')
     return redirect(request.referrer)
+

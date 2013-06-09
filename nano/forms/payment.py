@@ -11,7 +11,7 @@ class PaymentForm(Form):
 
     invoice_id  = HiddenField()
     amount      = TextField('Amount', [required()])
-    method      = TextField()
+    description = TextField()
     date        = TextField('Date', [required()])
     
     def __init__(self, formdata=None, obj=None, prefix='', **kwargs):
@@ -25,7 +25,7 @@ class PaymentForm(Form):
         """Save the payment model"""
         self.payment.amount = self.amount.data
         self.payment.date = datetime.strptime(self.date.data, self.DATE_FORMAT)
-        self.payment.method = self.method.data
+        self.payment.description = self.description.data
 
         db.session.add(self.payment)
         db.session.commit()
