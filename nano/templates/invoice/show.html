@@ -2,10 +2,14 @@
 {% block content %}
 
 {% include 'invoice/_controls.html' %}
+<ul class="breadcrumb">
+  <li><a href="{{ url_for('invoice.index') }}">Invoices</a> <span class="divider">/</span></li>
+  <li class="active">Invoice {{ invoice.reference }}</li>
+</ul>
 
 <div id="manage" class="workspace-inner"> 
   <div class="{{ invoice.status }}">
-    <div id="invoice">
+    <div id="invoice" class="{% print 'pagestyle' if invoice.status == 'draft' else '' %}">
       <div id="invoice-header">
         {% if company.logo %}
         <img alt="Logo" class="logo screen" src="{{ url_for('file.download', location=company.logo.thumbnail.get_web_url()) }}">

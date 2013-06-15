@@ -17,7 +17,6 @@ home = Blueprint('home', __name__)
 def index():
     if current_user.is_authenticated():
         return redirect('/dashboard')
-
     return render_template('home/index.html')
 
 @home.route('/login')

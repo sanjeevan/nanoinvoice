@@ -16,12 +16,8 @@
 <tr id="total_tr">
   <td colspan="2" class="inv_btn">
     {% if invoice.status == 'draft' %}
-        <a href="#" class="button normal" id="add_invoice_item" title="Add Invoice Item">
-      <span><em>Add Invoice Item</em></span>
-    </a> &nbsp; 
-    <a href="#" class="button normal" id="reorder_invoice_items">
-      <span><em>Reorder</em></span>
-    </a>
+      <a href="#" class="btn btn-primary" id="add_invoice_item" title="Add Invoice Item">Add Invoice Item</a> &nbsp; 
+    <a href="#" class="btn" id="reorder_invoice_items">Reorder</a>
     {% endif %}
   </td>
   {% set col_span = 1 %}

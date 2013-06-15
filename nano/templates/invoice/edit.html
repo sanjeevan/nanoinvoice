@@ -4,6 +4,12 @@
   
   {% include 'invoice/_controls.html' %}
 
+  <ul class="breadcrumb">
+    <li><a href="{{ url_for('invoice.index') }}">Invoices</a> <span class="divider">/</span></li>
+    <li><a href="{{ url_for('invoice.show', id=invoice.id) }}">Invoice {{ invoice.reference }}</a> <span class="divider">/</span></li>
+    <li class="active">Edit</li>
+  </ul>
+
   <div class="workspace-inner">
 
     <form class="create inline invoice" method="post" action="{{ url_for('.edit', id=invoice.id) }}">

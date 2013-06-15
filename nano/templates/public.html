@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head>
+    {% block head %}
+    <meta charset="utf-8" />
+    <title>{{ page_title|default('Nanoinvoice') }}</title>
+    
+    {% assets 'css_global' %}
+      <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
+    {% endassets %}
+
+    {% assets 'js_lib' %}
+      <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    {% assets 'js_app' %}
+      <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    <script type="text/javascript" src="{{ url_for('app_js.constants') }}"></script>
+    {% assets 'js_templates' %}
+      <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    {% endblock %}
+  </head>
+  <body>
+    <div class="container">
+      {% include '_flash.html' %}
+      
+      <div class="row header">
+        <a href="/"><img src="/static/img/logo.png"></a>
+        {% if current_user.is_authenticated() %}
+          <div class="account">
+            <ul>
+              <li><a href="{{ url_for('account.index') }}">Your account</a></li>
+              <li><a href="{{ url_for('account.logout') }}">Log out</a></li>
+            </ul>
+          </div>
+        {% else%}
+          <div class="account">
+            <ul>
+              <li><a href="{{ url_for('account.login') }}">Login</a></li>
+            </ul>
+          </div>
+        {% endif %}
+      </div>
+   
+      <div class="row application">
+        <div class="span1">
+          <ul class="nav nav-list icon-menu">
+            <li class="nav-header">Menu</li>
+            <li><a href="{{ url_for('home.dashboard') }}"><img src="/static/img/nav/dashboard.png" />Dashboard</a></li>
+            <li><a href="{{ url_for('invoice.index') }}"><img src="/static/img/nav/invoice.png" /> Invoices</a></li>
+            <li><a href="{{ url_for('payment.index') }}"><img src="/static/img/nav/payment.png" /> Payments</a></li>
+            <li><a href="{{ url_for('client.index') }}"><img src="/static/img/nav/customer.png" /> Clients</a></li>
+          </ul>
+        </div>
+        <div class="span11 workspace">
+          <div class="content">
+            {% block content %}{% endblock %}
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <script type="text/javascript">
+      $(document).ready(function() { 
+          $("select").select2();
+      });
+    </script>
+  </body>
+</html>
