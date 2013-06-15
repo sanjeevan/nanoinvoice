@@ -27,37 +27,20 @@ def login():
 @login_required
 def dashboard():
     """Main dashboard view""" 
+    invoice_ids = [invoice.id for invoice in Invoice.query.filter_by(user_id=current_user.id).all()]
+    payments = Payment.query.filter(Payment.invoice_id.in_(invoice_ids)) \
+                            .order_by(asc(Payment.date)) \
+                            .limit(5) \
+                            .all()
 
-    sent_invoices = Invoice.query.filter_by(status='saved') \
-                           .filter(Invoice.user_id==current_user.id) \
+    invoices = Invoice.query.filter(Invoice.user_id==current_user.id) \
                            .order_by(asc(Invoice.due_date)) \
+                           .limit(5) \
                            .all()
-
-    overdue_invoices = Invoice.query.filter_by(status='saved') \
-                           .filter(Invoice.payment_status==u'unpaid') \
-                           .filter(Invoice.user_id==current_user.id) \
-                           .filter(Invoice.due_date<=datetime.now()) \
-                           .order_by(asc(Invoice.due_date)) \
-                           .all()
-
-
-    paid_invoices = Invoice.query.filter_by(status='saved') \
-                           .filter(Invoice.payment_status==u'paid') \
-                           .filter(Invoice.user_id==current_user.id) \
-                           .order_by(asc(Invoice.due_date)) \
-                           .all()
-
-    draft_invoices      = Invoice.query.filter(Invoice.status=='draft') \
-                                       .filter(Invoice.user_id==current_user.id) \
-                                       .all()
-    payments            = []
 
     return render_template('home/dashboard.html', user=current_user,
-                                                  sent=sent_invoices,
-                                                  overdue=overdue_invoices,
-                                                  draft_invoices=draft_invoices,
-                                                  paid_invoices=paid_invoices,
-                                                  payments=payments)
+                                                  payments=payments,
+                                                  invoices=invoices)
 
 @home.route('/graph')
 @login_required

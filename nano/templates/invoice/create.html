@@ -2,8 +2,13 @@
 {% from 'macros/_misc.html' import render_input %}
 {% block content %}
   
-  {% include 'invoice/_filter.html' %}
-  
+  <ul class="breadcrumb">
+    <li><a href="{{ url_for('invoice.index') }}">Invoices</a> <span class="divider">/</span></li>
+    <li class="active">New invoice</li>
+  </ul>
+
+  <h1>New invoice</h1>
+
   <div class="workspace-inner">
 
     <form class="create inline invoice" method="post" action="{{ url_for('.create') }}">

@@ -20,8 +20,8 @@
               {{ form_field.uid }}
               {{ form_field.field_name }}
               {{ form_field.field_value }}
+              <a class='delete' href="{{ url_for('settings.delete_custom_field', id=form_field.uid.data) }}"> Delete</a>
             </div>
-            <a class='delete' href="{{ url_for('settings.delete_custom_field', id=form_field.uid.data) }}"> Delete</a>
           </div>
         {% endfor %}
         

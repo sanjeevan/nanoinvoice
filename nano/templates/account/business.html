@@ -4,9 +4,11 @@
 {% block content %}
   {% include 'account/_filter.html' %}
 
+  <h1>Business information</h1>
+
   <div class="workspace-inner">
     <form class="create inline company" method="post" action="{{ url_for('.business') }}">
-      <div class="header">Your business information</div>  
+      <div class="header">Business details</div>  
       <div class="fields">
 
         <div class="field">

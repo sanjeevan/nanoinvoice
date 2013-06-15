@@ -106,10 +106,10 @@ form.inline {
 }
 
 form.create {
-  width: 80%;
-  margin: 3em auto;
+  width: 100%;
+  margin: 0em auto;
   
-  @include border-radius(4px);
+  //@include border-radius(4px);
   @include box-shadow(0px 0px 5px #ccc);
   @include glow-inputs();
   @include large-inputs();
@@ -199,12 +199,12 @@ form.create.custom-field {
 
   a.delete {
     display: inline-block;
-    float: right;
     text-decoration: none;
     font-size: 11px;
     line-height: 29px;
     color: #999;
-
+    margin-bottom: 10px;
+    vertical-align: middle;
     &:hover { text-decoration: underline; }
   }
 }
@@ -227,11 +227,12 @@ form.create.tax-rates {
 
   a.delete {
     display: inline-block;
-    float: right;
     text-decoration: none;
     font-size: 11px;
     line-height: 29px;
     color: #999;
+    vertical-align: middle;
+    margin-bottom: 10px;
 
     &:hover { text-decoration: underline; }
   }

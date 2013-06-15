@@ -4,10 +4,11 @@
 {% block content %}
   {% include 'account/_filter.html' %}
 
-  <div class="workspace-inner">
+  <h1>Your account</h1>
 
+  <div class="workspace-inner">
     <form class="create inline invoice" method="post" action="{{ url_for('.index') }}">
-      <div class="header">Your account</div>  
+      <div class="header">Account settings</div>  
       <div class="fields">
         <div class="field">
           <label>&nbsp;</label>

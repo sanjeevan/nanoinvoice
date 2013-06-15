@@ -1,16 +1,8 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-  
-  <div class="filters">
-    <div class="left">
-      <a href="{{ url_for('.create') }}"><img src="/static/img/plus.png"> Add client</a>
-    </div>
-    <div class="right">
-    </div>
-  </div>
 
-  <h1>Clients</h1>
+  <h1>Clients <a class="btn btn-mini btn-primary" href="{{ url_for('client.create') }}">New client</a></h1>
 
   {% if contacts|length == 0 %}
     
@@ -27,7 +19,7 @@
       </thead>
       <tbody>
         {% for contact in contacts %}
-          <tr data-client-id="{{ contact.id }}">
+          <tr class="clickable" data-client-id="{{ contact.id }}">
             <td>
                <img src="/static/img/user_icon.png" />
               {{ contact.first_name }} {{ contact.last_name }} - {{ contact.organisation|default('No organisation', True) }} 

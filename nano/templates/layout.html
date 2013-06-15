@@ -30,7 +30,7 @@
         {% if current_user.is_authenticated() %}
           <div class="account">
             <ul>
-              <li><a href="{{ url_for('account.index') }}">Your account</a></li>
+              <li><img src="{{ current_user.gravatar_url(32) }}" alt="profile photo" /> <a href="{{ url_for('account.index') }}">Your account</a></li>
               <li><a href="{{ url_for('account.logout') }}">Log out</a></li>
             </ul>
           </div>

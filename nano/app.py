@@ -1,7 +1,7 @@
 import os
 
 from flask import Flask, request, render_template
-from flaskext.babel import Babel
+from flaskext.babel import Babel, format_date
 from flask.ext.assets import Environment, Bundle
 
 from nano import utils
@@ -103,6 +103,10 @@ def configure_template_filters(app):
     @app.template_filter()
     def format_currency(value):
         return "{:,.2f}".format(value)
+    
+    @app.template_filter()
+    def fmt_date(value):
+        return format_date(value)
 
 
 def configure_logging(app):

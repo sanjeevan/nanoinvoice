@@ -19,8 +19,8 @@
               {{ form_field.uid }}
               {{ form_field.rate_name }}
               {{ form_field.rate }}
-            </div>
             <a class='delete' href="{{ url_for('settings.delete_tax_rate', id=form_field.uid.data) }}"> Delete</a>
+            </div>
           </div>
         {% endfor %}
         

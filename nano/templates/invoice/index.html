@@ -1,9 +1,7 @@
 {% extends 'layout.html' %}
 {% block content %}
   
-  {% include 'invoice/_filter.html' %}
-  
-  <h1>Invoices</h1>
+  <h1>Invoices <a href="{{ url_for('invoice.create') }}" class='btn btn-mini btn-primary'>New invoice</a></h1>
 
   {% if invoices|length == 0 %}
     
@@ -21,7 +19,7 @@
       </thead>
      <tbody>
       {% for invoice in invoices %}
-          <tr data-id="{{ invoice.id }}">
+          <tr class="clickable" data-id="{{ invoice.id }}">
             <td class="col due">{{ invoice.due_date.strftime('%d %B %Y') }}</td>
             <td class="col ref">{{ invoice.reference }}</td>
             <td class="col name">{{ invoice.contact.full_name() }} <br> <span class="org"><b>Company:</b> {{ invoice.contact.organisation|default('No organisation', True) }}</span></td>

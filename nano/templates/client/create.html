@@ -11,6 +11,12 @@
     </div>
   </div>
   
+  <ul class="breadcrumb">
+    <li><a href="{{ url_for('client.index') }}">Clients</a> <span class="divider">/</span></li>
+    <li class="active">Add new client</li>
+  </ul>
+
+
   <div class="workspace-inner">
 
     <form class="create inline" method="post" action="{{ url_for('.create') }}">

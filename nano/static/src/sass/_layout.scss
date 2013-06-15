@@ -34,6 +34,10 @@ body, html * {
       text-decoration: none;
       color: #fff;
     }
+
+    a:hover {
+      text-decoration: underline;
+    }
   }
 }
 
