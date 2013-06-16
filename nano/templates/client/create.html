@@ -3,14 +3,6 @@
 
 {% block content %}
   
-  <div class="filters">
-    <div class="left">
-      <a href="{{ url_for('.create') }}"><img src="/static/img/plus.png"> Add client</a>
-    </div>
-    <div class="right">
-    </div>
-  </div>
-  
   <ul class="breadcrumb">
     <li><a href="{{ url_for('client.index') }}">Clients</a> <span class="divider">/</span></li>
     <li class="active">Add new client</li>
