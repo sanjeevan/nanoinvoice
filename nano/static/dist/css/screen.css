@@ -6479,6 +6479,12 @@ html[xmlns] .pagestyle {
     padding: 1em;
     vertical-align: middle; }
 
+.signup-errors {
+  background-color: #fff0f0;
+  border: 1px solid #f0c6c6;
+  padding: 5px;
+  color: #8c3f3f; }
+
 /* default invoice style */
 #invoice h1 {
   margin: 0;

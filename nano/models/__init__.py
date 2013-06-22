@@ -19,4 +19,4 @@ from nano.models.invoice_link import InvoiceLink
 from nano.models.setting import Setting
 from nano.models.gocardless import GoCardlessAccount, GoCardlessPayment
 from nano.models.stripe import StripeAccount, StripePayment
-
+from nano.models.billing import Plan, Subscription, Transaction

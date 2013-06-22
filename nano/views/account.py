@@ -112,18 +112,14 @@ def logout():
 @account.route('/signup', methods=['GET', 'POST'])
 def signup():
     login_form= LoginForm(next=request.args.get('next'))
-    form = SignupForm(next=request.args.get('next'))
+    form = SignupForm(request.form, next=request.args.get('next'))
 
     if form.validate_on_submit():
-        user = User()
-        form.populate_obj(user)
-
-        db.session.add(user)
-        db.session.commit()
-
+        user = form.save()
         if login_user(user):
-            return redirect(form.next.data or url_for('user.index'))
+            return redirect(form.next.data or url_for('home.dashboard'))
     else:
+        print form.errors
         print "unable to validate"
 
     return render_template('account/signup.html', form=form, login_form=login_form)

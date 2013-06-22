@@ -5,7 +5,7 @@ from flask.ext.script import Manager, prompt, prompt_pass, prompt_bool
 
 from nano import create_app
 from nano.extensions import db
-from nano.models import User
+from nano.models import *
 
 manager = Manager(create_app())
 
@@ -24,8 +24,19 @@ def reset():
 
     db.drop_all()
     db.create_all()
-    user = User(name='tester', email='tester@hz.com', password='123456')
-    db.session.add(user)
+    db.session.commit()
+
+@manager.command
+def create_plans():
+    """Create subscription plans"""
+    plans = [
+        Plan(name='Free', amount=0, description='Basic subscription'),
+        Plan(name='Pro', amount=5.99, billing_interval='monthly', description='Pro subscription')
+    ]
+
+    for plan in plans:
+        db.session.add(plan)
+
     db.session.commit()
 
 @manager.command

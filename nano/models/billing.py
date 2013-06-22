@@ -13,8 +13,7 @@ class Plan(db.Model):
     amount      = db.Column(db.Numeric(8, 2), default=0)
     billing_interval = db.Column(db.Enum('daily', 'weekly', 'monthly', 'yearly'), default='monthly')
 
-    updated_at  = db.Column(db.DateTime, nullable=False, default=datetime.now)
-    created_at  = db.Column(db.DateTime, nullable=False, default=datetime.now, onupdate=datetime.now)
+    created_at  = db.Column(db.DateTime, nullable=False, default=datetime.now)
 
 class Subscription(db.Model):
     __tablename__ = 'subscription'

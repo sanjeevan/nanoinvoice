@@ -6,21 +6,66 @@
 
 {% block content %}
 
+  <h1>Create your account</h1>
+  
   <div class="workspace-inner">
 
-    <h1>Create new account</h1>
+    {% if form.errors %}
+      <div class="signup-errors">
+        <p>Please correct the following errors to create a new account:</p>
+        <ul>
+          {% for key in form.errors %}
+            <li>{{ form.errors[key][0] }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
 
-    <form method="post" action="">
-       {{ form.hidden_tag() }}
-       {{ form.next }}
+    <form class="form" method="post" action="">
+      {{ form.hidden_tag() }}
+      {{ form.next }}
       
-      {{ render_input(form.name, 'xlarge') }}
-      {{ render_input(form.email, 'xlarge') }}
-      {{ render_input(form.password, 'xlarge') }}
-      {{ render_input(form.password_again, 'xlarge') }}
+      <h4>Business</h4> 
+      <div class="control-group {% print 'error' if form.username.errors else '' %}">
+        <div class="controls">
+          {{ form.username(placeholder='ID') }} <div class="help-inline">.nanoinvoice.com</div>
+        </div>
+      </div>
       
+      <div class="control-group {% print 'error' if form.business_name.errors else '' %}">
+        <div class="controls controls-row">
+          {{ form.business_name(class='span3', placeholder='Business name') }}
+          {{ form.business_type(class='span3') }}
+        </div>
+      </div>
+      
+      <h4>Personal details</h4>
+      <div class="control-group {% print 'error' if form.first_name.errors or form.last_name.errors else '' %}">
+        <div class="controls controls-row">
+           {{ form.first_name(class='span3', placeholder='First name') }}
+           {{ form.last_name(class='span3', placeholder='Last name') }}
+        </div>
+      </div>
+
+      <div class="control-group {% print 'error' if form.email_address.errors else '' %}">
+        <div class="controls controls-row">
+          {{ form.email_address(class='span6', placeholder='Email address') }}
+        </div>
+      </div>
+
+      <div class="control-group {% print 'error' if form.password.errors or form.password_again.errors else '' %}">
+        <div class="controls controls-row">
+          {{ form.password(class='span3', placeholder='Password') }}
+          {{ form.password_again(class='span3', placeholder='Confirm password') }}
+        </div>
+      </div>
+      
+      <div class="controls">
+        <p>By clicking <b>Create account</b>, I agree to the <a href="">privacy policy</a> and <a href="">terms of service</a></p>
+      </div>
+
       <div class="form-actions">
-        <button type="submit" class="btn btn-primary">Signup</button>
+        <button type="submit" class="btn btn-primary">Create account</button>
       </div>
 
     </form>
