@@ -4,7 +4,7 @@ from flask.ext.wtf import (Form, HiddenField, BooleanField, TextField,
                           length)
 from flaskext.babel import gettext, lazy_gettext as _
 
-from nano.models import User, Company, CompanyType
+from nano.models import User, Company, CompanyType, Country
 from nano.extensions import db
 
 
@@ -26,10 +26,20 @@ class SignupForm(Form):
     password        = PasswordField(_('Password'), [required('Please enter a password'), length(min=6, max=16)])
     password_again  = PasswordField(_('Password again'), [required('Please confirm your password'), length(min=6, max=16), equal_to('password')])
     email_address   = TextField(_('Email address'), [required('Your email address is required'), email(message=_('A valid email address is required'))])
+    country_id      = SelectField('Country', [required('Please select a country')])
 
     def __init__(self, formdata=None, obj=None, prefix='', **kwargs):
         super(SignupForm, self).__init__(formdata, obj, prefix, kwargs)
         self.business_type.choices = self.get_company_type_options()
+        self.country_id.choices = self.get_country_options()
+
+    def get_country_options(self):
+        """Get options for country list"""
+        choices = []
+        countries = Country.query.all()
+        for country in countries:
+            choices.append((country.iso, country.printable_name))
+        return choices 
 
     def get_company_type_options(self):
         choices = []
@@ -54,6 +64,7 @@ class SignupForm(Form):
         company.user_id = user.id
         company.name = self.business_name.data
         company.company_type_id = self.business_type.data
+        company.country = self.country_id.data
         db.session.add(company)
         db.session.commit()
 

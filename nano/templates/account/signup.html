@@ -39,6 +39,12 @@
         </div>
       </div>
       
+      <div class="control-group {% print 'error' if form.country_id.errors else '' %}">
+        <div class="controls controls-row" style="margin-left: -20px;">
+          {{ form.country_id(class='span6') }}
+        </div>
+      </div>
+
       <h4>Personal details</h4>
       <div class="control-group {% print 'error' if form.first_name.errors or form.last_name.errors else '' %}">
         <div class="controls controls-row">
