@@ -11,4 +11,5 @@ from nano.forms.tax import TaxRateForm, NewTaxRateForm, TaxRateContainerForm
 from nano.forms.payment import PaymentForm, PaymentIntegrationForm 
 from nano.forms.email import EmailForm
 from nano.forms.setting import SettingForm
+from nano.forms.billing import SubscribeForm
 

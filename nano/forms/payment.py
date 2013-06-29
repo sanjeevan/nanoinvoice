@@ -15,7 +15,7 @@ class PaymentForm(Form):
     date        = TextField('Date', [required()])
     
     def __init__(self, formdata=None, obj=None, prefix='', **kwargs):
-        super(PaymentForm, self).__init__(formdata, obj, prefix, kwargs)
+        super(PaymentForm, self).__init__(formdata, obj, prefix, **kwargs)
         if obj is not None:
             self.payment = obj
         else:

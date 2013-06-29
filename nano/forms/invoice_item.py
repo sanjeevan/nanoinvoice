@@ -19,7 +19,7 @@ class InvoiceItemForm(Form):
     price           = DecimalField(u'Price', default=0)
 
     def __init__(self, formdata=None, obj=None, prefix='', **kwargs):
-        super(InvoiceItemForm, self).__init__(formdata, obj, prefix, kwargs)
+        super(InvoiceItemForm, self).__init__(formdata, obj, prefix, **kwargs)
 
         self.type_id.choices = self.get_type_options()
         self.tax_rate_id.choices = self.get_tax_rate_options()

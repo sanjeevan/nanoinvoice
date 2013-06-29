@@ -48,7 +48,7 @@ class DetailedClientForm(Form):
     post_code       = TextField(u'Post code', validators=[])
 
     def __init__(self, formdata=None, obj=None, prefix='', **kwargs):
-        super(DetailedClientForm, self).__init__(formdata, obj, prefix, kwargs)
+        super(DetailedClientForm, self).__init__(formdata, obj, prefix, **kwargs)
         if obj is not None:
             self.contact = obj
         else:

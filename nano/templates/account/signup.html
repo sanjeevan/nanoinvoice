@@ -65,7 +65,15 @@
           {{ form.password_again(class='span3', placeholder='Confirm password') }}
         </div>
       </div>
-      
+
+      <h4>Plan</h4>
+ 
+      <div class="control-group {% print 'error' if form.plan_id.errors else '' %}">
+        <div class="controls controls-row" style="margin-left: -20px;">
+          {{ form.plan_id(class='span3') }}
+        </div>
+      </div>
+
       <div class="controls">
         <p>By clicking <b>Create account</b>, I agree to the <a href="">privacy policy</a> and <a href="">terms of service</a></p>
       </div>

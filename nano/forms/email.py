@@ -13,7 +13,7 @@ class EmailForm(Form):
     message     = TextAreaField('Message',  [required()])
 
     def __init__(self, formdata=None, obj=None, prefix='', **kwargs):
-        super(EmailForm, self).__init__(formdata, obj, prefix, kwargs)
+        super(EmailForm, self).__init__(formdata, obj, prefix, **kwargs)
 
     def send(self):
         pass

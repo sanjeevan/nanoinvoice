@@ -25,15 +25,21 @@
                 </tr>
               </thead>
               <tbody class=''>
-              {% for payment in payments %}
+              {% if payments|length == 0 %}
                 <tr>
-                  <td>{{ payment.date|fmt_date }}</td>
-                  <td><a href="{{ url_for('invoice.show', id=payment.invoice_id) }}">{{ payment.invoice.reference }}</td>
-                  <td>{{ payment.invoice.contact.full_name() }}</td>
-                  <td>{{ payment.description }}</td>
-                  <td>{{ payment.amount|format_currency }} {{ payment.currency_code }}</td>
+                  <td colspan=5>No payments found for this period</td>
                 </tr>
-              {% endfor %}
+              {% else %}
+                {% for payment in payments %}
+                  <tr>
+                    <td>{{ payment.date|fmt_date }}</td>
+                    <td><a href="{{ url_for('invoice.show', id=payment.invoice_id) }}">{{ payment.invoice.reference }}</td>
+                    <td>{{ payment.invoice.contact.full_name() }}</td>
+                    <td>{{ payment.description }}</td>
+                    <td>{{ payment.amount|format_currency }} {{ payment.currency_code }}</td>
+                  </tr>
+                {% endfor %}
+              {% endif %}
               </tbody>
             </table>
           </div>
@@ -52,7 +58,12 @@
                 <th class="col status">Status</th>
               </thead>
              <tbody>
-              {% for invoice in invoices %}
+              {% if invoices|length == 0 %}
+                <tr>
+                  <td colspan=5>No invoices found for this period</td>
+                </tr>
+              {% else %}
+                {% for invoice in invoices %}
                   <tr data-id="{{ invoice.id }}">
                     <td class="col due">{{ invoice.due_date|fmt_date }}</td>
                     <td class="col ref"><a href="{{ url_for('invoice.show', id=invoice.id) }}">{{ invoice.reference }}</td>
@@ -61,6 +72,7 @@
                     <td class="col status"><span class='label label-{{ invoice.get_status() }}'>{{ invoice.get_status() }}</span></td>
                   </tr>
                 {% endfor %}
+                {% endif %}
               </tbody>
             </table>
           </div>

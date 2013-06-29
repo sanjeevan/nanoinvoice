@@ -1,7 +1,69 @@
 
+/* Main signup css */
+
 .signup-errors {
   background-color: #fff0f0;
   border: 1px solid #f0c6c6;
   padding: 5px;
   color: #8c3f3f;
 }
+
+/* Subscription css */
+
+.subscribe {
+  background-color: #fff;
+  width: 640px;
+
+  .payment {
+    width: 440px;
+    margin: 20px auto 20px auto;
+
+    @include box-shadow(1px 1px 10px #999);
+    @include border-radius(5px);
+  }
+
+  .secure-info {
+    color: #fff;
+    background-color: #028ed5;
+    padding: 10px 5px;
+    font-size: 14px;
+  }
+
+  .billing-info {
+    color: #aaa;
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .payment-errors {
+    color: red;
+    padding-bottom: 1em;
+    display: block;
+  }
+
+  form {
+    padding: 1em;
+    margin-top: 1em;
+
+    img#cvc-image {
+      vertical-align: middle;
+      margin-top: -10px;
+    }
+
+    input#card_number {
+      width: 96%;
+    }
+
+    input {
+      padding: 6px;
+      font-size: 18px;
+    }
+
+    select {
+      font-size: 18px;
+    }
+  }
+
+}
+

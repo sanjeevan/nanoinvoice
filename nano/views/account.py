@@ -11,11 +11,12 @@ from flask.ext.login import (login_required, login_user, current_user,
                             logout_user, confirm_login, fresh_login_required,
                             login_fresh)
 
-from nano.models import User, Company, CustomField
+from nano.models import User, Company, CustomField, Plan
 from nano.extensions import db, cache, mail, login_manager
 from nano.forms import (SignupForm, LoginForm, RecoverPasswordForm,
                         ChangePasswordForm, ReauthForm, UserForm, BusinessForm,
-                        CustomFieldForm)
+                        CustomFieldForm, SubscribeForm)
+from nano.utils import Struct
 
 account = Blueprint('account', __name__, url_prefix='/account')
 
@@ -104,6 +105,7 @@ def reauth():
 @account.route('/logout')
 @login_required
 def logout():
+    """Logout"""
     logout_user()
     flash(_('You are now logged out'), 'success')
     return redirect(url_for('home.index'))
@@ -111,22 +113,51 @@ def logout():
 
 @account.route('/signup', methods=['GET', 'POST'])
 def signup():
+    """Create a new account"""
     login_form= LoginForm(next=request.args.get('next'))
     form = SignupForm(request.form, next=request.args.get('next'))
 
     if form.validate_on_submit():
-        user = form.save()
-        if login_user(user):
+        user, subscription = form.save()
+        if user.subscription.plan.name == 'Free':
+            login_user(user)
             return redirect(form.next.data or url_for('home.dashboard'))
+        if user.subscription.plan.name == 'Pro':
+            login_user(user)
+            return redirect(url_for('account.subscribe', plan_id=user.subscription.plan.id))
     else:
         print form.errors
         print "unable to validate"
 
-    return render_template('account/signup.html', form=form, login_form=login_form)
+    return render_template('account/signup.html', 
+                           form=form, 
+                           login_form=login_form)
 
+@account.route('/subscribe/<int:plan_id>', methods=['GET', 'POST'])
+def subscribe(plan_id):
+    """Subscribe to a plan"""
+    if current_user.subscription.active:
+        return redirect(url_for('home.dashboard'))
+
+    plan = Plan.query.get(plan_id)
+    if not plan:
+        return 'Plan not found', 404
+
+    obj = Struct(**{'plan_id': plan.id})
+    form = SubscribeForm(request.form, obj=obj)
+    if request.method == 'POST':
+        if form.validate():
+            print 'creating subscription'
+            form.create_subscription(current_user)
+        else:
+            print form.errors
+            return 'there were errors', 400
+    print session
+    return render_template('account/subscribe.html', plan=plan, form=form)
 
 @account.route('/change_password', methods=['GET', 'POST'])
 def change_password():
+    """Change user password"""
     user = None
     if current_user.is_authenticated():
         if not login_fresh():

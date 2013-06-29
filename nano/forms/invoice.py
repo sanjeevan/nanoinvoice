@@ -22,7 +22,7 @@ class InvoiceForm(Form):
     currency_code   = SelectField(u'Currency', validators=[required()])
 
     def __init__(self, formdata=None, obj=None, prefix='', **kwargs):
-        super(InvoiceForm, self).__init__(formdata, obj, prefix, kwargs)
+        super(InvoiceForm, self).__init__(formdata, obj, prefix, **kwargs)
         if obj:
             self.invoice = obj
         else:
@@ -76,7 +76,6 @@ class InvoiceForm(Form):
         if payment_term.days == -1:
             invoice.due_date = datetime.strptime(self.due_date_nice.data, Invoice.DATE_FORMAT)
         else:
-            now = datetime.now()
             invoice.due_date = invoice.date_issued + timedelta(days=payment_term.days) 
         
         invoice.update_totals()

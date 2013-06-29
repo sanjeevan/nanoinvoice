@@ -1,10 +1,13 @@
+"""Billing related models"""
+
+from datetime import datetime
 from flask.ext.wtf import (Form, HiddenField, BooleanField, TextField,
                           PasswordField, SubmitField, TextField, SelectField,
                           ValidationError, required, equal_to, email,
                           length)
 from flaskext.babel import gettext, lazy_gettext as _
 
-from nano.models import User, Company, CompanyType, Country
+from nano.models import User, Company, CompanyType, Country, Plan, Subscription
 from nano.extensions import db
 
 
@@ -27,11 +30,20 @@ class SignupForm(Form):
     password_again  = PasswordField(_('Password again'), [required('Please confirm your password'), length(min=6, max=16), equal_to('password')])
     email_address   = TextField(_('Email address'), [required('Your email address is required'), email(message=_('A valid email address is required'))])
     country_id      = SelectField('Country', [required('Please select a country')])
+    plan_id         = SelectField('Plan', [required('Please select a plan')])
 
     def __init__(self, formdata=None, obj=None, prefix='', **kwargs):
-        super(SignupForm, self).__init__(formdata, obj, prefix, kwargs)
+        super(SignupForm, self).__init__(formdata, obj, prefix, **kwargs)
         self.business_type.choices = self.get_company_type_options()
         self.country_id.choices = self.get_country_options()
+        self.plan_id.choices = self.get_plan_options()
+
+    def get_plan_options(self):
+        """Get a list of plans"""
+        choices = []
+        for plan in Plan.query.all():
+            choices.append((str(plan.id), plan.name))
+        return choices
 
     def get_country_options(self):
         """Get options for country list"""
@@ -68,7 +80,15 @@ class SignupForm(Form):
         db.session.add(company)
         db.session.commit()
 
-        return user
+        subscription = Subscription()
+        subscription.user_id = user.id
+        subscription.plan_id = self.plan_id.data
+        subscription.start_date = datetime.now()
+        subscription.end_date = None
+        db.session.add(subscription)
+        db.session.commit()
+
+        return user, subscription
 
     def validate_username(self, field):
         if User.query.filter_by(username=field.data).first() is not None:

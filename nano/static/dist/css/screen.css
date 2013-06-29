@@ -6479,11 +6479,49 @@ html[xmlns] .pagestyle {
     padding: 1em;
     vertical-align: middle; }
 
+/* Main signup css */
 .signup-errors {
   background-color: #fff0f0;
   border: 1px solid #f0c6c6;
   padding: 5px;
   color: #8c3f3f; }
+
+/* Subscription css */
+.subscribe {
+  background-color: #fff;
+  width: 640px; }
+  .subscribe .payment {
+    width: 440px;
+    margin: 20px auto 20px auto;
+    box-shadow: 1px 1px 10px #999999;
+    border-radius: 5px; }
+  .subscribe .secure-info {
+    color: #fff;
+    background-color: #028ed5;
+    padding: 10px 5px;
+    font-size: 14px; }
+  .subscribe .billing-info {
+    color: #aaa;
+    font-size: 18px;
+    width: 100%;
+    text-align: center; }
+  .subscribe .payment-errors {
+    color: red;
+    padding-bottom: 1em;
+    display: block; }
+  .subscribe form {
+    padding: 1em;
+    margin-top: 1em; }
+    .subscribe form img#cvc-image {
+      vertical-align: middle;
+      margin-top: -10px; }
+    .subscribe form input#card_number {
+      width: 96%; }
+    .subscribe form input {
+      padding: 6px;
+      font-size: 18px; }
+    .subscribe form select {
+      font-size: 18px; }
 
 /* default invoice style */
 #invoice h1 {

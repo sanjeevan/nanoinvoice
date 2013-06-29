@@ -21,7 +21,7 @@ class BusinessForm(Form):
     registration_no     = TextField(u'Company registration no.')
 
     def __init__(self, formdata=None, obj=None, prefix='', **kwargs):
-        super(BusinessForm, self).__init__(formdata, obj, prefix, kwargs)
+        super(BusinessForm, self).__init__(formdata, obj, prefix, **kwargs)
 
         if obj:
             self.company = obj

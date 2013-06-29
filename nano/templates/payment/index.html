@@ -17,22 +17,28 @@
           </tr>
         </thead>
         <tbody class='data-list'>
-        {% for payment in payments %}
-          <tr>
-            <td>{{ payment.date.strftime('%d %b %Y') }}</td>
-            <td><a href="{{ url_for('invoice.show', id=payment.invoice_id) }}">{{ payment.invoice.reference }}</td>
-            <td>{{ payment.invoice.due_date.strftime('%d %b %Y') }}</td>
-            <td>{{ payment.invoice.contact.full_name() }}</td>
-            <td>{{ payment.description }}</td>
-            <td>{{ payment.amount|format_currency }} {{ payment.currency_code }}</td>
-            <td>
-              {% if payment.method == 'manual' %}
-                <a class="btn btn-mini" href="{{ url_for('payment.edit', id=payment.id) }}">Edit</a>
-                <a class="btn btn-danger btn-mini" href="{{ url_for('payment.delete', id=payment.id) }}">Delete</a>
-              {% endif %}
-            </td>
-          </tr>
-        {% endfor %}
+          {% if payments|length == 0 %}
+            <tr>
+              <td colspan=7>No payments found</td>
+            </tr>
+          {% else %}
+            {% for payment in payments %}
+              <tr>
+                <td>{{ payment.date.strftime('%d %b %Y') }}</td>
+                <td><a href="{{ url_for('invoice.show', id=payment.invoice_id) }}">{{ payment.invoice.reference }}</td>
+                <td>{{ payment.invoice.due_date.strftime('%d %b %Y') }}</td>
+                <td>{{ payment.invoice.contact.full_name() }}</td>
+                <td>{{ payment.description }}</td>
+                <td>{{ payment.amount|format_currency }} {{ payment.currency_code }}</td>
+                <td>
+                  {% if payment.method == 'manual' %}
+                    <a class="btn btn-mini" href="{{ url_for('payment.edit', id=payment.id) }}">Edit</a>
+                    <a class="btn btn-danger btn-mini" href="{{ url_for('payment.delete', id=payment.id) }}">Delete</a>
+                  {% endif %}
+                </td>
+              </tr>
+            {% endfor %}
+        {% endif %}
         </tbody>
     </table>
   </div>

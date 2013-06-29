@@ -8,7 +8,8 @@
     {% assets 'css_global' %}
       <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
     {% endassets %}
-
+    {% endblock %}
+    {% block head_after %}
     {% endblock %}
   </head>
   <body>

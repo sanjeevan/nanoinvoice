@@ -1,0 +1,106 @@
+{% from "macros/_misc.html" import render_input %}
+
+{% set page_title = _('Subscribe') %}
+
+{% extends 'plain.html' %}
+
+{% block head_after %}
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+  <script type="text/javascript" src="/static/src/js/lib/jquery.payment.js"></script>
+  <script type="text/javascript">
+    Stripe.setPublishableKey('{{ config['STRIPE_PUBLIC_KEY'] }}');
+  </script>
+{% endblock %}
+
+{% block content %}
+
+<div class="subscribe box">
+  
+  <p>&nbsp;</p>
+
+  <div class="payment">
+    <div class="secure-info">
+      <img src="/static/img/white/padlock_closed_icon&24.png"> This is a secure 128bit SSL encrypted payment. You're safe
+    </div>
+    <form id="payment-form" class="form" method="post" action="">
+      <span class="payment-errors"></span>
+      {{ form.csrf_token }}
+      {{ form.stripe_token }}
+      {{ form.plan_id }}
+      <div class="control-group {% print 'error' if form.card_number.errors else '' %}">
+        <label>Card number</label>
+        <div class="controls controls-row">
+          {{ form.card_number(class='', size=20, placeholder='•••• •••• •••• ••••') }}
+        </div>
+      </div>
+
+      <div class="control-group {% print 'error' if form.cvc.errors or form.cvc.errors else '' %}">
+        <div class="controls controls-row">
+          <div class="expire pull-left">
+            <label>Expiration date</label>
+           {{ form.expire_month(class='input-mini', placeholder='Month') }}
+           {{ form.expire_year(class='input-small', placeholder='Year') }}
+          </div>
+          <div class="cvc pull-right">
+            <label>Card code</label>
+           {{ form.cvc(class='input-mini', size=3, maxlength=3, placeholder='CVC') }}
+           <img id="cvc-image" src="/static/img/1372540145_credit_card blue.png">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-block btn-success">Complete transaction</button>
+      </div>
+
+      <div class="billing-info">Billed at £{{ plan.amount }} per {{ plan.interval_name }} </div>
+    </form>
+  </div>
+  &nbsp;
+</div>
+
+
+<script type="text/javascript">
+  var stripeResponseHandler = function(status, response) {
+    var $form = $('#payment-form');
+
+    if (response.error) {
+      // Show the errors on the form
+      $form.find('.payment-errors').text(response.error.message);
+      $form.find('button').prop('disabled', false);
+    } else {
+      // token contains id, last4, and card type
+      var token = response.id;
+      // Insert the token into the form so it gets submitted to the server
+      $form.find('#stripe_token').val(token);
+      // and submit
+      $form.get(0).submit();
+    }
+  };
+
+  $(document).ready(function(){
+    $('#payment-form').submit(function(event) {
+      var $form = $(this);
+
+      // Disable the submit button to prevent repeated clicks
+      $form.find('button').prop('disabled', true);
+      Stripe.card.createToken({
+          number: $('#card_number').val(),
+          cvc: $('#cvc').val(),
+          exp_month: $('#expire_month').val(),
+          exp_year: $('#expire_year').val()
+      }, stripeResponseHandler);
+      
+      //Stripe.createToken($form, stripeResponseHandler);
+
+      // Prevent the form from submitting with the default action
+      return false;
+    });
+
+    $('#card_number').payment('formatCardNumber');
+  });
+</script>
+
+{% endblock %}
+
