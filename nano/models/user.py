@@ -30,6 +30,10 @@ class User(db.Model, UserMixin):
     gocardless_account = db.relation('GoCardlessAccount', backref=db.backref('user', uselist=False), uselist=False)
     subscription = db.relation('Subscription', backref=db.backref('user', uselist=False, lazy='joined'), uselist=False)
     transactions = db.relation('Transaction', backref=db.backref('user'))
+    
+    @property
+    def name(self):
+        return self.first_name + ' ' + self.last_name
 
     @property
     def setting(self):

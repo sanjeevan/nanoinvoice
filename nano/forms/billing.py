@@ -16,6 +16,7 @@ from nano.extensions import db
 class SubscribeForm(Form):
     """Get basic credit card info"""
 
+    name            = TextField(u'Card number', [required()])
     card_number     = TextField(u'Card number', [required()])
     cvc             = TextField(u'CVC', [required()])
     expire_month    = SelectField(u'Expire month', [required()])
@@ -40,22 +41,22 @@ class SubscribeForm(Form):
     def create_subscription(self, user):
         """Create the stripe subscription"""
         plan = Plan.query.get(self.plan_id.data)
-        
         stripe.api_key = current_app.config['STRIPE_SECRET_KEY']
-
-        # TODO: store stripe customer data somewhere
-        customer = stripe.Customer.create(
-            card=self.stripe_token.data,
-            plan=plan.gateway_uid,
-            email=user.email_address
-        )
+        
+        try:
+            customer = stripe.Customer.create(
+                card=self.stripe_token.data,
+                plan=plan.gateway_uid,
+                email=user.email_address
+            )
+        except stripe.CardError as e:
+            return False
 
         data = {'customer': json.loads(str(customer)) }
+        user.subscription.plan_id = plan.id
         user.subscription.stripe_data = json.dumps(data)
+        user.subscription.active = True
         db.session.add(user.subscription)
         db.session.commit()
-
-
-
-
+        return True
 

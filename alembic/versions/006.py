@@ -13,7 +13,7 @@ def upgrade():
     op.create_table('plan',
         sa.Column('id',                 sa.Integer(11),     nullable=False),
         sa.Column('name',               sa.Unicode(20),     nullable=False),
-        sa.Column('gateway_uid',        sa.Unicode(20),     nullable=False),
+        sa.Column('gateway_uid',        sa.Unicode(225),    nullable=False),
         sa.Column('description',        sa.Unicode(255),    nullable=False),
         sa.Column('amount',             sa.Numeric(8, 2),   server_default='0.0'),
         sa.Column('billing_interval',   sa.Enum('daily', 'weekly', 'monthly', 'yearly'), server_default=u'monthly'),

@@ -52,7 +52,7 @@ def graph():
         'paid': OrderedDict(),
     }
     
-    period = 30 * 6
+    period = 31 * 6
     start = datetime.now() - timedelta(days=period)
     end = datetime.now() + timedelta(days=period)
     idx = start
@@ -63,7 +63,7 @@ def graph():
         series['sent'][key] = 0.0
         series['overdue'][key] = 0.0
         series['paid'][key] = 0.0
-        idx = idx + timedelta(days=30)
+        idx = idx + timedelta(days=31)
     
     sent_invoices = Invoice.query.filter_by(status='saved') \
                            .filter(Invoice.user_id==current_user.id) \
@@ -88,16 +88,19 @@ def graph():
 
     for invoice in sent_invoices:
         key = invoice.date_issued.strftime(key_format)
-        series['sent'][key] += float(invoice.total)
+        if key in series['sent']:
+            series['sent'][key] += float(invoice.total)
 
     for invoice in overdue_invoices:
         key = invoice.date_issued.strftime(key_format)
         paid_off = math.fsum([payment.amount for payment in invoice.payments])
-        series['overdue'][key] += (float(invoice.total) - paid_off)
+        if key in series['overdue']:
+            series['overdue'][key] += (float(invoice.total) - paid_off)
 
     for payment in payments:
         key = payment.date.strftime(key_format)
-        series['paid'][key] += float(payment.amount)
+        if key in series['paid']:
+            series['paid'][key] += float(payment.amount)
 
     output = [
         {

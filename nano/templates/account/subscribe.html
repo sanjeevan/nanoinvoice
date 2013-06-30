@@ -28,10 +28,16 @@
       {{ form.csrf_token }}
       {{ form.stripe_token }}
       {{ form.plan_id }}
+      <div class="control-group {% print 'error' if form.name.errors else '' %}">
+        <label>Name</label>
+        <div class="controls controls-row">
+          {{ form.name(placeholder='Name on card') }}
+        </div>
+      </div>
       <div class="control-group {% print 'error' if form.card_number.errors else '' %}">
         <label>Card number</label>
         <div class="controls controls-row">
-          {{ form.card_number(class='', size=20, placeholder='•••• •••• •••• ••••') }}
+          {{ form.card_number(size=20, placeholder='•••• •••• •••• ••••') }}
         </div>
       </div>
 

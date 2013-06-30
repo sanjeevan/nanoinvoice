@@ -6515,7 +6515,7 @@ html[xmlns] .pagestyle {
     .subscribe form img#cvc-image {
       vertical-align: middle;
       margin-top: -10px; }
-    .subscribe form input#card_number {
+    .subscribe form input#card_number, .subscribe form input#name {
       width: 96%; }
     .subscribe form input {
       padding: 6px;

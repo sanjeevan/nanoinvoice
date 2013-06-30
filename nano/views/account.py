@@ -46,6 +46,10 @@ def business():
 
     return render_template('account/business.html', form=form, company=company)
 
+@account.route('/subscription', methods=['GET'])
+def subscription():
+    """Subscription information"""
+    return render_template('account/subscription.html')
 
 @account.route('/settings', methods=['GET', 'POST'])
 @login_required
@@ -136,23 +140,25 @@ def signup():
 @account.route('/subscribe/<int:plan_id>', methods=['GET', 'POST'])
 def subscribe(plan_id):
     """Subscribe to a plan"""
-    if current_user.subscription.active:
+    # don't allow user to subscribe to an already subscribed plan
+    if (current_user.subscription.active and
+        plan_id == current_user.subscription.plan_id):
         return redirect(url_for('home.dashboard'))
 
     plan = Plan.query.get(plan_id)
     if not plan:
         return 'Plan not found', 404
 
-    obj = Struct(**{'plan_id': plan.id})
+    obj = Struct(**{'plan_id': plan.id, 'name': current_user.name})
     form = SubscribeForm(request.form, obj=obj)
     if request.method == 'POST':
         if form.validate():
-            print 'creating subscription'
-            form.create_subscription(current_user)
+            subscription = form.create_subscription(current_user)
+            if subscription:
+                flash('You have successfully subscribed to the %s plan' % plan.name)
+                return redirect(url_for('account.subscription'))
         else:
-            print form.errors
             return 'there were errors', 400
-    print session
     return render_template('account/subscribe.html', plan=plan, form=form)
 
 @account.route('/change_password', methods=['GET', 'POST'])
