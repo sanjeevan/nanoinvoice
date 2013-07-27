@@ -38,7 +38,7 @@ class Subscription(db.Model):
     created_at  = db.Column(db.DateTime, nullable=False, default=datetime.now, onupdate=datetime.now)
 
     # relations
-    transactions = db.relation('Transaction', backref=db.backref('subscription', lazy='joined'), uselist=False)
+    transactions = db.relation('Transaction', backref=db.backref('subscription', lazy='joined', uselist=False))
 
 class Transaction(db.Model):
     __tablename__ = 'transaction'

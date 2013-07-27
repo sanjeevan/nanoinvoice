@@ -10,6 +10,7 @@ from flask.ext.login import login_required, current_user
 from sqlalchemy import asc
 
 from nano.models import *
+from nano.decorators import check_subscription
 
 home = Blueprint('home', __name__)
 
@@ -25,6 +26,7 @@ def login():
 
 @home.route('/dashboard')
 @login_required
+@check_subscription
 def dashboard():
     """Main dashboard view""" 
     invoice_ids = [invoice.id for invoice in Invoice.query.filter_by(user_id=current_user.id).all()]

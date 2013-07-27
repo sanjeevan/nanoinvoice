@@ -3,6 +3,7 @@ import os
 from flask import Flask, request, render_template
 from flaskext.babel import Babel, format_date
 from flask.ext.assets import Environment, Bundle
+from flask.ext.login import current_user
 
 from nano import utils
 from nano.models import User

@@ -11,7 +11,7 @@ from flask.ext.login import (login_required, login_user, current_user,
                             logout_user, confirm_login, fresh_login_required,
                             login_fresh)
 
-from nano.models import User, Company, CustomField, Plan
+from nano.models import User, Company, CustomField, Plan, Subscription
 from nano.extensions import db, cache, mail, login_manager
 from nano.forms import (SignupForm, LoginForm, RecoverPasswordForm,
                         ChangePasswordForm, ReauthForm, UserForm, BusinessForm,
@@ -26,7 +26,7 @@ def index():
     """Account information + update"""
     user = User.query.get(current_user.id)
     form = UserForm(request.form, obj=user)
-    
+
     if request.method == 'POST' and form.validate():
         form.save()
         flash('User information updated')
@@ -49,7 +49,11 @@ def business():
 @account.route('/subscription', methods=['GET'])
 def subscription():
     """Subscription information"""
-    return render_template('account/subscription.html')
+    plan = current_user.subscription.plan
+    transactions = current_user.subscription.transactions
+
+    return render_template('account/subscription.html', plan=plan,
+                                                        transactions=transactions)
 
 @account.route('/settings', methods=['GET', 'POST'])
 @login_required
@@ -105,7 +109,6 @@ def reauth():
         flash(_('Password is wrong.'), 'error')
     return render_template('reauth.html', form=form)
 
-
 @account.route('/logout')
 @login_required
 def logout():
@@ -113,7 +116,6 @@ def logout():
     logout_user()
     flash(_('You are now logged out'), 'success')
     return redirect(url_for('home.index'))
-
 
 @account.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -161,6 +163,16 @@ def subscribe(plan_id):
             return 'there were errors', 400
     return render_template('account/subscribe.html', plan=plan, form=form)
 
+@account.route('/subscribe/downgrade_to_free', methods=['GET', 'POST'])
+def downgrade_to_free():
+    """Downgrade to a free account"""
+    if not current_user.subscription.active:
+        subscription = Subscription.query.get(current_user.subscription.id)
+        free_plan = Plan.query.filter_by(name='Free').first()
+        subscription.plan_id = free_plan.id
+        db.session.commit()
+    return redirect(url_for('home.dashboard'))
+
 @account.route('/change_password', methods=['GET', 'POST'])
 def change_password():
     """Change user password"""
@@ -192,7 +204,6 @@ def change_password():
 
     return render_template("change_password.html", form=form)
 
-
 @account.route('/reset_password', methods=['GET', 'POST'])
 def reset_password():
     form = RecoverPasswordForm()
@@ -217,7 +228,4 @@ def reset_password():
             flash(_('Sorry, no user found for that email address'), 'error')
 
     return render_template('reset_password.html', form=form)
-
-
-
 
