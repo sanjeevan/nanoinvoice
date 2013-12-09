@@ -11,12 +11,15 @@
 
   <div class="workspace-inner">
 
+    <dl>
+      <dt>Payment due</dt>
+      <dd>{{ invoice.total }}</dd>
+    </dl>
+
     <form class="form form-horizontal create inline invoice" method="post" action="{{ url_for('payment.create', invoice_id=invoice.id) }}">
       <div class="header">Add payment</div>
       <div class="fields">
-        {{ form.csrf_token }}
-
-
+        {{ form.hidden_tag() }}
         {{ render_input(form.amount) }}
         {{ render_input(form.description) }}
         {{ render_input(form.date) }}

@@ -10,9 +10,9 @@
     <a href="{{ url_for('invoice.delete', id=invoice.id) }}"><img src="/static/img/trash_icon&16.png"> Delete</a>
   </div>
   <div class="right">
-    <a href="{{ url_for('payment.create', invoice_id=invoice.id) }}"><img src="/static/img/payment.png"> Add payment</a>
+    <a data-toggle="modal" href="#add-payment"><img src="/static/img/payment.png"> Add payment</a>
     <a href="{{ url_for('invoice.print_invoice', id=invoice.id) }}"><img src="/static/img/print_icon&16.png"> Print</a>
-    <a href="{{ url_for('invoice.email', id=invoice.id) }}"><img src="/static/img/mail_icon&16.png"> Email</a>
+    <a data-target="#email-modal" data-toggle="modal" href="{{ url_for('invoice.email', id=invoice.id, _external=True) }}"><img src="/static/img/mail_icon&16.png"> Email</a>
     <a href="{{ url_for('invoice.export', id=invoice.id) }}"><img src="/static/img/doc_export_icon&16.png"> Export</a>
   </div>
 </div>

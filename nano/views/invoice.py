@@ -8,8 +8,8 @@ from flask.ext.login import login_required, current_user
 from urlparse import urljoin
 from datetime import datetime
 
-from nano.models import Invoice, CustomField, InvoiceLink
-from nano.forms import InvoiceForm, EmailForm
+from nano.models import Invoice, CustomField, InvoiceLink, Payment
+from nano.forms import InvoiceForm, EmailForm, PaymentForm
 from nano.extensions import db
 from nano.wkhtml import wkhtml_to_pdf
 from nano.utils import Struct
@@ -32,8 +32,16 @@ def show(id):
     company = inv.user.company
     custom_fields = CustomField.query.filter_by(user_id=current_user.id).all()
 
+    payment = Payment()
+    payment.invoice_id = inv.id
+    payment.currency_code = inv.currency_code
+    payment.method = 'manual'
+
+    payment_form = PaymentForm(request.form, obj=payment)
+
     return render_template('invoice/show.html', invoice=inv, company=company, 
-                                                custom_fields=custom_fields)
+                                                custom_fields=custom_fields,
+                                                payment_form=payment_form)
 
 @invoice.route('/create', methods=['GET', 'POST'])
 @login_required

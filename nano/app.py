@@ -183,6 +183,8 @@ def configure_assets(app):
                     'src/js/vendor/facebox/facebox.js',
                     'src/js/vendor/highcharts/highcharts.src.js',
                     'src/js/vendor/bootstrap/bootstrap-alert.js',
+                    'src/js/vendor/bootstrap/bootstrap-modal.js',
+                    'src/js/vendor/bootstrap/bootstrap-modalmanager.js',
                     'src/js/lib/upclick.js',
                     filters='yui_js', output='dist/js/libs.js')
     

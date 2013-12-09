@@ -1,0 +1,33 @@
+{% from 'macros/_misc.html' import render_input %}
+
+<div id="add-payment" class="modal hide fade">
+  <div class="modal-header"><h3>Add payment</h3></div>
+  <div class="modal-body">
+    <form id="add-payment-form" class="form form-horizontal" method="post" action="{{ url_for('payment.create', invoice_id=invoice.id) }}">
+      {{ payment_form.hidden_tag() }}
+      {{ render_input(payment_form.amount) }}
+      {{ render_input(payment_form.description) }}
+      {{ render_input(payment_form.date) }}
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="button normal" type="submit" onclick="$('#add-payment-form').submit(); return false;">Add payment</button>
+     or 
+    <a data-dismiss="modal" href="#">Cancel</a>
+  </div>
+</div>
+
+<div id="email-modal" class="modal hide fade">
+  <div class="modal-header"><h3>Email</h3></div>
+  <div class="modal-body"></div>
+  <div class="modal-footer">
+      <button class="btn btn-primary" onclick="$('#email-form').submit(); return false;">Send</button>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var dateFormat = 'D MMM YYYY'
+  $(document).ready(function(){
+    var picker1 = new Pikaday({ field: document.getElementById('date'), format: dateFormat });
+  });
+</script>
