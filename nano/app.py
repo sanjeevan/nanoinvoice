@@ -41,7 +41,11 @@ def create_app(config=None, app_name=None, blueprints=None):
     if blueprints is None:
         blueprints = DEFAULT_BLUEPRINTS
 
-    app = Flask(app_name)
+    # project root path
+    proj_path = os.path.realpath(os.path.join(os.path.dirname(__file__), '..'))
+    instance_path = os.path.join(proj_path, 'instance')
+
+    app = Flask(app_name, instance_path=instance_path, instance_relative_config=True)
     configure_app(app, config)
     configure_hook(app)
     configure_blueprints(app, blueprints)
@@ -60,8 +64,9 @@ def configure_app(app, config):
     app.config.from_object(DefaultConfig)
     if config is not None:
         app.config.from_object(config)
-    # Override setting by env var without touching codes.
-    app.config.from_envvar('FBONE_APP_CONFIG', silent=True)
+
+    # Override setting by instance/application.cfg file 
+    app.config.from_pyfile('application.cfg')
 
 
 def configure_extensions(app):
