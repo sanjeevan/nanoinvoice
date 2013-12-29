@@ -13,6 +13,7 @@ nano/static/.webassets-cache
 nano/static/gen/*
 
 alembic.ini
+alembic.dev.ini
 
 Gemfile.lock
 instance/*
