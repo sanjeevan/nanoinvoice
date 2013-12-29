@@ -1,5 +1,7 @@
 venv/*
+dist/*
 bin/*
+instance/*
 files/uploads/*
 .sass-cache
 
@@ -16,4 +18,3 @@ alembic.ini
 alembic.dev.ini
 
 Gemfile.lock
-instance/*
