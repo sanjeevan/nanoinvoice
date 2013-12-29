@@ -9,7 +9,7 @@ from subprocess import PIPE
 def wkhtml_bin():
     current_path = os.path.dirname(os.path.abspath(__file__))
     bin_path = os.path.abspath(os.path.join(current_path, '../bin'))
-    return os.path.join(bin_path, 'wkhtmltopdf-amd64')
+    return os.path.join(bin_path, 'wkhtmltopdf')
 
 def wkhtml_to_pdf(url=''):
     """
@@ -33,7 +33,7 @@ def wkhtml_to_pdf(url=''):
         else:
             print 'There was an error creating the PDF file'
             return False
-    except OSError, exc:
+    except OSError:
         return False
 
 if __name__ == '__main__':
