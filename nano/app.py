@@ -216,7 +216,9 @@ def configure_assets(app):
     assets.register('css_global', css_global)
     assets.register('css_pdf', css_pdf)
 
-
+if __name__ == '__main__':
+    app = create_app()
+    app.run()
 
 
 

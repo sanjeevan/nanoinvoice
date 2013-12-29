@@ -44,3 +44,4 @@ def live():
 def build():
     git_clone()
     upload_project()
+    git_cleanup()
