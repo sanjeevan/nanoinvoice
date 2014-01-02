@@ -104,9 +104,18 @@ def save(id):
     db.session.commit()
     return redirect(url_for('.show', id=invoice.id))
 
-@invoice.route('/print')
-def print_invoice():
-    pass
+@invoice.route('/print/<int:id>')
+def print_invoice(id):
+    invoice = Invoice.query.get(id)
+    if not invoice:
+        return 'Invoice not found', 404
+
+    custom_fields = CustomField.query.filter_by(user_id=invoice.user_id).all()
+    if not invoice:
+        return 'invoice not found', 404
+    return render_template('invoice/print.html', invoice=invoice, 
+                                                 company=invoice.user.company,
+                                                 custom_fields=custom_fields)
 
 @invoice.route('/email/<int:id>', methods=['GET', 'POST'])
 def email(id):
