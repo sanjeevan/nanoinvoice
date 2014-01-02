@@ -166,10 +166,9 @@ def export(id):
     
     # generate PDF
     # TODO: do this a background job to scale properly
-    path = url_for('.pdf', id=invoice.id)
+    path = url_for('.pdf', id=invoice.id, key=current_app.config['SECRET_KEY'])
     host = '%s://%s' % (request.scheme, current_app.config['SERVER_NAME'])
     url = urljoin(host, path)
-    print url
     pdf_path = wkhtml_to_pdf(url)
     if not pdf_path:
         return 'Error generating PDF', 400
@@ -183,6 +182,11 @@ def export(id):
 @invoice.route('/pdf/<int:id>', methods=['GET'])
 def pdf(id):
     invoice = Invoice.query.get(id)
+    key = request.args.get('key', None)
+    
+    if key != current_app.config['SECRET_KEY']:
+        return 'Invalid key', 401
+
     if not invoice:
         return 'Invoice not found', 404
 
