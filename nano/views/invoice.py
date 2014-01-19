@@ -104,9 +104,18 @@ def save(id):
     db.session.commit()
     return redirect(url_for('.show', id=invoice.id))
 
-@invoice.route('/print')
-def print_invoice():
-    pass
+@invoice.route('/print/<int:id>')
+def print_invoice(id):
+    invoice = Invoice.query.get(id)
+    if not invoice:
+        return 'Invoice not found', 404
+
+    custom_fields = CustomField.query.filter_by(user_id=invoice.user_id).all()
+    if not invoice:
+        return 'invoice not found', 404
+    return render_template('invoice/print.html', invoice=invoice, 
+                                                 company=invoice.user.company,
+                                                 custom_fields=custom_fields)
 
 @invoice.route('/email/<int:id>', methods=['GET', 'POST'])
 def email(id):
@@ -157,10 +166,9 @@ def export(id):
     
     # generate PDF
     # TODO: do this a background job to scale properly
-    path = url_for('.pdf', id=invoice.id)
+    path = url_for('.pdf', id=invoice.id, key=current_app.config['SECRET_KEY'])
     host = '%s://%s' % (request.scheme, current_app.config['SERVER_NAME'])
     url = urljoin(host, path)
-    print url
     pdf_path = wkhtml_to_pdf(url)
     if not pdf_path:
         return 'Error generating PDF', 400
@@ -174,6 +182,11 @@ def export(id):
 @invoice.route('/pdf/<int:id>', methods=['GET'])
 def pdf(id):
     invoice = Invoice.query.get(id)
+    key = request.args.get('key', None)
+    
+    if key != current_app.config['SECRET_KEY']:
+        return 'Invalid key', 401
+
     if not invoice:
         return 'Invoice not found', 404
 
