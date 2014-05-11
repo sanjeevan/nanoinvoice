@@ -10,8 +10,7 @@ class Currency(db.Model):
     code = db.Column(u'code', db.String(length=6))
     name = db.Column(u'name', db.String(length=50))
     symbol = db.Column(u'symbol', db.String(length=6))
-    
+
     updated_at = db.Column(u'updated_at', db.DateTime(), nullable=False)
     created_at = db.Column(u'created_at', db.DateTime(), nullable=False)
 
- 

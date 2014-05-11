@@ -25,12 +25,12 @@ class User(db.Model, UserMixin):
     updated_at = db.Column(db.DateTime, default=get_current_time())
 
     # relations
-    invoice_links = db.relation('InvoiceLink', backref=db.backref('user', uselist=False))
-    stripe_account = db.relation('StripeAccount', backref=db.backref('user', uselist=False), uselist=False)
-    gocardless_account = db.relation('GoCardlessAccount', backref=db.backref('user', uselist=False), uselist=False)
-    subscription = db.relation('Subscription', backref=db.backref('user', uselist=False, lazy='joined'), uselist=False)
+    invoice_links = db.relation('InvoiceLink', backref=db.backref('user'))
+    stripe_account = db.relation('StripeAccount', backref=db.backref('user'), uselist=False)
+    gocardless_account = db.relation('GoCardlessAccount', backref=db.backref('user'), uselist=False)
+    subscription = db.relation('Subscription', backref=db.backref('user'), uselist=False)
     transactions = db.relation('Transaction', backref=db.backref('user'))
-    
+
     @property
     def name(self):
         return self.first_name + ' ' + self.last_name
@@ -59,7 +59,7 @@ class User(db.Model, UserMixin):
 
     @classmethod
     def authenticate(cls, login, password):
-        user = cls.query.filter(db.or_(User.username==login, 
+        user = cls.query.filter(db.or_(User.username==login,
                                        User.email_address==login)).first()
         if user:
             authenticated = user.check_password(password)

@@ -22,11 +22,9 @@ class InvoiceItem(db.Model):
     sort_order      = db.Column(u'sort_order', db.Integer, default=0)
 
     #relation definitions
-    invoice_item_type   = db.relation('InvoiceItemType', primaryjoin='InvoiceItem.type_id==InvoiceItemType.id')
-    invoice             = db.relation('Invoice',
-                                      primaryjoin='InvoiceItem.invoice_id==Invoice.id',
-                                      backref=db.backref('invoice_items', lazy='dynamic'))
-    tax_rate            = db.relation('TaxRate', primaryjoin='InvoiceItem.tax_rate_id==TaxRate.id')
+    invoice_item_type   = db.relation('InvoiceItemType', backref=db.backref('invoice_items'), uselist=False)
+    invoice             = db.relation('Invoice', backref=db.backref('invoice_items'), uselist=False)
+    tax_rate            = db.relation('TaxRate', backref=db.backref('invoice_items'), uselist=False)
 
     def should_render_field(self, name):
         """Returns True if the field should be rendered in the item list on the

@@ -13,7 +13,7 @@ class Contact(db.Model):
     organisation    = db.Column(u'organisation', db.String(length=255))
     email_address   = db.Column(u'email_address', db.String(length=255))
     billing_email_address = db.Column(u'billing_email_address', db.String(length=255))
-    
+
     address_line1   = db.Column(u'address_line1', db.String(length=255))
     address_line2   = db.Column(u'address_line2', db.String(length=255))
     town            = db.Column(u'town', db.String(length=255))
@@ -28,7 +28,7 @@ class Contact(db.Model):
                                 default=get_current_time())
 
     #relation definitions
-    user = db.relation('User', primaryjoin='Contact.user_id==User.id', backref='contacts')
+    user = db.relation('User', backref=db.backref('contacts'), uselist=False)
 
     def full_name(self):
         return self.first_name + ' ' + self.last_name

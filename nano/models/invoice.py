@@ -6,13 +6,13 @@ from nano.models.payment import Payment
 
 class Invoice(db.Model):
     __tablename__ = 'invoice'
-    
+
     DATE_FORMAT = '%a %b %d %Y'
 
     id                  = db.Column(u'id', db.Integer, primary_key=True, nullable=False)
-    user_id             = db.Column(u'user_id', db.Integer, db.ForeignKey('user.id')) 
-    contact_id          = db.Column(u'contact_id', db.Integer, db.ForeignKey('contact.id')) 
-    payment_term_id     = db.Column(u'payment_term_id', db.Integer, db.ForeignKey('payment_term.id')) 
+    user_id             = db.Column(u'user_id', db.Integer, db.ForeignKey('user.id'))
+    contact_id          = db.Column(u'contact_id', db.Integer, db.ForeignKey('contact.id'))
+    payment_term_id     = db.Column(u'payment_term_id', db.Integer, db.ForeignKey('payment_term.id'))
     status              = db.Column(u'status', db.String(255))
     reference           = db.Column(u'reference', db.String(255))
     po_reference        = db.Column(u'po_reference', db.String(255))
@@ -35,7 +35,7 @@ class Invoice(db.Model):
     invoice_link        = db.relation('InvoiceLink', backref=db.backref('invoice', uselist=False, lazy='joined'))
     gocardless_payments = db.relation('GoCardlessPayment', backref=db.backref('invoice', uselist=False, lazy='joined'))
     stripe_payments     = db.relation('StripePayment', backref=db.backref('invoice', uselist=False, lazy='joined'))
-    
+
     @classmethod
     def next_invoice_number(cls, user):
         """Next the next invoice number for the user"""
@@ -47,7 +47,7 @@ class Invoice(db.Model):
     @property
     def due_date_nice(self):
         return self.due_date.strftime(self.DATE_FORMAT)
-    
+
     @property
     def date_issued_nice(self):
         return self.date_issued.strftime(self.DATE_FORMAT)
@@ -57,7 +57,7 @@ class Invoice(db.Model):
         from nano.models import InvoiceItem
         total = InvoiceItem.query.filter_by(invoice_id=self.id).count()
         return total+1
-    
+
     def update_totals(self, commit=False):
         """Update total and tax"""
         sub_total = 0.0
@@ -74,12 +74,12 @@ class Invoice(db.Model):
             db.session.add(self)
             db.session.commit()
         return True
-    
+
     def serialize(self):
         d = model_to_dict(self)
-        d['InvoiceItems'] = [item.serialize() for item in self.invoice_items] 
+        d['InvoiceItems'] = [item.serialize() for item in self.invoice_items]
         return d
-    
+
     def update_payment_status(self):
         """Returns true if the amount has been paid"""
         payments = Payment.query.filter_by(invoice_id=self.id).all()

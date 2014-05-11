@@ -17,7 +17,7 @@ class Plan(db.Model):
     created_at  = db.Column(db.DateTime, nullable=False, default=datetime.now)
 
     # relationships
-    subscriptions = db.relation('Subscription', backref=db.backref('plan', lazy='joined', uselist=False))
+    subscriptions = db.relation('Subscription', backref=db.backref('plan', uselist=False))
 
     @property
     def interval_name(self):

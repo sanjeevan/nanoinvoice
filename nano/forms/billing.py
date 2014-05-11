@@ -42,7 +42,7 @@ class SubscribeForm(Form):
         """Create the stripe subscription"""
         plan = Plan.query.get(self.plan_id.data)
         stripe.api_key = current_app.config['STRIPE_SECRET_KEY']
-        
+
         try:
             customer = stripe.Customer.create(
                 card=self.stripe_token.data,
@@ -56,6 +56,7 @@ class SubscribeForm(Form):
         user.subscription.plan_id = plan.id
         user.subscription.stripe_data = json.dumps(data)
         user.subscription.active = True
+        user.subscription.start_date = datetime.now()
         db.session.add(user.subscription)
         db.session.commit()
         return True
