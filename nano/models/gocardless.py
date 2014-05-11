@@ -8,8 +8,8 @@ from nano.models.payment import Payment
 class GoCardlessAccount(db.Model):
     __tablename__ = 'gocardless_account'
 
-    id = db.Column(db.Integer(11), primary_key=True, nullable=False)
-    user_id = db.Column(db.Integer(11), db.ForeignKey('user.id'))
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     app_identifier = db.Column(db.Unicode(255))
     app_secret = db.Column(db.Unicode(255))
     merchant_access_token = db.Column(db.Unicode(255))
@@ -32,10 +32,10 @@ class GoCardlessAccount(db.Model):
 class GoCardlessPayment(db.Model):
     __tablename__ = 'gocardless_payment'
 
-    id            = db.Column(db.Integer(11), primary_key=True, nullable=False)
-    invoice_id    = db.Column(db.Integer(11), db.ForeignKey('invoice.id'), nullable=False)
-    user_id       = db.Column(db.Integer(11), db.ForeignKey('user.id'), nullable=False)
-    payment_id    = db.Column(db.Integer(11), db.ForeignKey('payment.id'), nullable=True)
+    id            = db.Column(db.Integer, primary_key=True, nullable=False)
+    invoice_id    = db.Column(db.Integer, db.ForeignKey('invoice.id'), nullable=False)
+    user_id       = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    payment_id    = db.Column(db.Integer, db.ForeignKey('payment.id'), nullable=True)
     amount        = db.Column(db.Numeric(8, 2), default=0)
     reference     = db.Column(db.Unicode(100), nullable=False)
     state         = db.Column(db.Unicode(20), default=u'initialized')

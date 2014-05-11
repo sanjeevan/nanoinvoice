@@ -16,7 +16,6 @@ def wkhtml_to_pdf(url=''):
     Convert a url to a pdf file, and return the path to the PDF on the local
     filesystem
     """
-    
     # generate a temp filename for the pdf output file
     fd_id, output_file = tempfile.mkstemp('.pdf', prefix='invoice-export-')
     os.close(fd_id)

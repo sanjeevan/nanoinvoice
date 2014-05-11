@@ -11,9 +11,9 @@ from nano.config import DefaultConfig, APP_NAME
 from nano.extensions import db, mail, cache, login_manager
 
 from nano.views import js
-from nano.views import account 
+from nano.views import account
 from nano.views import home
-from nano.views import file 
+from nano.views import file
 from nano.views import client, payment, invoice, invoice_item, settings
 from nano.views import portal
 
@@ -65,7 +65,7 @@ def configure_app(app, config):
     if config is not None:
         app.config.from_object(config)
 
-    # Override setting by instance/application.cfg file 
+    # Override setting by instance/application.cfg file
     app.config.from_pyfile('application.cfg')
 
 
@@ -109,7 +109,7 @@ def configure_template_filters(app):
     @app.template_filter()
     def format_currency(value):
         return "{:,.2f}".format(value)
-    
+
     @app.template_filter()
     def fmt_date(value):
         return format_date(value)
@@ -137,21 +137,6 @@ def configure_logging(app):
     )
     app.logger.addHandler(file_handler)
 
-    ADMINS = ['sanjeevan.a@gmail.com']
-    mail_handler = SMTPHandler(app.config['MAIL_SERVER'],
-                               app.config['MAIL_USERNAME'],
-                               ADMINS,
-                               'O_ops... failed!',
-                               (app.config['MAIL_USERNAME'],
-                                app.config['MAIL_PASSWORD']))
-    mail_handler.setLevel(logging.ERROR)
-    mail_handler.setFormatter(logging.Formatter(
-        '%(asctime)s %(levelname)s: %(message)s '
-        '[in %(pathname)s:%(lineno)d]')
-    )
-    app.logger.addHandler(mail_handler)
-
-
 def configure_hook(app):
     @app.before_request
     def before_request():
@@ -178,13 +163,13 @@ def configure_error_handlers(app):
 def configure_assets(app):
     assets = Environment(app)
 
-    js_lib = Bundle('src/js/lib/underscore.js', 
+    js_lib = Bundle('src/js/lib/underscore.js',
                     'src/js/lib/jquery-1.8.3.js',
-                    'src/js/lib/backbone.js', 
+                    'src/js/lib/backbone.js',
                     'src/js/lib/backbone-relational.js',
                     'src/js/lib/sprintf-0.7-beta1.js',
                     'src/js/vendor/select2/select2.js',
-                    'src/js/vendor/Pikaday/pikaday.js', 
+                    'src/js/vendor/Pikaday/pikaday.js',
                     'src/js/vendor/facebox/facebox.js',
                     'src/js/vendor/highcharts/highcharts.src.js',
                     'src/js/vendor/bootstrap/bootstrap-alert.js',
@@ -192,15 +177,15 @@ def configure_assets(app):
                     'src/js/vendor/bootstrap/bootstrap-modalmanager.js',
                     'src/js/lib/upclick.js',
                     filters='yui_js', output='dist/js/libs.js')
-    
+
     js_app = Bundle('src/js/app/app.js',
-                    'src/js/app/models/all.js', 
+                    'src/js/app/models/all.js',
                     'src/js/app/views/DraftInvoiceView.js',
                     'src/js/app/views/EditInvoiceItemView.js',
                     'src/js/app/views/InvoiceFormView.js',
                     'src/js/app/views/NewInvoiceItemView.js',
                     filters='yui_js', output='dist/js/app.js')
-    
+
     js_templates = Bundle('src/js/app/templates/*.html', output='dist/js/templates.js',
                           filters='jst')
 

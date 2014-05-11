@@ -18,6 +18,6 @@ class Payment(db.Model):
     #relation definitions
     invoice             = db.relation('Invoice', 
                                       primaryjoin='Payment.invoice_id==Invoice.id', 
-                                      backref=db.backref('payments', lazy='dyanmic'))
+                                      backref=db.backref('payments', lazy='dynamic'))
 
 

@@ -11,7 +11,7 @@
 
   <div class="workspace-inner">
 
-    <form class="form form-horizontal create inline invoice" method="post" action="{{ url_for('payment.create', invoice_id=invoice.id) }}">
+    <form class="form form-horizontal create inline invoice" method="post" action="{{ url_for('payment.edit', id=payment.id) }}">
       <div class="header">Update payment</div>
       <div class="fields">
         {{ form.csrf_token }}

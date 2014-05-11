@@ -38,7 +38,7 @@ def create(invoice_id):
 
     return render_template('payment/create.html', invoice=invoice, form=form)
 
-@payment.route('/edit/<int:id>', methods=['GET'])
+@payment.route('/edit/<int:id>', methods=['GET', 'POST'])
 def edit(id):
     payment = Payment.query.get(id)
     if not payment:
@@ -48,6 +48,8 @@ def edit(id):
     if request.method == 'POST':
         if form.validate():
             form.save()
+            flash('Payment information updated')
+            return redirect(request.referrer)
         else:
             flash('There were errors')
 

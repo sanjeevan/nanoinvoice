@@ -8,8 +8,8 @@ from nano.extensions import db
 class StripeAccount(db.Model):
     __tablename__ = 'stripe_account'
 
-    id          = db.Column(db.Integer(11), primary_key=True, nullable=False)
-    user_id     = db.Column(db.Integer(11), db.ForeignKey('user.id'))
+    id          = db.Column(db.Integer, primary_key=True, nullable=False)
+    user_id     = db.Column(db.Integer, db.ForeignKey('user.id'))
     secret_key  = db.Column(db.Unicode(255))
     public_key  = db.Column(db.Unicode(255))
     enabled     = db.Column(db.Boolean, default=False)
@@ -30,10 +30,10 @@ class StripeAccount(db.Model):
 class StripePayment(db.Model):
     __tablename__ = 'stripe_payment'
 
-    id              = db.Column(db.Integer(11), primary_key=True, nullable=False)
-    user_id         = db.Column(db.Integer(11), db.ForeignKey('user.id'), nullable=False)
-    payment_id      = db.Column(db.Integer(11), db.ForeignKey('payment.id'), nullable=True)
-    invoice_id      = db.Column(db.Integer(11), db.ForeignKey('invoice.id'), nullable=False)
+    id              = db.Column(db.Integer, primary_key=True, nullable=False)
+    user_id         = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    payment_id      = db.Column(db.Integer, db.ForeignKey('payment.id'), nullable=True)
+    invoice_id      = db.Column(db.Integer, db.ForeignKey('invoice.id'), nullable=False)
     amount          = db.Column(db.Numeric(8, 2), default=0)
     token           = db.Column(db.Unicode(100), nullable=False)
     state           = db.Column(db.Unicode(20), default=u'initialized')

@@ -4,15 +4,15 @@ from flask import current_app
 from datetime import datetime
 
 from nano.extensions import db
-from nano.utils import random_id 
+from nano.utils import random_id
 
 class InvoiceLink(db.Model):
     __tablename__ = 'invoice_link'
 
     #column definitions
-    id          = db.Column(db.Integer(11), primary_key=True, nullable=False)
-    user_id     = db.Column(db.Integer(11), db.ForeignKey('user.id'), nullable=False)
-    invoice_id  = db.Column(db.Integer(11), db.ForeignKey('invoice.id'), nullable=False)
+    id          = db.Column(db.Integer, primary_key=True, nullable=False)
+    user_id     = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    invoice_id  = db.Column(db.Integer, db.ForeignKey('invoice.id'), nullable=False)
     link        = db.Column(db.Unicode(25), default=u'', nullable=False)
     link_hash   = db.Column(db.Unicode(50), nullable=False)
     created_at  = db.Column(db.DateTime, default=datetime.now)

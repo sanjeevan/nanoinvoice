@@ -12,13 +12,13 @@ class BaseConfig(object):
 class DefaultConfig(BaseConfig):
 
     SERVER_NAME = 'nanoinvoice.dev:5000'
-    DEBUG = True 
-    CSRF_ENABLED = False 
+    DEBUG = True
+    CSRF_ENABLED = True
 
-    SQLALCHEMY_ECHO = False 
+    SQLALCHEMY_ECHO = False
 
     # Sqlite
-    SQLALCHEMY_DATABASE_URI = None 
+    SQLALCHEMY_DATABASE_URI = None
 
     # To create log folder.
     # $ sudo mkdir -p /var/log/fbone
@@ -45,15 +45,15 @@ class DefaultConfig(BaseConfig):
     ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
     # web assets
-    ASSETS_DEBUG = True
+    ASSETS_DEBUG = False
     ASSETS_AUTO_BUILD = True
     JST_COMPILER = '_.template'
 
     GOCARDLESS_ENVIRONMENT = 'sandbox'
 
     # these are the test keys
-    STRIPE_PUBLIC_KEY = None 
-    STRIPE_SECRET_KEY = None 
+    STRIPE_PUBLIC_KEY = None
+    STRIPE_SECRET_KEY = None
 
 class TestConfig(BaseConfig):
     TESTING = True
