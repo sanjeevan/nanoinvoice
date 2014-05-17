@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import os
+import requests
 
 from flask.ext.script import Manager, prompt, prompt_pass, prompt_bool
 
@@ -12,6 +13,11 @@ manager = Manager(create_app())
 from nano import create_app
 app = create_app()
 project_root_path = os.path.join(os.path.dirname(app.root_path))
+
+manager.add_option('-c', '--config',
+                   dest="config",
+                   required=False,
+                   help="config file")
 
 @manager.command
 def run():
@@ -48,11 +54,15 @@ def add_test_user():
     db.session.add(user)
     db.session.commit()
 
+@manager.command
+def replay_webhook(id):
+    """Replay a webhook stored in the webhook_log table"""
+    log = WebhookLog.query.get(id)
+    if not log:
+        print 'Could not find webhook #%s' % id
 
-manager.add_option('-c', '--config',
-                   dest="config",
-                   required=False,
-                   help="config file")
+    resp = requests.post('http://nanoinvoice.dev:5000/webhook/?_no_store=1', data=log.data, headers={'content-type':'application/json'})
+    print resp.content
 
 if __name__ == "__main__":
     manager.run()

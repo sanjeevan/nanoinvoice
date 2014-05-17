@@ -52,11 +52,13 @@ class SubscribeForm(Form):
         except stripe.CardError as e:
             return False
 
-        data = {'customer': json.loads(str(customer)) }
         user.subscription.plan_id = plan.id
-        user.subscription.stripe_data = json.dumps(data)
+        user.subscription.stripe_data = str(customer)
         user.subscription.active = True
+        user.subscription.stripe_customer_id = customer.id
+        user.subscription.stripe_subscription_id = customer.subscription.id
         user.subscription.start_date = datetime.now()
+        user.subscription.updated_at = datetime.now()
         db.session.add(user.subscription)
         db.session.commit()
         return True

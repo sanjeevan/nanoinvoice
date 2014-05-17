@@ -21,9 +21,11 @@ def upgrade():
     )
 
     op.add_column('subscription', sa.Column('stripe_customer_id', sa.Unicode(255), nullable=True))
+    op.add_column('subscription', sa.Column('stripe_subscription_id', sa.Unicode(255), nullable=True))
 
 def downgrade():
     op.drop_table('webhook_log')
     op.drop_column('subscription', 'stripe_customer_id')
+    #op.drop_column('subscription', 'stripe_subscription_id')
 
 
