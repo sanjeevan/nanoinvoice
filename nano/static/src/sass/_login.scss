@@ -8,8 +8,13 @@
   background-color: #fff;
   margin-top: 2em;
 
-  @include box-shadow(1px 1px 5px #ccc);
   @include border-radius(5px);
+
+  .noaccount {
+    margin-top: 1em;
+    text-align: center;
+    font-size: 12px;
+  }
 
   form {
     padding: 14px;
@@ -39,11 +44,7 @@
 
     .button {
       width: 100%;
-    } 
+    }
   }
 }
 
-.noaccount {
-  margin-top: 1em;
-  text-align: center;
-}

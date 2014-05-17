@@ -20,3 +20,4 @@ from nano.models.setting import Setting
 from nano.models.gocardless import GoCardlessAccount, GoCardlessPayment
 from nano.models.stripe import StripeAccount, StripePayment
 from nano.models.billing import Plan, Subscription, Transaction
+from nano.models.webhook_log import WebhookLog

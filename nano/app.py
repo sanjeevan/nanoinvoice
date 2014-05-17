@@ -10,12 +10,7 @@ from nano.models import User
 from nano.config import DefaultConfig, APP_NAME
 from nano.extensions import db, mail, cache, login_manager
 
-from nano.views import js
-from nano.views import account
-from nano.views import home
-from nano.views import file
-from nano.views import client, payment, invoice, invoice_item, settings
-from nano.views import portal
+from nano.views import *
 
 # For import *
 __all__ = ['create_app']
@@ -30,7 +25,9 @@ DEFAULT_BLUEPRINTS = (
     invoice_item,
     js,
     settings,
-    portal
+    portal,
+    webhook,
+    subscription,
 )
 
 def create_app(config=None, app_name=None, blueprints=None):
@@ -190,7 +187,8 @@ def configure_assets(app):
                           filters='jst')
 
     css_global = Bundle('src/sass/screen.scss',
-                        filters='scss', output='dist/css/screen.css')
+                        depends=['src/sass/_*.scss'],
+                        filters='scss,cssmin', output='dist/css/screen.css')
 
     css_pdf = Bundle('src/sass/pdf.scss',
                      filters='scss', output='dist/css/pdf.css')

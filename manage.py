@@ -30,8 +30,8 @@ def reset():
 def create_plans():
     """Create subscription plans"""
     plans = [
-        Plan(name='Free', amount=0, description='Basic subscription'),
-        Plan(name='Pro', amount=5.99, billing_interval='monthly', description='Pro subscription')
+        Plan(name='Free', amount=0, description='Basic subscription', gateway_uid='free'),
+        Plan(name='Pro', amount=5.99, billing_interval='monthly', description='Pro subscription', gateway_uid='nanoinvoice-pro')
     ]
 
     for plan in plans:

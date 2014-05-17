@@ -16,11 +16,29 @@ from nano.utils import Struct
 
 invoice = Blueprint('invoice', __name__, url_prefix='/invoice')
 
+def _get_years_list(user_id):
+    invoices = Invoice.query.filter_by(user_id=user_id).all()
+    years = list(set([invoice.date_issued.year for invoice in invoices]))
+    return years
+
 @invoice.route('/', methods=['GET'])
 @login_required
 def index():
-    invoices = Invoice.query.filter_by(user_id=current_user.id).all()
-    return render_template('invoice/index.html', invoices=invoices)
+    year = request.args.get('year', None, type=int)
+    invoices = []
+
+    if year:
+        year_start = datetime(year=year, day=1, month=1)
+        year_end = datetime(year=year+1, day=1, month=1)
+        invoices = Invoice.query.filter(Invoice.user_id==current_user.id) \
+                                .filter(Invoice.date_issued>=year_start) \
+                                .filter(Invoice.date_issued<=year_end) \
+                                .all()
+    else:
+        invoices = Invoice.query.filter_by(user_id=current_user.id).all()
+
+    years = _get_years_list(current_user.id)
+    return render_template('invoice/index.html', invoices=invoices, years=years, selected_year=year)
 
 @invoice.route('/<int:id>', methods=['GET'])
 @login_required
@@ -28,7 +46,7 @@ def show(id):
     inv = Invoice.query.get(id)
     if not inv:
         return 'Invoice not found', 404
-    
+
     company = inv.user.company
     custom_fields = CustomField.query.filter_by(user_id=current_user.id).all()
 
@@ -46,7 +64,13 @@ def show(id):
 @invoice.route('/create', methods=['GET', 'POST'])
 @login_required
 def create():
+    last_invoice = Invoice.query.filter_by(user_id=current_user.id) \
+                                .order_by(Invoice.created_at.desc()) \
+                                .limit(1) \
+                                .first()
     form = InvoiceForm(request.form)
+    if last_invoice:
+        form.reference.help = 'Last reference: %s (%s)' % (last_invoice.reference, last_invoice.contact.organisation)
     if request.method == 'POST':
         if form.validate():
             invoice = form.save()
@@ -54,7 +78,7 @@ def create():
         else:
             print form.errors
             flash('There were errors')
-    return render_template('invoice/create.html', form=form)
+    return render_template('invoice/create.html', form=form, last_invoice=last_invoice)
 
 
 @invoice.route('/edit/<int:id>', methods=['GET', 'POST'])

@@ -11,19 +11,14 @@
       {{ form.next }}
       {{ render_input(form.login, 'xlarge', placeholder='Email') }}
       {{ render_input(form.password, 'xlarge', placeholder='Password') }}
-      
       <div class="field">
         <label class="remember">{{ form.remember }} Remember me?</label>
       </div>
-      
       <div class="field">
-        <button class="button primary" type="submit">Login</button> 
+        <button class="button primary" type="submit">Login</button>
       </div>
-
+      <p class="noaccount">No account? <a href="{{ url_for('account.signup') }}">Sign up</a>.</p>
     </form>
   </div>
-  
-  <div class="box">
-    <p class="noaccount">No account? <a href="{{ url_for('account.signup') }}">Sign up</a>.</p>
-  </div>
+
 {% endblock %}

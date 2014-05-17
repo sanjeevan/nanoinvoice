@@ -23,6 +23,6 @@ def check_subscription(func):
         if current_user.is_authenticated():
             subscription = current_user.subscription
             if not subscription.active and subscription.plan.name != 'Free':
-                return redirect(url_for('account.subscribe', plan_id=subscription.plan_id))
+                return redirect(url_for('subscription.create', plan_id=subscription.plan_id))
         return func(*args, **kwargs)
     return wrapper

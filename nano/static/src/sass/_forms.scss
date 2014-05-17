@@ -84,6 +84,12 @@ form {
     @include adjust-font-size-to(12px);
     color: red;
   }
+
+  .help {
+    font-size: 1em;
+    color: #ccc;
+    display: inline-block;
+  }
 }
 
 form.inline {

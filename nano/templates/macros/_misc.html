@@ -16,6 +16,9 @@
       {{ field(class_=cls, **kwargs) }}
     {% endif %}
     {{ render_errors(field) }}
+    {% if field.help %}
+      <p class="help">{{ field.help }}</p>
+    {% endif %}
   </div>
 </div>
 {% endmacro %}

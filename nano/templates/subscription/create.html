@@ -61,11 +61,10 @@
       </div>
 
       <div class="billing-info">Billed at £{{ plan.amount }} per {{ plan.interval_name }} </div>
-      
       {% if request.args.get('upgrade') %}
-        <center><p><a href="{{ url_for('account.subscription') }}">Back to your account</a></center>
+        <center><p class="mini-text"><a href="{{ url_for('subscription.index') }}">Back to your account</a></center>
       {% else %}
-        <center><p>Or switch to our <a href="{{ url_for('account.downgrade_to_free') }}">free account</a></p></center>
+        <center><p class="mini-text">Or continue with our <a href="{{ url_for('subscription.downgrade_to_free') }}">free account</a></p></center>
       {% endif %}
 
     </form>

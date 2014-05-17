@@ -11,7 +11,7 @@ from sqlalchemy import func
 
 def upgrade():
     op.create_table('plan',
-        sa.Column('id',                 sa.Integer(11),     nullable=False),
+        sa.Column('id',                 sa.Integer,     nullable=False),
         sa.Column('name',               sa.Unicode(20),     nullable=False),
         sa.Column('gateway_uid',        sa.Unicode(225),    nullable=False),
         sa.Column('description',        sa.Unicode(255),    nullable=False),
@@ -24,9 +24,9 @@ def upgrade():
     )
 
     op.create_table('subscription',
-        sa.Column('id',         sa.Integer(11), nullable=False),
-        sa.Column('user_id',    sa.Integer(11), nullable=False),
-        sa.Column('plan_id',    sa.Integer(11), nullable=False),
+        sa.Column('id',         sa.Integer, nullable=False),
+        sa.Column('user_id',    sa.Integer, nullable=False),
+        sa.Column('plan_id',    sa.Integer, nullable=False),
         sa.Column('active',     sa.Boolean,     nullable=False, server_default='0'),
         sa.Column('start_date', sa.DateTime,    nullable=True),
         sa.Column('end_date',   sa.DateTime,    nullable=True),
@@ -40,9 +40,9 @@ def upgrade():
     )
 
     op.create_table('transaction',
-        sa.Column('id',             sa.Integer(11), nullable=False),
-        sa.Column('user_id',        sa.Integer(11), nullable=False),
-        sa.Column('subscription_id',sa.Integer(11), nullable=False),
+        sa.Column('id',             sa.Integer, nullable=False),
+        sa.Column('user_id',        sa.Integer, nullable=False),
+        sa.Column('subscription_id',sa.Integer, nullable=False),
         sa.Column('success',        sa.Boolean,     nullable=False, server_default=u'0'),
         sa.Column('amount',         sa.Numeric(8, 2), default='0.0'),
         sa.Column('charge_id',      sa.Unicode(100), nullable=True),

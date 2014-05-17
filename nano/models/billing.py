@@ -40,6 +40,13 @@ class Subscription(db.Model):
     # relations
     transactions = db.relation('Transaction', backref=db.backref('subscription', lazy='joined', uselist=False))
 
+
+    def create(self):
+        pass
+
+    def cancel(self):
+        pass
+
 class Transaction(db.Model):
     __tablename__ = 'transaction'
 

@@ -46,15 +46,6 @@ def business():
 
     return render_template('account/business.html', form=form, company=company)
 
-@account.route('/subscription', methods=['GET'])
-def subscription():
-    """Subscription information"""
-    plan = current_user.subscription.plan
-    transactions = current_user.subscription.transactions
-
-    return render_template('account/subscription.html', plan=plan,
-                                                        transactions=transactions)
-
 @account.route('/settings', methods=['GET', 'POST'])
 @login_required
 def settings():
@@ -130,7 +121,7 @@ def signup():
             return redirect(form.next.data or url_for('home.dashboard'))
         if user.subscription.plan.name == 'Pro':
             login_user(user)
-            return redirect(url_for('account.subscribe', plan_id=user.subscription.plan.id))
+            return redirect(url_for('subscription.create', plan_id=user.subscription.plan.id))
     else:
         print form.errors
         print "unable to validate"
@@ -138,40 +129,6 @@ def signup():
     return render_template('account/signup.html', 
                            form=form, 
                            login_form=login_form)
-
-@account.route('/subscribe/<int:plan_id>', methods=['GET', 'POST'])
-def subscribe(plan_id):
-    """Subscribe to a plan"""
-    # don't allow user to subscribe to an already subscribed plan
-    if (current_user.subscription.active and
-        plan_id == current_user.subscription.plan_id):
-        return redirect(url_for('home.dashboard'))
-
-    plan = Plan.query.get(plan_id)
-    if not plan:
-        return 'Plan not found', 404
-
-    obj = Struct(**{'plan_id': plan.id, 'name': current_user.name})
-    form = SubscribeForm(request.form, obj=obj)
-    if request.method == 'POST':
-        if form.validate():
-            subscription = form.create_subscription(current_user)
-            if subscription:
-                flash('You have successfully subscribed to the %s plan' % plan.name)
-                return redirect(url_for('account.subscription'))
-        else:
-            return 'there were errors', 400
-    return render_template('account/subscribe.html', plan=plan, form=form)
-
-@account.route('/subscribe/downgrade_to_free', methods=['GET', 'POST'])
-def downgrade_to_free():
-    """Downgrade to a free account"""
-    if not current_user.subscription.active:
-        subscription = Subscription.query.get(current_user.subscription.id)
-        free_plan = Plan.query.filter_by(name='Free').first()
-        subscription.plan_id = free_plan.id
-        db.session.commit()
-    return redirect(url_for('home.dashboard'))
 
 @account.route('/change_password', methods=['GET', 'POST'])
 def change_password():

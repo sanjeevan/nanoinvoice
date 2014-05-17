@@ -11,7 +11,6 @@ class BaseConfig(object):
 
 class DefaultConfig(BaseConfig):
 
-    SERVER_NAME = 'nanoinvoice.dev:5000'
     DEBUG = True
     CSRF_ENABLED = True
 

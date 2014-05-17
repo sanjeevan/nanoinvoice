@@ -11,15 +11,13 @@
 /* Subscription css */
 
 .subscribe {
-  background-color: #fff;
   width: 640px;
 
   .payment {
     width: 440px;
     margin: 20px auto 20px auto;
-
-    @include box-shadow(1px 1px 10px #999);
-    @include border-radius(5px);
+    @include border-radius(10px);
+    border: 5px solid #fff;
   }
 
   .secure-info {
@@ -42,9 +40,15 @@
     display: block;
   }
 
-  form {
-    padding: 1em;
+  .mini-text {
     margin-top: 1em;
+    font-size: 12px;
+  }
+
+  form {
+    background-color: #fff;
+    padding: 1em;
+    margin: 0;
 
     img#cvc-image {
       vertical-align: middle;
