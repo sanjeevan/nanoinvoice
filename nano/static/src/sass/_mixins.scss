@@ -11,9 +11,7 @@
 }
 
 @mixin panel-header2() {
-
   background-color: #ECECED;
-
   @include background-image(linear-gradient(#F7F8F8 0%,  #DBDBDC 100%)); 
   background-repeat: repeat-x;
   border-color: #AAAAAA;
@@ -23,16 +21,13 @@
   border-width: 1px 1px 0;
   margin: 0 auto;
   padding: 9px 10px;
-
   font-weight: bold;
   color: #666;
-
 }
 
 @mixin panel-body() {
   @include background-image(linear-gradient(#ffffff 0%, #F5F4F4 100%));
   border: 1px solid #AAAAAA;
-  border-radius: 0 0 4px 4px;
   margin: 0 auto 12px;
 }
 

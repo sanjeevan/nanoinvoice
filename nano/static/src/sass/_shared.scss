@@ -67,35 +67,16 @@ a img {
 
 .data-list-header {
   @include panel-header2();
-  font-size: 12px;
 }
 
 .data-list {
   @include box-sizing(border-box);
   border: 1px solid #aaaaaa;
-
-  tr td {
-    font-size: 12px;
-  }
+  font-size: 0.9em;
 }
 
 .clickable {
   cursor: pointer;
-}
-
-.label {
-  border-radius: 3px 3px 3px 3px;
-}
-
-.label {
-  background-color: #999999;
-  color: #FFFFFF;
-  display: inline-block;
-  font-weight: bold;
-  padding: 2px 4px;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  vertical-align: baseline;
-  white-space: nowrap;
 }
 
 .label-count {

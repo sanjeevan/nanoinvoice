@@ -12,9 +12,9 @@
     <p>You are currently subscribed to the {{ plan.name }} plan</p>
 
     {% if plan.name == 'Free' %}
-      <a class="btn" href="{{ url_for('subscription.create', plan_id=2, upgrade=1) }}">Update to Pro account</a>
+      <a class="btn btn-primary" href="{{ url_for('subscription.create', plan_id=2, upgrade=1) }}">Upgrade to Pro account</a>
     {% else %}
-      <a class="btn" href="{{ url_for('subscription.cancel') }}">Cancel subscription</a>
+      <a class="btn btn-default" href="{{ url_for('subscription.cancel') }}">Cancel subscription</a>
     {% endif %}
 
 

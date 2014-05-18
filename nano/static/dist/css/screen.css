@@ -8818,68 +8818,45 @@ a img {
   padding: 9px 10px;
   font-weight: bold;
   color: #666;
-  font-size: 12px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_shared\.scss}line{font-family:\0000373}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_shared\.scss}line{font-family:\0000372}}
 .data-list {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   border: 1px solid #aaaaaa;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_shared\.scss}line{font-family:\0000377}}
-.data-list tr td {
-  font-size: 12px;
+  font-size: 0.9em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_shared\.scss}line{font-family:\0000382}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_shared\.scss}line{font-family:\0000378}}
 .clickable {
   cursor: pointer;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_shared\.scss}line{font-family:\0000386}}
-.label {
-  border-radius: 3px 3px 3px 3px;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_shared\.scss}line{font-family:\0000390}}
-.label {
-  background-color: #999999;
-  color: #FFFFFF;
-  display: inline-block;
-  font-weight: bold;
-  padding: 2px 4px;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  vertical-align: baseline;
-  white-space: nowrap;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_shared\.scss}line{font-family:\00003101}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_shared\.scss}line{font-family:\0000382}}
 .label-count {
   background-color: #ccc;
   color: #fff;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_shared\.scss}line{font-family:\00003106}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_shared\.scss}line{font-family:\0000387}}
 .label-success, .label-paid {
   background-color: #468847;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_shared\.scss}line{font-family:\00003110}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_shared\.scss}line{font-family:\0000391}}
 .label-important, .label-overdue {
   background-color: #B94A48;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_shared\.scss}line{font-family:\00003114}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_shared\.scss}line{font-family:\0000395}}
 .label-info, .label-saved {
   background-color: #3A87AD;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\000032}}
 body, html {
-  font-size: 14px;
-  font-family: "HelveticaNeue", Helvetica, Arial, sans-serif;
   color: #333;
   background-color: #356AA0;
   background-image: -webkit-radial-gradient(center, ellipse cover, #356aa0 0%, #4683c2 44%, #6d9dce 100%);
@@ -8887,60 +8864,44 @@ body, html {
   background-image: -ms-radial-gradient(center, ellipse cover, #356aa0 0%, #4683c2 44%, #6d9dce 100%);
   background-image: -o-radial-gradient(center, ellipse cover, #356aa0 0%, #4683c2 44%, #6d9dce 100%);
   background-image: radial-gradient(center, ellipse cover, #356aa0 0%, #4683c2 44%, #6d9dce 100%);
-  -webkit-font-smoothing: antialiased;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\0000312}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\000039}}
 .plain .header {
   margin-top: 2em;
   text-align: center;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\0000318}}
-.container {
-  padding-bottom: 3em;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\0000322}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\0000315}}
 .header {
   background-color: auto;
   padding: 5px 0 10px 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\0000326}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\0000319}}
 .header .account {
   float: right;
   padding-top: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\0000329}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\0000322}}
 .header .account ul li {
   display: inline-block;
   margin-left: 4px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\0000334}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\0000327}}
 .header .account a {
   text-decoration: none;
   color: #fff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\0000339}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\0000332}}
 .header .account a:hover {
   text-decoration: underline;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\0000345}}
-.content {
-  min-height: 400px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\0000346}}
-.content .workspace-inner {
-  padding: 10px;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\0000352}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\0000338}}
 .application {
   background-color: #ececec;
-  border-radius: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\0000355}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\0000340}}
 .application .top {
   height: 2em;
   background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 5%, transparent 50%), -webkit-linear-gradient(#4e7ba3, #3e6181);
@@ -8954,15 +8915,25 @@ body, html {
   border-bottom: 1px solid #1f5ea1;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\0000362}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\0000345}}
 .sidebar {
   padding-left: 0;
   padding-right: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\0000367}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\0000350}}
 .workspace {
   background-color: #fff;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\0000355}}
+.workspace .content {
+  min-height: 400px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_layout\.scss}line{font-family:\0000357}}
+.workspace .content .workspace-inner {
+  padding: 10px;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_login\.scss}line{font-family:\000032}}
@@ -9143,7 +9114,6 @@ form.create .fields {
   background-image: -o-linear-gradient(white 0%, #f5f4f4 100%);
   background-image: linear-gradient(white 0%, #f5f4f4 100%);
   border: 1px solid #AAAAAA;
-  border-radius: 0 0 4px 4px;
   margin: 0 auto 12px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003128}}
@@ -9453,34 +9423,6 @@ html[xmlns] .pagestyle {
   vertical-align: middle;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_popup\.scss}line{font-family:\0000350}}
-#facebox .content-wrapper {
-  border-radius: 5px;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7);
-  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
-  -moz-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.7);
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_popup\.scss}line{font-family:\0000357}}
-#facebox .header {
-  background: url("/static/img/header.png");
-  padding: 18px 18px 14px 18px;
-  border-bottom: 1px solid #CCC;
-  border-radius: 5px 5px 0 0;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_popup\.scss}line{font-family:\0000363}}
-#facebox .header h2 {
-  color: #444444;
-  font-size: 2em;
-  font-weight: 700;
-  margin-bottom: 3px;
-  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_popup\.scss}line{font-family:\0000372}}
-#facebox .content {
-  padding: 1em;
-  background-color: #fff;
-}
-
 @media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_dashboard\.scss}line{font-family:\000032}}
 .dashboard {
   padding-left: 10px;
@@ -9668,6 +9610,11 @@ html[xmlns] .pagestyle {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000367}}
 .subscribe form select {
   font-size: 18px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000371}}
+.subscribe form .form-control {
+  width: auto;
+  display: inline-block;
 }
 
 /* default invoice style */

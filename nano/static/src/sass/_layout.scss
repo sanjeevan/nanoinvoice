@@ -1,11 +1,8 @@
 
 body, html {
-  font-size: $base-font-size;
-  font-family: "HelveticaNeue", Helvetica, Arial, sans-serif;
   color: #333;
   background-color: #356AA0;
   @include background-image(radial-gradient(center, ellipse cover, #356AA0 0%, lighten(#356AA0, 10%) 44%, lighten(#356AA0, 20%) 100%));
-  -webkit-font-smoothing: antialiased;
 }
 
 .plain {
@@ -13,10 +10,6 @@ body, html {
     margin-top: 2em;
     text-align: center;
   }
-}
-
-.container {
-  padding-bottom: 3em;
 }
 
 .header { 
@@ -42,20 +35,10 @@ body, html {
   }
 }
 
-.content {
-  .workspace-inner {
-    padding: 10px;
-  }
-  min-height: 400px;
-}
-
 .application {
   background-color: #ececec;
-  @include border-radius(10px);
   .top {
     @include panel-header;
-  }
-  .bottom {
   }
 }
 
@@ -66,6 +49,15 @@ body, html {
 
 .workspace {
   background-color: #fff;
+  padding-left: 0;
+  padding-right: 0;
+
+  .content {
+    min-height: 400px;
+    .workspace-inner {
+      padding: 10px;
+    }
+  }
 }
 
 .footer {

@@ -67,6 +67,11 @@
     select {
       font-size: 18px;
     }
+
+    .form-control { 
+      width: auto;
+      display: inline-block;
+    }
   }
 
 }

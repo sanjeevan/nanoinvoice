@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 {% block content %}
-  <h1>Invoices <a href="{{ url_for('invoice.create') }}" class='btn btn-mini btn-primary'>New invoice</a></h1>
+  <h1>Invoices <a href="{{ url_for('invoice.create') }}" class='btn btn-xs btn-primary'>New invoice</a></h1>
 
   {% if invoices|length == 0 %}
     <p class="first-create">You haven't created any invoices yet. <a href="{{ url_for('.create') }}">Get started</a></p>
