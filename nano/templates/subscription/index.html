@@ -20,14 +20,16 @@
       <table class="table ">
         <thead>
           <th>Date</th>
+          <th>Description</td>
           <th>Amount</th>
           <th>Success</th>
         </thead>
         {% for transaction in transactions %}
           <tr>
-            <td>{{ transaction.created_at.isoformat() }}</td>
+            <td>{{ transaction.created_at.strftime('%d %B %Y') }}</td>
+            <td>Payment for {{ transaction.subscription.plan.description }}</td>
             <td>{{ transaction.amount }}</td>
-            <td>{% print 'Yes' if transaction.success else 'No' %}</td>
+            <td>{% print 'Payment received' if transaction.success else 'No' %}</td>
           </tr>
         {% endfor %}
       </table>

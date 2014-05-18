@@ -120,7 +120,7 @@ def configure_logging(app):
         return
 
     import logging
-    from logging.handlers import RotatingFileHandler, SMTPHandler
+    from logging.handlers import RotatingFileHandler
 
     # Set info level on logger, which might be overwritten by handers.
     app.logger.setLevel(logging.INFO)

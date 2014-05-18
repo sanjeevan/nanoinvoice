@@ -1,7 +1,7 @@
 """Dynamically generated javascript"""
 import json
 
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, current_app
 from nano.models import WebhookLog, Subscription, Transaction
 from nano.extensions import db
 
@@ -37,6 +37,7 @@ def index():
     if not request.args.get('_no_store'):
         _log_request()
     _type = request.json['type']
+    current_app.logger.info('Received webhook %s' % _type)
 
     if _type == 'invoice.payment_succeeded':
         customer_id = request.json['data']['object']['customer']

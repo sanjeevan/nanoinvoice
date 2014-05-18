@@ -1,6 +1,8 @@
 """Application billing"""
+import stripe
 
 from datetime import datetime
+from flask import current_app
 
 from nano.extensions import db
 
@@ -40,6 +42,22 @@ class Subscription(db.Model):
 
     # relations
     transactions = db.relation('Transaction', backref=db.backref('subscription', lazy='joined', uselist=False))
+
+    def cancel(self):
+        try:
+            stripe.api_key = current_app.config['STRIPE_SECRET_KEY']
+            customer_obj = stripe.Customer.retrieve(self.stripe_customer_id)
+            customer_obj.subscriptions.retrieve(self.stripe_subscription_id).delete()
+        except stripe.error.InvalidRequestError as e:
+            current_app.logger.error('Problem with cancelling subscription %s: %s' % (self.id, str(e)))
+            return False
+
+        self.active = False
+        free_plan = Plan.query.filter_by(name='Free').first()
+        self.plan_id = free_plan.id
+        self.end_date = datetime.now()
+        db.session.commit()
+        return True
 
 class Transaction(db.Model):
     __tablename__ = 'transaction'

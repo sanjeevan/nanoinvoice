@@ -17,7 +17,7 @@ from nano.models.custom_field import CustomField
 from nano.models.payment import Payment
 from nano.models.invoice_link import InvoiceLink
 from nano.models.setting import Setting
-from nano.models.gocardless import GoCardlessAccount, GoCardlessPayment
-from nano.models.stripe import StripeAccount, StripePayment
+from nano.models.gocardless_account import GoCardlessAccount, GoCardlessPayment
+from nano.models.stripe_account import StripeAccount, StripePayment
 from nano.models.billing import Plan, Subscription, Transaction
 from nano.models.webhook_log import WebhookLog

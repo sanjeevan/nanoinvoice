@@ -1,7 +1,9 @@
 """Subscriptions"""
 
+import stripe
+from datetime import datetime
 from flask import (Blueprint, render_template, request,
-                   flash, url_for, redirect)
+                   flash, url_for, redirect, current_app)
 from flask.ext.login import login_required, current_user
 from nano.models import Plan, Subscription
 from nano.extensions import db
@@ -54,4 +56,14 @@ def downgrade_to_free():
         db.session.commit()
     return redirect(url_for('home.dashboard'))
 
+@subscription.route('/cancel', methods=['GET', 'POST'])
+def cancel():
+    subscription = Subscription.query.filter_by(user_id=current_user.id).first()
+    if not subscription.active:
+        return redirect(request.referrer)
+    if request.method == 'POST':
+        if subscription.cancel():
+            flash('Your subscription has been cancelled')
+        return redirect(url_for('subscription.index'))
 
+    return render_template('subscription/cancel.html', subscription=subscription)
