@@ -11,18 +11,19 @@
 
   <div class="workspace-inner">
 
-    <form class="create inline invoice" method="post" action="{{ url_for('.create') }}">
-      <div class="header">New invoice</div>  
-      <div class="fields">
-        {{ form.csrf_token }}
-        {{ render_input(form.contact_id) }} 
-        {{ render_input(form.reference, cls='reference', size=4) }} 
-        {{ render_input(form.date_issued_nice, cls='date') }} 
-        {{ render_input(form.payment_term_id) }} 
-        {{ render_input(form.due_date_nice, cls='date') }}
-        {{ render_input(form.currency_code) }}
-        <div class="field">
-          <button class="button normal" type="submit">Continue</button>
+    <p>Create a new invoice</p>
+
+    <form role="form" class="form-horizontal invoice" method="post" action="{{ url_for('.create') }}">
+      {{ form.hidden_tag() }}
+      {{ render_input(form.contact_id, class='') }}
+      {{ render_input(form.reference, cls='reference', size=4) }} 
+      {{ render_input(form.date_issued_nice, cls='date') }} 
+      {{ render_input(form.payment_term_id, class='') }} 
+      {{ render_input(form.due_date_nice, cls='date') }}
+      {{ render_input(form.currency_code, class='') }}
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button class="btn btn-primary" type="submit">Continue</button>
         </div>
       </div>
     </form>

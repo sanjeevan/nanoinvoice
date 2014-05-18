@@ -161,17 +161,14 @@ def configure_assets(app):
     assets = Environment(app)
 
     js_lib = Bundle('src/js/lib/underscore.js',
-                    'src/js/lib/jquery-1.8.3.js',
+                    'src/js/lib/jquery-1.10.2.js',
+                    'src/js/lib/jquery-ui-1.10.4.js',
                     'src/js/lib/backbone.js',
                     'src/js/lib/backbone-relational.js',
                     'src/js/lib/sprintf-0.7-beta1.js',
                     'src/js/vendor/select2/select2.js',
                     'src/js/vendor/Pikaday/pikaday.js',
-                    'src/js/vendor/facebox/facebox.js',
                     'src/js/vendor/highcharts/highcharts.src.js',
-                    'src/js/vendor/bootstrap/bootstrap-alert.js',
-                    'src/js/vendor/bootstrap/bootstrap-modal.js',
-                    'src/js/vendor/bootstrap/bootstrap-modalmanager.js',
                     'src/js/lib/upclick.js',
                     filters='yui_js', output='dist/js/libs.js')
 

@@ -7,13 +7,13 @@
 {% endmacro %}
 
 {% macro render_input(field, cls='') %}
-<div class="field field-{{ field.name }}">
-  {{ field.label }}
-  <div class='input'>
+<div class="form-group field-{{ field.name }}">
+  {{ field.label(class='col-sm-2 control-label') }}
+  <div class="col-sm-10">
     {% if field.errors %}
       {{ field(class_=cls~' error', **kwargs) }}
     {% else %}
-      {{ field(class_=cls, **kwargs) }}
+      {{ field(class_=cls~' form-control', **kwargs) }}
     {% endif %}
     {{ render_errors(field) }}
     {% if field.help %}

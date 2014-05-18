@@ -1,33 +1,36 @@
 {% from 'macros/_misc.html' import render_input %}
 
-<div id="add-payment" class="modal hide fade">
-  <div class="modal-header"><h3>Add payment</h3></div>
-  <div class="modal-body">
-    <form id="add-payment-form" class="form form-horizontal" method="post" action="{{ url_for('payment.create', invoice_id=invoice.id) }}">
-      {{ payment_form.hidden_tag() }}
-      {{ render_input(payment_form.amount) }}
-      {{ render_input(payment_form.description) }}
-      {{ render_input(payment_form.date) }}
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button class="button normal" type="submit" onclick="$('#add-payment-form').submit(); return false;">Add payment</button>
-     or 
-    <a data-dismiss="modal" href="#">Cancel</a>
-  </div>
+<div id="add-payment" title="Add Payment" style="display: none">
+  <form id="add-payment-form" role="form" class="form-horizontal" method="post" action="{{ url_for('payment.create', invoice_id=invoice.id) }}">
+    {{ payment_form.hidden_tag() }}
+    {{ render_input(payment_form.amount) }}
+    {{ render_input(payment_form.description) }}
+    {{ render_input(payment_form.date) }}
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button class="btn btn-primary" type="submit" onclick="$('#add-payment-form').submit(); return false;">Add payment</button>
+         or 
+        <a href="#">Cancel</a>
+      </div>
+    </div>
+  </form>
 </div>
 
-<div id="email-modal" class="modal hide fade">
-  <div class="modal-header"><h3>Email</h3></div>
-  <div class="modal-body"></div>
-  <div class="modal-footer">
-      <button class="btn btn-primary" onclick="$('#email-form').submit(); return false;">Send</button>
-  </div>
+<div id="email-modal" title="Email" style="display: none">
+  <button class="btn btn-primary" onclick="$('#email-form').submit(); return false;">Send</button>
 </div>
 
 <script type="text/javascript">
   var dateFormat = 'D MMM YYYY'
   $(document).ready(function(){
     var picker1 = new Pikaday({ field: document.getElementById('date'), format: dateFormat });
+    $("a[data-toggle='modal']").click(function(){
+      var el = $(this);
+      $(el.attr('href')).dialog({
+        modal: true,
+        width: 500,
+      });
+    });
   });
 </script>

@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 {% block content %}
-  <h1>Invoices <a href="{{ url_for('invoice.create') }}" class='btn btn-xs btn-primary'>New invoice</a></h1>
+  <h1>Invoices <a href="{{ url_for('invoice.create') }}" class='btn btn-primary'>New invoice</a></h1>
 
   {% if invoices|length == 0 %}
     <p class="first-create">You haven't created any invoices yet. <a href="{{ url_for('.create') }}">Get started</a></p>
@@ -8,9 +8,9 @@
     <div class="workspace-inner">
 
     <div class="invoices-by-year">
-      View invoices by year:
-      <ul>
-        <li><a href="{{ url_for('invoice.index') }}">All</a></li>
+      Show: 
+      <ul class="">
+        <li class="{{ 'active' if not selected_year }}"><a href="{{ url_for('invoice.index') }}">All invoices</a></li>
         {% for year in years %}
         <li class="{{ 'active' if year == selected_year }}"><a href="{{ url_for('invoice.index', year=year) }}">{{ year }}</a></li>
         {% endfor %}
@@ -33,7 +33,7 @@
               <td class="col ref">{{ invoice.reference }}</td>
               <td class="col name">{{ invoice.contact.full_name() }} <br> <span class="org"><b>Company:</b> {{ invoice.contact.organisation|default('No organisation', True) }}</span></td>
               <td class="col total"><span class='currency-code'>{{ invoice.currency_code }}</span> {{ invoice.total|format_currency }}</td>
-              <td class="col status"><span class='label label-{{ invoice.get_status() }}'>{{ invoice.get_status() }}</span></td>
+              <td class="col status"><span class='label label-md label-{{ invoice.get_status() }}'>{{ invoice.get_status() }}</span></td>
             </tr>
           {% endfor %}
         </tbody>

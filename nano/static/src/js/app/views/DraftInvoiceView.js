@@ -9,9 +9,9 @@ var DraftInvoiceView = Backbone.View.extend({
     "click .edit": "onEditItemClick"
   },
 
-  initialize: function() { 
+  initialize: function() {
     this.addItemView = new NewInvoiceItemView({ model: this.model, parentView: this });
-    
+
     this.model.on("change", this.render, this);
     this.model.on("change", this.updateTotals, this);
   },
@@ -19,10 +19,10 @@ var DraftInvoiceView = Backbone.View.extend({
   onEditItemClick: function(evt) {
     evt.preventDefault();
     var id = $(evt.currentTarget).data("id");
-    
-    var view = new EditInvoiceItemView({ 
+
+    var view = new EditInvoiceItemView({
       parentView: this,
-      model: this.model.get("InvoiceItems").get(id) 
+      model: this.model.get("InvoiceItems").get(id)
     });
 
     view.render();
@@ -30,7 +30,7 @@ var DraftInvoiceView = Backbone.View.extend({
 
   onAddInvoiceItem: function(evt) {
     evt.preventDefault();
-    this.addItemView.render(); 
+    this.addItemView.render();
   },
 
   onDeleteClick: function(evt) {
@@ -50,11 +50,11 @@ var DraftInvoiceView = Backbone.View.extend({
       }
     });
   },
-  
+
   updateTotals: function() {
     var subTotal = numberFormat(this.model.get("sub_total"), 2);
     var salesTax = numberFormat(this.model.get("tax"), 2);
-    var total = numberFormat(this.model.get("total"), 2); 
+    var total = numberFormat(this.model.get("total"), 2);
 
     this.$el.find("#net_total_amount").html(subTotal)
     this.$el.find("#sales_tax_amount").html(salesTax);
@@ -67,11 +67,11 @@ var DraftInvoiceView = Backbone.View.extend({
     var footer    = JST["invoice_footer"]({ Invoice: view.model });
 
     console.log('rendering');
-    
+
     this.model.get("InvoiceItems").each(function(item) {
-      itemsHtml += JST["invoice_item"]({ InvoiceItem: item, Invoice: view.model }); 
+      itemsHtml += JST["invoice_item"]({ InvoiceItem: item, Invoice: view.model });
     });
-    
+
     this.$el.find("#invoice_items").html(itemsHtml);
     this.$el.find("tfoot").html(footer);
   }

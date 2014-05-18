@@ -24,7 +24,7 @@
   <td class="item_r subtotal_td">
     <% if (Invoice.get("status") == "draft") { %>
     <div class="item-controls">
-      <a data-id="<%= InvoiceItem.get("id") %>" href="#" class="btn-small edit" title="Edit invoice item">Edit</a>
+      <a data-id="<%= InvoiceItem.get("id") %>" href="#" class="btn btn-default btn-xs edit" title="Edit invoice item">Edit</a>
       <a data-id="<%= InvoiceItem.get("id") %>" href="/invoice_item/delete/<%= InvoiceItem.get('id') %>" class="delete">
         <img src="/static/img/delete.png" />
       </a>

@@ -1,18 +1,15 @@
 var NewInvoiceItemView = Backbone.View.extend({
   events: {
-    "click button#save": "onSave",
-    "click a.cancel": "onCancel",
     "change select#invoice_item_type": "onTypeChange"
   },
 
-  initialize: function() { 
+  initialize: function() {
     this.template = JST["new_invoice_item"];
     this.parentView = this.options.parentView;
   },
 
-  onSave: function(evt) {
+  onSave: function() {
     var view = this;
-    evt.preventDefault();
     $.ajax(this.$el.find("form").attr("action"), {
       data: this.$el.find("form").serialize(),
       type: "POST",
@@ -28,7 +25,6 @@ var NewInvoiceItemView = Backbone.View.extend({
         if (resp.InvoiceItem.total == 0) {
           view.parentView.model.trigger("change");
         }
-        $.facebox.close();
       }
     });
   },
@@ -36,9 +32,9 @@ var NewInvoiceItemView = Backbone.View.extend({
   // When type is changed
   onTypeChange: function(evt) {
     var name = $("#invoice_item_type option:selected").text();
-    
+
     if (name == "Hours") {
-      this.$el.find("#hours-help").show();  
+      this.$el.find("#hours-help").show();
     } else {
       this.$el.find("#hours-help").hide();
     }
@@ -54,17 +50,22 @@ var NewInvoiceItemView = Backbone.View.extend({
     }
   },
 
-  onSaveAndContinue: function(evt) {
-  },
-
-  onCancel: function(evt) {
-    evt.preventDefault();
-    $.facebox.close();
-  },
-
   render: function() {
+    var view = this;
     this.setElement( this.template({Invoice: this.model } ));
-    $.facebox(this.$el); 
+    this.$el.dialog({
+      modal: true,
+      width: 500,
+      buttons: {
+        "Save": function() {
+          view.onSave();
+          $(this).dialog('close');
+        },
+        "Cancel": function() {
+          $(this).dialog('close');
+        }
+      }
+    });
 
     return this;
   }

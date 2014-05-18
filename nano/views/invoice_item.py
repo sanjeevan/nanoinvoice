@@ -5,7 +5,7 @@ from flask.ext.login import login_required, current_user
 
 from nano.models import Invoice, InvoiceItem
 from nano.forms import InvoiceForm, InvoiceItemForm
-from nano.utils import json_dumps 
+from nano.utils import json_dumps
 from nano.extensions import db
 
 invoice_item = Blueprint('invoice_item', __name__, url_prefix='/invoice_item')
@@ -18,7 +18,7 @@ def index():
 
 @invoice_item.route('/create', methods=['POST'])
 def create():
-    form = InvoiceItemForm(request.form)
+    form = InvoiceItemForm(request.form, csrf_enabled=False)
 
     if form.validate():
         invoice_item = form.save()
@@ -28,13 +28,13 @@ def create():
         return Response(json_dumps(ret), content_type='application/json')
     else:
         print form.errors
-        return 'There was an error', 400 
-    
+        return 'There was an error', 400
+
 
 @invoice_item.route('/update/<int:id>', methods=['POST'])
 def update(id):
     invoice_item = InvoiceItem.query.get(id)
-    form = InvoiceItemForm(request.form, obj=invoice_item)
+    form = InvoiceItemForm(request.form, obj=invoice_item, csrf_enabled=False)
 
     if form.validate():
         invoice_item = form.save()
@@ -44,7 +44,7 @@ def update(id):
         return Response(json_dumps(ret), content_type='application/json')
     else:
         print form.errors
-        return 'There was an error', 400 
+        return 'There was an error', 400
 
 @invoice_item.route('/delete/<int:id>', methods=['DELETE'])
 def delete(id):

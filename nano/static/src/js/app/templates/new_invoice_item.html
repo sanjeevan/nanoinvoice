@@ -6,12 +6,12 @@
     <div class="fields">
       <div class="field">
         <label>Qty</label>
-        
+
         <input size="2" id="quantity" type="text" name="quantity" value="1">
 
         <select id="invoice_item_type" name="type_id">
           <% App.invoiceItemTypes.each(function(t) { %>
-            <% if (t.get("name") == App.defaults.itemType) { %> 
+            <% if (t.get("name") == App.defaults.itemType) { %>
               <option selected="selected" value="<%= t.get("id") %>"><%= t.get("name") %></option>
             <% } else { %>
               <option value="<%= t.get("id") %>"><%= t.get("name") %></option>
@@ -23,7 +23,7 @@
           (e.g. One and a half hours can be entered as either 1:30 or 1.5)
         </div>
       </div>
-      
+
       <div class="field">
         <label>Details</label>
         <textarea id="details" class="wide" name="description"></textarea>
@@ -33,28 +33,23 @@
         <label>Unit Price (£)</label>
         <input id="price" type="text" name="price" value="0.0" />
       </div>
-      
+
       <% if (App.taxRates.length > 0) { %>
       <div class="field" id="tax-row">
         <label>Tax</label>
         <select name="tax_rate_id">
           <% App.taxRates.each(function(t){ %>
-            <% if (t.get("id") == App.defaults.taxRateId) { %> 
+            <% if (t.get("id") == App.defaults.taxRateId) { %>
               <option selected="selected" value="<%= t.get("id") %>"><%= t.get("name") %> (<%= t.get("rate") %>%)</option>
             <% } else { %>
               <option value="<%= t.get("id") %>"><%= t.get("name") %> (<%= t.get("rate") %>%)</option>
             <% } %>
-          <% }) %> 
+          <% }) %>
         </select>
       </div>
       <% } else { %>
         <input type="hidden" name="tax_rate_id" value="-1" />
       <% } %>
-
-      <div class="field actions">
-        <button id="save" class="button normal">Create</button> 
-        <a href="#" class="cancel">Cancel</a>
-      </div>
     </div>
   </form>
   </div>

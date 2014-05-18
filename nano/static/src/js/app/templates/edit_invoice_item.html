@@ -1,28 +1,27 @@
-<div id="edit-invoice-item">
-  <div class="header"><h2>Edit</h2></div>
+<div id="edit-invoice-item" title="Edit line item">
   <div class="content">
     <form accept-charset="utf-8" method="post" action="/invoice_item/update/<%= InvoiceItem.get('id') %>" class="inline big">
       <div class="fields">
         <div class="field">
           <label>Qty</label>
-          
+
           <input size="2" id="quantity" type="text" name="quantity" value="<%= InvoiceItem.getQuantityString() %>">
 
           <select id="invoice_item_type" name="type_id">
             <% App.invoiceItemTypes.each(function(t) { %>
               <% if (t.get("id") == InvoiceItem.get("type_id")) { %>
                 <option selected="selected" value="<%= t.get("id") %>"><%= t.get("name") %></option>
-              <% } else { %> 
+              <% } else { %>
                 <option value="<%= t.get("id") %>"><%= t.get("name") %></option>
               <% } %>
             <% }) %>
           </select>
-          
+
           <div id="hours-help" class="help" style="display: none">
             (e.g. One and a half hours can be entered as either 1:30 or 1.5)
           </div>
         </div>
-        
+
         <div class="field">
           <label>Details</label>
           <textarea id="details" class="wide" name="description"><%= InvoiceItem.get("description") %></textarea>
@@ -32,7 +31,7 @@
           <label>Unit Price (£)</label>
           <input id="price" type="text" name="price" value="<%= InvoiceItem.get("price") %>" />
         </div>
-        
+
         <% if (App.taxRates.length > 0) { %>
           <div class="field" id="tax-row">
             <label>Tax</label>
@@ -43,17 +42,12 @@
                 <% } else { %>
                 <option value="<%= t.get("id") %>"><%= t.get("name") %> (<%= t.get("rate") %>%)</option>
                 <% } %>
-              <% }) %> 
+              <% }) %>
             </select>
           </div>
         <% } else { %>
           <input type="hidden" name="tax_rate_id" value="-1"/>
         <% } %>
-
-        <div class="field actions">
-          <button id="save" class="button normal">Update</button> &nbsp; 
-          <a href="#" class="cancel">Cancel</a>
-        </div>
       </div>
     </form>
   </div>
