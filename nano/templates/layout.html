@@ -4,7 +4,7 @@
     {% block head %}
     <meta charset="utf-8" />
     <title>{{ page_title|default('Nanoinvoice') }}</title>
-    
+
     {% assets 'css_global' %}
       <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
     {% endassets %}
@@ -24,7 +24,7 @@
   <body>
     <div class="container">
       {% include '_flash.html' %}
-      
+
       <div class="row header">
         <a href="/"><img src="/static/img/logo.png"></a>
         {% if current_user.is_authenticated() %}
@@ -42,18 +42,17 @@
           </div>
         {% endif %}
       </div>
-   
+
       <div class="row application">
-        <div class="span1">
-          <ul class="nav nav-list icon-menu">
-            <li class="nav-header">Menu</li>
+        <div class="col-md-1 sidebar">
+          <ul class="nav nav-sidebar icon-menu">
             <li><a href="{{ url_for('home.dashboard') }}"><img src="/static/img/nav/dashboard.png" />Dashboard</a></li>
             <li><a href="{{ url_for('invoice.index') }}"><img src="/static/img/nav/invoice.png" /> Invoices</a></li>
             <li><a href="{{ url_for('payment.index') }}"><img src="/static/img/nav/payment.png" /> Payments</a></li>
             <li><a href="{{ url_for('client.index') }}"><img src="/static/img/nav/customer.png" /> Clients</a></li>
           </ul>
         </div>
-        <div class="span11 workspace">
+        <div class="col-md-11 workspace">
           <div class="content">
             {% block content %}{% endblock %}
           </div>
@@ -62,7 +61,7 @@
 
     </div>
     <script type="text/javascript">
-      $(document).ready(function() { 
+      $(document).ready(function() {
           $("select").select2();
       });
     </script>

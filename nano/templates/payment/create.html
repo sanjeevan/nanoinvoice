@@ -4,8 +4,8 @@
   
   {% include 'invoice/_controls.html' %}
   <ul class="breadcrumb">
-    <li><a href={{ url_for('invoice.index') }}"">Invoices</a> <span class="divider">/</span></li>
-    <li><a href="{{ url_for('invoice.show', id=invoice.id) }}">Invoice {{ invoice.reference }}</a> <span class="divider">/</span></li>
+    <li><a href={{ url_for('invoice.index') }}"">Invoices</a></li>
+    <li><a href="{{ url_for('invoice.show', id=invoice.id) }}">Invoice {{ invoice.reference }}</a></li>
     <li class="active">Add payment</li>
   </ul>
 

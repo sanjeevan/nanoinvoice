@@ -187,7 +187,10 @@ def configure_assets(app):
                           filters='jst')
 
     css_global = Bundle('src/sass/screen.scss',
-                        depends=['src/sass/_*.scss'],
+                        depends=[
+                            'src/sass/_*.scss',
+                            'src/sass/vendor/_*.scss',
+                        ],
                         filters='scss,cssmin', output='dist/css/screen.css')
 
     css_pdf = Bundle('src/sass/pdf.scss',
