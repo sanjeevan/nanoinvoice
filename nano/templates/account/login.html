@@ -5,20 +5,18 @@
 {% extends "plain.html" %}
 
 {% block content %}
-  <div class="login box">
-    <form  method="post" action="{{ url_for('account.login') }}">
+  <div>
+    <form role="form" class="form-signin"  method="post" action="{{ url_for('account.login') }}">
+      <h2 class="form-signin-heading">Please sign in</h2>
       {{ form.hidden_tag() }}
       {{ form.next }}
-      {{ render_input(form.login, 'xlarge', placeholder='Email') }}
-      {{ render_input(form.password, 'xlarge', placeholder='Password') }}
-      <div class="field">
-        <label class="remember">{{ form.remember }} Remember me?</label>
-      </div>
-      <div class="field">
-        <button class="button primary" type="submit">Login</button>
-      </div>
+      {{ form.login(class='form-control') }}
+      {{ form.password(class='form-control') }}
+      <label class="checkbox">
+        {{ form.remember }} Remember me
+      </label>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       <p class="noaccount">No account? <a href="{{ url_for('account.signup') }}">Sign up</a>.</p>
     </form>
   </div>
-
 {% endblock %}

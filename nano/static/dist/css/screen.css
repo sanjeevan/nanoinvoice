@@ -11149,57 +11149,67 @@ body, html {
   padding: 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_login\.scss}line{font-family:\000032}}
-.box {
-  width: 330px;
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_login\.scss}line{font-family:\000031}}
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
   margin: 0 auto;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-top: 50px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_login\.scss}line{font-family:\000037}}
-.login {
-  background-color: #fff;
-  margin-top: 2em;
-  border-radius: 5px;
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_login\.scss}line{font-family:\0000310}}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
 }
+
 @media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_login\.scss}line{font-family:\0000313}}
-.login .noaccount {
-  margin-top: 1em;
-  text-align: center;
-  font-size: 12px;
+.form-signin .checkbox {
+  font-weight: normal;
+  margin-left: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_login\.scss}line{font-family:\0000319}}
-.login form {
-  padding: 14px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_login\.scss}line{font-family:\0000322}}
-.login form label {
-  display: none;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_login\.scss}line{font-family:\0000326}}
-.login form label.remember {
-  display: block;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_login\.scss}line{font-family:\0000328}}
-.login form label.remember input {
-  display: inline;
-  width: auto;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_login\.scss}line{font-family:\0000334}}
-.login form input {
-  font-size: 18px;
-  width: 100%;
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_login\.scss}line{font-family:\0000317}}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  height: auto;
+  padding: 10px;
+  font-size: 16px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_login\.scss}line{font-family:\0000341}}
-.login form .field {
-  margin-bottom: 1em;
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_login\.scss}line{font-family:\0000326}}
+.form-signin .form-control:focus {
+  z-index: 2;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_login\.scss}line{font-family:\0000345}}
-.login form .button {
-  width: 100%;
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_login\.scss}line{font-family:\0000329}}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_login\.scss}line{font-family:\0000334}}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_login\.scss}line{font-family:\0000339}}
+.form-signin .noaccount {
+  margin-top: 1em;
+  text-align: center;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_login\.scss}line{font-family:\0000343}}
+.form-signin h2 {
+  margin-top: 0;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\0000335}}

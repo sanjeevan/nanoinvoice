@@ -1,50 +1,45 @@
-
-.box {
-  width: 330px;
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
   margin: 0 auto;
-}
-
-.login {
   background-color: #fff;
-  margin-top: 2em;
-
-  @include border-radius(5px);
-
-  .noaccount {
-    margin-top: 1em;
-    text-align: center;
-    font-size: 12px;
-  }
-
-  form {
-    padding: 14px;
-
-    label {
-      display: none;
-    }
-
-    label.remember {
-      display: block;
-      input {
-        display: inline;
-        width: auto;
-      }
-    }
-
-    input {
-      font-size: 18px;
-      width: 100%;
-      @include box-sizing(border-box);
-      height: auto;
-    }
-
-    .field {
-      margin-bottom: 1em;
-    }
-
-    .button {
-      width: 100%;
-    }
-  }
+  border-radius: 10px;
+  margin-top: 50px;
 }
-
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+  margin-left: 20px;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.form-signin .noaccount {
+  margin-top: 1em;
+  text-align: center;
+}
+.form-signin h2 {
+  margin-top: 0;
+}
