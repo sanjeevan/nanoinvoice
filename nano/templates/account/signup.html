@@ -7,7 +7,7 @@
 {% block content %}
 
   <h1>Create your account</h1>
-  
+
   <div class="workspace-inner">
 
     {% if form.errors %}
@@ -21,26 +21,26 @@
       </div>
     {% endif %}
 
-    <form class="form" method="post" action="">
+    <form role="form" method="post" action="">
       {{ form.hidden_tag() }}
       {{ form.next }}
-      
-      <h4>Business</h4> 
+
+      <h4>Business</h4>
       <div class="control-group {% print 'error' if form.username.errors else '' %}">
         <div class="controls">
           {{ form.username(placeholder='ID') }} <div class="help-inline">.nanoinvoice.com</div>
         </div>
       </div>
-      
+
       <div class="control-group {% print 'error' if form.business_name.errors else '' %}">
         <div class="controls controls-row">
           {{ form.business_name(class='span3', placeholder='Business name') }}
           {{ form.business_type(class='span3') }}
         </div>
       </div>
-      
+
       <div class="control-group {% print 'error' if form.country_id.errors else '' %}">
-        <div class="controls controls-row" style="margin-left: -20px;">
+        <div class="controls controls-row">
           {{ form.country_id(class='span6') }}
         </div>
       </div>
@@ -67,9 +67,9 @@
       </div>
 
       <h4>Plan</h4>
- 
+
       <div class="control-group {% print 'error' if form.plan_id.errors else '' %}">
-        <div class="controls controls-row" style="margin-left: -20px;">
+        <div class="controls controls-row">
           {{ form.plan_id(class='span3') }}
         </div>
       </div>

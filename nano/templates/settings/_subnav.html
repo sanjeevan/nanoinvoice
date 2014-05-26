@@ -3,7 +3,6 @@
   <ul>
     <li class='{{ 'active' if request.endpoint == 'settings.index' }}'><a href="{{ url_for('.index') }}">General</a></li>
     <li class='{{ 'active' if request.endpoint == 'settings.custom_fields' }}'><a href="{{ url_for('.custom_fields') }}">Custom fields</a></li>
-    <li class='{{ 'active' if request.endpoint == 'settings.payment_integration' }}'><a href="{{ url_for('.payment_integration') }}">Payment integration</a></li>
     <li class='{{ 'active' if request.endpoint == 'settings.tax_rates' }}'><a href="{{ url_for('.tax_rates') }}">Taxes</a></li>
   </ul>
 </div>

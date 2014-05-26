@@ -5,50 +5,47 @@
 
   {% include 'account/_filter.html' %}
   {% include 'settings/_subnav.html' %}
-  
+
   <div class="workspace-inner">
-    
-    <form class="create inline custom-field" method="post" action="{{ url_for('.custom_fields') }}">
-      <div class="header">Custom fields</div>  
-      <div class="fields">
-
-
+    <h2>Custom fields</h2>
+    <form role="form" class="form-horizontal" method="post" action="{{ url_for('.custom_fields') }}">
+      {{ form.hidden_tag() }}
+      {{ form.new_field.csrf_token }}
         {% for form_field in form.current_fields.entries %}
-          <div class="field">
-            <label></label>
-            <div class="input">
-              {{ form_field.uid }}
-              {{ form_field.field_name }}
-              {{ form_field.field_value }}
+          {{ form_field.uid }}
+          {{ form_field.csrf_token }}
+          <div class="form-group row">
+            <div class="col-xs-2 col-sm-offset-2">
+              {{ form_field.field_name(class='form-control') }}
+            </div>
+            <div class="col-xs-2"> 
+              {{ form_field.field_value(class='form-control') }}
+            </div>
+            <div class="col-xs-2">
               <a class='delete' href="{{ url_for('settings.delete_custom_field', id=form_field.uid.data) }}"> Delete</a>
             </div>
           </div>
         {% endfor %}
-        
-        <div class="field vspacer">
 
-        </div>
-        
-        <div class="field"> 
-          <label>New custom field</label>
-          <div class="input">
-            <div class='input vtop'>
-              {{ form.new_field.field_name(placeholder='Field name, e.g. VAT') }}
+        <div class="form-group row">
+            <label class="col-sm-2 control-label">New custom field</label>
+          <div class="col-xs-2">
+            {{ form.new_field.field_name(class='form-control', placeholder='Field name, e.g. VAT') }}
               {{ render_errors(form.new_field.field_name) }}
-            </div>
-            <div class='input vtop'>
-              {{ form.new_field.field_value(placeholder='Value') }}
-              {{ render_errors(form.new_field.field_value) }} 
-            </div>
+          </div>
+          <div class="col-xs-2">
+            {{ form.new_field.field_value(class='form-control', placeholder='Value') }}
+            {{ render_errors(form.new_field.field_value) }}
           </div>
         </div>
-       <div class="field">
-          <button class="btn btn-primary" type="submit">Save</button>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary" type="submit">Save</button>
+          </div>
         </div>
       </div>
     </form>
-
   </div>
-
 {% endblock %}
 

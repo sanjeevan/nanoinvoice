@@ -6,19 +6,16 @@
   {% include 'settings/_subnav.html' %}
 
   <div class="workspace-inner">
-    
-      <form class="setting inline create" method="post" action="">
-        <div class="header">General settings</div>
-        <div class="fields">
-          {{ render_input(form.email_template) }}
-
-          <div class="field">
+    <h2>General settings</h2>
+      <form role="form" class="form-horizontal" method="post" action="">
+        {{ form.hidden_tag() }}
+        {{ render_input(form.email_template) }}
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
             <button class="btn btn-primary" type="submit">Update</button>
           </div>
-
         </div>
       </form>
-
   </div>
 
 {% endblock %}
