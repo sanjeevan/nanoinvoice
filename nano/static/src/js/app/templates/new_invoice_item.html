@@ -1,5 +1,4 @@
-<div id="new-invoice-item">
-  <div class="header"><h2>Add Invoice Item</h2></div>
+<div id="new-invoice-item" title="New line item">
   <div class="content">
     <form accept-charset="utf-8" method="post" action="/invoice_item/create" class="inline">
     <input type="hidden" name="invoice_id" value="<%= Invoice.get("id") %>" />

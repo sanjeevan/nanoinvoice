@@ -3,31 +3,26 @@
 
 {% block content %}
   {% include 'account/_filter.html' %}
-
   <h1>Your account</h1>
-
   <div class="workspace-inner">
-    <form class="create inline invoice" method="post" action="{{ url_for('.index') }}">
-      <div class="header">Account settings</div>  
-      <div class="fields">
-        <div class="field">
-          <label>&nbsp;</label>
-          <img src="{{ current_user.gravatar_url(80) }}" alt="profile photo" />
+    <form role="form" class="form-horizontal account" method="post" action="{{ url_for('.index') }}">
+      {{ form.hidden_tag() }}
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <img src="{{ current_user.gravatar_url(80) }}" alt="profile photo" />
+          </div>
         </div>
-
         {{ render_input(form.first_name) }} 
         {{ render_input(form.last_name) }} 
         {{ render_input(form.email_address) }}
         {{ render_input(form.password, autocomplete='off') }}
         {{ render_input(form.password_confirm, autocomplete='off') }}
-        <div class="field">
-          <button class="btn btn-primary" type="submit">Save</button>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary" type="submit">Save</button>
+          </div>
         </div>
-      </div>
     </form>
-
-
-
   </div>
 
 {% endblock %}

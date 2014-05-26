@@ -134,6 +134,12 @@ form.create {
   }
 }
 
+form.account {
+  input, select, textarea  {
+    width: 50%;
+  }
+}
+
 form.invoice {
   input.reference {
     width: auto;
@@ -156,7 +162,7 @@ form.invoice {
 }
 
 
-form.create.company {
+form.company {
   select#country, div#s2id_country {
     width: 250px;
   }
@@ -167,13 +173,9 @@ form.create.company {
 
   div.photo {
     display: inline-block;
-    width: 366px;
-    border: 1px solid #ccc;
-    padding: 1em;
   }
 
   input#photo-upload {
-    width: 150px;
   }
 }
 

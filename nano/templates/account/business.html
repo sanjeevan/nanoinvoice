@@ -7,18 +7,14 @@
   <h1>Business information</h1>
 
   <div class="workspace-inner">
-    <form class="create inline company" method="post" action="{{ url_for('.business') }}">
-      <div class="header">Business details</div>  
-      <div class="fields">
+    <form role="form" class="form-horizontal company" method="post" action="{{ url_for('.business') }}">
 
-        <div class="field">
-          <label>&nbsp;</label>
-
-          <div class="photo">
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10 photo">
             {% if company.logo %}
               <img src="{{ url_for('file.download', location=company.logo.thumbnail.get_web_url()) }}">
             {% endif %}
-            <input type="button" id="photo-upload" value="Upload company logo" />
+            <input class="btn btn-primary" type="button" id="photo-upload" value="Upload company logo" />
           </div>
         </div>
 
@@ -28,12 +24,13 @@
         {{ render_input(form.town) }}
         {{ render_input(form.city) }}
         {{ render_input(form.county) }}
-        {{ render_input(form.country) }}
+        {{ render_input(form.country, class='') }}
         {{ render_input(form.post_code) }}
-        <div class="field">
-          <button class="btn btn-primary" type="submit">Save</button>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary" type="submit">Save</button>
+          </div>
         </div>
-      </div>
     </form>
 
   </div>

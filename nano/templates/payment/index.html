@@ -32,7 +32,7 @@
                 <td>{{ payment.amount|format_currency }} {{ payment.currency_code }}</td>
                 <td>
                   {% if payment.method == 'manual' %}
-                    <a class="btn btn-xs" href="{{ url_for('payment.edit', id=payment.id) }}">Edit</a>
+                    <a class="btn btn-default btn-xs" href="{{ url_for('payment.edit', id=payment.id) }}">Edit</a>
                     <a class="btn btn-danger btn-xs" href="{{ url_for('payment.delete', id=payment.id) }}">Delete</a>
                   {% endif %}
                 </td>

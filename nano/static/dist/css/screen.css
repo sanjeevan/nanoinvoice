@@ -11354,71 +11354,69 @@ form.create .header {
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003138}}
+form.account input, form.account select, form.account textarea {
+  width: 50%;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003144}}
 form.invoice input.reference {
   width: auto;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003141}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003147}}
 form.invoice select {
   width: 366px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003145}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003151}}
 form.invoice input.date {
   width: 200px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003149}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003155}}
 form.invoice div.field-due_date {
   display: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003153}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003159}}
 form.invoice .select2-container {
   width: 200px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003160}}
-form.create.company select#country, form.create.company div#s2id_country {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003166}}
+form.company select#country, form.company div#s2id_country {
   width: 250px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003164}}
-form.create.company input#post_code {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003170}}
+form.company input#post_code {
   width: 100px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003168}}
-form.create.company div.photo {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003174}}
+form.company div.photo {
   display: inline-block;
-  width: 366px;
-  border: 1px solid #ccc;
-  padding: 1em;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003175}}
-form.create.company input#photo-upload {
-  width: 150px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003181}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003183}}
 form.create.client select#country, form.create.client div#s2id_country {
   width: 250px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003185}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003187}}
 form.create.client input#post_code {
   width: 100px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003191}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003193}}
 form.create.custom-field .vspacer {
   height: 16px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003195}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003197}}
 form.create.custom-field input[type='text'] {
   width: 200px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003199}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003201}}
 form.create.custom-field label {
   vertical-align: bottom;
   line-height: 29px;
   text-align: right;
   margin-right: 1em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003206}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003208}}
 form.create.custom-field a.delete {
   display: inline-block;
   text-decoration: none;
@@ -11428,27 +11426,27 @@ form.create.custom-field a.delete {
   margin-bottom: 10px;
   vertical-align: middle;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003214}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003216}}
 form.create.custom-field a.delete:hover {
   text-decoration: underline;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003219}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003221}}
 form.create.tax-rates .vspacer {
   height: 16px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003223}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003225}}
 form.create.tax-rates input[type='text'] {
   width: 200px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003227}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003229}}
 form.create.tax-rates label {
   vertical-align: bottom;
   line-height: 29px;
   text-align: right;
   margin-right: 1em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003234}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003236}}
 form.create.tax-rates a.delete {
   display: inline-block;
   text-decoration: none;
@@ -11458,18 +11456,18 @@ form.create.tax-rates a.delete {
   vertical-align: middle;
   margin-bottom: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003243}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003245}}
 form.create.tax-rates a.delete:hover {
   text-decoration: underline;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003248}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003250}}
 form.create.email textarea {
   width: 366px;
   height: 100px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003256}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_forms\.scss}line{font-family:\00003258}}
 form.create.setting textarea {
   width: 366px;
   height: 100px;

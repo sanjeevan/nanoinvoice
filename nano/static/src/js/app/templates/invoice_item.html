@@ -1,7 +1,7 @@
 <tr class="item " id="invoice-item-<%= InvoiceItem.get('id') %>">
   <td class="item_l quantity_td">
     <% if (InvoiceItem.shouldRenderField("quantity")) { %>
-      <%= InvoiceItem.getQuantityString() %> 
+      <%= InvoiceItem.getQuantityString() %>
     <% } %>
     <%= InvoiceItem.get("InvoiceItemType").name  %>
   </td>
@@ -9,12 +9,12 @@
     <%= InvoiceItem.get("description") %>
   </td>
 
-  <td class="item_r price_td"> 
+  <td class="item_r price_td">
     <% if (InvoiceItem.shouldRenderField("price")) { %>
       <%= numberFormat(InvoiceItem.get("price"), 2) %>
     <% } %>
   </td>
-  
+
   <td class="item_r taxrate_td">
     <% if (InvoiceItem.shouldRenderField('tax')) { %>
       <%= numberFormat(InvoiceItem.get('tax'), 2) %>
