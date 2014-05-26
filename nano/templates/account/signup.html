@@ -26,59 +26,64 @@
       {{ form.next }}
 
       <h4>Business</h4>
-      <div class="control-group {% print 'error' if form.username.errors else '' %}">
-        <div class="controls">
-          {{ form.username(placeholder='ID') }} <div class="help-inline">.nanoinvoice.com</div>
+      <div class="form-group {% print 'error' if form.username.errors else '' %}">
+        <div class="controls row">
+          <div class="col-sm-2">
+            {{ form.username(class='form-control', placeholder='ID') }} 
+          </div>
+          <div class="help-inline col-sm-2">.nanoinvoice.com</div>
         </div>
       </div>
 
-      <div class="control-group {% print 'error' if form.business_name.errors else '' %}">
-        <div class="controls controls-row">
-          {{ form.business_name(class='span3', placeholder='Business name') }}
-          {{ form.business_type(class='span3') }}
+      <div class="form-group row {% print 'error' if form.business_name.errors else '' %}">
+        <div class="col-sm-2">
+          {{ form.business_name(class='form-control', placeholder='Business name') }}
+        </div>
+        <div class="col-sm-2">
+          {{ form.business_type(class='') }}
         </div>
       </div>
 
-      <div class="control-group {% print 'error' if form.country_id.errors else '' %}">
-        <div class="controls controls-row">
-          {{ form.country_id(class='span6') }}
-        </div>
+      <div class="form-group {% print 'error' if form.country_id.errors else '' %}">
+        {{ form.country_id(class='') }}
       </div>
 
       <h4>Personal details</h4>
-      <div class="control-group {% print 'error' if form.first_name.errors or form.last_name.errors else '' %}">
-        <div class="controls controls-row">
-           {{ form.first_name(class='span3', placeholder='First name') }}
-           {{ form.last_name(class='span3', placeholder='Last name') }}
+      <div class="form-group row {% print 'error' if form.first_name.errors or form.last_name.errors else '' %}">
+        <div class="col-sm-2">
+         {{ form.first_name(class='form-control', placeholder='First name') }}
+       </div>
+       <div class="col-sm-2">
+         {{ form.last_name(class='form-control', placeholder='Last name') }}
+       </div>
+      </div>
+
+      <div class="form-group row {% print 'error' if form.email_address.errors else '' %}">
+        <div class="col-sm-4">
+          {{ form.email_address(class='form-control', placeholder='Email address') }}
         </div>
       </div>
 
-      <div class="control-group {% print 'error' if form.email_address.errors else '' %}">
-        <div class="controls controls-row">
-          {{ form.email_address(class='span6', placeholder='Email address') }}
+      <div class="form-group row {% print 'error' if form.password.errors or form.password_again.errors else '' %}">
+        <div class="col-sm-2">
+          {{ form.password(class='form-control', placeholder='Password') }}
         </div>
-      </div>
-
-      <div class="control-group {% print 'error' if form.password.errors or form.password_again.errors else '' %}">
-        <div class="controls controls-row">
-          {{ form.password(class='span3', placeholder='Password') }}
-          {{ form.password_again(class='span3', placeholder='Confirm password') }}
+        <div class="col-sm-2">
+          {{ form.password_again(class='form-control', placeholder='Confirm password') }}
         </div>
       </div>
 
       <h4>Plan</h4>
 
-      <div class="control-group {% print 'error' if form.plan_id.errors else '' %}">
-        <div class="controls controls-row">
-          {{ form.plan_id(class='span3') }}
-        </div>
+      <div class="form-group {% print 'error' if form.plan_id.errors else '' %}">
+          {{ form.plan_id(class='') }}
       </div>
 
       <div class="controls">
         <p>By clicking <b>Create account</b>, I agree to the <a href="">privacy policy</a> and <a href="">terms of service</a></p>
       </div>
 
-      <div class="form-actions">
+      <div class="form-group">
         <button type="submit" class="btn btn-primary">Create account</button>
       </div>
 

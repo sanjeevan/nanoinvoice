@@ -11776,64 +11776,65 @@ html[xmlns] .pagestyle {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000313}}
 .subscribe {
   width: 640px;
+  margin: 0 auto;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000316}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000317}}
 .subscribe .payment {
   width: 440px;
   margin: 20px auto 20px auto;
   border-radius: 10px;
   border: 5px solid #fff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000323}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000324}}
 .subscribe .secure-info {
   color: #fff;
   background-color: #028ed5;
   padding: 10px 5px;
   font-size: 14px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000330}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000331}}
 .subscribe .billing-info {
   color: #aaa;
   font-size: 18px;
   width: 100%;
   text-align: center;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000337}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000338}}
 .subscribe .payment-errors {
   color: red;
   padding-bottom: 1em;
   display: block;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000343}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000344}}
 .subscribe .mini-text {
   margin-top: 1em;
   font-size: 12px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000348}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000349}}
 .subscribe form {
   background-color: #fff;
   padding: 1em;
   margin: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000353}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000354}}
 .subscribe form img#cvc-image {
   vertical-align: middle;
   margin-top: -10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000358}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000359}}
 .subscribe form input#card_number, .subscribe form input#name {
   width: 96%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000362}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000363}}
 .subscribe form input {
   padding: 6px;
   font-size: 18px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000367}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000368}}
 .subscribe form select {
   font-size: 18px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000371}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/srv\/nanoinvoice\.com\/nano\/static\/src\/sass\/_signup\.scss}line{font-family:\0000372}}
 .subscribe form .form-control {
   width: auto;
   display: inline-block;
